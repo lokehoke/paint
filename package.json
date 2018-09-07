@@ -1,0 +1,33 @@
+{
+    "name": "paint",
+    "version": "0.0.1",
+    "description": "paint",
+    "main": "index.js",
+    "repository": "https://github.com/Lpkehoke/paint.git",
+    "author": "lokeHoke <ibymif2000@yandex.ru>",
+    "license": "MIT",
+    "devDependencies": {
+        "@babel/cli": "^7.0.0",
+        "@babel/core": "^7.0.0",
+        "@babel/plugin-proposal-class-properties": "^7.0.0",
+        "@babel/preset-env": "^7.0.0",
+        "@babel/preset-react": "^7.0.0",
+        "autoprefixer": "^9.1.5",
+        "babel-loader": "^8.0.2",
+        "css-loader": "^1.0.0",
+        "node-sass": "^4.9.3",
+        "postcss-loader": "^3.0.0",
+        "react": "^16.5.0",
+        "react-dom": "^16.5.0",
+        "react-redux": "^5.0.7",
+        "redux": "^4.0.0",
+        "reset-css": "^4.0.1",
+        "sass-loader": "^7.1.0",
+        "style-loader": "^0.23.0",
+        "webpack": "^4.17.2",
+        "webpack-cli": "^3.1.0"
+    },
+    "scripts": {
+        "b": "webpack --config webpack.config.js"
+    }
+}
