@@ -4,7 +4,10 @@ const React = require('react');
 
 class Footer extends React.Component {
     render() {
-        return <div />;
+        return (
+            <footer className="footer">
+            </footer>
+        );
     }
 }
 

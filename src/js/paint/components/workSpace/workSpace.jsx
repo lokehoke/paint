@@ -9,7 +9,7 @@ const WindowWrapper = require('./windows/windowWrapper.jsx');
 class WorkSpace extends React.Component {
     render() {
         return (
-            <div>
+            <div className="workSpace">
                 <Instrumenst />
                 <MainCanvas />
                 <WindowWrapper />

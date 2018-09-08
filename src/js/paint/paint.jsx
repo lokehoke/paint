@@ -28,5 +28,7 @@ module.exports = class Paint {
              </Provider>,
             this._mountPoint
         );
+
+        console.log(this._store.getState());
     }
 }

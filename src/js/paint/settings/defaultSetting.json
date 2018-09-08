@@ -1,4 +1,7 @@
 {
     "currentColor": "#000",
-    "currentLineThickness": "16px"
+    "currentLineThickness": "16px",
+    "currentInstruments": [
+        "brush"
+    ]
 }

@@ -2,11 +2,15 @@
     width: 100%;
     height: 100%;
 
-    .mainPaintCanvas {
-        display: block;
+    .paintWrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+
+        @import './inner/header.scss';
+        @import './inner/main.scss';
+        @import './inner/footer.scss';
     }
 
-    .mainPaintInstruments {
-
-    }
 }

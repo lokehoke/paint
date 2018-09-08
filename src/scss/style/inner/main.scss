@@ -1,0 +1,10 @@
+.workSpace {
+    display: flex;
+    width: 100%;
+    flex-grow: 1;
+
+    .instrumentWrapper {
+        display: flex;
+        flex-direction: column;
+    }
+}
