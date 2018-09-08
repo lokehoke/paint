@@ -8,8 +8,6 @@ class Instrument extends React.Component {
     render() {
         let icon = null;
 
-        console.log(FontAwesomeIcon);
-
         switch (this.props.type) {
             case 'brush':
                 icon = (<FontAwesomeIcon icon={faPaintBrush} color="white" />);
