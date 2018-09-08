@@ -57,7 +57,10 @@ let config = {
 					plugins: ['@babel/plugin-proposal-class-properties']
 				}
 			}
-		}]
+		}, {
+            test: /\.json$/,
+            loader: 'json-loader'
+          }]
 	}, plugins: [
 		new Webpack.NoEmitOnErrorsPlugin()
 	]
