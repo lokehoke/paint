@@ -14,12 +14,14 @@ module.exports = () => (state = [], action) => {
                 }
             }
 
-
             return [...state, {
                 id: id++,
                 view: action.view,
                 title
             }];
+            break;
+        case 'CLOSE_WINDOW':
+            return [...(state.filter(el => el.id !== action.id))];
             break;
         default:
             return state;

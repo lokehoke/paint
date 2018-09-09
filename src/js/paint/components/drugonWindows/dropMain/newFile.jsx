@@ -9,12 +9,13 @@ class NewFile extends React.Component {
             <div className="newFile">
                 <div>
                     <span>Title&nbsp;</span>
-                    <input ref={inp => this.title = inp} maxlength="10" />
+                    <input ref={inp => this.title = inp} maxLength="10" />
                 </div>
                 <div>
                     <span>Size&nbsp;</span>
-                    <input ref={inp => this.x = inp} type="number" max="10000"/>&nbsp;x&nbsp;
-                    <input ref={inp => this.y = inp} type="number" max="10000"/>
+                    <input ref={inp => this.x = inp} type="number" max="10000" />
+                    &nbsp;x&nbsp;
+                    <input ref={inp => this.y = inp} type="number" max="10000" />
                 </div>
                 <div>
                     <button ref={btn => this.createBtn = btn}>Create</button>
@@ -30,14 +31,18 @@ class NewFile extends React.Component {
             let title = (this.title.value !== '' ? this.title.value : 'untitled');
 
             this.props.createNew(x, y, title);
+            this.props.deleteThisTab(this.props.id);
+            this.props.changeActive(this.props.newId);
         });
     }
 }
 
 
 module.exports = ReactRedux.connect(
-    () => ({}),
-    (dispatch) => ({
+    state => ({
+        newId: (state.tabs.length ? state.tabs.length - 1 : 0)
+    }),
+    dispatch => ({
         createNew: (x, y, title) => {
             dispatch({
                 type: 'NEW_TAB',
@@ -47,6 +52,18 @@ module.exports = ReactRedux.connect(
                 },
                 title
             });
+        },
+        deleteThisTab: id => {
+            dispatch({
+                type: 'CLOSE_WINDOW',
+                id
+            })
+        },
+        changeActive: id => {
+            dispatch({
+                type: 'CHANGE_ACTIVE_TAB',
+                activeTab: id
+            })
         }
     })
 )(NewFile);

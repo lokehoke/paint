@@ -8,8 +8,12 @@ module.exports = () => (state = [], action) => {
             return [...state, {
                 id: id++,
                 title: action.title,
-                size: action.size
+                size: action.size,
+                live: true
             }];
+            break;
+        case 'CLOSE_TAB':
+            return [...(state.filter(el => el.id !== action.id))];
             break;
         default:
             return state;

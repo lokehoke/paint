@@ -3,7 +3,7 @@
 const React = require('react');
 const ReactRedux = require('react-redux');
 
-const Instrument = require('./instrument.js');
+const Instrument = require('./instrument.jsx');
 
 class Instrumensts extends React.Component {
     render() {

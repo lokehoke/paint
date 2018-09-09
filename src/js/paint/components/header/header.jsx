@@ -7,10 +7,27 @@ const File = require('./own/file.jsx');
 class Header extends React.Component {
     render() {
         return (
-            <header className="header">
+            <header className="header" ref={h => this.header = h}>
                 <File />
             </header>
         );
+    }
+
+    componentDidMount() {
+        this.header.addEventListener('dblclick', e => {
+            e.preventDefault();
+            return false;
+        });
+
+        this.header.addEventListener('selectstart', e => {
+            e.preventDefault();
+            return false;
+        });
+
+        this.header.addEventListener('mousedown', e => {
+            e.preventDefault();
+            return false;
+        });
     }
 }
 

@@ -49,6 +49,8 @@
                 display: flex;
                 white-space: nowrap;
                 border-right: 4px solid $moreGray;
+                position: relative;
+                padding-right: 22px;
             }
         }
     }

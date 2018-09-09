@@ -23,6 +23,10 @@
             border-radius: 5px;
             border: 1px solid white;
             cursor: pointer;
+
+            &:hover {
+                background: $blue;
+            }
         }
 
         &:hover .headerContainer__subMenu {
