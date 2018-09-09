@@ -6,7 +6,7 @@ module.exports = () => (state = [], action) => {
     switch (action.type) {
         case 'NEW_TAB':
             return [...state, {
-                id,
+                id: id++,
                 title: action.title,
                 size: action.size
             }];

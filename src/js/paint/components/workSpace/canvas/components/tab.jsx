@@ -15,12 +15,14 @@ class Tab extends React.Component {
     }
 
     render() {
-        <div className="tab">
-            {tab.title} {tab.size.x}:{tab.size.y}
-        </div>
+        return (
+            <div className="tab">
+                {'' + this.props.tab.title + ' ' + this.props.tab.size.x + ':' + this.props.tab.size.y}
+            </div>
+        );
     }
 }
 
 module.exports = ReactRedux.connect((state, props) => ({
-    tab: state.tabs.find(el => +el.id === +props.active)
+    tab: state.tabs.find(el => +el.id === +props.tabId)
 }))(Tab);

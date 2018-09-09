@@ -21,7 +21,7 @@ class ListTabs extends React.Component {
         return (
             <div className="listTabs">
                 {this.props.tabs.map(tab => (
-                    <Tab key={tab.id} tabId={tab.id}/>
+                    <Tab key={tab.id} tabId={tab.id} />
                 ))}
             </div>
         );

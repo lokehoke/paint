@@ -38,6 +38,18 @@
             margin-top: 5px;
             border-radius: 0 0 5px 5px;
             background: $gray;
+
+            .tab {
+                min-width: 100px;
+                max-width: 200px;
+                overflow: hidden;
+                color: white;
+                padding: 0 10px;
+                align-items: center;
+                display: flex;
+                white-space: nowrap;
+                border-right: 4px solid $moreGray;
+            }
         }
     }
 }
