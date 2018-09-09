@@ -4937,7 +4937,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "/* http://meyerweb.com/eric/tools/css/reset/\n   v4.0 | 20180602\n   License: none (public domain)\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmain, menu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, main, menu, nav, section {\n  display: block; }\n\n/* HTML5 hidden-attribute fix for newer browsers */\n*[hidden] {\n  display: none; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n* {\n  padding: 0;\n  margin: 0;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n\nbutton {\n  cursor: pointer; }\n\nhtml,\nbody,\n.wrapper {\n  width: 100%;\n  height: 100%; }\n\nhtml,\nbody,\n.wrapper,\n.world {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  background: #14151a; }\n\n#root {\n  width: 100%;\n  height: 100%; }\n  #root .paintWrapper {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    width: 100%;\n    height: 100%; }\n    #root .paintWrapper .header {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      background: #474545;\n      width: 100%;\n      height: 25px; }\n    #root .paintWrapper .workSpace {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      width: 100%;\n      -webkit-box-flex: 1;\n          -ms-flex-positive: 1;\n              flex-grow: 1; }\n      #root .paintWrapper .workSpace .instrumentWrapper {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: vertical;\n        -webkit-box-direction: normal;\n            -ms-flex-direction: column;\n                flex-direction: column;\n        background: #474545;\n        width: 35px;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        margin: 5px 0;\n        border-radius: 0 5px 5px 0;\n        padding: 5px; }\n        #root .paintWrapper .workSpace .instrumentWrapper .instrument {\n          background: #14151a;\n          padding: 4px;\n          border-radius: 3px; }\n    #root .paintWrapper .footer {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      background: #474545;\n      width: 100%;\n      height: 20px; }\n      #root .paintWrapper .footer .footerObject {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center;\n        padding: 0 5px;\n        color: white;\n        font-size: 14px; }\n", "", {"version":3,"sources":["/home/alex/aaMy/paint/node_modules/reset-css/sass/_reset.scss","/home/alex/aaMy/paint/src/scss/default/defaults.scss","/home/alex/aaMy/paint/src/scss/color/color.scss","/home/alex/aaMy/paint/src/scss/style/index.scss","/home/alex/aaMy/paint/src/scss/style/inner/header.scss","/home/alex/aaMy/paint/src/scss/style/inner/main.scss","/home/alex/aaMy/paint/src/scss/style/inner/footer.scss"],"names":[],"mappings":"AAAA;;;EAGE;AAEF;;;;;;;;;;;;;EAaC,UAAS;EACT,WAAU;EACV,UAAS;EACT,gBAAe;EACf,cAAa;EACb,yBAAwB,EACxB;;AACD,iDAAiD;AACjD;;EAEC,eAAc,EACd;;AACD,mDAAmD;AACnD;EACI,cAAa,EAChB;;AACD;EACC,eAAc,EACd;;AACD;EACC,iBAAgB,EAChB;;AACD;EACC,aAAY,EACZ;;AACD;;EAEC,YAAW;EACX,cAAa,EACb;;AACD;EACC,0BAAyB;EACzB,kBAAiB,EACjB;;ACjDD;EACC,WAAU;EACV,UAAS;EACT,+BAAsB;UAAtB,uBAAsB,EACtB;;AAED;EACC,gBAAe,EACf;;AAGD;;;EAIC,YAAW;EACX,aAAY,EACZ;;AAGD;;;;EAIC,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,oBC1BiB,ED2BjB;;AE5BD;EACI,YAAW;EACX,aAAY,EAaf;EAfD;IAKQ,qBAAa;IAAb,qBAAa;IAAb,cAAa;IACb,6BAAsB;IAAtB,8BAAsB;QAAtB,2BAAsB;YAAtB,uBAAsB;IACtB,YAAW;IACX,aAAY,EAKf;IAbL;MCCI,qBAAa;MAAb,qBAAa;MAAb,cAAa;MACb,oBFFU;MEGV,YAAW;MACX,aAAY,EACf;IDLD;MECI,qBAAa;MAAb,qBAAa;MAAb,cAAa;MACb,YAAW;MACX,oBAAY;UAAZ,qBAAY;cAAZ,aAAY,EAsBf;MFzBD;QEMQ,qBAAa;QAAb,qBAAa;QAAb,cAAa;QACb,6BAAsB;QAAtB,8BAAsB;YAAtB,2BAAsB;gBAAtB,uBAAsB;QACtB,oBHRM;QGSN,YAAW;QACX,0BAAmB;YAAnB,uBAAmB;gBAAnB,oBAAmB;QACnB,cAAa;QACb,2BAA0B;QAC1B,aAAY,EAWf;QFxBL;UEgBY,oBHfM;UGgBN,aAAY;UACZ,mBAAkB,EAKrB;IFvBT;MGCI,qBAAa;MAAb,qBAAa;MAAb,cAAa;MACb,oBJFU;MIGV,YAAW;MACX,aAAY,EAUf;MHdD;QGOQ,qBAAa;QAAb,qBAAa;QAAb,cAAa;QACb,0BAAmB;YAAnB,uBAAmB;gBAAnB,oBAAmB;QACnB,yBAAuB;YAAvB,sBAAuB;gBAAvB,wBAAuB;QACvB,eAAc;QACd,aAAY;QACZ,gBAAe,EAClB","file":"index.scss","sourcesContent":["/* http://meyerweb.com/eric/tools/css/reset/\n   v4.0 | 20180602\n   License: none (public domain)\n*/\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmain, menu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, main, menu, nav, section {\n\tdisplay: block;\n}\n/* HTML5 hidden-attribute fix for newer browsers */\n*[hidden] {\n    display: none;\n}\nbody {\n\tline-height: 1;\n}\nol, ul {\n\tlist-style: none;\n}\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n","@import 'node_modules/reset-css/sass/_reset.scss';\n\n* {\n\tpadding: 0;\n\tmargin: 0;\n\tbox-sizing: border-box;\n}\n\nbutton {\n\tcursor: pointer;\n}\n\n\nhtml,\nbody,\n.wrapper,\n {\n\twidth: 100%;\n\theight: 100%;\n}\n\n\nhtml,\nbody,\n.wrapper,\n.world {\n\tdisplay: flex;\n\tbackground: $moreGray;\n}\n","$gray: #474545;\n$moreGray: #14151a;\n","#root {\n    width: 100%;\n    height: 100%;\n\n    .paintWrapper {\n        display: flex;\n        flex-direction: column;\n        width: 100%;\n        height: 100%;\n\n        @import './inner/header.scss';\n        @import './inner/main.scss';\n        @import './inner/footer.scss';\n    }\n\n}\n",".header {\n    display: flex;\n    background: $gray;\n    width: 100%;\n    height: 25px;\n}\n",".workSpace {\n    display: flex;\n    width: 100%;\n    flex-grow: 1;\n\n    .instrumentWrapper {\n        display: flex;\n        flex-direction: column;\n        background: $gray;\n        width: 35px;\n        align-items: center;\n        margin: 5px 0;\n        border-radius: 0 5px 5px 0;\n        padding: 5px;\n\n        .instrument {\n            background: $moreGray;\n            padding: 4px;\n            border-radius: 3px;\n\n            svg {\n\n            }\n        }\n    }\n}\n",".footer {\n    display: flex;\n    background: $gray;\n    width: 100%;\n    height: 20px;\n\n    .footerObject {\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        padding: 0 5px;\n        color: white;\n        font-size: 14px;\n    }\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, "/* http://meyerweb.com/eric/tools/css/reset/\n   v4.0 | 20180602\n   License: none (public domain)\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmain, menu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, main, menu, nav, section {\n  display: block; }\n\n/* HTML5 hidden-attribute fix for newer browsers */\n*[hidden] {\n  display: none; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n* {\n  padding: 0;\n  margin: 0;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n\nbutton {\n  cursor: pointer; }\n\nhtml,\nbody,\n.wrapper {\n  width: 100%;\n  height: 100%; }\n\nhtml,\nbody,\n.wrapper,\n.world {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  background: #14151a; }\n\n#root {\n  width: 100%;\n  height: 100%; }\n  #root .paintWrapper {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    width: 100%;\n    height: 100%; }\n    #root .paintWrapper .header {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      background: #474545;\n      width: 100%;\n      height: 25px; }\n    #root .paintWrapper .workSpace {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      width: 100%;\n      -webkit-box-flex: 1;\n          -ms-flex-positive: 1;\n              flex-grow: 1; }\n      #root .paintWrapper .workSpace .instrumentWrapper {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: vertical;\n        -webkit-box-direction: normal;\n            -ms-flex-direction: column;\n                flex-direction: column;\n        background: #474545;\n        width: 35px;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        margin: 5px 0;\n        border-radius: 0 5px 5px 0;\n        padding: 5px; }\n        #root .paintWrapper .workSpace .instrumentWrapper .instrument {\n          background: #14151a;\n          padding: 4px;\n          border-radius: 3px; }\n      #root .paintWrapper .workSpace .canvasWrapper {\n        width: 100%;\n        height: 100%;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: vertical;\n        -webkit-box-direction: normal;\n            -ms-flex-direction: column;\n                flex-direction: column;\n        -webkit-box-flex: 1;\n            -ms-flex-positive: 1;\n                flex-grow: 1; }\n        #root .paintWrapper .workSpace .canvasWrapper .listTabs {\n          height: 25px;\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          margin: 0 5px;\n          margin-top: 5px;\n          border-radius: 0 0 5px 5px;\n          background: #474545; }\n    #root .paintWrapper .footer {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      background: #474545;\n      width: 100%;\n      height: 20px; }\n      #root .paintWrapper .footer .footerObject {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center;\n        padding: 0 5px;\n        color: white;\n        font-size: 14px; }\n", "", {"version":3,"sources":["/home/alex/aaMy/paint/node_modules/reset-css/sass/_reset.scss","/home/alex/aaMy/paint/src/scss/default/defaults.scss","/home/alex/aaMy/paint/src/scss/color/color.scss","/home/alex/aaMy/paint/src/scss/style/index.scss","/home/alex/aaMy/paint/src/scss/style/inner/header.scss","/home/alex/aaMy/paint/src/scss/style/inner/main.scss","/home/alex/aaMy/paint/src/scss/style/inner/footer.scss"],"names":[],"mappings":"AAAA;;;EAGE;AAEF;;;;;;;;;;;;;EAaC,UAAS;EACT,WAAU;EACV,UAAS;EACT,gBAAe;EACf,cAAa;EACb,yBAAwB,EACxB;;AACD,iDAAiD;AACjD;;EAEC,eAAc,EACd;;AACD,mDAAmD;AACnD;EACI,cAAa,EAChB;;AACD;EACC,eAAc,EACd;;AACD;EACC,iBAAgB,EAChB;;AACD;EACC,aAAY,EACZ;;AACD;;EAEC,YAAW;EACX,cAAa,EACb;;AACD;EACC,0BAAyB;EACzB,kBAAiB,EACjB;;ACjDD;EACC,WAAU;EACV,UAAS;EACT,+BAAsB;UAAtB,uBAAsB,EACtB;;AAED;EACC,gBAAe,EACf;;AAGD;;;EAIC,YAAW;EACX,aAAY,EACZ;;AAGD;;;;EAIC,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,oBC1BiB,ED2BjB;;AE5BD;EACI,YAAW;EACX,aAAY,EAaf;EAfD;IAKQ,qBAAa;IAAb,qBAAa;IAAb,cAAa;IACb,6BAAsB;IAAtB,8BAAsB;QAAtB,2BAAsB;YAAtB,uBAAsB;IACtB,YAAW;IACX,aAAY,EAKf;IAbL;MCCI,qBAAa;MAAb,qBAAa;MAAb,cAAa;MACb,oBFFU;MEGV,YAAW;MACX,aAAY,EACf;IDLD;MECI,qBAAa;MAAb,qBAAa;MAAb,cAAa;MACb,YAAW;MACX,oBAAY;UAAZ,qBAAY;cAAZ,aAAY,EAuCf;MF1CD;QEMQ,qBAAa;QAAb,qBAAa;QAAb,cAAa;QACb,6BAAsB;QAAtB,8BAAsB;YAAtB,2BAAsB;gBAAtB,uBAAsB;QACtB,oBHRM;QGSN,YAAW;QACX,0BAAmB;YAAnB,uBAAmB;gBAAnB,oBAAmB;QACnB,cAAa;QACb,2BAA0B;QAC1B,aAAY,EAWf;QFxBL;UEgBY,oBHfM;UGgBN,aAAY;UACZ,mBAAkB,EAKrB;MFvBT;QE2BQ,YAAW;QACX,aAAY;QACZ,qBAAa;QAAb,qBAAa;QAAb,cAAa;QACb,6BAAsB;QAAtB,8BAAsB;YAAtB,2BAAsB;gBAAtB,uBAAsB;QACtB,oBAAY;YAAZ,qBAAY;gBAAZ,aAAY,EAUf;QFzCL;UEkCY,aAAY;UACZ,qBAAa;UAAb,qBAAa;UAAb,cAAa;UACb,cAAa;UACb,gBAAe;UACf,2BAA0B;UAC1B,oBHvCE,EGwCL;IFxCT;MGCI,qBAAa;MAAb,qBAAa;MAAb,cAAa;MACb,oBJFU;MIGV,YAAW;MACX,aAAY,EAUf;MHdD;QGOQ,qBAAa;QAAb,qBAAa;QAAb,cAAa;QACb,0BAAmB;YAAnB,uBAAmB;gBAAnB,oBAAmB;QACnB,yBAAuB;YAAvB,sBAAuB;gBAAvB,wBAAuB;QACvB,eAAc;QACd,aAAY;QACZ,gBAAe,EAClB","file":"index.scss","sourcesContent":["/* http://meyerweb.com/eric/tools/css/reset/\n   v4.0 | 20180602\n   License: none (public domain)\n*/\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmain, menu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, main, menu, nav, section {\n\tdisplay: block;\n}\n/* HTML5 hidden-attribute fix for newer browsers */\n*[hidden] {\n    display: none;\n}\nbody {\n\tline-height: 1;\n}\nol, ul {\n\tlist-style: none;\n}\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n","@import 'node_modules/reset-css/sass/_reset.scss';\n\n* {\n\tpadding: 0;\n\tmargin: 0;\n\tbox-sizing: border-box;\n}\n\nbutton {\n\tcursor: pointer;\n}\n\n\nhtml,\nbody,\n.wrapper,\n {\n\twidth: 100%;\n\theight: 100%;\n}\n\n\nhtml,\nbody,\n.wrapper,\n.world {\n\tdisplay: flex;\n\tbackground: $moreGray;\n}\n","$gray: #474545;\n$moreGray: #14151a;\n","#root {\n    width: 100%;\n    height: 100%;\n\n    .paintWrapper {\n        display: flex;\n        flex-direction: column;\n        width: 100%;\n        height: 100%;\n\n        @import './inner/header.scss';\n        @import './inner/main.scss';\n        @import './inner/footer.scss';\n    }\n\n}\n",".header {\n    display: flex;\n    background: $gray;\n    width: 100%;\n    height: 25px;\n}\n",".workSpace {\n    display: flex;\n    width: 100%;\n    flex-grow: 1;\n\n    .instrumentWrapper {\n        display: flex;\n        flex-direction: column;\n        background: $gray;\n        width: 35px;\n        align-items: center;\n        margin: 5px 0;\n        border-radius: 0 5px 5px 0;\n        padding: 5px;\n\n        .instrument {\n            background: $moreGray;\n            padding: 4px;\n            border-radius: 3px;\n\n            svg {\n\n            }\n        }\n    }\n\n    .canvasWrapper {\n        width: 100%;\n        height: 100%;\n        display: flex;\n        flex-direction: column;\n        flex-grow: 1;\n\n        .listTabs {\n            height: 25px;\n            display: flex;\n            margin: 0 5px;\n            margin-top: 5px;\n            border-radius: 0 0 5px 5px;\n            background: $gray;\n        }\n    }\n}\n",".footer {\n    display: flex;\n    background: $gray;\n    width: 100%;\n    height: 20px;\n\n    .footerObject {\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        padding: 0 5px;\n        color: white;\n        font-size: 14px;\n    }\n}\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -29837,6 +29837,10 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
+var Tabs = __webpack_require__(/*! ./components/tabs.jsx */ "./src/js/paint/components/workSpace/canvas/components/tabs.jsx");
+
+var ListTabs = __webpack_require__(/*! ./components/listTabs.jsx */ "./src/js/paint/components/workSpace/canvas/components/listTabs.jsx");
+
 var Canvas =
 /*#__PURE__*/
 function (_React$Component) {
@@ -29851,7 +29855,9 @@ function (_React$Component) {
   _createClass(Canvas, [{
     key: "render",
     value: function render() {
-      return React.createElement("div", null);
+      return React.createElement("div", {
+        className: "canvasWrapper"
+      }, React.createElement(ListTabs, null), React.createElement(Tabs, null));
     }
   }]);
 
@@ -29859,6 +29865,223 @@ function (_React$Component) {
 }(React.Component);
 
 module.exports = Canvas;
+
+/***/ }),
+
+/***/ "./src/js/paint/components/workSpace/canvas/components/listTabs.jsx":
+/*!**************************************************************************!*\
+  !*** ./src/js/paint/components/workSpace/canvas/components/listTabs.jsx ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var ReactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var PropTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var Tab = __webpack_require__(/*! ./tab.jsx */ "./src/js/paint/components/workSpace/canvas/components/tab.jsx");
+
+var ListTabs =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ListTabs, _React$Component);
+
+  function ListTabs() {
+    _classCallCheck(this, ListTabs);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ListTabs).apply(this, arguments));
+  }
+
+  _createClass(ListTabs, [{
+    key: "render",
+    value: function render() {
+      return React.createElement("div", {
+        className: "listTabs"
+      }, this.props.tabs.map(function (tab) {
+        return React.createElement(Tab, {
+          key: tab.id,
+          tabId: tab.id
+        });
+      }));
+    }
+  }]);
+
+  return ListTabs;
+}(React.Component);
+
+_defineProperty(ListTabs, "defaultProps", {
+  tabs: [],
+  activeTab: 0
+});
+
+_defineProperty(ListTabs, "propTypes", {
+  tabs: PropTypes.array,
+  activeTab: PropTypes.number
+});
+
+module.exports = ReactRedux.connect(function (state) {
+  return {
+    tabs: state.tabs,
+    active: state.activeTab
+  };
+})(ListTabs);
+
+/***/ }),
+
+/***/ "./src/js/paint/components/workSpace/canvas/components/tab.jsx":
+/*!*********************************************************************!*\
+  !*** ./src/js/paint/components/workSpace/canvas/components/tab.jsx ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var ReactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var PropTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var Tab =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Tab, _React$Component);
+
+  function Tab() {
+    _classCallCheck(this, Tab);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Tab).apply(this, arguments));
+  }
+
+  _createClass(Tab, [{
+    key: "render",
+    value: function render() {
+      React.createElement("div", {
+        className: "tab"
+      }, tab.title, " ", tab.size.x, ":", tab.size.y);
+    }
+  }]);
+
+  return Tab;
+}(React.Component);
+
+_defineProperty(Tab, "defaultProps", {
+  tabId: 0
+});
+
+_defineProperty(Tab, "propTypes", {
+  tabId: PropTypes.number
+});
+
+module.exports = ReactRedux.connect(function (state, props) {
+  return {
+    tab: state.tabs.find(function (el) {
+      return +el.id === +props.active;
+    })
+  };
+})(Tab);
+
+/***/ }),
+
+/***/ "./src/js/paint/components/workSpace/canvas/components/tabs.jsx":
+/*!**********************************************************************!*\
+  !*** ./src/js/paint/components/workSpace/canvas/components/tabs.jsx ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var Tabs =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Tabs, _React$Component);
+
+  function Tabs() {
+    _classCallCheck(this, Tabs);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Tabs).apply(this, arguments));
+  }
+
+  _createClass(Tabs, [{
+    key: "render",
+    value: function render() {
+      return React.createElement("div", null);
+    }
+  }]);
+
+  return Tabs;
+}(React.Component);
+
+module.exports = Tabs;
 
 /***/ }),
 
@@ -30188,12 +30411,46 @@ module.exports = function (settings) {
 
   var currentInstruments = __webpack_require__(/*! ./ownReducers/getCurrentInstruments.js */ "./src/js/paint/reducers/ownReducers/getCurrentInstruments.js")(settings.currentInstruments);
 
+  var tabs = __webpack_require__(/*! ./ownReducers/getTabs.js */ "./src/js/paint/reducers/ownReducers/getTabs.js")();
+
+  var activeTab = __webpack_require__(/*! ./ownReducers/getActiveTab.js */ "./src/js/paint/reducers/ownReducers/getActiveTab.js")();
+
   return Redux.combineReducers({
     currentColor: currentColor,
     currentLineThickness: currentLineThickness,
-    currentInstruments: currentInstruments
+    currentInstruments: currentInstruments,
+    tabs: tabs,
+    activeTab: activeTab
   });
   ;
+};
+
+/***/ }),
+
+/***/ "./src/js/paint/reducers/ownReducers/getActiveTab.js":
+/*!***********************************************************!*\
+  !*** ./src/js/paint/reducers/ownReducers/getActiveTab.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function () {
+  return function () {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+    var action = arguments.length > 1 ? arguments[1] : undefined;
+
+    switch (action.type) {
+      case 'CHANGE_ACTIVE_TAB':
+        return action.activeTab;
+        break;
+
+      default:
+        return state;
+    }
+  };
 };
 
 /***/ }),
@@ -30272,6 +30529,48 @@ module.exports = function (defaultLineThickness) {
     switch (action.type) {
       case 'CHANGE_LINE_THICKNESS':
         return action.currentLineThickness;
+        break;
+
+      default:
+        return state;
+    }
+  };
+};
+
+/***/ }),
+
+/***/ "./src/js/paint/reducers/ownReducers/getTabs.js":
+/*!******************************************************!*\
+  !*** ./src/js/paint/reducers/ownReducers/getTabs.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+var id = 0;
+
+module.exports = function () {
+  return function () {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    var action = arguments.length > 1 ? arguments[1] : undefined;
+
+    switch (action.type) {
+      case 'NEW_TAB':
+        return _toConsumableArray(state).concat([{
+          id: id,
+          title: action.title,
+          size: action.size
+        }]);
         break;
 
       default:
