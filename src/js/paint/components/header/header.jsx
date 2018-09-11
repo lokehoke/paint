@@ -14,17 +14,7 @@ class Header extends React.Component {
     }
 
     componentDidMount() {
-        this.header.addEventListener('dblclick', e => {
-            e.preventDefault();
-            return false;
-        });
-
         this.header.addEventListener('selectstart', e => {
-            e.preventDefault();
-            return false;
-        });
-
-        this.header.addEventListener('mousedown', e => {
             e.preventDefault();
             return false;
         });

@@ -14,13 +14,18 @@ class Tab extends React.Component {
     }
 
     static propTypes = {
-        tabId: PropTypes.number,
-        active: PropTypes.number
+        tabId: PropTypes.number
     }
 
     render() {
+        let active = '';
+
+        if (+this.props.tabId === +this.props.active) {
+            active = 'active';
+        }
+
         return (
-            <div className="tab">
+            <div className={`tab ${active}`} data-id={this.props.tabId} ref={tab => this.tab = tab}>
                 {`${this.props.tab.title} ${this.props.tab.size.x} : ${this.props.tab.size.y}`}
                 <div className="__exitIcon" ref={exit => this.exitBtn = exit}>
                     <FontAwesomeIcon icon={faTimesCircle} />
@@ -35,18 +40,29 @@ class Tab extends React.Component {
             this.props.closeTab(this.props.tab.id);
 
             if (+this.props.tab.id === +this.props.active) {
-                this.props.changeActive(this.props.tab.id - 1);
+                this.props.changeActive(this.props.lastId);
             }
 
+            return false;
+        });
+
+        this.tab.addEventListener('selectstart', e => {
+            e.preventDefault();
             return false;
         });
     }
 }
 
+
 module.exports = ReactRedux.connect(
     (state, props) => ({
-        tab: state.tabs.find(el => +el.id === +props.tabId),
-        active: state.activeTab
+        tab: state.tabs.own.find(el => +el.id === +props.tabId),
+        active: state.activeTab,
+        lastId: (
+            state.tabs.own[state.tabs.own.length-1].id !== state.activeTab
+            ? state.tabs.own[state.tabs.own.length-1].id
+            : state.tabs.own[0].id
+        )
     }),
     dispatch => ({
         closeTab: id => {

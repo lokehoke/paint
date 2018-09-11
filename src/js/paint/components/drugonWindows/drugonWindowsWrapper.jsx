@@ -24,7 +24,7 @@ class DrugonWindowWrapper extends React.Component {
 
 module.exports = ReactRedux.connect(
     state => ({
-        openedWindows: state.openedWindows
+        openedWindows: state.openedWindows.own
     }),
     dispatch => ({})
 )(DrugonWindowWrapper);

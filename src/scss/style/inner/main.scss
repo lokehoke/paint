@@ -51,6 +51,11 @@
                 border-right: 4px solid $moreGray;
                 position: relative;
                 padding-right: 22px;
+                cursor: pointer;
+
+                &.active {
+                    background: $middleGrey;
+                }
             }
         }
     }

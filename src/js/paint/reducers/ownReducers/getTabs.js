@@ -2,18 +2,29 @@
 
 let id = 0;
 
-module.exports = () => (state = [], action) => {
+let def = {
+    id,
+    own: []
+};
+
+module.exports = () => (state = def, action) => {
     switch (action.type) {
         case 'NEW_TAB':
-            return [...state, {
-                id: id++,
-                title: action.title,
-                size: action.size,
-                live: true
-            }];
+            return {
+                id: id+1,
+                own: [...state.own, {
+                    id: id++,
+                    title: action.title,
+                    size: action.size,
+                    live: true
+                }]
+            };
             break;
         case 'CLOSE_TAB':
-            return [...(state.filter(el => el.id !== action.id))];
+            return {
+                id,
+                own: [...(state.own.filter(el => el.id !== action.id))]
+            };
             break;
         default:
             return state;

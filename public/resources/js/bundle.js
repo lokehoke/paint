@@ -4937,7 +4937,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "/* http://meyerweb.com/eric/tools/css/reset/\n   v4.0 | 20180602\n   License: none (public domain)\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmain, menu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, main, menu, nav, section {\n  display: block; }\n\n/* HTML5 hidden-attribute fix for newer browsers */\n*[hidden] {\n  display: none; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n* {\n  padding: 0;\n  margin: 0;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n\nbutton {\n  cursor: pointer; }\n\nhtml,\nbody,\n.wrapper {\n  width: 100%;\n  height: 100%; }\n\nhtml,\nbody,\n.wrapper,\n.world {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  background: #14151a; }\n\na {\n  color: white;\n  text-decoration: none; }\n\n.__exitIcon {\n  color: #eb0d0d;\n  cursor: pointer;\n  position: absolute;\n  top: 3px;\n  right: 3px; }\n\n#root {\n  width: 100%;\n  height: 100%; }\n  #root .paintWrapper {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    width: 100%;\n    height: 100%; }\n    #root .paintWrapper .header {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      background: #474545;\n      width: 100%;\n      height: 25px; }\n      #root .paintWrapper .header .header__container {\n        padding: 5px;\n        color: white; }\n        #root .paintWrapper .header .header__container .headerContainer__title {\n          cursor: pointer; }\n        #root .paintWrapper .header .header__container .headerContainer__subMenu {\n          z-index: 9999;\n          padding: 5px;\n          padding-left: 10px;\n          background: #14151a;\n          display: none;\n          position: relative;\n          min-width: 200px;\n          border-radius: 5px;\n          border: 1px solid white;\n          cursor: pointer; }\n          #root .paintWrapper .header .header__container .headerContainer__subMenu:hover {\n            background: #36c0e4; }\n        #root .paintWrapper .header .header__container:hover .headerContainer__subMenu {\n          display: block; }\n    #root .paintWrapper .workSpace {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      width: 100%;\n      -webkit-box-flex: 1;\n          -ms-flex-positive: 1;\n              flex-grow: 1; }\n      #root .paintWrapper .workSpace .instrumentWrapper {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: vertical;\n        -webkit-box-direction: normal;\n            -ms-flex-direction: column;\n                flex-direction: column;\n        background: #474545;\n        width: 35px;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        margin: 5px 0;\n        border-radius: 0 5px 5px 0;\n        padding: 5px; }\n        #root .paintWrapper .workSpace .instrumentWrapper .instrument {\n          background: #14151a;\n          padding: 4px;\n          border-radius: 3px; }\n      #root .paintWrapper .workSpace .canvasWrapper {\n        width: 100%;\n        height: 100%;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: vertical;\n        -webkit-box-direction: normal;\n            -ms-flex-direction: column;\n                flex-direction: column;\n        -webkit-box-flex: 1;\n            -ms-flex-positive: 1;\n                flex-grow: 1; }\n        #root .paintWrapper .workSpace .canvasWrapper .listTabs {\n          height: 25px;\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          margin: 0 5px;\n          margin-top: 5px;\n          border-radius: 0 0 5px 5px;\n          background: #474545; }\n          #root .paintWrapper .workSpace .canvasWrapper .listTabs .tab {\n            min-width: 100px;\n            max-width: 200px;\n            overflow: hidden;\n            color: white;\n            padding: 0 10px;\n            -webkit-box-align: center;\n                -ms-flex-align: center;\n                    align-items: center;\n            display: -webkit-box;\n            display: -ms-flexbox;\n            display: flex;\n            white-space: nowrap;\n            border-right: 4px solid #14151a;\n            position: relative;\n            padding-right: 22px; }\n    #root .paintWrapper .footer {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      background: #474545;\n      width: 100%;\n      height: 20px; }\n      #root .paintWrapper .footer .footerObject {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center;\n        padding: 0 5px;\n        color: white;\n        font-size: 14px; }\n    #root .paintWrapper .dropWindow {\n      background: #474545;\n      position: absolute;\n      margin: auto;\n      top: 0;\n      bottom: 0;\n      left: 0;\n      right: 0;\n      border: white 1px solid;\n      border-radius: 5px;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      color: white; }\n      #root .paintWrapper .dropWindow header {\n        padding: 5px;\n        background: #2e2d34;\n        width: 100%;\n        border-radius: 5px 5px 0 0;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center; }\n      #root .paintWrapper .dropWindow main {\n        width: 100%;\n        height: 100%;\n        padding: 20px; }\n        #root .paintWrapper .dropWindow main .newFile div {\n          margin: 10px;\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -webkit-box-align: center;\n              -ms-flex-align: center;\n                  align-items: center; }\n          #root .paintWrapper .dropWindow main .newFile div span {\n            width: 50px;\n            display: inline-block; }\n          #root .paintWrapper .dropWindow main .newFile div input {\n            border: 0;\n            border-radius: 3px;\n            padding: 5px;\n            width: 145px;\n            outline: none; }\n            #root .paintWrapper .dropWindow main .newFile div input[type=\"number\"] {\n              width: 65px; }\n          #root .paintWrapper .dropWindow main .newFile div button {\n            width: 195px;\n            border-radius: 3px;\n            border: 0;\n            outline: none;\n            padding: 5px; }\n", "", {"version":3,"sources":["/home/alex/aaMy/paint/node_modules/reset-css/sass/_reset.scss","/home/alex/aaMy/paint/src/scss/default/defaults.scss","/home/alex/aaMy/paint/src/scss/color/color.scss","/home/alex/aaMy/paint/src/scss/default/standart.scss","/home/alex/aaMy/paint/src/scss/style/index.scss","/home/alex/aaMy/paint/src/scss/style/inner/header.scss","/home/alex/aaMy/paint/src/scss/style/inner/main.scss","/home/alex/aaMy/paint/src/scss/style/inner/footer.scss","/home/alex/aaMy/paint/src/scss/style/inner/drugonWindows.scss"],"names":[],"mappings":"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","file":"index.scss","sourcesContent":["/* http://meyerweb.com/eric/tools/css/reset/\n   v4.0 | 20180602\n   License: none (public domain)\n*/\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmain, menu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, main, menu, nav, section {\n\tdisplay: block;\n}\n/* HTML5 hidden-attribute fix for newer browsers */\n*[hidden] {\n    display: none;\n}\nbody {\n\tline-height: 1;\n}\nol, ul {\n\tlist-style: none;\n}\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n","@import 'node_modules/reset-css/sass/_reset.scss';\n\n* {\n\tpadding: 0;\n\tmargin: 0;\n\tbox-sizing: border-box;\n}\n\nbutton {\n\tcursor: pointer;\n}\n\n\nhtml,\nbody,\n.wrapper,\n {\n\twidth: 100%;\n\theight: 100%;\n}\n\n\nhtml,\nbody,\n.wrapper,\n.world {\n\tdisplay: flex;\n\tbackground: $moreGray;\n}\n\na {\n\tcolor: white;\n\ttext-decoration: none;\t\n}\n","$gray: #474545;\n$middleGrey: #2e2d34;\n$moreGray: #14151a;\n\n$blue: #36c0e4;\n\n$red: #eb0d0d;\n",".__exitIcon {\n    color: $red;\n    cursor: pointer;\n    position: absolute;\n    top: 3px;\n    right: 3px;\n}\n","#root {\n    width: 100%;\n    height: 100%;\n\n    .paintWrapper {\n        display: flex;\n        flex-direction: column;\n        width: 100%;\n        height: 100%;\n\n        @import './inner/header.scss';\n        @import './inner/main.scss';\n        @import './inner/footer.scss';\n        @import './inner/drugonWindows.scss';\n    }\n\n}\n",".header {\n    display: flex;\n    background: $gray;\n    width: 100%;\n    height: 25px;\n\n    .header__container {\n        padding: 5px;\n        color: white;\n\n        .headerContainer__title {\n            cursor: pointer;\n        }\n\n        .headerContainer__subMenu {\n            z-index: 9999;\n            padding: 5px;\n            padding-left: 10px;\n            background: $moreGray;\n            display: none;\n            position: relative;\n            min-width: 200px;\n            border-radius: 5px;\n            border: 1px solid white;\n            cursor: pointer;\n\n            &:hover {\n                background: $blue;\n            }\n        }\n\n        &:hover .headerContainer__subMenu {\n            display: block;\n        }\n    }\n}\n",".workSpace {\n    display: flex;\n    width: 100%;\n    flex-grow: 1;\n\n    .instrumentWrapper {\n        display: flex;\n        flex-direction: column;\n        background: $gray;\n        width: 35px;\n        align-items: center;\n        margin: 5px 0;\n        border-radius: 0 5px 5px 0;\n        padding: 5px;\n\n        .instrument {\n            background: $moreGray;\n            padding: 4px;\n            border-radius: 3px;\n\n            svg {\n\n            }\n        }\n    }\n\n    .canvasWrapper {\n        width: 100%;\n        height: 100%;\n        display: flex;\n        flex-direction: column;\n        flex-grow: 1;\n\n        .listTabs {\n            height: 25px;\n            display: flex;\n            margin: 0 5px;\n            margin-top: 5px;\n            border-radius: 0 0 5px 5px;\n            background: $gray;\n\n            .tab {\n                min-width: 100px;\n                max-width: 200px;\n                overflow: hidden;\n                color: white;\n                padding: 0 10px;\n                align-items: center;\n                display: flex;\n                white-space: nowrap;\n                border-right: 4px solid $moreGray;\n                position: relative;\n                padding-right: 22px;\n            }\n        }\n    }\n}\n",".footer {\n    display: flex;\n    background: $gray;\n    width: 100%;\n    height: 20px;\n\n    .footerObject {\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        padding: 0 5px;\n        color: white;\n        font-size: 14px;\n    }\n}\n",".dropWindow {\n    $bdrs: 5px;\n\n    background: $gray;\n    position: absolute;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    border: white 1px solid;\n    border-radius: $bdrs;\n    display: flex;\n    align-items: center;\n    flex-direction: column;\n    color: white;\n\n    header {\n        padding: 5px;\n        background: $middleGrey;\n        width: 100%;\n        border-radius: $bdrs $bdrs 0 0;\n        display: flex;\n        justify-content: center;\n    }\n\n    main {\n        width: 100%;\n        height: 100%;\n        padding: 20px;\n\n        .newFile {\n            div {\n                margin: 10px;\n                display: flex;\n                align-items: center;\n\n                span {\n                    width: 50px;\n                    display: inline-block;\n                }\n\n                input {\n                    border: 0;\n                    border-radius: 3px;\n                    padding: 5px;\n                    width: 145px;\n                    outline: none;\n\n                    &[type=\"number\"] {\n                        width: 65px;\n                    }\n                }\n\n                button {\n                    width: 195px;\n                    border-radius: 3px;\n                    border: 0;\n                    outline: none;\n                    padding: 5px;\n                }\n            }\n\n        }\n    }\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, "/* http://meyerweb.com/eric/tools/css/reset/\n   v4.0 | 20180602\n   License: none (public domain)\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmain, menu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, main, menu, nav, section {\n  display: block; }\n\n/* HTML5 hidden-attribute fix for newer browsers */\n*[hidden] {\n  display: none; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n* {\n  padding: 0;\n  margin: 0;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n\nbutton {\n  cursor: pointer; }\n\nhtml,\nbody,\n.wrapper {\n  width: 100%;\n  height: 100%; }\n\nhtml,\nbody,\n.wrapper,\n.world {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  background: #14151a; }\n\na {\n  color: white;\n  text-decoration: none; }\n\n.__exitIcon {\n  color: #eb0d0d;\n  cursor: pointer;\n  position: absolute;\n  top: 3px;\n  right: 3px; }\n\n#root {\n  width: 100%;\n  height: 100%; }\n  #root .paintWrapper {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    width: 100%;\n    height: 100%; }\n    #root .paintWrapper .header {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      background: #474545;\n      width: 100%;\n      height: 25px; }\n      #root .paintWrapper .header .header__container {\n        padding: 5px;\n        color: white; }\n        #root .paintWrapper .header .header__container .headerContainer__title {\n          cursor: pointer; }\n        #root .paintWrapper .header .header__container .headerContainer__subMenu {\n          z-index: 9999;\n          padding: 5px;\n          padding-left: 10px;\n          background: #14151a;\n          display: none;\n          position: relative;\n          min-width: 200px;\n          border-radius: 5px;\n          border: 1px solid white;\n          cursor: pointer; }\n          #root .paintWrapper .header .header__container .headerContainer__subMenu:hover {\n            background: #36c0e4; }\n        #root .paintWrapper .header .header__container:hover .headerContainer__subMenu {\n          display: block; }\n    #root .paintWrapper .workSpace {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      width: 100%;\n      -webkit-box-flex: 1;\n          -ms-flex-positive: 1;\n              flex-grow: 1; }\n      #root .paintWrapper .workSpace .instrumentWrapper {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: vertical;\n        -webkit-box-direction: normal;\n            -ms-flex-direction: column;\n                flex-direction: column;\n        background: #474545;\n        width: 35px;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        margin: 5px 0;\n        border-radius: 0 5px 5px 0;\n        padding: 5px; }\n        #root .paintWrapper .workSpace .instrumentWrapper .instrument {\n          background: #14151a;\n          padding: 4px;\n          border-radius: 3px; }\n      #root .paintWrapper .workSpace .canvasWrapper {\n        width: 100%;\n        height: 100%;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: vertical;\n        -webkit-box-direction: normal;\n            -ms-flex-direction: column;\n                flex-direction: column;\n        -webkit-box-flex: 1;\n            -ms-flex-positive: 1;\n                flex-grow: 1; }\n        #root .paintWrapper .workSpace .canvasWrapper .listTabs {\n          height: 25px;\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          margin: 0 5px;\n          margin-top: 5px;\n          border-radius: 0 0 5px 5px;\n          background: #474545; }\n          #root .paintWrapper .workSpace .canvasWrapper .listTabs .tab {\n            min-width: 100px;\n            max-width: 200px;\n            overflow: hidden;\n            color: white;\n            padding: 0 10px;\n            -webkit-box-align: center;\n                -ms-flex-align: center;\n                    align-items: center;\n            display: -webkit-box;\n            display: -ms-flexbox;\n            display: flex;\n            white-space: nowrap;\n            border-right: 4px solid #14151a;\n            position: relative;\n            padding-right: 22px;\n            cursor: pointer; }\n            #root .paintWrapper .workSpace .canvasWrapper .listTabs .tab.active {\n              background: #2e2d34; }\n    #root .paintWrapper .footer {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      background: #474545;\n      width: 100%;\n      height: 20px; }\n      #root .paintWrapper .footer .footerObject {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center;\n        padding: 0 5px;\n        color: white;\n        font-size: 14px; }\n    #root .paintWrapper .dropWindow {\n      background: #474545;\n      position: absolute;\n      margin: auto;\n      top: 0;\n      bottom: 0;\n      left: 0;\n      right: 0;\n      border: white 1px solid;\n      border-radius: 5px;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      color: white; }\n      #root .paintWrapper .dropWindow header {\n        padding: 5px;\n        background: #2e2d34;\n        width: 100%;\n        border-radius: 5px 5px 0 0;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center; }\n      #root .paintWrapper .dropWindow main {\n        width: 100%;\n        height: 100%;\n        padding: 20px; }\n        #root .paintWrapper .dropWindow main .newFile div {\n          margin: 10px;\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -webkit-box-align: center;\n              -ms-flex-align: center;\n                  align-items: center; }\n          #root .paintWrapper .dropWindow main .newFile div span {\n            width: 50px;\n            display: inline-block; }\n          #root .paintWrapper .dropWindow main .newFile div input {\n            border: 0;\n            border-radius: 3px;\n            padding: 5px;\n            width: 145px;\n            outline: none; }\n            #root .paintWrapper .dropWindow main .newFile div input[type=\"number\"] {\n              width: 65px; }\n          #root .paintWrapper .dropWindow main .newFile div button {\n            width: 195px;\n            border-radius: 3px;\n            border: 0;\n            outline: none;\n            padding: 5px; }\n", "", {"version":3,"sources":["/home/alex/aaMy/paint/node_modules/reset-css/sass/_reset.scss","/home/alex/aaMy/paint/src/scss/default/defaults.scss","/home/alex/aaMy/paint/src/scss/color/color.scss","/home/alex/aaMy/paint/src/scss/default/standart.scss","/home/alex/aaMy/paint/src/scss/style/index.scss","/home/alex/aaMy/paint/src/scss/style/inner/header.scss","/home/alex/aaMy/paint/src/scss/style/inner/main.scss","/home/alex/aaMy/paint/src/scss/style/inner/footer.scss","/home/alex/aaMy/paint/src/scss/style/inner/drugonWindows.scss"],"names":[],"mappings":"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","file":"index.scss","sourcesContent":["/* http://meyerweb.com/eric/tools/css/reset/\n   v4.0 | 20180602\n   License: none (public domain)\n*/\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmain, menu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, main, menu, nav, section {\n\tdisplay: block;\n}\n/* HTML5 hidden-attribute fix for newer browsers */\n*[hidden] {\n    display: none;\n}\nbody {\n\tline-height: 1;\n}\nol, ul {\n\tlist-style: none;\n}\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n","@import 'node_modules/reset-css/sass/_reset.scss';\n\n* {\n\tpadding: 0;\n\tmargin: 0;\n\tbox-sizing: border-box;\n}\n\nbutton {\n\tcursor: pointer;\n}\n\n\nhtml,\nbody,\n.wrapper,\n {\n\twidth: 100%;\n\theight: 100%;\n}\n\n\nhtml,\nbody,\n.wrapper,\n.world {\n\tdisplay: flex;\n\tbackground: $moreGray;\n}\n\na {\n\tcolor: white;\n\ttext-decoration: none;\t\n}\n","$gray: #474545;\n$middleGrey: #2e2d34;\n$moreGray: #14151a;\n\n$blue: #36c0e4;\n\n$red: #eb0d0d;\n",".__exitIcon {\n    color: $red;\n    cursor: pointer;\n    position: absolute;\n    top: 3px;\n    right: 3px;\n}\n","#root {\n    width: 100%;\n    height: 100%;\n\n    .paintWrapper {\n        display: flex;\n        flex-direction: column;\n        width: 100%;\n        height: 100%;\n\n        @import './inner/header.scss';\n        @import './inner/main.scss';\n        @import './inner/footer.scss';\n        @import './inner/drugonWindows.scss';\n    }\n\n}\n",".header {\n    display: flex;\n    background: $gray;\n    width: 100%;\n    height: 25px;\n\n    .header__container {\n        padding: 5px;\n        color: white;\n\n        .headerContainer__title {\n            cursor: pointer;\n        }\n\n        .headerContainer__subMenu {\n            z-index: 9999;\n            padding: 5px;\n            padding-left: 10px;\n            background: $moreGray;\n            display: none;\n            position: relative;\n            min-width: 200px;\n            border-radius: 5px;\n            border: 1px solid white;\n            cursor: pointer;\n\n            &:hover {\n                background: $blue;\n            }\n        }\n\n        &:hover .headerContainer__subMenu {\n            display: block;\n        }\n    }\n}\n",".workSpace {\n    display: flex;\n    width: 100%;\n    flex-grow: 1;\n\n    .instrumentWrapper {\n        display: flex;\n        flex-direction: column;\n        background: $gray;\n        width: 35px;\n        align-items: center;\n        margin: 5px 0;\n        border-radius: 0 5px 5px 0;\n        padding: 5px;\n\n        .instrument {\n            background: $moreGray;\n            padding: 4px;\n            border-radius: 3px;\n\n            svg {\n\n            }\n        }\n    }\n\n    .canvasWrapper {\n        width: 100%;\n        height: 100%;\n        display: flex;\n        flex-direction: column;\n        flex-grow: 1;\n\n        .listTabs {\n            height: 25px;\n            display: flex;\n            margin: 0 5px;\n            margin-top: 5px;\n            border-radius: 0 0 5px 5px;\n            background: $gray;\n\n            .tab {\n                min-width: 100px;\n                max-width: 200px;\n                overflow: hidden;\n                color: white;\n                padding: 0 10px;\n                align-items: center;\n                display: flex;\n                white-space: nowrap;\n                border-right: 4px solid $moreGray;\n                position: relative;\n                padding-right: 22px;\n                cursor: pointer;\n\n                &.active {\n                    background: $middleGrey;\n                }\n            }\n        }\n    }\n}\n",".footer {\n    display: flex;\n    background: $gray;\n    width: 100%;\n    height: 20px;\n\n    .footerObject {\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        padding: 0 5px;\n        color: white;\n        font-size: 14px;\n    }\n}\n",".dropWindow {\n    $bdrs: 5px;\n\n    background: $gray;\n    position: absolute;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    border: white 1px solid;\n    border-radius: $bdrs;\n    display: flex;\n    align-items: center;\n    flex-direction: column;\n    color: white;\n\n    header {\n        padding: 5px;\n        background: $middleGrey;\n        width: 100%;\n        border-radius: $bdrs $bdrs 0 0;\n        display: flex;\n        justify-content: center;\n    }\n\n    main {\n        width: 100%;\n        height: 100%;\n        padding: 20px;\n\n        .newFile {\n            div {\n                margin: 10px;\n                display: flex;\n                align-items: center;\n\n                span {\n                    width: 50px;\n                    display: inline-block;\n                }\n\n                input {\n                    border: 0;\n                    border-radius: 3px;\n                    padding: 5px;\n                    width: 145px;\n                    outline: none;\n\n                    &[type=\"number\"] {\n                        width: 65px;\n                    }\n                }\n\n                button {\n                    width: 195px;\n                    border-radius: 3px;\n                    border: 0;\n                    outline: none;\n                    padding: 5px;\n                }\n            }\n\n        }\n    }\n}\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -29626,7 +29626,7 @@ function (_React$Component) {
 
         _this2.props.deleteThisTab(_this2.props.id);
 
-        _this2.props.changeActive(_this2.props.newId);
+        _this2.props.changeActive(_this2.props.newId - 1);
       });
     }
   }]);
@@ -29636,7 +29636,7 @@ function (_React$Component) {
 
 module.exports = ReactRedux.connect(function (state) {
   return {
-    newId: state.tabs.length ? state.tabs.length - 1 : 0
+    newId: state.tabs.id
   };
 }, function (dispatch) {
   return {
@@ -29875,7 +29875,7 @@ _defineProperty(DrugonWindowWrapper, "propTypes", {
 
 module.exports = ReactRedux.connect(function (state) {
   return {
-    openedWindows: state.openedWindows
+    openedWindows: state.openedWindows.own
   };
 }, function (dispatch) {
   return {};
@@ -30152,15 +30152,7 @@ function (_React$Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.header.addEventListener('dblclick', function (e) {
-        e.preventDefault();
-        return false;
-      });
       this.header.addEventListener('selectstart', function (e) {
-        e.preventDefault();
-        return false;
-      });
-      this.header.addEventListener('mousedown', function (e) {
         e.preventDefault();
         return false;
       });
@@ -30376,10 +30368,26 @@ function (_React$Component) {
   }
 
   _createClass(ListTabs, [{
+    key: "componentWillUpdate",
+    value: function componentWillUpdate() {
+      var _this = this;
+
+      if (this.props.tabs[0] && !this.props.tabs.some(function (tab) {
+        return tab.id === _this.props.active;
+      })) {
+        this.props.changeActive(this.props.tabs[this.props.tabs.length - 1].id);
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return React.createElement("div", {
-        className: "listTabs"
+        className: "listTabs",
+        ref: function ref(lt) {
+          return _this2.listTabs = lt;
+        }
       }, this.props.tabs.map(function (tab) {
         return React.createElement(Tab, {
           key: tab.id,
@@ -30387,25 +30395,45 @@ function (_React$Component) {
         });
       }));
     }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this3 = this;
+
+      this.listTabs.addEventListener('click', function (e) {
+        if (e.target.classList.contains('tab')) {
+          _this3.props.changeActive(e.target.dataset.id);
+        }
+      });
+    }
   }]);
 
   return ListTabs;
 }(React.Component);
 
 _defineProperty(ListTabs, "defaultProps", {
-  tabs: [],
-  activeTab: 0
+  activeTab: 0,
+  tabs: []
 });
 
 _defineProperty(ListTabs, "propTypes", {
-  tabs: PropTypes.array,
-  activeTab: PropTypes.number
+  activeTab: PropTypes.number,
+  tabs: PropTypes.array
 });
 
 module.exports = ReactRedux.connect(function (state) {
   return {
-    tabs: state.tabs,
+    tabs: state.tabs.own,
     active: state.activeTab
+  };
+}, function (dispatch) {
+  return {
+    changeActive: function changeActive(id) {
+      dispatch({
+        type: 'CHANGE_ACTIVE_TAB',
+        activeTab: id
+      });
+    }
   };
 })(ListTabs);
 
@@ -30467,8 +30495,18 @@ function (_React$Component) {
     value: function render() {
       var _this = this;
 
+      var active = '';
+
+      if (+this.props.tabId === +this.props.active) {
+        active = 'active';
+      }
+
       return React.createElement("div", {
-        className: "tab"
+        className: "tab ".concat(active),
+        "data-id": this.props.tabId,
+        ref: function ref(tab) {
+          return _this.tab = tab;
+        }
       }, "".concat(this.props.tab.title, " ").concat(this.props.tab.size.x, " : ").concat(this.props.tab.size.y), React.createElement("div", {
         className: "__exitIcon",
         ref: function ref(exit) {
@@ -30489,9 +30527,13 @@ function (_React$Component) {
         _this2.props.closeTab(_this2.props.tab.id);
 
         if (+_this2.props.tab.id === +_this2.props.active) {
-          _this2.props.changeActive(_this2.props.tab.id - 1);
+          _this2.props.changeActive(_this2.props.lastId);
         }
 
+        return false;
+      });
+      this.tab.addEventListener('selectstart', function (e) {
+        e.preventDefault();
         return false;
       });
     }
@@ -30506,16 +30548,16 @@ _defineProperty(Tab, "defaultProps", {
 });
 
 _defineProperty(Tab, "propTypes", {
-  tabId: PropTypes.number,
-  active: PropTypes.number
+  tabId: PropTypes.number
 });
 
 module.exports = ReactRedux.connect(function (state, props) {
   return {
-    tab: state.tabs.find(function (el) {
+    tab: state.tabs.own.find(function (el) {
       return +el.id === +props.tabId;
     }),
-    active: state.activeTab
+    active: state.activeTab,
+    lastId: state.tabs.own[state.tabs.own.length - 1].id !== state.activeTab ? state.tabs.own[state.tabs.own.length - 1].id : state.tabs.own[0].id
   };
 }, function (dispatch) {
   return {
@@ -31070,10 +31112,14 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 var id = 0;
+var def = {
+  id: id,
+  own: []
+};
 
 module.exports = function () {
   return function () {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : def;
     var action = arguments.length > 1 ? arguments[1] : undefined;
     var title = '';
 
@@ -31082,24 +31128,30 @@ module.exports = function () {
         if (action.view === 'newFile') {
           title = 'Create new file';
 
-          if (state.some(function (el) {
+          if (state.own.some(function (el) {
             return el.view === 'newFile';
           })) {
             return state;
           }
         }
 
-        return _toConsumableArray(state).concat([{
-          id: id++,
-          view: action.view,
-          title: title
-        }]);
+        return {
+          id: id + 1,
+          own: _toConsumableArray(state.own).concat([{
+            id: id++,
+            view: action.view,
+            title: title
+          }])
+        };
         break;
 
       case 'CLOSE_WINDOW':
-        return _toConsumableArray(state.filter(function (el) {
-          return el.id !== action.id;
-        }));
+        return {
+          id: id,
+          own: _toConsumableArray(state.own.filter(function (el) {
+            return el.id !== action.id;
+          }))
+        };
         break;
 
       default:
@@ -31129,26 +31181,36 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 var id = 0;
+var def = {
+  id: id,
+  own: []
+};
 
 module.exports = function () {
   return function () {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : def;
     var action = arguments.length > 1 ? arguments[1] : undefined;
 
     switch (action.type) {
       case 'NEW_TAB':
-        return _toConsumableArray(state).concat([{
-          id: id++,
-          title: action.title,
-          size: action.size,
-          live: true
-        }]);
+        return {
+          id: id + 1,
+          own: _toConsumableArray(state.own).concat([{
+            id: id++,
+            title: action.title,
+            size: action.size,
+            live: true
+          }])
+        };
         break;
 
       case 'CLOSE_TAB':
-        return _toConsumableArray(state.filter(function (el) {
-          return el.id !== action.id;
-        }));
+        return {
+          id: id,
+          own: _toConsumableArray(state.own.filter(function (el) {
+            return el.id !== action.id;
+          }))
+        };
         break;
 
       default:

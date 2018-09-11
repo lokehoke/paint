@@ -32,7 +32,7 @@ class NewFile extends React.Component {
 
             this.props.createNew(x, y, title);
             this.props.deleteThisTab(this.props.id);
-            this.props.changeActive(this.props.newId);
+            this.props.changeActive(this.props.newId - 1);
         });
     }
 }
@@ -40,7 +40,7 @@ class NewFile extends React.Component {
 
 module.exports = ReactRedux.connect(
     state => ({
-        newId: (state.tabs.length ? state.tabs.length - 1 : 0)
+        newId: state.tabs.id
     }),
     dispatch => ({
         createNew: (x, y, title) => {
