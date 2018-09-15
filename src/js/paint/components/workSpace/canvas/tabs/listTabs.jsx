@@ -45,7 +45,7 @@ class ListTabs extends React.Component {
 module.exports = ReactRedux.connect(
     state => ({
         tabs: state.tabs.own,
-        active: state.activeTab
+        active: state.tabs.activeTab
     }),
     dispatch =>({
         changeActive: id => {

@@ -39,10 +39,6 @@ class Tab extends React.Component {
             e.preventDefault();
             this.props.closeTab(this.props.tab.id);
 
-            if (+this.props.tab.id === +this.props.active) {
-                this.props.changeActive(this.props.lastId);
-            }
-
             return false;
         });
 
@@ -57,12 +53,7 @@ class Tab extends React.Component {
 module.exports = ReactRedux.connect(
     (state, props) => ({
         tab: state.tabs.own.find(el => +el.id === +props.tabId),
-        active: state.activeTab,
-        lastId: (
-            state.tabs.own[state.tabs.own.length-1].id !== state.activeTab
-            ? state.tabs.own[state.tabs.own.length-1].id
-            : state.tabs.own[0].id
-        )
+        active: state.tabs.activeTab
     }),
     dispatch => ({
         closeTab: id => {
@@ -70,12 +61,6 @@ module.exports = ReactRedux.connect(
                 type: 'CLOSE_TAB',
                 id
             });
-        },
-        changeActive: id => {
-            dispatch({
-                type: 'CHANGE_ACTIVE_TAB',
-                activeTab: id
-            })
         }
     })
 )(Tab);

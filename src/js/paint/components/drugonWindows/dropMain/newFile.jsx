@@ -30,9 +30,8 @@ class NewFile extends React.Component {
             let y = (+this.y.value > 10000 || this.y.value === '' ? 1920 : this.y.value);
             let title = (this.title.value !== '' ? this.title.value : 'untitled');
 
-            this.props.createNew(x, y, title);
             this.props.deleteThisTab(this.props.id);
-            this.props.changeActive(this.props.newId - 1);
+            this.props.createNew(x, y, title);
         });
     }
 }
@@ -40,7 +39,6 @@ class NewFile extends React.Component {
 
 module.exports = ReactRedux.connect(
     state => ({
-        newId: state.tabs.id
     }),
     dispatch => ({
         createNew: (x, y, title) => {
@@ -57,12 +55,6 @@ module.exports = ReactRedux.connect(
             dispatch({
                 type: 'CLOSE_WINDOW',
                 id
-            })
-        },
-        changeActive: id => {
-            dispatch({
-                type: 'CHANGE_ACTIVE_TAB',
-                activeTab: id
             })
         }
     })

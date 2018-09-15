@@ -10,6 +10,10 @@ button {
 	cursor: pointer;
 }
 
+canvas {
+	display: block;
+}
+
 
 html,
 body,
@@ -30,5 +34,5 @@ body,
 
 a {
 	color: white;
-	text-decoration: none;	
+	text-decoration: none;
 }

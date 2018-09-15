@@ -21,6 +21,16 @@ module.exports = class Paint {
            serialize: true
         }));
 
+        window.onresize = () => {
+            this._store.dispatch({
+                type: 'CHANGE_SIZE_SCREEN',
+                size: {
+                    height: window.innerHeight,
+                    width: window.innerWidth
+                }
+            });
+        };
+
         ReactDom.render(
             <Provider store={this._store}>
                 <div className="paintWrapper">

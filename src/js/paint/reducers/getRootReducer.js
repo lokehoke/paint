@@ -7,15 +7,15 @@ module.exports = settings => {
     const currentLineThickness = (require('./ownReducers/getCurrentLineThickness.js'))(settings.currentLineThickness);
     const currentInstruments = (require('./ownReducers/getCurrentInstruments.js'))(settings.currentInstruments);
     const tabs = (require('./ownReducers/getTabs.js'))();
-    const activeTab = (require('./ownReducers/getActiveTab.js'))();
     const openedWindows = (require('./ownReducers/getOpenedWindows'))();
+    const sizeScreen = require('./ownReducers/getSizeScreen')();
 
     return Redux.combineReducers({
         currentColor,
         currentLineThickness,
         currentInstruments,
         tabs,
-        activeTab,
-        openedWindows
+        openedWindows,
+        sizeScreen
     });;
 }
