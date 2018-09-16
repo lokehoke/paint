@@ -7,6 +7,11 @@ const faPaintBrush = require('@fortawesome/free-solid-svg-icons').faPaintBrush;
 class Instrument extends React.Component {
     render() {
         let icon = null;
+        let active = '';
+
+        if (this.props.active) {
+            active = ' active';
+        }
 
         switch (this.props.type) {
             case 'brush':
@@ -15,7 +20,7 @@ class Instrument extends React.Component {
         }
 
         return (
-            <div className="instrument">
+            <div className={'instrument' + active}>
                 {icon}
             </div>
         );

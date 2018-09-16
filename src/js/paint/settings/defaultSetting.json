@@ -1,7 +1,8 @@
 {
     "currentColor": "#000",
     "currentLineThickness": "16",
-    "currentInstruments": [
-        "brush"
-    ]
+    "activeInstrument": "brush",
+    "currentInstruments": {
+        "brush": true
+    }
 }

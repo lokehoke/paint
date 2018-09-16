@@ -143,9 +143,8 @@ function (_React$Component) {
     }
   }, {
     key: "componentDidMount",
-    value: function componentDidMount() {
-      console.log(this.inner.scrollWidth);
-      console.log(this.inner.scrollHeight);
+    value: function componentDidMount() {// console.log(this.inner.scrollWidth);
+      // console.log(this.inner.scrollHeight);
     }
   }]);
 
@@ -6989,7 +6988,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "/* http://meyerweb.com/eric/tools/css/reset/\n   v4.0 | 20180602\n   License: none (public domain)\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmain, menu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, main, menu, nav, section {\n  display: block; }\n\n/* HTML5 hidden-attribute fix for newer browsers */\n*[hidden] {\n  display: none; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n* {\n  padding: 0;\n  margin: 0;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n\nbutton {\n  cursor: pointer; }\n\ncanvas {\n  display: block; }\n\nhtml,\nbody,\n.wrapper {\n  width: 100%;\n  height: 100%; }\n\nhtml,\nbody,\n.wrapper,\n.world {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  background: #14151a; }\n\na {\n  color: white;\n  text-decoration: none; }\n\n.__exitIcon {\n  color: #eb0d0d;\n  cursor: pointer;\n  position: absolute;\n  top: 3px;\n  right: 3px; }\n\n#root {\n  width: 100%;\n  height: 100%; }\n  #root .paintWrapper {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    overflow: hidden;\n    width: 100%;\n    height: 100%; }\n    #root .paintWrapper .header {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      background: #474545;\n      width: 100%;\n      height: 25px; }\n      #root .paintWrapper .header .header__container {\n        padding: 5px;\n        color: white; }\n        #root .paintWrapper .header .header__container .headerContainer__title {\n          cursor: pointer; }\n        #root .paintWrapper .header .header__container .headerContainer__subMenu {\n          z-index: 9999;\n          padding: 5px;\n          padding-left: 10px;\n          background: #14151a;\n          display: none;\n          position: relative;\n          min-width: 200px;\n          border-radius: 5px;\n          border: 1px solid white;\n          cursor: pointer; }\n          #root .paintWrapper .header .header__container .headerContainer__subMenu:hover {\n            background: #36c0e4; }\n        #root .paintWrapper .header .header__container:hover .headerContainer__subMenu {\n          display: block; }\n    #root .paintWrapper .workSpace {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      width: 100%;\n      height: 100%;\n      -webkit-box-flex: 1;\n          -ms-flex-positive: 1;\n              flex-grow: 1; }\n      #root .paintWrapper .workSpace .instrumentWrapper {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: vertical;\n        -webkit-box-direction: normal;\n            -ms-flex-direction: column;\n                flex-direction: column;\n        background: #474545;\n        width: 35px;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        margin: 5px 0;\n        border-radius: 0 5px 5px 0;\n        padding: 5px; }\n        #root .paintWrapper .workSpace .instrumentWrapper .instrument {\n          background: #14151a;\n          padding: 4px;\n          border-radius: 3px; }\n      #root .paintWrapper .workSpace .canvasWrapper {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: vertical;\n        -webkit-box-direction: normal;\n            -ms-flex-direction: column;\n                flex-direction: column;\n        -webkit-box-flex: 1;\n            -ms-flex-positive: 1;\n                flex-grow: 1;\n        width: calc(100% - 35px);\n        padding: 5px;\n        padding-top: 0; }\n        #root .paintWrapper .workSpace .canvasWrapper .listTabs {\n          height: 25px;\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          margin-top: 5px;\n          border-radius: 0 0 5px 5px;\n          background: #474545;\n          margin-bottom: 5px; }\n          #root .paintWrapper .workSpace .canvasWrapper .listTabs .tab {\n            min-width: 100px;\n            max-width: 200px;\n            overflow: hidden;\n            color: white;\n            padding: 0 10px;\n            -webkit-box-align: center;\n                -ms-flex-align: center;\n                    align-items: center;\n            display: -webkit-box;\n            display: -ms-flexbox;\n            display: flex;\n            white-space: nowrap;\n            border-right: 4px solid #14151a;\n            position: relative;\n            padding-right: 22px;\n            cursor: pointer; }\n            #root .paintWrapper .workSpace .canvasWrapper .listTabs .tab.active {\n              background: #2e2d34; }\n        #root .paintWrapper .workSpace .canvasWrapper .mainTabWrapper {\n          width: 100%;\n          height: 100%; }\n    #root .paintWrapper .footer {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      background: #474545;\n      width: 100%;\n      height: 20px; }\n      #root .paintWrapper .footer .footerObject {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center;\n        padding: 0 5px;\n        color: white;\n        font-size: 14px; }\n    #root .paintWrapper .dropWindow {\n      background: #474545;\n      position: absolute;\n      margin: auto;\n      top: 0;\n      bottom: 0;\n      left: 0;\n      right: 0;\n      border: white 1px solid;\n      border-radius: 5px;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      color: white; }\n      #root .paintWrapper .dropWindow header {\n        padding: 5px;\n        background: #2e2d34;\n        width: 100%;\n        border-radius: 5px 5px 0 0;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center; }\n      #root .paintWrapper .dropWindow main {\n        width: 100%;\n        height: 100%;\n        padding: 20px; }\n        #root .paintWrapper .dropWindow main .newFile div {\n          margin: 10px;\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -webkit-box-align: center;\n              -ms-flex-align: center;\n                  align-items: center; }\n          #root .paintWrapper .dropWindow main .newFile div span {\n            width: 50px;\n            display: inline-block; }\n          #root .paintWrapper .dropWindow main .newFile div input {\n            border: 0;\n            border-radius: 3px;\n            padding: 5px;\n            width: 145px;\n            outline: none; }\n            #root .paintWrapper .dropWindow main .newFile div input[type=\"number\"] {\n              width: 65px; }\n          #root .paintWrapper .dropWindow main .newFile div button {\n            width: 195px;\n            border-radius: 3px;\n            border: 0;\n            outline: none;\n            padding: 5px; }\n", "", {"version":3,"sources":["/home/alex/aaMy/paint/node_modules/reset-css/sass/_reset.scss","/home/alex/aaMy/paint/src/scss/default/defaults.scss","/home/alex/aaMy/paint/src/scss/color/color.scss","/home/alex/aaMy/paint/src/scss/default/standart.scss","/home/alex/aaMy/paint/src/scss/style/index.scss","/home/alex/aaMy/paint/src/scss/style/inner/header.scss","/home/alex/aaMy/paint/src/scss/style/inner/main.scss","/home/alex/aaMy/paint/src/scss/style/inner/footer.scss","/home/alex/aaMy/paint/src/scss/style/inner/drugonWindows.scss"],"names":[],"mappings":"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","file":"index.scss","sourcesContent":["/* http://meyerweb.com/eric/tools/css/reset/\n   v4.0 | 20180602\n   License: none (public domain)\n*/\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmain, menu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, main, menu, nav, section {\n\tdisplay: block;\n}\n/* HTML5 hidden-attribute fix for newer browsers */\n*[hidden] {\n    display: none;\n}\nbody {\n\tline-height: 1;\n}\nol, ul {\n\tlist-style: none;\n}\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n","@import 'node_modules/reset-css/sass/_reset.scss';\n\n* {\n\tpadding: 0;\n\tmargin: 0;\n\tbox-sizing: border-box;\n}\n\nbutton {\n\tcursor: pointer;\n}\n\ncanvas {\n\tdisplay: block;\n}\n\n\nhtml,\nbody,\n.wrapper,\n {\n\twidth: 100%;\n\theight: 100%;\n}\n\n\nhtml,\nbody,\n.wrapper,\n.world {\n\tdisplay: flex;\n\tbackground: $moreGray;\n}\n\na {\n\tcolor: white;\n\ttext-decoration: none;\n}\n","$gray: #474545;\n$middleGrey: #2e2d34;\n$moreGray: #14151a;\n\n$blue: #36c0e4;\n\n$red: #eb0d0d;\n",".__exitIcon {\n    color: $red;\n    cursor: pointer;\n    position: absolute;\n    top: 3px;\n    right: 3px;\n}\n","#root {\n    width: 100%;\n    height: 100%;\n\n    .paintWrapper {\n        display: flex;\n        flex-direction: column;\n        overflow: hidden;\n        width: 100%;\n        height: 100%;\n\n        @import './inner/header.scss';\n        @import './inner/main.scss';\n        @import './inner/footer.scss';\n        @import './inner/drugonWindows.scss';\n    }\n\n}\n",".header {\n    display: flex;\n    background: $gray;\n    width: 100%;\n    height: 25px;\n\n    .header__container {\n        padding: 5px;\n        color: white;\n\n        .headerContainer__title {\n            cursor: pointer;\n        }\n\n        .headerContainer__subMenu {\n            z-index: 9999;\n            padding: 5px;\n            padding-left: 10px;\n            background: $moreGray;\n            display: none;\n            position: relative;\n            min-width: 200px;\n            border-radius: 5px;\n            border: 1px solid white;\n            cursor: pointer;\n\n            &:hover {\n                background: $blue;\n            }\n        }\n\n        &:hover .headerContainer__subMenu {\n            display: block;\n        }\n    }\n}\n",".workSpace {\n    display: flex;\n    width: 100%;\n    height: 100%;\n    flex-grow: 1;\n\n    .instrumentWrapper {\n        display: flex;\n        flex-direction: column;\n        background: $gray;\n        width: 35px;\n        align-items: center;\n        margin: 5px 0;\n        border-radius: 0 5px 5px 0;\n        padding: 5px;\n\n        .instrument {\n            background: $moreGray;\n            padding: 4px;\n            border-radius: 3px;\n        }\n    }\n\n    .canvasWrapper {\n        display: flex;\n        flex-direction: column;\n        flex-grow: 1;\n        width: calc(100% - 35px);\n        padding: 5px;\n        padding-top: 0;\n\n        .listTabs {\n            height: 25px;\n            display: flex;\n            margin-top: 5px;\n            border-radius: 0 0 5px 5px;\n            background: $gray;\n            margin-bottom: 5px;\n\n            .tab {\n                min-width: 100px;\n                max-width: 200px;\n                overflow: hidden;\n                color: white;\n                padding: 0 10px;\n                align-items: center;\n                display: flex;\n                white-space: nowrap;\n                border-right: 4px solid $moreGray;\n                position: relative;\n                padding-right: 22px;\n                cursor: pointer;\n\n                &.active {\n                    background: $middleGrey;\n                }\n            }\n        }\n\n        .mainTabWrapper {\n            width: 100%;\n            height: 100%;\n        }\n    }\n}\n",".footer {\n    display: flex;\n    background: $gray;\n    width: 100%;\n    height: 20px;\n\n    .footerObject {\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        padding: 0 5px;\n        color: white;\n        font-size: 14px;\n    }\n}\n",".dropWindow {\n    $bdrs: 5px;\n\n    background: $gray;\n    position: absolute;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    border: white 1px solid;\n    border-radius: $bdrs;\n    display: flex;\n    align-items: center;\n    flex-direction: column;\n    color: white;\n\n    header {\n        padding: 5px;\n        background: $middleGrey;\n        width: 100%;\n        border-radius: $bdrs $bdrs 0 0;\n        display: flex;\n        justify-content: center;\n    }\n\n    main {\n        width: 100%;\n        height: 100%;\n        padding: 20px;\n\n        .newFile {\n            div {\n                margin: 10px;\n                display: flex;\n                align-items: center;\n\n                span {\n                    width: 50px;\n                    display: inline-block;\n                }\n\n                input {\n                    border: 0;\n                    border-radius: 3px;\n                    padding: 5px;\n                    width: 145px;\n                    outline: none;\n\n                    &[type=\"number\"] {\n                        width: 65px;\n                    }\n                }\n\n                button {\n                    width: 195px;\n                    border-radius: 3px;\n                    border: 0;\n                    outline: none;\n                    padding: 5px;\n                }\n            }\n\n        }\n    }\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, "/* http://meyerweb.com/eric/tools/css/reset/\n   v4.0 | 20180602\n   License: none (public domain)\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmain, menu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, main, menu, nav, section {\n  display: block; }\n\n/* HTML5 hidden-attribute fix for newer browsers */\n*[hidden] {\n  display: none; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n* {\n  padding: 0;\n  margin: 0;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n\nbutton {\n  cursor: pointer; }\n\ncanvas {\n  display: block; }\n\nhtml,\nbody,\n.wrapper {\n  width: 100%;\n  height: 100%; }\n\nhtml,\nbody,\n.wrapper,\n.world {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  background: #14151a; }\n\na {\n  color: white;\n  text-decoration: none; }\n\n.__exitIcon {\n  color: #eb0d0d;\n  cursor: pointer;\n  position: absolute;\n  top: 3px;\n  right: 3px; }\n\n#root {\n  width: 100%;\n  height: 100%; }\n  #root .paintWrapper {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    overflow: hidden;\n    width: 100%;\n    height: 100%; }\n    #root .paintWrapper .header {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      background: #474545;\n      width: 100%;\n      height: 25px; }\n      #root .paintWrapper .header .header__container {\n        padding: 5px;\n        color: white; }\n        #root .paintWrapper .header .header__container .headerContainer__title {\n          cursor: pointer; }\n        #root .paintWrapper .header .header__container .headerContainer__subMenu {\n          z-index: 9999;\n          padding: 5px;\n          padding-left: 10px;\n          background: #14151a;\n          display: none;\n          position: relative;\n          min-width: 200px;\n          border-radius: 5px;\n          border: 1px solid white;\n          cursor: pointer; }\n          #root .paintWrapper .header .header__container .headerContainer__subMenu:hover {\n            background: #36c0e4; }\n        #root .paintWrapper .header .header__container:hover .headerContainer__subMenu {\n          display: block; }\n    #root .paintWrapper .workSpace {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      width: 100%;\n      height: 100%;\n      -webkit-box-flex: 1;\n          -ms-flex-positive: 1;\n              flex-grow: 1; }\n      #root .paintWrapper .workSpace .instrumentWrapper {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: vertical;\n        -webkit-box-direction: normal;\n            -ms-flex-direction: column;\n                flex-direction: column;\n        background: #474545;\n        width: 35px;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        margin: 5px 0;\n        border-radius: 0 5px 5px 0;\n        padding: 5px; }\n        #root .paintWrapper .workSpace .instrumentWrapper .instrument {\n          padding: 4px;\n          border-radius: 3px; }\n          #root .paintWrapper .workSpace .instrumentWrapper .instrument.active {\n            background: #14151a; }\n      #root .paintWrapper .workSpace .canvasWrapper {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: vertical;\n        -webkit-box-direction: normal;\n            -ms-flex-direction: column;\n                flex-direction: column;\n        -webkit-box-flex: 1;\n            -ms-flex-positive: 1;\n                flex-grow: 1;\n        width: calc(100% - 35px);\n        padding: 5px;\n        padding-top: 0; }\n        #root .paintWrapper .workSpace .canvasWrapper .listTabs {\n          height: 25px;\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          margin-top: 5px;\n          border-radius: 0 0 5px 5px;\n          background: #474545;\n          margin-bottom: 5px; }\n          #root .paintWrapper .workSpace .canvasWrapper .listTabs .tab {\n            min-width: 100px;\n            max-width: 200px;\n            overflow: hidden;\n            color: white;\n            padding: 0 10px;\n            -webkit-box-align: center;\n                -ms-flex-align: center;\n                    align-items: center;\n            display: -webkit-box;\n            display: -ms-flexbox;\n            display: flex;\n            white-space: nowrap;\n            border-right: 4px solid #14151a;\n            position: relative;\n            padding-right: 22px;\n            cursor: pointer; }\n            #root .paintWrapper .workSpace .canvasWrapper .listTabs .tab.active {\n              background: #2e2d34; }\n        #root .paintWrapper .workSpace .canvasWrapper .mainTabWrapper {\n          width: 100%;\n          height: 100%; }\n    #root .paintWrapper .footer {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      background: #474545;\n      width: 100%;\n      height: 20px; }\n      #root .paintWrapper .footer .footerObject {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center;\n        padding: 0 5px;\n        color: white;\n        font-size: 14px; }\n    #root .paintWrapper .dropWindow {\n      background: #474545;\n      position: absolute;\n      margin: auto;\n      top: 0;\n      bottom: 0;\n      left: 0;\n      right: 0;\n      border: white 1px solid;\n      border-radius: 5px;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      color: white; }\n      #root .paintWrapper .dropWindow header {\n        padding: 5px;\n        background: #2e2d34;\n        width: 100%;\n        border-radius: 5px 5px 0 0;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center; }\n      #root .paintWrapper .dropWindow main {\n        width: 100%;\n        height: 100%;\n        padding: 20px; }\n        #root .paintWrapper .dropWindow main .newFile div {\n          margin: 10px;\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -webkit-box-align: center;\n              -ms-flex-align: center;\n                  align-items: center; }\n          #root .paintWrapper .dropWindow main .newFile div span {\n            width: 50px;\n            display: inline-block; }\n          #root .paintWrapper .dropWindow main .newFile div input {\n            border: 0;\n            border-radius: 3px;\n            padding: 5px;\n            width: 145px;\n            outline: none; }\n            #root .paintWrapper .dropWindow main .newFile div input[type=\"number\"] {\n              width: 65px; }\n          #root .paintWrapper .dropWindow main .newFile div button {\n            width: 195px;\n            border-radius: 3px;\n            border: 0;\n            outline: none;\n            padding: 5px; }\n", "", {"version":3,"sources":["/home/alex/aaMy/paint/node_modules/reset-css/sass/_reset.scss","/home/alex/aaMy/paint/src/scss/default/defaults.scss","/home/alex/aaMy/paint/src/scss/color/color.scss","/home/alex/aaMy/paint/src/scss/default/standart.scss","/home/alex/aaMy/paint/src/scss/style/index.scss","/home/alex/aaMy/paint/src/scss/style/inner/header.scss","/home/alex/aaMy/paint/src/scss/style/inner/main.scss","/home/alex/aaMy/paint/src/scss/style/inner/footer.scss","/home/alex/aaMy/paint/src/scss/style/inner/drugonWindows.scss"],"names":[],"mappings":"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","file":"index.scss","sourcesContent":["/* http://meyerweb.com/eric/tools/css/reset/\n   v4.0 | 20180602\n   License: none (public domain)\n*/\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmain, menu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, main, menu, nav, section {\n\tdisplay: block;\n}\n/* HTML5 hidden-attribute fix for newer browsers */\n*[hidden] {\n    display: none;\n}\nbody {\n\tline-height: 1;\n}\nol, ul {\n\tlist-style: none;\n}\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n","@import 'node_modules/reset-css/sass/_reset.scss';\n\n* {\n\tpadding: 0;\n\tmargin: 0;\n\tbox-sizing: border-box;\n}\n\nbutton {\n\tcursor: pointer;\n}\n\ncanvas {\n\tdisplay: block;\n}\n\n\nhtml,\nbody,\n.wrapper,\n {\n\twidth: 100%;\n\theight: 100%;\n}\n\n\nhtml,\nbody,\n.wrapper,\n.world {\n\tdisplay: flex;\n\tbackground: $moreGray;\n}\n\na {\n\tcolor: white;\n\ttext-decoration: none;\n}\n","$gray: #474545;\n$middleGrey: #2e2d34;\n$moreGray: #14151a;\n\n$blue: #36c0e4;\n\n$red: #eb0d0d;\n",".__exitIcon {\n    color: $red;\n    cursor: pointer;\n    position: absolute;\n    top: 3px;\n    right: 3px;\n}\n","#root {\n    width: 100%;\n    height: 100%;\n\n    .paintWrapper {\n        display: flex;\n        flex-direction: column;\n        overflow: hidden;\n        width: 100%;\n        height: 100%;\n\n        @import './inner/header.scss';\n        @import './inner/main.scss';\n        @import './inner/footer.scss';\n        @import './inner/drugonWindows.scss';\n    }\n\n}\n",".header {\n    display: flex;\n    background: $gray;\n    width: 100%;\n    height: 25px;\n\n    .header__container {\n        padding: 5px;\n        color: white;\n\n        .headerContainer__title {\n            cursor: pointer;\n        }\n\n        .headerContainer__subMenu {\n            z-index: 9999;\n            padding: 5px;\n            padding-left: 10px;\n            background: $moreGray;\n            display: none;\n            position: relative;\n            min-width: 200px;\n            border-radius: 5px;\n            border: 1px solid white;\n            cursor: pointer;\n\n            &:hover {\n                background: $blue;\n            }\n        }\n\n        &:hover .headerContainer__subMenu {\n            display: block;\n        }\n    }\n}\n",".workSpace {\n    display: flex;\n    width: 100%;\n    height: 100%;\n    flex-grow: 1;\n\n    .instrumentWrapper {\n        display: flex;\n        flex-direction: column;\n        background: $gray;\n        width: 35px;\n        align-items: center;\n        margin: 5px 0;\n        border-radius: 0 5px 5px 0;\n        padding: 5px;\n\n        .instrument {\n            padding: 4px;\n            border-radius: 3px;\n\n            &.active {\n                background: $moreGray;\n            }\n        }\n    }\n\n    .canvasWrapper {\n        display: flex;\n        flex-direction: column;\n        flex-grow: 1;\n        width: calc(100% - 35px);\n        padding: 5px;\n        padding-top: 0;\n\n        .listTabs {\n            height: 25px;\n            display: flex;\n            margin-top: 5px;\n            border-radius: 0 0 5px 5px;\n            background: $gray;\n            margin-bottom: 5px;\n\n            .tab {\n                min-width: 100px;\n                max-width: 200px;\n                overflow: hidden;\n                color: white;\n                padding: 0 10px;\n                align-items: center;\n                display: flex;\n                white-space: nowrap;\n                border-right: 4px solid $moreGray;\n                position: relative;\n                padding-right: 22px;\n                cursor: pointer;\n\n                &.active {\n                    background: $middleGrey;\n                }\n            }\n        }\n\n        .mainTabWrapper {\n            width: 100%;\n            height: 100%;\n        }\n    }\n}\n",".footer {\n    display: flex;\n    background: $gray;\n    width: 100%;\n    height: 20px;\n\n    .footerObject {\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        padding: 0 5px;\n        color: white;\n        font-size: 14px;\n    }\n}\n",".dropWindow {\n    $bdrs: 5px;\n\n    background: $gray;\n    position: absolute;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    border: white 1px solid;\n    border-radius: $bdrs;\n    display: flex;\n    align-items: center;\n    flex-direction: column;\n    color: white;\n\n    header {\n        padding: 5px;\n        background: $middleGrey;\n        width: 100%;\n        border-radius: $bdrs $bdrs 0 0;\n        display: flex;\n        justify-content: center;\n    }\n\n    main {\n        width: 100%;\n        height: 100%;\n        padding: 20px;\n\n        .newFile {\n            div {\n                margin: 10px;\n                display: flex;\n                align-items: center;\n\n                span {\n                    width: 50px;\n                    display: inline-block;\n                }\n\n                input {\n                    border: 0;\n                    border-radius: 3px;\n                    padding: 5px;\n                    width: 145px;\n                    outline: none;\n\n                    &[type=\"number\"] {\n                        width: 65px;\n                    }\n                }\n\n                button {\n                    width: 195px;\n                    border-radius: 3px;\n                    border: 0;\n                    outline: none;\n                    padding: 5px;\n                }\n            }\n\n        }\n    }\n}\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -31651,13 +31650,15 @@ function (_React$Component) {
           return _this.x = inp;
         },
         type: "number",
-        max: "10000"
+        max: "10000",
+        min: "0"
       }), "\xA0x\xA0", React.createElement("input", {
         ref: function ref(inp) {
           return _this.y = inp;
         },
         type: "number",
-        max: "10000"
+        max: "10000",
+        min: "0"
       })), React.createElement("div", null, React.createElement("button", {
         ref: function ref(btn) {
           return _this.createBtn = btn;
@@ -31670,14 +31671,29 @@ function (_React$Component) {
       var _this2 = this;
 
       this.createBtn.addEventListener('click', function (e) {
-        var x = +_this2.x.value > 10000 || _this2.x.value === '' ? 1080 : _this2.x.value;
-        var y = +_this2.y.value > 10000 || _this2.y.value === '' ? 1920 : _this2.y.value;
+        var x = _this2._getValue('x');
+
+        var y = _this2._getValue('y');
+
         var title = _this2.title.value !== '' ? _this2.title.value : 'untitled';
 
         _this2.props.deleteThisTab(_this2.props.id);
 
         _this2.props.createNew(x, y, title);
       });
+    }
+  }, {
+    key: "_getValue",
+    value: function _getValue(type) {
+      if (+this[type].value > 10000 || +this[type].value <= 0 || this[type].value === '') {
+        if (type === 'x') {
+          return 1080;
+        } else {
+          return 1920;
+        }
+      } else {
+        return +this[type].value;
+      }
     }
   }]);
 
@@ -32055,7 +32071,7 @@ _defineProperty(Color, "propTypes", {
 
 module.exports = ReactRedux.connect(function (state) {
   return {
-    color: state.currentColor
+    color: state.instruments.currentColor
   };
 })(Color);
 
@@ -32130,7 +32146,7 @@ _defineProperty(SizeLine, "propTypes", {
 
 module.exports = ReactRedux.connect(function (state) {
   return {
-    size: state.currentLineThickness
+    size: state.instruments.currentLineThickness
   };
 })(SizeLine);
 
@@ -32360,6 +32376,115 @@ module.exports = Canvas;
 
 /***/ }),
 
+/***/ "./src/js/paint/components/workSpace/canvas/modesDrowing/modes.js":
+/*!************************************************************************!*\
+  !*** ./src/js/paint/components/workSpace/canvas/modesDrowing/modes.js ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+module.exports =
+/*#__PURE__*/
+function () {
+  function Modes() {
+    _classCallCheck(this, Modes);
+
+    this._brush = __webpack_require__(/*! ./own/brush.js */ "./src/js/paint/components/workSpace/canvas/modesDrowing/own/brush.js");
+  }
+
+  _createClass(Modes, [{
+    key: "getMode",
+    value: function getMode(mode) {
+      switch (mode) {
+        case 'brush':
+          return this._brush;
+          break;
+      }
+    }
+  }]);
+
+  return Modes;
+}();
+
+/***/ }),
+
+/***/ "./src/js/paint/components/workSpace/canvas/modesDrowing/own/brush.js":
+/*!****************************************************************************!*\
+  !*** ./src/js/paint/components/workSpace/canvas/modesDrowing/own/brush.js ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+module.exports =
+/*#__PURE__*/
+function () {
+  function BrushMode(instrumentary) {
+    _classCallCheck(this, BrushMode);
+
+    this._type = 'brush';
+    this._color = instrumentary.currentColor;
+    this._lineThickness = instrumentary.currentLineThickness;
+  }
+
+  _createClass(BrushMode, [{
+    key: "setListeners",
+    value: function setListeners(canv, ctx) {
+      var _this = this;
+
+      var mouseDown = function mouseDown() {
+        ctx.lineWidth = _this._lineThickness;
+        ctx.fillStyle = _this._color;
+
+        var moving = function moving(e) {
+          ctx.lineTo(e.offsetX, e.offsetY);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(e.offsetX, e.offsetY, _this._lineThickness / 2, 0, 2 * Math.PI);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.moveTo(e.offsetX, e.offsetY);
+        };
+
+        var downing = function downing() {
+          canv.removeEventListener('mousemove', moving);
+          canv.removeEventListener('mouseup', downing);
+          ctx.beginPath();
+        };
+
+        canv.addEventListener('mousemove', moving);
+        canv.addEventListener('mouseup', downing);
+      };
+
+      canv.addEventListener('mousedown', mouseDown);
+      return function () {
+        canv.removeEventListener('mousedown', mouseDown);
+      };
+    }
+  }]);
+
+  return BrushMode;
+}();
+
+/***/ }),
+
 /***/ "./src/js/paint/components/workSpace/canvas/tabCanvasWrapper.jsx":
 /*!***********************************************************************!*\
   !*** ./src/js/paint/components/workSpace/canvas/tabCanvasWrapper.jsx ***!
@@ -32394,6 +32519,8 @@ var ReactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-re
 
 var FlexiblePlace = __webpack_require__(/*! ../../../../../../../react-customScroll-movePlace-zoom/index.jsx */ "../react-customScroll-movePlace-zoom/index.jsx");
 
+var Modes = __webpack_require__(/*! ./modesDrowing/modes.js */ "./src/js/paint/components/workSpace/canvas/modesDrowing/modes.js");
+
 var Tabs =
 /*#__PURE__*/
 function (_React$Component) {
@@ -32424,21 +32551,31 @@ function (_React$Component) {
     value: function componentDidMount() {
       this._setContext();
 
-      if (this.props.currentTab) {
-        this._setSize();
+      this._mode = new Modes();
+      this._currentTab = null;
 
-        this._drowCanvas();
-      }
+      this._deleteListeners = function () {};
+
+      this._canv.addEventListener('selectstart', function (e) {
+        e.preventDefault();
+        return false;
+      });
     }
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
-      if (this.props.currentTab) {
+      if (this.props.currentTab && this._currentTab && this._currentTab.id === this.props.currentTab.id) {
+        this._changeDrowingMode();
+      } else if (this.props.currentTab) {
+        this._currentTab = this.props.currentTab;
+
         this._setSize();
 
         this._drowCanvas();
       } else {
         this._clearCanvas();
+
+        this._currentTab = null;
       }
     }
   }, {
@@ -32452,11 +32589,10 @@ function (_React$Component) {
     value: function _drowCanvas() {
       var canvas = this._canv;
       var ctx = this._ctx;
-      var gradient = ctx.createLinearGradient(0, 0, 1000, 0);
-      gradient.addColorStop(0, 'green');
-      gradient.addColorStop(1, 'white');
-      ctx.fillStyle = gradient;
+      ctx.fillStyle = 'white';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      this._changeDrowingMode();
     }
   }, {
     key: "_clearCanvas",
@@ -32471,6 +32607,19 @@ function (_React$Component) {
     value: function _setContext() {
       this._ctx = this._canv.getContext('2d');
     }
+  }, {
+    key: "_changeDrowingMode",
+    value: function _changeDrowingMode() {
+      this._drowingModesFuncSetter(this._canv);
+    }
+  }, {
+    key: "_drowingModesFuncSetter",
+    value: function _drowingModesFuncSetter() {
+      this._deleteListeners();
+
+      var mode = new (this._mode.getMode(this.props.instrumentary.activeInstrument))(this.props.instrumentary);
+      this._deleteListeners = mode.setListeners(this._canv, this._ctx);
+    }
   }]);
 
   return Tabs;
@@ -32484,7 +32633,8 @@ module.exports = ReactRedux.connect(function (state) {
     },
     currentTab: state.tabs.own.find(function (el) {
       return el.id === state.tabs.activeTab;
-    })
+    }),
+    instrumentary: state.instruments
   };
 })(Tabs);
 
@@ -32788,6 +32938,11 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var icon = null;
+      var active = '';
+
+      if (this.props.active) {
+        active = ' active';
+      }
 
       switch (this.props.type) {
         case 'brush':
@@ -32799,7 +32954,7 @@ function (_React$Component) {
       }
 
       return React.createElement("div", {
-        className: "instrument"
+        className: 'instrument' + active
       }, icon);
     }
   }]);
@@ -32859,14 +33014,23 @@ function (_React$Component) {
   _createClass(Instrumensts, [{
     key: "render",
     value: function render() {
+      var insts = [];
+      var active = false;
+
+      for (var key in this.props.instruments) {
+        if (this.props.instruments[key]) {
+          active = key === this.props.active ? true : false;
+          insts.push(React.createElement(Instrument, {
+            type: key,
+            key: key,
+            active: active
+          }));
+        }
+      }
+
       return React.createElement("aside", {
         className: "instrumentWrapper"
-      }, this.props.instrumensts.map(function (ins, i) {
-        return React.createElement(Instrument, {
-          type: ins,
-          key: i
-        });
-      }));
+      }, insts);
     }
   }]);
 
@@ -32875,7 +33039,8 @@ function (_React$Component) {
 
 module.exports = ReactRedux.connect(function (state) {
   return {
-    instrumensts: state.currentInstruments
+    instruments: state.instruments.currentInstruments,
+    active: state.instruments.activeInstrument
   };
 })(Instrumensts);
 
@@ -32968,7 +33133,7 @@ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var MainCanvas = __webpack_require__(/*! ./canvas/canvas.jsx */ "./src/js/paint/components/workSpace/canvas/canvas.jsx");
 
-var Instrumenst = __webpack_require__(/*! ./instruments/instruments.jsx */ "./src/js/paint/components/workSpace/instruments/instruments.jsx");
+var Instruments = __webpack_require__(/*! ./instruments/instruments.jsx */ "./src/js/paint/components/workSpace/instruments/instruments.jsx");
 
 var WindowWrapper = __webpack_require__(/*! ./windows/windowWrapper.jsx */ "./src/js/paint/components/workSpace/windows/windowWrapper.jsx");
 
@@ -32988,7 +33153,7 @@ function (_React$Component) {
     value: function render() {
       return React.createElement("div", {
         className: "workSpace"
-      }, React.createElement(Instrumenst, null), React.createElement(MainCanvas, null), React.createElement(WindowWrapper, null));
+      }, React.createElement(Instruments, null), React.createElement(MainCanvas, null), React.createElement(WindowWrapper, null));
     }
   }]);
 
@@ -33075,105 +33240,57 @@ module.exports = function Paint(selector) {
 var Redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 
 module.exports = function (settings) {
-  var currentColor = __webpack_require__(/*! ./ownReducers/getCurrentColor.js */ "./src/js/paint/reducers/ownReducers/getCurrentColor.js")(settings.currentColor);
-
-  var currentLineThickness = __webpack_require__(/*! ./ownReducers/getCurrentLineThickness.js */ "./src/js/paint/reducers/ownReducers/getCurrentLineThickness.js")(settings.currentLineThickness);
-
-  var currentInstruments = __webpack_require__(/*! ./ownReducers/getCurrentInstruments.js */ "./src/js/paint/reducers/ownReducers/getCurrentInstruments.js")(settings.currentInstruments);
-
   var tabs = __webpack_require__(/*! ./ownReducers/getTabs.js */ "./src/js/paint/reducers/ownReducers/getTabs.js")();
 
   var openedWindows = __webpack_require__(/*! ./ownReducers/getOpenedWindows */ "./src/js/paint/reducers/ownReducers/getOpenedWindows.js")();
 
   var sizeScreen = __webpack_require__(/*! ./ownReducers/getSizeScreen */ "./src/js/paint/reducers/ownReducers/getSizeScreen.js")();
 
+  var instruments = __webpack_require__(/*! ./ownReducers/getInstruments.js */ "./src/js/paint/reducers/ownReducers/getInstruments.js")(settings);
+
   return Redux.combineReducers({
-    currentColor: currentColor,
-    currentLineThickness: currentLineThickness,
-    currentInstruments: currentInstruments,
     tabs: tabs,
     openedWindows: openedWindows,
-    sizeScreen: sizeScreen
+    sizeScreen: sizeScreen,
+    instruments: instruments
   });
   ;
 };
 
 /***/ }),
 
-/***/ "./src/js/paint/reducers/ownReducers/getCurrentColor.js":
-/*!**************************************************************!*\
-  !*** ./src/js/paint/reducers/ownReducers/getCurrentColor.js ***!
-  \**************************************************************/
+/***/ "./src/js/paint/reducers/ownReducers/getInstruments.js":
+/*!*************************************************************!*\
+  !*** ./src/js/paint/reducers/ownReducers/getInstruments.js ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = function (defaultColor) {
+module.exports = function (settings) {
   return function () {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultColor;
-    var action = arguments.length > 1 ? arguments[1] : undefined;
-
-    switch (action.type) {
-      case 'CHANGE_COLOR':
-        return action.color;
-        break;
-
-      default:
-        return state;
-    }
-  };
-};
-
-/***/ }),
-
-/***/ "./src/js/paint/reducers/ownReducers/getCurrentInstruments.js":
-/*!********************************************************************!*\
-  !*** ./src/js/paint/reducers/ownReducers/getCurrentInstruments.js ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function (defaultInstruments) {
-  return function () {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultInstruments;
-    var action = arguments.length > 1 ? arguments[1] : undefined;
-
-    switch (action.type) {
-      case 'CHANGE_INSTRUMENTS':
-        return action.instruments;
-        break;
-
-      default:
-        return state;
-    }
-  };
-};
-
-/***/ }),
-
-/***/ "./src/js/paint/reducers/ownReducers/getCurrentLineThickness.js":
-/*!**********************************************************************!*\
-  !*** ./src/js/paint/reducers/ownReducers/getCurrentLineThickness.js ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function (defaultLineThickness) {
-  return function () {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultLineThickness;
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : settings;
     var action = arguments.length > 1 ? arguments[1] : undefined;
 
     switch (action.type) {
       case 'CHANGE_LINE_THICKNESS':
-        return action.currentLineThickness;
+        return Object.assign({}, state, {
+          currentLineThickness: action.currentLineThickness
+        });
+        break;
+
+      case 'CHANGE_INSTRUMENTS':
+        return Object.assign({}, state, {
+          currentInstruments: action.instruments
+        });
+        break;
+
+      case 'CHANGE_COLOR':
+        return Object.assign({}, state, {
+          "currentColor": action.color
+        });
         break;
 
       default:
@@ -33358,10 +33475,10 @@ module.exports = function () {
 /*!***************************************************!*\
   !*** ./src/js/paint/settings/defaultSetting.json ***!
   \***************************************************/
-/*! exports provided: currentColor, currentLineThickness, currentInstruments, default */
+/*! exports provided: currentColor, currentLineThickness, activeInstrument, currentInstruments, default */
 /***/ (function(module) {
 
-module.exports = {"currentColor":"#000","currentLineThickness":"16","currentInstruments":["brush"]};
+module.exports = {"currentColor":"#000","currentLineThickness":"16","activeInstrument":"brush","currentInstruments":{"brush":true}};
 
 /***/ }),
 

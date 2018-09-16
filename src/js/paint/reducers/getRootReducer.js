@@ -3,19 +3,15 @@
 const Redux = require('redux');
 
 module.exports = settings => {
-    const currentColor = (require('./ownReducers/getCurrentColor.js'))(settings.currentColor);
-    const currentLineThickness = (require('./ownReducers/getCurrentLineThickness.js'))(settings.currentLineThickness);
-    const currentInstruments = (require('./ownReducers/getCurrentInstruments.js'))(settings.currentInstruments);
     const tabs = (require('./ownReducers/getTabs.js'))();
     const openedWindows = (require('./ownReducers/getOpenedWindows'))();
     const sizeScreen = require('./ownReducers/getSizeScreen')();
+    const instruments = require('./ownReducers/getInstruments.js')(settings);
 
     return Redux.combineReducers({
-        currentColor,
-        currentLineThickness,
-        currentInstruments,
         tabs,
         openedWindows,
-        sizeScreen
+        sizeScreen,
+        instruments
     });;
 }

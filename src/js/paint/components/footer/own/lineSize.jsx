@@ -23,5 +23,5 @@ class SizeLine extends React.Component {
 }
 
 module.exports = ReactRedux.connect(state => ({
-    size: state.currentLineThickness
+    size: state.instruments.currentLineThickness
 }))(SizeLine);

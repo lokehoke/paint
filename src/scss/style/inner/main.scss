@@ -15,9 +15,12 @@
         padding: 5px;
 
         .instrument {
-            background: $moreGray;
             padding: 4px;
             border-radius: 3px;
+
+            &.active {
+                background: $moreGray;
+            }
         }
     }
 

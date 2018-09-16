@@ -23,5 +23,5 @@ class Color extends React.Component {
 }
 
 module.exports = ReactRedux.connect(state => ({
-    color: state.currentColor
+    color: state.instruments.currentColor
 }))(Color);

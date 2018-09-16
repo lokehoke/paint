@@ -13,9 +13,9 @@ class NewFile extends React.Component {
                 </div>
                 <div>
                     <span>Size&nbsp;</span>
-                    <input ref={inp => this.x = inp} type="number" max="10000" />
+                    <input ref={inp => this.x = inp} type="number" max="10000" min="0" />
                     &nbsp;x&nbsp;
-                    <input ref={inp => this.y = inp} type="number" max="10000" />
+                    <input ref={inp => this.y = inp} type="number" max="10000" min="0" />
                 </div>
                 <div>
                     <button ref={btn => this.createBtn = btn}>Create</button>
@@ -26,13 +26,25 @@ class NewFile extends React.Component {
 
     componentDidMount() {
         this.createBtn.addEventListener(('click'), e => {
-            let x = (+this.x.value > 10000 || this.x.value === '' ? 1080 : this.x.value);
-            let y = (+this.y.value > 10000 || this.y.value === '' ? 1920 : this.y.value);
+            let x = this._getValue('x');
+            let y = this._getValue('y');
             let title = (this.title.value !== '' ? this.title.value : 'untitled');
 
             this.props.deleteThisTab(this.props.id);
             this.props.createNew(x, y, title);
         });
+    }
+
+    _getValue(type) {
+        if (+this[type].value > 10000 || +this[type].value <= 0 || this[type].value === '') {
+            if (type === 'x') {
+                return 1080;
+            } else {
+                return 1920;
+            }
+        } else {
+            return +this[type].value;
+        }
     }
 }
 
