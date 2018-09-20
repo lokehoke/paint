@@ -8,36 +8,57 @@ module.exports = class BrushMode {
     }
 
     setListeners(canv, ctx) {
+        let checkCanvTarget = target => {
+            return (target === canv);
+        };
+
+        let click = e => {
+            if (!checkCanvTarget(e.target)) {
+                ctx.beginPath();
+                return false;
+            }
+
+            ctx.beginPath();
+            ctx.arc(e.offsetX, e.offsetY, this._lineThickness / 2, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.beginPath();
+        };
+
         let mouseDown = () => {
             ctx.lineWidth = this._lineThickness;
             ctx.fillStyle = this._color;
 
+
             let moving = e => {
+                if (!checkCanvTarget(e.target)) {
+                    ctx.beginPath();
+                    return false;
+                }
+
                 ctx.lineTo(e.offsetX, e.offsetY);
                 ctx.stroke();
 
-                ctx.beginPath();
-                ctx.arc(e.offsetX, e.offsetY, this._lineThickness / 2, 0, 2 * Math.PI);
-                ctx.fill();
+                click(e);
 
-                ctx.beginPath();
                 ctx.moveTo(e.offsetX, e.offsetY);
-            }
+            };
 
             let downing = () => {
-                canv.removeEventListener('mousemove', moving);
-                canv.removeEventListener('mouseup', downing);
+                document.removeEventListener('mousemove', moving);
+                document.removeEventListener('mouseup', downing);
                 ctx.beginPath();
-            }
+            };
 
-            canv.addEventListener('mousemove', moving);
-            canv.addEventListener('mouseup', downing);
+            document.addEventListener('mousemove', moving);
+            document.addEventListener('mouseup', downing);
         };
 
-        canv.addEventListener('mousedown', mouseDown);
+        document.addEventListener('click', click);
+        document.addEventListener('mousedown', mouseDown);
 
         return () => {
-            canv.removeEventListener('mousedown', mouseDown);
+            document.removeEventListener('mousedown', mouseDown);
+            document.removeEventListener('click', click);
         }
     }
 }

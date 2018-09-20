@@ -1,4 +1,3 @@
-'use strict';
 
 const InfoTab = require('./../../structDate/infoTab.js');
 
@@ -19,7 +18,6 @@ module.exports = () => (state = def, action) => {
                     new InfoTab(state.id + 1, action.title, action.size)
                 ]
             };
-            break;
         case 'CLOSE_TAB':
             let newOwn = [...(state.own.filter(el => el.id !== action.id))];
             return {
@@ -35,14 +33,12 @@ module.exports = () => (state = def, action) => {
                 ),
                 own: newOwn
             };
-            break;
         case 'CHANGE_ACTIVE_TAB':
             return {
                 id: +state.id,
                 activeTab: +action.activeTab,
                 own: state.own
             };
-            break;
         default:
             return state;
     }

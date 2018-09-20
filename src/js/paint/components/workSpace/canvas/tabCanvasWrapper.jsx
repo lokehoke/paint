@@ -24,18 +24,20 @@ class Tabs extends React.Component {
         this._canv.addEventListener('selectstart', e => {
             e.preventDefault();
             return false;
-        })
+        });
     }
 
     componentDidUpdate() {
         if (this.props.currentTab && this._currentTab && this._currentTab.id === this.props.currentTab.id) {
             this._changeDrowingMode();
         } else if(this.props.currentTab) {
+            console.log(this._currentTab);
             this._currentTab = this.props.currentTab;
             this._setSize();
             this._drowCanvas();
         } else {
             this._clearCanvas();
+            this._deleteListeners();
             this._currentTab = null;
         }
     }

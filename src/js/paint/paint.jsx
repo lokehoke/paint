@@ -42,5 +42,10 @@ module.exports = class Paint {
              </Provider>,
             this._mountPoint
         );
+
+        document.addEventListener('selectstart', e => {
+            e.preventDefault();
+            return false;
+        });
     }
 }

@@ -26,13 +26,11 @@ module.exports = () => (state = def, action) => {
                     title
                 }]
             };
-            break;
         case 'CLOSE_WINDOW':
             return {
                 id,
                 own: [...(state.own.filter(el => el.id !== action.id))]
             };
-            break;
         default:
             return state;
     }

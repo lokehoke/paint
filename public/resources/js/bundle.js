@@ -32449,33 +32449,53 @@ function () {
     value: function setListeners(canv, ctx) {
       var _this = this;
 
+      var checkCanvTarget = function checkCanvTarget(target) {
+        return target === canv;
+      };
+
+      var click = function click(e) {
+        if (!checkCanvTarget(e.target)) {
+          ctx.beginPath();
+          return false;
+        }
+
+        ctx.beginPath();
+        ctx.arc(e.offsetX, e.offsetY, _this._lineThickness / 2, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.beginPath();
+      };
+
       var mouseDown = function mouseDown() {
         ctx.lineWidth = _this._lineThickness;
         ctx.fillStyle = _this._color;
 
         var moving = function moving(e) {
+          if (!checkCanvTarget(e.target)) {
+            ctx.beginPath();
+            return false;
+          }
+
           ctx.lineTo(e.offsetX, e.offsetY);
           ctx.stroke();
-          ctx.beginPath();
-          ctx.arc(e.offsetX, e.offsetY, _this._lineThickness / 2, 0, 2 * Math.PI);
-          ctx.fill();
-          ctx.beginPath();
+          click(e);
           ctx.moveTo(e.offsetX, e.offsetY);
         };
 
         var downing = function downing() {
-          canv.removeEventListener('mousemove', moving);
-          canv.removeEventListener('mouseup', downing);
+          document.removeEventListener('mousemove', moving);
+          document.removeEventListener('mouseup', downing);
           ctx.beginPath();
         };
 
-        canv.addEventListener('mousemove', moving);
-        canv.addEventListener('mouseup', downing);
+        document.addEventListener('mousemove', moving);
+        document.addEventListener('mouseup', downing);
       };
 
-      canv.addEventListener('mousedown', mouseDown);
+      document.addEventListener('click', click);
+      document.addEventListener('mousedown', mouseDown);
       return function () {
-        canv.removeEventListener('mousedown', mouseDown);
+        document.removeEventListener('mousedown', mouseDown);
+        document.removeEventListener('click', click);
       };
     }
   }]);
@@ -32567,6 +32587,7 @@ function (_React$Component) {
       if (this.props.currentTab && this._currentTab && this._currentTab.id === this.props.currentTab.id) {
         this._changeDrowingMode();
       } else if (this.props.currentTab) {
+        console.log(this._currentTab);
         this._currentTab = this.props.currentTab;
 
         this._setSize();
@@ -32574,6 +32595,8 @@ function (_React$Component) {
         this._drowCanvas();
       } else {
         this._clearCanvas();
+
+        this._deleteListeners();
 
         this._currentTab = null;
       }
@@ -33223,6 +33246,10 @@ module.exports = function Paint(selector) {
   }, React.createElement("div", {
     className: "paintWrapper"
   }, React.createElement(Header, null), React.createElement(WorkSpace, null), React.createElement(Footer, null), React.createElement(DrugonWindowWrapper, null))), this._mountPoint);
+  document.addEventListener('selectstart', function (e) {
+    e.preventDefault();
+    return false;
+  });
 };
 
 /***/ }),
@@ -33279,19 +33306,16 @@ module.exports = function (settings) {
         return Object.assign({}, state, {
           currentLineThickness: action.currentLineThickness
         });
-        break;
 
       case 'CHANGE_INSTRUMENTS':
         return Object.assign({}, state, {
           currentInstruments: action.instruments
         });
-        break;
 
       case 'CHANGE_COLOR':
         return Object.assign({}, state, {
           "currentColor": action.color
         });
-        break;
 
       default:
         return state;
@@ -33351,7 +33375,6 @@ module.exports = function () {
             title: title
           }])
         };
-        break;
 
       case 'CLOSE_WINDOW':
         return {
@@ -33360,7 +33383,6 @@ module.exports = function () {
             return el.id !== action.id;
           }))
         };
-        break;
 
       default:
         return state;
@@ -33393,7 +33415,6 @@ module.exports = function () {
     switch (action.type) {
       case 'CHANGE_SIZE_SCREEN':
         return action.size;
-        break;
 
       default:
         return state;
@@ -33409,9 +33430,6 @@ module.exports = function () {
   \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
@@ -33441,7 +33459,6 @@ module.exports = function () {
           activeTab: +state.id + 1,
           own: _toConsumableArray(state.own).concat([new InfoTab(state.id + 1, action.title, action.size)])
         };
-        break;
 
       case 'CLOSE_TAB':
         var newOwn = _toConsumableArray(state.own.filter(function (el) {
@@ -33453,7 +33470,6 @@ module.exports = function () {
           activeTab: +action.id === +state.activeTab ? newOwn[newOwn.length - 1] ? +newOwn[newOwn.length - 1].id : -1 : state.activeTab,
           own: newOwn
         };
-        break;
 
       case 'CHANGE_ACTIVE_TAB':
         return {
@@ -33461,7 +33477,6 @@ module.exports = function () {
           activeTab: +action.activeTab,
           own: state.own
         };
-        break;
 
       default:
         return state;
