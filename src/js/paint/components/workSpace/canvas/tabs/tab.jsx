@@ -41,11 +41,6 @@ class Tab extends React.Component {
 
             return false;
         });
-
-        this.tab.addEventListener('selectstart', e => {
-            e.preventDefault();
-            return false;
-        });
     }
 }
 

@@ -10,18 +10,18 @@ let def = {
 module.exports = () => (state = def, action) => {
     switch (action.type) {
         case 'NEW_TAB':
-            return {
+            return Object.assign({}, state, {
                 id: +state.id + 1,
                 activeTab: +state.id + 1,
                 own: [
                     ...state.own,
                     new InfoTab(state.id + 1, action.title, action.size)
                 ]
-            };
+            });
         case 'CLOSE_TAB':
             let newOwn = [...(state.own.filter(el => el.id !== action.id))];
-            return {
-                id: +state.id,
+
+            return Object.assign({}, state, {
                 activeTab: (
                     +action.id === +state.activeTab
                         ? (
@@ -32,13 +32,22 @@ module.exports = () => (state = def, action) => {
                         : state.activeTab
                 ),
                 own: newOwn
-            };
+            });
         case 'CHANGE_ACTIVE_TAB':
-            return {
-                id: +state.id,
-                activeTab: +action.activeTab,
-                own: state.own
-            };
+            return Object.assign({}, state, {
+                activeTab: +action.activeTab
+            });
+        case 'CHANGE_URL':
+            let own = state.own.map(el => {
+                if (+el.id === +action.id) {
+                    el.imageData = action.imageData;
+                }
+
+                return el;
+            });
+            return Object.assign({}, state, {
+                own
+            });
         default:
             return state;
     }

@@ -47,5 +47,10 @@ module.exports = class Paint {
             e.preventDefault();
             return false;
         });
+
+        document.addEventListener('contextmenu', e => {
+            e.preventDefault();
+            return false;
+        });
     }
 }

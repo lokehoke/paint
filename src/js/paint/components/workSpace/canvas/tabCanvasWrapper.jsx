@@ -20,18 +20,16 @@ class Tabs extends React.Component {
         this._mode = new Modes();
         this._currentTab = null;
         this._deleteListeners = () => {};
-
-        this._canv.addEventListener('selectstart', e => {
-            e.preventDefault();
-            return false;
-        });
     }
 
     componentDidUpdate() {
         if (this.props.currentTab && this._currentTab && this._currentTab.id === this.props.currentTab.id) {
             this._changeDrowingMode();
         } else if(this.props.currentTab) {
-            console.log(this._currentTab);
+            if (this._currentTab) {
+                this._saveDataImage(this._currentTab.id);
+            }
+
             this._currentTab = this.props.currentTab;
             this._setSize();
             this._drowCanvas();
@@ -50,8 +48,13 @@ class Tabs extends React.Component {
     _drowCanvas() {
         let canvas = this._canv;
         let ctx = this._ctx;
-        ctx.fillStyle = 'white';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        if (this._currentTab.imageData.data) {
+            ctx.putImageData(this._currentTab.imageData, 0, 0);
+        } else {
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
 
         this._changeDrowingMode();
     }
@@ -77,6 +80,10 @@ class Tabs extends React.Component {
         this._deleteListeners = mode.setListeners(this._canv, this._ctx);
     }
 
+    _saveDataImage(id) {
+        this.props.saveDataImage(id, this._ctx.getImageData(0, 0,this._canv.width, this._canv.height));
+    }
+
 }
 
 module.exports = ReactRedux.connect(
@@ -87,5 +94,13 @@ module.exports = ReactRedux.connect(
         },
         currentTab: state.tabs.own.find(el => el.id === state.tabs.activeTab),
         instrumentary: state.instruments
+    }), dispatch => ({
+        saveDataImage: (id, imageData) => {
+            dispatch({
+                type: 'CHANGE_URL',
+                id,
+                imageData
+            });
+        }
     })
 )(Tabs);

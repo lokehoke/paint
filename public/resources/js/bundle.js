@@ -32207,14 +32207,6 @@ function (_React$Component) {
         }
       }, React.createElement(File, null));
     }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.header.addEventListener('selectstart', function (e) {
-        e.preventDefault();
-        return false;
-      });
-    }
   }]);
 
   return Header;
@@ -32575,11 +32567,6 @@ function (_React$Component) {
       this._currentTab = null;
 
       this._deleteListeners = function () {};
-
-      this._canv.addEventListener('selectstart', function (e) {
-        e.preventDefault();
-        return false;
-      });
     }
   }, {
     key: "componentDidUpdate",
@@ -32587,7 +32574,10 @@ function (_React$Component) {
       if (this.props.currentTab && this._currentTab && this._currentTab.id === this.props.currentTab.id) {
         this._changeDrowingMode();
       } else if (this.props.currentTab) {
-        console.log(this._currentTab);
+        if (this._currentTab) {
+          this._saveDataImage(this._currentTab.id);
+        }
+
         this._currentTab = this.props.currentTab;
 
         this._setSize();
@@ -32612,8 +32602,13 @@ function (_React$Component) {
     value: function _drowCanvas() {
       var canvas = this._canv;
       var ctx = this._ctx;
-      ctx.fillStyle = 'white';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      if (this._currentTab.imageData.data) {
+        ctx.putImageData(this._currentTab.imageData, 0, 0);
+      } else {
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
 
       this._changeDrowingMode();
     }
@@ -32643,6 +32638,11 @@ function (_React$Component) {
       var mode = new (this._mode.getMode(this.props.instrumentary.activeInstrument))(this.props.instrumentary);
       this._deleteListeners = mode.setListeners(this._canv, this._ctx);
     }
+  }, {
+    key: "_saveDataImage",
+    value: function _saveDataImage(id) {
+      this.props.saveDataImage(id, this._ctx.getImageData(0, 0, this._canv.width, this._canv.height));
+    }
   }]);
 
   return Tabs;
@@ -32658,6 +32658,16 @@ module.exports = ReactRedux.connect(function (state) {
       return el.id === state.tabs.activeTab;
     }),
     instrumentary: state.instruments
+  };
+}, function (dispatch) {
+  return {
+    saveDataImage: function saveDataImage(id, imageData) {
+      dispatch({
+        type: 'CHANGE_URL',
+        id: id,
+        imageData: imageData
+      });
+    }
   };
 })(Tabs);
 
@@ -32871,10 +32881,6 @@ function (_React$Component) {
 
         _this2.props.closeTab(_this2.props.tab.id);
 
-        return false;
-      });
-      this.tab.addEventListener('selectstart', function (e) {
-        e.preventDefault();
         return false;
       });
     }
@@ -33250,6 +33256,10 @@ module.exports = function Paint(selector) {
     e.preventDefault();
     return false;
   });
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+    return false;
+  });
 };
 
 /***/ }),
@@ -33454,29 +33464,38 @@ module.exports = function () {
 
     switch (action.type) {
       case 'NEW_TAB':
-        return {
+        return Object.assign({}, state, {
           id: +state.id + 1,
           activeTab: +state.id + 1,
           own: _toConsumableArray(state.own).concat([new InfoTab(state.id + 1, action.title, action.size)])
-        };
+        });
 
       case 'CLOSE_TAB':
         var newOwn = _toConsumableArray(state.own.filter(function (el) {
           return el.id !== action.id;
         }));
 
-        return {
-          id: +state.id,
+        return Object.assign({}, state, {
           activeTab: +action.id === +state.activeTab ? newOwn[newOwn.length - 1] ? +newOwn[newOwn.length - 1].id : -1 : state.activeTab,
           own: newOwn
-        };
+        });
 
       case 'CHANGE_ACTIVE_TAB':
-        return {
-          id: +state.id,
-          activeTab: +action.activeTab,
-          own: state.own
-        };
+        return Object.assign({}, state, {
+          activeTab: +action.activeTab
+        });
+
+      case 'CHANGE_URL':
+        var own = state.own.map(function (el) {
+          if (+el.id === +action.id) {
+            el.imageData = action.imageData;
+          }
+
+          return el;
+        });
+        return Object.assign({}, state, {
+          own: own
+        });
 
       default:
         return state;
@@ -33512,6 +33531,7 @@ module.exports = function InfoTab(id, title, size) {
   this.id = id;
   this.title = title;
   this.size = size;
+  this.imageData = [];
 };
 
 /***/ }),

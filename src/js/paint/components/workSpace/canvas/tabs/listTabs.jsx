@@ -52,7 +52,7 @@ module.exports = ReactRedux.connect(
             dispatch({
                 type: 'CHANGE_ACTIVE_TAB',
                 activeTab: id
-            })
+            });
         }
     })
 )(ListTabs);

@@ -12,13 +12,6 @@ class Header extends React.Component {
             </header>
         );
     }
-
-    componentDidMount() {
-        this.header.addEventListener('selectstart', e => {
-            e.preventDefault();
-            return false;
-        });
-    }
 }
 
 module.exports = Header;

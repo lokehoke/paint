@@ -3,5 +3,6 @@ module.exports = class InfoTab {
         this.id = id;
         this.title = title;
         this.size = size;
+        this.imageData = [];
     }
 }
