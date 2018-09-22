@@ -7,10 +7,25 @@ const FlexiblePlace = require('../../../../../../../react-customScroll-movePlace
 const Modes = require('./modesDrowing/modes.js');
 
 class Tabs extends React.Component {
+    componentWillMount() {
+        this._canv = [];
+        this._ctx = [];
+    }
+
     render() {
+        let tabs = this.props.tabs.map((el, i) => (
+            <canvas
+                key={i}
+                ref={canv => this._canv[i] = canv}
+                className={(el.id === this.props.activeTab ? 'active' : '')}
+                height={el.size.x}
+                width={el.size.y}
+            />
+        ));
+
         return (
             <FlexiblePlace height={this.props.size.height} width={this.props.size.width}>
-                <canvas ref={canvas => this._canv = canvas} />
+                {tabs}
             </FlexiblePlace>
         );
     }
@@ -18,72 +33,55 @@ class Tabs extends React.Component {
     componentDidMount() {
         this._setContext();
         this._mode = new Modes();
-        this._currentTab = null;
         this._deleteListeners = () => {};
+        if (this.props.tabs[this.props.tabs.length - 1]) {
+            this._idLastCanvas = this.props.tabs[this.props.tabs.length - 1].id;
+        } else {
+            this._idLastCanvas = -1;
+        }
+
+        if (this.props.activeTab >= 0) {
+            this._changeDrowingMode();
+        }
     }
 
     componentDidUpdate() {
-        if (this.props.currentTab && this._currentTab && this._currentTab.id === this.props.currentTab.id) {
+        this._setContext();
+        if (
+            this.props.tabs[this.props.tabs.length - 1]
+        &&
+            this.props.tabs[this.props.tabs.length - 1].id !== this._idLastCanvas
+        ) {
+            this._drowNewCanvas();
+            this._idLastCanvas = this.props.tabs[this.props.tabs.length - 1].id;
+        } else if (this.props.activeTab >= 0) {
             this._changeDrowingMode();
-        } else if(this.props.currentTab) {
-            if (this._currentTab) {
-                this._saveDataImage(this._currentTab.id);
-            }
-
-            this._currentTab = this.props.currentTab;
-            this._setSize();
-            this._drowCanvas();
-        } else {
-            this._clearCanvas();
-            this._deleteListeners();
-            this._currentTab = null;
         }
     }
 
-    _setSize() {
-        this._canv.height = this.props.currentTab.size.x;
-        this._canv.width = this.props.currentTab.size.y;
-    }
+    _drowNewCanvas() {
+        let canvas = this._canv[this._canv.length - 1];
+        let ctx = this._ctx[this._ctx.length - 1];
 
-    _drowCanvas() {
-        let canvas = this._canv;
-        let ctx = this._ctx;
-
-        if (this._currentTab.imageData.data) {
-            ctx.putImageData(this._currentTab.imageData, 0, 0);
-        } else {
-            ctx.fillStyle = 'white';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-        }
-
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
         this._changeDrowingMode();
     }
 
-    _clearCanvas() {
-        let canvas = this._canv;
-        let ctx = this._ctx;
-        this._ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }
-
     _setContext() {
-        this._ctx = this._canv.getContext('2d');
+        this._ctx = [];
+        this._canv.forEach((el) => {
+            this._ctx.push(el.getContext('2d'));
+        });
     }
 
     _changeDrowingMode() {
-        this._drowingModesFuncSetter(this._canv);
-    }
-
-    _drowingModesFuncSetter() {
         this._deleteListeners();
+        let active = this.props.activeTab;
 
         let mode = new (this._mode.getMode(this.props.instrumentary.activeInstrument))(this.props.instrumentary);
-        this._deleteListeners = mode.setListeners(this._canv, this._ctx);
+        this._deleteListeners = mode.setListeners(this._canv[active], this._ctx[active]);
     }
-
-    _saveDataImage(id) {
-        this.props.saveDataImage(id, this._ctx.getImageData(0, 0,this._canv.width, this._canv.height));
-    }
-
 }
 
 module.exports = ReactRedux.connect(
@@ -92,15 +90,8 @@ module.exports = ReactRedux.connect(
             height: state.sizeScreen.height - 75,
             width: state.sizeScreen.width - 45
         },
-        currentTab: state.tabs.own.find(el => el.id === state.tabs.activeTab),
+        tabs: state.tabs.own,
+        activeTab: state.tabs.activeTab,
         instrumentary: state.instruments
-    }), dispatch => ({
-        saveDataImage: (id, imageData) => {
-            dispatch({
-                type: 'CHANGE_URL',
-                id,
-                imageData
-            });
-        }
     })
 )(Tabs);

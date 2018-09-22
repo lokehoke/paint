@@ -37,17 +37,6 @@ module.exports = () => (state = def, action) => {
             return Object.assign({}, state, {
                 activeTab: +action.activeTab
             });
-        case 'CHANGE_URL':
-            let own = state.own.map(el => {
-                if (+el.id === +action.id) {
-                    el.imageData = action.imageData;
-                }
-
-                return el;
-            });
-            return Object.assign({}, state, {
-                own
-            });
         default:
             return state;
     }
