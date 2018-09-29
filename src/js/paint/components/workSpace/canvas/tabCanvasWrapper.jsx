@@ -2,32 +2,30 @@
 
 const React = require('react');
 const ReactRedux = require('react-redux');
-const FlexiblePlace = require('../../../../../../../react-customScroll-movePlace-zoom/index.jsx');
+const FlexiblePlace = require('./../../../../../../../react-customScroll-movePlace-zoom/src/js/index.jsx');
 
 const Modes = require('./modesDrowing/modes.js');
 
 class Tabs extends React.Component {
-    componentWillMount() {
-        this._canv = [];
-        this._ctx = [];
-    }
-
     render() {
-        let tabs = this.props.tabs.map((el, i) => (
-            <canvas
-                key={i}
-                ref={canv => this._canv[i] = canv}
-                className={(el.id === this.props.activeTab ? 'active' : '')}
-                height={el.size.x}
-                width={el.size.y}
-            />
-        ));
-
-        return (
-            <FlexiblePlace height={this.props.size.height} width={this.props.size.width}>
-                {tabs}
-            </FlexiblePlace>
-        );
+      this._canv = [];
+      this._ctx = [];
+      this._idArr = [];
+      let tabs = this.props.tabs.map((el, i) => {
+          this._idArr[i] = el.id;
+          return (<canvas
+              key={i}
+              ref={canv => this._canv[i] = canv}
+              className={(el.id === this.props.activeTab ? 'active' : '')}
+              height={el.size.x}
+              width={el.size.y}
+          />);
+      });
+      return (
+          <FlexiblePlace height={this.props.size.height} width={this.props.size.width}>
+              {tabs}
+          </FlexiblePlace>
+      );
     }
 
     componentDidMount() {
@@ -46,7 +44,9 @@ class Tabs extends React.Component {
     }
 
     componentDidUpdate() {
+        this._removeNullElFromCanvArr();
         this._setContext();
+
         if (
             this.props.tabs[this.props.tabs.length - 1]
         &&
@@ -77,10 +77,14 @@ class Tabs extends React.Component {
 
     _changeDrowingMode() {
         this._deleteListeners();
-        let active = this.props.activeTab;
+        let active = this._idArr.indexOf(this.props.activeTab);
 
         let mode = new (this._mode.getMode(this.props.instrumentary.activeInstrument))(this.props.instrumentary);
         this._deleteListeners = mode.setListeners(this._canv[active], this._ctx[active]);
+    }
+
+    _removeNullElFromCanvArr() {
+        this._canv = this._canv.filter(el => el)
     }
 }
 

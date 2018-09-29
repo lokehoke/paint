@@ -86,73 +86,6 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "../react-customScroll-movePlace-zoom/index.jsx":
-/*!******************************************************!*\
-  !*** ../react-customScroll-movePlace-zoom/index.jsx ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var React = __webpack_require__(/*! react */ "../react-customScroll-movePlace-zoom/node_modules/react/index.js");
-
-module.exports =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(FlexiblePlace, _React$Component);
-
-  function FlexiblePlace() {
-    _classCallCheck(this, FlexiblePlace);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(FlexiblePlace).apply(this, arguments));
-  }
-
-  _createClass(FlexiblePlace, [{
-    key: "render",
-    value: function render() {
-      var _this = this;
-
-      var style = {
-        height: this.props.height,
-        width: this.props.width,
-        overflow: 'hidden'
-      };
-      return React.createElement("div", {
-        style: style,
-        ref: function ref(inner) {
-          return _this.inner = inner;
-        }
-      }, this.props.children);
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {// console.log(this.inner.scrollWidth);
-      // console.log(this.inner.scrollHeight);
-    }
-  }]);
-
-  return FlexiblePlace;
-}(React.Component);
-
-/***/ }),
-
 /***/ "../react-customScroll-movePlace-zoom/node_modules/object-assign/index.js":
 /*!********************************************************************************!*\
   !*** ../react-customScroll-movePlace-zoom/node_modules/object-assign/index.js ***!
@@ -2134,6 +2067,73 @@ if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/react.development.js */ "../react-customScroll-movePlace-zoom/node_modules/react/cjs/react.development.js");
 }
 
+
+/***/ }),
+
+/***/ "../react-customScroll-movePlace-zoom/src/js/index.jsx":
+/*!*************************************************************!*\
+  !*** ../react-customScroll-movePlace-zoom/src/js/index.jsx ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var React = __webpack_require__(/*! react */ "../react-customScroll-movePlace-zoom/node_modules/react/index.js");
+
+module.exports =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(FlexiblePlace, _React$Component);
+
+  function FlexiblePlace() {
+    _classCallCheck(this, FlexiblePlace);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(FlexiblePlace).apply(this, arguments));
+  }
+
+  _createClass(FlexiblePlace, [{
+    key: "render",
+    value: function render() {
+      var _this = this;
+
+      var style = {
+        height: this.props.height,
+        width: this.props.width,
+        overflow: 'hidden'
+      };
+      return React.createElement("div", {
+        style: style,
+        ref: function ref(inner) {
+          return _this.inner = inner;
+        }
+      }, this.props.children);
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {// console.log(this.inner.scrollWidth);
+      // console.log(this.inner.scrollHeight);
+    }
+  }]);
+
+  return FlexiblePlace;
+}(React.Component);
 
 /***/ }),
 
@@ -6988,7 +6988,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "/* http://meyerweb.com/eric/tools/css/reset/\n   v4.0 | 20180602\n   License: none (public domain)\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmain, menu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, main, menu, nav, section {\n  display: block; }\n\n/* HTML5 hidden-attribute fix for newer browsers */\n*[hidden] {\n  display: none; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n* {\n  padding: 0;\n  margin: 0;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n\nbutton {\n  cursor: pointer; }\n\ncanvas {\n  display: block; }\n\nhtml,\nbody,\n.wrapper {\n  width: 100%;\n  height: 100%; }\n\nhtml,\nbody,\n.wrapper,\n.world {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  background: #14151a; }\n\na {\n  color: white;\n  text-decoration: none; }\n\n.__exitIcon {\n  color: #eb0d0d;\n  cursor: pointer;\n  position: absolute;\n  top: 3px;\n  right: 3px; }\n\n#root {\n  width: 100%;\n  height: 100%; }\n  #root .paintWrapper {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    overflow: hidden;\n    width: 100%;\n    height: 100%; }\n    #root .paintWrapper .header {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      background: #474545;\n      width: 100%;\n      height: 25px; }\n      #root .paintWrapper .header .header__container {\n        padding: 5px;\n        color: white; }\n        #root .paintWrapper .header .header__container .headerContainer__title {\n          cursor: pointer; }\n        #root .paintWrapper .header .header__container .headerContainer__subMenu {\n          z-index: 9999;\n          padding: 5px;\n          padding-left: 10px;\n          background: #14151a;\n          display: none;\n          position: relative;\n          min-width: 200px;\n          border-radius: 5px;\n          border: 1px solid white;\n          cursor: pointer; }\n          #root .paintWrapper .header .header__container .headerContainer__subMenu:hover {\n            background: #36c0e4; }\n        #root .paintWrapper .header .header__container:hover .headerContainer__subMenu {\n          display: block; }\n    #root .paintWrapper .workSpace {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      width: 100%;\n      height: 100%;\n      -webkit-box-flex: 1;\n          -ms-flex-positive: 1;\n              flex-grow: 1; }\n      #root .paintWrapper .workSpace .instrumentWrapper {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: vertical;\n        -webkit-box-direction: normal;\n            -ms-flex-direction: column;\n                flex-direction: column;\n        background: #474545;\n        width: 35px;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        margin: 5px 0;\n        border-radius: 0 5px 5px 0;\n        padding: 5px; }\n        #root .paintWrapper .workSpace .instrumentWrapper .instrument {\n          padding: 4px;\n          border-radius: 3px; }\n          #root .paintWrapper .workSpace .instrumentWrapper .instrument.active {\n            background: #14151a; }\n      #root .paintWrapper .workSpace .canvasWrapper {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: vertical;\n        -webkit-box-direction: normal;\n            -ms-flex-direction: column;\n                flex-direction: column;\n        -webkit-box-flex: 1;\n            -ms-flex-positive: 1;\n                flex-grow: 1;\n        width: calc(100% - 35px);\n        padding: 5px;\n        padding-top: 0; }\n        #root .paintWrapper .workSpace .canvasWrapper .listTabs {\n          height: 25px;\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          margin-top: 5px;\n          border-radius: 0 0 5px 5px;\n          background: #474545;\n          margin-bottom: 5px; }\n          #root .paintWrapper .workSpace .canvasWrapper .listTabs .tab {\n            min-width: 100px;\n            max-width: 200px;\n            overflow: hidden;\n            color: white;\n            padding: 0 10px;\n            -webkit-box-align: center;\n                -ms-flex-align: center;\n                    align-items: center;\n            display: -webkit-box;\n            display: -ms-flexbox;\n            display: flex;\n            white-space: nowrap;\n            border-right: 4px solid #14151a;\n            position: relative;\n            padding-right: 22px;\n            cursor: pointer; }\n            #root .paintWrapper .workSpace .canvasWrapper .listTabs .tab.active {\n              background: #2e2d34; }\n        #root .paintWrapper .workSpace .canvasWrapper .mainTabWrapper {\n          width: 100%;\n          height: 100%; }\n        #root .paintWrapper .workSpace .canvasWrapper canvas {\n          display: none; }\n          #root .paintWrapper .workSpace .canvasWrapper canvas.active {\n            display: block; }\n    #root .paintWrapper .footer {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      background: #474545;\n      width: 100%;\n      height: 20px; }\n      #root .paintWrapper .footer .footerObject {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center;\n        padding: 0 5px;\n        color: white;\n        font-size: 14px; }\n    #root .paintWrapper .dropWindow {\n      background: #474545;\n      position: absolute;\n      margin: auto;\n      top: 0;\n      bottom: 0;\n      left: 0;\n      right: 0;\n      border: white 1px solid;\n      border-radius: 5px;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      color: white; }\n      #root .paintWrapper .dropWindow header {\n        padding: 5px;\n        background: #2e2d34;\n        width: 100%;\n        border-radius: 5px 5px 0 0;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center; }\n      #root .paintWrapper .dropWindow main {\n        width: 100%;\n        height: 100%;\n        padding: 20px; }\n        #root .paintWrapper .dropWindow main .newFile div {\n          margin: 10px;\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -webkit-box-align: center;\n              -ms-flex-align: center;\n                  align-items: center; }\n          #root .paintWrapper .dropWindow main .newFile div span {\n            width: 50px;\n            display: inline-block; }\n          #root .paintWrapper .dropWindow main .newFile div input {\n            border: 0;\n            border-radius: 3px;\n            padding: 5px;\n            width: 145px;\n            outline: none; }\n            #root .paintWrapper .dropWindow main .newFile div input[type=\"number\"] {\n              width: 65px; }\n          #root .paintWrapper .dropWindow main .newFile div button {\n            width: 195px;\n            border-radius: 3px;\n            border: 0;\n            outline: none;\n            padding: 5px; }\n", "", {"version":3,"sources":["/home/alex/aaMy/paint/node_modules/reset-css/sass/_reset.scss","/home/alex/aaMy/paint/src/scss/default/defaults.scss","/home/alex/aaMy/paint/src/scss/color/color.scss","/home/alex/aaMy/paint/src/scss/default/standart.scss","/home/alex/aaMy/paint/src/scss/style/index.scss","/home/alex/aaMy/paint/src/scss/style/inner/header.scss","/home/alex/aaMy/paint/src/scss/style/inner/main.scss","/home/alex/aaMy/paint/src/scss/style/inner/footer.scss","/home/alex/aaMy/paint/src/scss/style/inner/drugonWindows.scss"],"names":[],"mappings":"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","file":"index.scss","sourcesContent":["/* http://meyerweb.com/eric/tools/css/reset/\n   v4.0 | 20180602\n   License: none (public domain)\n*/\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmain, menu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, main, menu, nav, section {\n\tdisplay: block;\n}\n/* HTML5 hidden-attribute fix for newer browsers */\n*[hidden] {\n    display: none;\n}\nbody {\n\tline-height: 1;\n}\nol, ul {\n\tlist-style: none;\n}\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n","@import 'node_modules/reset-css/sass/_reset.scss';\n\n* {\n\tpadding: 0;\n\tmargin: 0;\n\tbox-sizing: border-box;\n}\n\nbutton {\n\tcursor: pointer;\n}\n\ncanvas {\n\tdisplay: block;\n}\n\n\nhtml,\nbody,\n.wrapper,\n {\n\twidth: 100%;\n\theight: 100%;\n}\n\n\nhtml,\nbody,\n.wrapper,\n.world {\n\tdisplay: flex;\n\tbackground: $moreGray;\n}\n\na {\n\tcolor: white;\n\ttext-decoration: none;\n}\n","$gray: #474545;\n$middleGrey: #2e2d34;\n$moreGray: #14151a;\n\n$blue: #36c0e4;\n\n$red: #eb0d0d;\n",".__exitIcon {\n    color: $red;\n    cursor: pointer;\n    position: absolute;\n    top: 3px;\n    right: 3px;\n}\n","#root {\n    width: 100%;\n    height: 100%;\n\n    .paintWrapper {\n        display: flex;\n        flex-direction: column;\n        overflow: hidden;\n        width: 100%;\n        height: 100%;\n\n        @import './inner/header.scss';\n        @import './inner/main.scss';\n        @import './inner/footer.scss';\n        @import './inner/drugonWindows.scss';\n    }\n\n}\n",".header {\n    display: flex;\n    background: $gray;\n    width: 100%;\n    height: 25px;\n\n    .header__container {\n        padding: 5px;\n        color: white;\n\n        .headerContainer__title {\n            cursor: pointer;\n        }\n\n        .headerContainer__subMenu {\n            z-index: 9999;\n            padding: 5px;\n            padding-left: 10px;\n            background: $moreGray;\n            display: none;\n            position: relative;\n            min-width: 200px;\n            border-radius: 5px;\n            border: 1px solid white;\n            cursor: pointer;\n\n            &:hover {\n                background: $blue;\n            }\n        }\n\n        &:hover .headerContainer__subMenu {\n            display: block;\n        }\n    }\n}\n",".workSpace {\n    display: flex;\n    width: 100%;\n    height: 100%;\n    flex-grow: 1;\n\n    .instrumentWrapper {\n        display: flex;\n        flex-direction: column;\n        background: $gray;\n        width: 35px;\n        align-items: center;\n        margin: 5px 0;\n        border-radius: 0 5px 5px 0;\n        padding: 5px;\n\n        .instrument {\n            padding: 4px;\n            border-radius: 3px;\n\n            &.active {\n                background: $moreGray;\n            }\n        }\n    }\n\n    .canvasWrapper {\n        display: flex;\n        flex-direction: column;\n        flex-grow: 1;\n        width: calc(100% - 35px);\n        padding: 5px;\n        padding-top: 0;\n\n        .listTabs {\n            height: 25px;\n            display: flex;\n            margin-top: 5px;\n            border-radius: 0 0 5px 5px;\n            background: $gray;\n            margin-bottom: 5px;\n\n            .tab {\n                min-width: 100px;\n                max-width: 200px;\n                overflow: hidden;\n                color: white;\n                padding: 0 10px;\n                align-items: center;\n                display: flex;\n                white-space: nowrap;\n                border-right: 4px solid $moreGray;\n                position: relative;\n                padding-right: 22px;\n                cursor: pointer;\n\n                &.active {\n                    background: $middleGrey;\n                }\n            }\n        }\n\n        .mainTabWrapper {\n            width: 100%;\n            height: 100%;\n        }\n\n        canvas {\n            display: none;\n\n            &.active {\n                display: block;\n            }\n        }\n    }\n}\n",".footer {\n    display: flex;\n    background: $gray;\n    width: 100%;\n    height: 20px;\n\n    .footerObject {\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        padding: 0 5px;\n        color: white;\n        font-size: 14px;\n    }\n}\n",".dropWindow {\n    $bdrs: 5px;\n\n    background: $gray;\n    position: absolute;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    border: white 1px solid;\n    border-radius: $bdrs;\n    display: flex;\n    align-items: center;\n    flex-direction: column;\n    color: white;\n\n    header {\n        padding: 5px;\n        background: $middleGrey;\n        width: 100%;\n        border-radius: $bdrs $bdrs 0 0;\n        display: flex;\n        justify-content: center;\n    }\n\n    main {\n        width: 100%;\n        height: 100%;\n        padding: 20px;\n\n        .newFile {\n            div {\n                margin: 10px;\n                display: flex;\n                align-items: center;\n\n                span {\n                    width: 50px;\n                    display: inline-block;\n                }\n\n                input {\n                    border: 0;\n                    border-radius: 3px;\n                    padding: 5px;\n                    width: 145px;\n                    outline: none;\n\n                    &[type=\"number\"] {\n                        width: 65px;\n                    }\n                }\n\n                button {\n                    width: 195px;\n                    border-radius: 3px;\n                    border: 0;\n                    outline: none;\n                    padding: 5px;\n                }\n            }\n\n        }\n    }\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, "/* http://meyerweb.com/eric/tools/css/reset/\n   v4.0 | 20180602\n   License: none (public domain)\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmain, menu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, main, menu, nav, section {\n  display: block; }\n\n/* HTML5 hidden-attribute fix for newer browsers */\n*[hidden] {\n  display: none; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n* {\n  padding: 0;\n  margin: 0;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n\nbutton {\n  cursor: pointer; }\n\ncanvas {\n  display: block; }\n\nhtml,\nbody,\n.wrapper {\n  width: 100%;\n  height: 100%; }\n\nhtml,\nbody,\n.wrapper,\n.world {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  background: #14151a; }\n\na {\n  color: white;\n  text-decoration: none; }\n\n.__exitIcon {\n  color: #eb0d0d;\n  cursor: pointer;\n  position: absolute;\n  top: 3px;\n  right: 3px; }\n\n#root {\n  width: 100%;\n  height: 100%; }\n  #root .paintWrapper {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    overflow: hidden;\n    width: 100%;\n    height: 100%; }\n    #root .paintWrapper .header {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      background: #474545;\n      width: 100%;\n      height: 25px; }\n      #root .paintWrapper .header .header__container {\n        padding: 5px;\n        color: white; }\n        #root .paintWrapper .header .header__container .headerContainer__title {\n          cursor: pointer; }\n        #root .paintWrapper .header .header__container .headerContainer__subMenu {\n          z-index: 9999;\n          padding: 5px;\n          padding-left: 10px;\n          background: #14151a;\n          display: none;\n          position: absolute;\n          min-width: 200px;\n          border-radius: 5px;\n          border: 1px solid white;\n          cursor: pointer; }\n          #root .paintWrapper .header .header__container .headerContainer__subMenu:hover {\n            background: #36c0e4; }\n        #root .paintWrapper .header .header__container:hover .headerContainer__subMenu {\n          display: block; }\n    #root .paintWrapper .workSpace {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      width: 100%;\n      height: 100%;\n      -webkit-box-flex: 1;\n          -ms-flex-positive: 1;\n              flex-grow: 1; }\n      #root .paintWrapper .workSpace .instrumentWrapper {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: vertical;\n        -webkit-box-direction: normal;\n            -ms-flex-direction: column;\n                flex-direction: column;\n        background: #474545;\n        width: 35px;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        margin: 5px 0;\n        border-radius: 0 5px 5px 0;\n        padding: 5px; }\n        #root .paintWrapper .workSpace .instrumentWrapper .instrument {\n          padding: 4px;\n          border-radius: 3px; }\n          #root .paintWrapper .workSpace .instrumentWrapper .instrument.active {\n            background: #14151a; }\n      #root .paintWrapper .workSpace .canvasWrapper {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: vertical;\n        -webkit-box-direction: normal;\n            -ms-flex-direction: column;\n                flex-direction: column;\n        -webkit-box-flex: 1;\n            -ms-flex-positive: 1;\n                flex-grow: 1;\n        width: calc(100% - 35px);\n        padding: 5px;\n        padding-top: 0; }\n        #root .paintWrapper .workSpace .canvasWrapper .listTabs {\n          height: 25px;\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          margin-top: 5px;\n          border-radius: 0 0 5px 5px;\n          background: #474545;\n          margin-bottom: 5px; }\n          #root .paintWrapper .workSpace .canvasWrapper .listTabs .tab {\n            min-width: 100px;\n            max-width: 200px;\n            overflow: hidden;\n            color: white;\n            padding: 0 10px;\n            -webkit-box-align: center;\n                -ms-flex-align: center;\n                    align-items: center;\n            display: -webkit-box;\n            display: -ms-flexbox;\n            display: flex;\n            white-space: nowrap;\n            border-right: 4px solid #14151a;\n            position: relative;\n            padding-right: 22px;\n            cursor: pointer; }\n            #root .paintWrapper .workSpace .canvasWrapper .listTabs .tab.active {\n              background: #2e2d34; }\n        #root .paintWrapper .workSpace .canvasWrapper .mainTabWrapper {\n          width: 100%;\n          height: 100%; }\n        #root .paintWrapper .workSpace .canvasWrapper canvas {\n          display: none; }\n          #root .paintWrapper .workSpace .canvasWrapper canvas.active {\n            display: block; }\n    #root .paintWrapper .footer {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      background: #474545;\n      width: 100%;\n      height: 20px; }\n      #root .paintWrapper .footer .footerObject {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center;\n        padding: 0 5px;\n        color: white;\n        font-size: 14px; }\n    #root .paintWrapper .dropWindow {\n      background: #474545;\n      position: absolute;\n      margin: auto;\n      top: 0;\n      bottom: 0;\n      left: 0;\n      right: 0;\n      border: white 1px solid;\n      border-radius: 5px;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      color: white;\n      z-index: 1000; }\n      #root .paintWrapper .dropWindow header {\n        padding: 5px;\n        background: #2e2d34;\n        width: 100%;\n        border-radius: 5px 5px 0 0;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center;\n        cursor: default; }\n      #root .paintWrapper .dropWindow main {\n        width: 100%;\n        height: 100%;\n        padding: 20px; }\n        #root .paintWrapper .dropWindow main .newFile div {\n          margin: 10px;\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -webkit-box-align: center;\n              -ms-flex-align: center;\n                  align-items: center; }\n          #root .paintWrapper .dropWindow main .newFile div span {\n            width: 50px;\n            display: inline-block; }\n          #root .paintWrapper .dropWindow main .newFile div input {\n            border: 0;\n            border-radius: 3px;\n            padding: 5px;\n            width: 145px;\n            outline: none; }\n            #root .paintWrapper .dropWindow main .newFile div input[type=\"number\"] {\n              width: 65px; }\n          #root .paintWrapper .dropWindow main .newFile div button {\n            width: 195px;\n            border-radius: 3px;\n            border: 0;\n            outline: none;\n            padding: 5px; }\n", "", {"version":3,"sources":["/home/alex/aaMy/paint/node_modules/reset-css/sass/_reset.scss","/home/alex/aaMy/paint/src/scss/default/defaults.scss","/home/alex/aaMy/paint/src/scss/color/color.scss","/home/alex/aaMy/paint/src/scss/default/standart.scss","/home/alex/aaMy/paint/src/scss/style/index.scss","/home/alex/aaMy/paint/src/scss/style/inner/header.scss","/home/alex/aaMy/paint/src/scss/style/inner/main.scss","/home/alex/aaMy/paint/src/scss/style/inner/footer.scss","/home/alex/aaMy/paint/src/scss/style/inner/drugonWindows.scss"],"names":[],"mappings":"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","file":"index.scss","sourcesContent":["/* http://meyerweb.com/eric/tools/css/reset/\n   v4.0 | 20180602\n   License: none (public domain)\n*/\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmain, menu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, main, menu, nav, section {\n\tdisplay: block;\n}\n/* HTML5 hidden-attribute fix for newer browsers */\n*[hidden] {\n    display: none;\n}\nbody {\n\tline-height: 1;\n}\nol, ul {\n\tlist-style: none;\n}\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n","@import 'node_modules/reset-css/sass/_reset.scss';\n\n* {\n\tpadding: 0;\n\tmargin: 0;\n\tbox-sizing: border-box;\n}\n\nbutton {\n\tcursor: pointer;\n}\n\ncanvas {\n\tdisplay: block;\n}\n\n\nhtml,\nbody,\n.wrapper,\n {\n\twidth: 100%;\n\theight: 100%;\n}\n\n\nhtml,\nbody,\n.wrapper,\n.world {\n\tdisplay: flex;\n\tbackground: $moreGray;\n}\n\na {\n\tcolor: white;\n\ttext-decoration: none;\n}\n","$gray: #474545;\n$middleGrey: #2e2d34;\n$moreGray: #14151a;\n\n$blue: #36c0e4;\n\n$red: #eb0d0d;\n",".__exitIcon {\n    color: $red;\n    cursor: pointer;\n    position: absolute;\n    top: 3px;\n    right: 3px;\n}\n","#root {\n    width: 100%;\n    height: 100%;\n\n    .paintWrapper {\n        display: flex;\n        flex-direction: column;\n        overflow: hidden;\n        width: 100%;\n        height: 100%;\n\n        @import './inner/header.scss';\n        @import './inner/main.scss';\n        @import './inner/footer.scss';\n        @import './inner/drugonWindows.scss';\n    }\n\n}\n",".header {\n    display: flex;\n    background: $gray;\n    width: 100%;\n    height: 25px;\n\n    .header__container {\n        padding: 5px;\n        color: white;\n\n        .headerContainer__title {\n            cursor: pointer;\n        }\n\n        .headerContainer__subMenu {\n            z-index: 9999;\n            padding: 5px;\n            padding-left: 10px;\n            background: $moreGray;\n            display: none;\n            position: absolute;\n            min-width: 200px;\n            border-radius: 5px;\n            border: 1px solid white;\n            cursor: pointer;\n\n            &:hover {\n                background: $blue;\n            }\n        }\n\n        &:hover .headerContainer__subMenu {\n            display: block;\n        }\n    }\n}\n",".workSpace {\n    display: flex;\n    width: 100%;\n    height: 100%;\n    flex-grow: 1;\n\n    .instrumentWrapper {\n        display: flex;\n        flex-direction: column;\n        background: $gray;\n        width: 35px;\n        align-items: center;\n        margin: 5px 0;\n        border-radius: 0 5px 5px 0;\n        padding: 5px;\n\n        .instrument {\n            padding: 4px;\n            border-radius: 3px;\n\n            &.active {\n                background: $moreGray;\n            }\n        }\n    }\n\n    .canvasWrapper {\n        display: flex;\n        flex-direction: column;\n        flex-grow: 1;\n        width: calc(100% - 35px);\n        padding: 5px;\n        padding-top: 0;\n\n        .listTabs {\n            height: 25px;\n            display: flex;\n            margin-top: 5px;\n            border-radius: 0 0 5px 5px;\n            background: $gray;\n            margin-bottom: 5px;\n\n            .tab {\n                min-width: 100px;\n                max-width: 200px;\n                overflow: hidden;\n                color: white;\n                padding: 0 10px;\n                align-items: center;\n                display: flex;\n                white-space: nowrap;\n                border-right: 4px solid $moreGray;\n                position: relative;\n                padding-right: 22px;\n                cursor: pointer;\n\n                &.active {\n                    background: $middleGrey;\n                }\n            }\n        }\n\n        .mainTabWrapper {\n            width: 100%;\n            height: 100%;\n        }\n\n        canvas {\n            display: none;\n\n            &.active {\n                display: block;\n            }\n        }\n    }\n}\n",".footer {\n    display: flex;\n    background: $gray;\n    width: 100%;\n    height: 20px;\n\n    .footerObject {\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        padding: 0 5px;\n        color: white;\n        font-size: 14px;\n    }\n}\n",".dropWindow {\n    $bdrs: 5px;\n\n    background: $gray;\n    position: absolute;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    border: white 1px solid;\n    border-radius: $bdrs;\n    display: flex;\n    align-items: center;\n    flex-direction: column;\n    color: white;\n    z-index: 1000;\n\n    header {\n        padding: 5px;\n        background: $middleGrey;\n        width: 100%;\n        border-radius: $bdrs $bdrs 0 0;\n        display: flex;\n        justify-content: center;\n        cursor: default;\n    }\n\n    main {\n        width: 100%;\n        height: 100%;\n        padding: 20px;\n\n        .newFile {\n            div {\n                margin: 10px;\n                display: flex;\n                align-items: center;\n\n                span {\n                    width: 50px;\n                    display: inline-block;\n                }\n\n                input {\n                    border: 0;\n                    border-radius: 3px;\n                    padding: 5px;\n                    width: 145px;\n                    outline: none;\n\n                    &[type=\"number\"] {\n                        width: 65px;\n                    }\n                }\n\n                button {\n                    width: 195px;\n                    border-radius: 3px;\n                    border: 0;\n                    outline: none;\n                    padding: 5px;\n                }\n            }\n\n        }\n    }\n}\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -31590,6 +31590,107 @@ var paint = new Paint('#root');
 
 /***/ }),
 
+/***/ "./src/js/paint/commonInterface/dragnDrop.js":
+/*!***************************************************!*\
+  !*** ./src/js/paint/commonInterface/dragnDrop.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+module.exports =
+/*#__PURE__*/
+function () {
+  function DragnDrop(item) {
+    _classCallCheck(this, DragnDrop);
+
+    this._item = item;
+    this._shiftX = 0;
+    this._shiftY = 0;
+    this._moveAt = this._moveAt.bind(this);
+    this._endMoving = this._endMoving.bind(this);
+  }
+
+  _createClass(DragnDrop, [{
+    key: "startDragonDroping",
+    value: function startDragonDroping() {
+      var _this = this;
+
+      var item = this._item;
+      item.addEventListener('dragstart', function (e) {
+        return false;
+      });
+
+      item.onmousedown = function (e) {
+        if (_this._issetNoDrop(e.path)) {
+          return false;
+        } else {
+          var coords = _this._getCoords(item);
+
+          _this._shiftX = e.pageX - coords.left;
+          _this._shiftY = e.pageY - coords.top;
+
+          _this._moveAt(e);
+
+          _this._emptyPositions();
+
+          _this._item.parentElement.appendChild(item);
+
+          document.addEventListener('mousemove', _this._moveAt);
+          document.addEventListener('mouseup', _this._endMoving);
+        }
+      };
+    }
+  }, {
+    key: "_getCoords",
+    value: function _getCoords(elem) {
+      var box = elem.getBoundingClientRect();
+      return {
+        top: box.top,
+        left: box.left
+      };
+    }
+  }, {
+    key: "_moveAt",
+    value: function _moveAt(e) {
+      this._item.style.left = e.pageX - this._shiftX + 'px';
+      this._item.style.top = e.pageY - this._shiftY + 'px';
+    }
+  }, {
+    key: "_endMoving",
+    value: function _endMoving() {
+      document.removeEventListener('mousemove', this._moveAt);
+      document.removeEventListener('mouseup', this._endMoving);
+    }
+  }, {
+    key: "_emptyPositions",
+    value: function _emptyPositions() {
+      this._item.style.bottom = 'auto';
+      this._item.style.right = 'auto';
+    }
+  }, {
+    key: "_issetNoDrop",
+    value: function _issetNoDrop(path) {
+      var isset = false;
+      path.slice(0, -6).forEach(function (el) {
+        if (el.dataset.toogle === 'noToogle') {
+          isset = true;
+        }
+      });
+      return isset;
+    }
+  }]);
+
+  return DragnDrop;
+}();
+
+/***/ }),
+
 /***/ "./src/js/paint/components/drugonWindows/dropMain/newFile.jsx":
 /*!********************************************************************!*\
   !*** ./src/js/paint/components/drugonWindows/dropMain/newFile.jsx ***!
@@ -31763,18 +31864,20 @@ var faTimesCircle = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */
 
 var NewFile = __webpack_require__(/*! ./dropMain/newFile.jsx */ "./src/js/paint/components/drugonWindows/dropMain/newFile.jsx");
 
-var DrugonWindowWrapper =
+var DragnDrop = __webpack_require__(/*! ./../../commonInterface/dragnDrop.js */ "./src/js/paint/commonInterface/dragnDrop.js");
+
+var DropWindow =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(DrugonWindowWrapper, _React$Component);
+  _inherits(DropWindow, _React$Component);
 
-  function DrugonWindowWrapper() {
-    _classCallCheck(this, DrugonWindowWrapper);
+  function DropWindow() {
+    _classCallCheck(this, DropWindow);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(DrugonWindowWrapper).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(DropWindow).apply(this, arguments));
   }
 
-  _createClass(DrugonWindowWrapper, [{
+  _createClass(DropWindow, [{
     key: "render",
     value: function render() {
       var _this = this;
@@ -31782,7 +31885,7 @@ function (_React$Component) {
       return React.createElement("div", {
         className: "dropWindow",
         ref: function ref(window) {
-          return _this.window = window;
+          return _this._window = window;
         }
       }, React.createElement("header", null, this.props.element.title, React.createElement("div", {
         className: "__exitIcon",
@@ -31790,26 +31893,20 @@ function (_React$Component) {
           return _this.exitBtn = exit;
         }
       }, React.createElement(FontAwesomeIcon, {
-        icon: faTimesCircle
-      }))), React.createElement("main", null, this._getMain(this.props.element)));
+        icon: faTimesCircle,
+        "data-toogle": "noToogle"
+      }))), React.createElement("main", {
+        "data-toogle": "noToogle"
+      }, this._getMain(this.props.element)));
     }
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
 
-      var h = 200;
-      var w = 200;
+      this._defineSize();
 
-      switch (this.props.element.view) {
-        case 'newFile':
-          h = 180;
-          w = 260;
-          break;
-      }
-
-      this.window.style.height = "".concat(h, "px");
-      this.window.style.width = "".concat(w, "px");
+      this._deleteDrugonDrop = this._setUpDragnDrop();
       this.exitBtn.addEventListener('click', function (e) {
         e.preventDefault();
 
@@ -31817,6 +31914,33 @@ function (_React$Component) {
 
         return false;
       });
+    }
+  }, {
+    key: "componentWiilUnmount",
+    value: function componentWiilUnmount() {
+      this._deleteDrugonDrop();
+    }
+  }, {
+    key: "_setUpDragnDrop",
+    value: function _setUpDragnDrop() {
+      var dragn = new DragnDrop(this._window);
+      dragn.startDragonDroping();
+    }
+  }, {
+    key: "_defineSize",
+    value: function _defineSize() {
+      this._h = 200;
+      this._w = 200;
+
+      switch (this.props.element.view) {
+        case 'newFile':
+          this._h = 180;
+          this._w = 260;
+          break;
+      }
+
+      this._window.style.height = "".concat(this._h, "px");
+      this._window.style.width = "".concat(this._w, "px");
     }
   }, {
     key: "_getMain",
@@ -31841,7 +31965,7 @@ function (_React$Component) {
     }
   }]);
 
-  return DrugonWindowWrapper;
+  return DropWindow;
 }(React.Component);
 
 module.exports = ReactRedux.connect(function () {
@@ -31855,7 +31979,7 @@ module.exports = ReactRedux.connect(function () {
       });
     }
   };
-})(DrugonWindowWrapper);
+})(DropWindow);
 
 /***/ }),
 
@@ -31914,7 +32038,7 @@ function (_React$Component) {
       return this.props.openedWindows.map(function (el, i) {
         return React.createElement(DropWindow, {
           element: el,
-          key: i
+          key: el.id
         });
       });
     }
@@ -32184,6 +32308,8 @@ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var File = __webpack_require__(/*! ./own/file.jsx */ "./src/js/paint/components/header/own/file.jsx");
 
+var Windows = __webpack_require__(/*! ./own/windows.jsx */ "./src/js/paint/components/header/own/windows.jsx");
+
 var Header =
 /*#__PURE__*/
 function (_React$Component) {
@@ -32205,7 +32331,7 @@ function (_React$Component) {
         ref: function ref(h) {
           return _this.header = h;
         }
-      }, React.createElement(File, null));
+      }, React.createElement(File, null), React.createElement(Windows, null));
     }
   }]);
 
@@ -32273,14 +32399,14 @@ function (_React$Component) {
       }, React.createElement("li", null, React.createElement("span", {
         className: "newFile",
         ref: function ref(nf) {
-          return _this.newFile = nf;
+          return _this._newFile = nf;
         }
       }, "New file"))));
     }
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.newFile.addEventListener('click', this._createNewFile.bind(this));
+      this._newFile.addEventListener('click', this._createNewFile.bind(this));
     }
   }, {
     key: "_createNewFile",
@@ -32304,6 +32430,97 @@ module.exports = ReactRedux.connect(function (state) {
     }
   };
 })(File);
+
+/***/ }),
+
+/***/ "./src/js/paint/components/header/own/windows.jsx":
+/*!********************************************************!*\
+  !*** ./src/js/paint/components/header/own/windows.jsx ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var ReactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var Winsows =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Winsows, _React$Component);
+
+  function Winsows() {
+    _classCallCheck(this, Winsows);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Winsows).apply(this, arguments));
+  }
+
+  _createClass(Winsows, [{
+    key: "render",
+    value: function render() {
+      var _this = this;
+
+      return React.createElement("div", {
+        className: "header__container"
+      }, React.createElement("span", {
+        className: "headerContainer__title"
+      }, "windows"), React.createElement("ul", {
+        className: "headerContainer__subMenu"
+      }, React.createElement("li", null, React.createElement("span", {
+        className: "basicInstrument",
+        ref: function ref(bi) {
+          return _this._basicInstrument = bi;
+        }
+      }, "Basic instrument"))));
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this._basicInstrument.addEventListener('click', this._createNewBasicInstrumentWindow.bind(this));
+    }
+  }, {
+    key: "_createNewBasicInstrumentWindow",
+    value: function _createNewBasicInstrumentWindow() {
+      this.props.newWindow('basicInstrument');
+    }
+  }]);
+
+  return Winsows;
+}(React.Component);
+
+module.exports = ReactRedux.connect(function (state) {
+  return {};
+}, function (dispatch) {
+  return {
+    newWindow: function newWindow(view) {
+      dispatch({
+        type: 'OPEN_WINDOW',
+        view: view
+      });
+    }
+  };
+})(Winsows);
 
 /***/ }),
 
@@ -32529,7 +32746,7 @@ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var ReactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
-var FlexiblePlace = __webpack_require__(/*! ../../../../../../../react-customScroll-movePlace-zoom/index.jsx */ "../react-customScroll-movePlace-zoom/index.jsx");
+var FlexiblePlace = __webpack_require__(/*! ./../../../../../../../react-customScroll-movePlace-zoom/src/js/index.jsx */ "../react-customScroll-movePlace-zoom/src/js/index.jsx");
 
 var Modes = __webpack_require__(/*! ./modesDrowing/modes.js */ "./src/js/paint/components/workSpace/canvas/modesDrowing/modes.js");
 
@@ -32545,17 +32762,15 @@ function (_React$Component) {
   }
 
   _createClass(Tabs, [{
-    key: "componentWillMount",
-    value: function componentWillMount() {
-      this._canv = [];
-      this._ctx = [];
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this = this;
 
+      this._canv = [];
+      this._ctx = [];
+      this._idArr = [];
       var tabs = this.props.tabs.map(function (el, i) {
+        _this._idArr[i] = el.id;
         return React.createElement("canvas", {
           key: i,
           ref: function ref(canv) {
@@ -32593,6 +32808,8 @@ function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
+      this._removeNullElFromCanvArr();
+
       this._setContext();
 
       if (this.props.tabs[this.props.tabs.length - 1] && this.props.tabs[this.props.tabs.length - 1].id !== this._idLastCanvas) {
@@ -32629,9 +32846,17 @@ function (_React$Component) {
     value: function _changeDrowingMode() {
       this._deleteListeners();
 
-      var active = this.props.activeTab;
+      var active = this._idArr.indexOf(this.props.activeTab);
+
       var mode = new (this._mode.getMode(this.props.instrumentary.activeInstrument))(this.props.instrumentary);
       this._deleteListeners = mode.setListeners(this._canv[active], this._ctx[active]);
+    }
+  }, {
+    key: "_removeNullElFromCanvArr",
+    value: function _removeNullElFromCanvArr() {
+      this._canv = this._canv.filter(function (el) {
+        return el;
+      });
     }
   }]);
 
@@ -33348,22 +33573,24 @@ module.exports = function () {
       case 'OPEN_WINDOW':
         if (action.view === 'newFile') {
           title = 'Create new file';
-
-          if (state.own.some(function (el) {
-            return el.view === 'newFile';
-          })) {
-            return state;
-          }
+        } else if (action.view === 'basicInstrument') {
+          title = 'Basic Instrument';
         }
 
-        return {
-          id: id + 1,
-          own: _toConsumableArray(state.own).concat([{
-            id: id++,
-            view: action.view,
-            title: title
-          }])
-        };
+        if (state.own.some(function (el) {
+          return el.view === action.view;
+        })) {
+          return state;
+        } else {
+          return {
+            id: id + 1,
+            own: _toConsumableArray(state.own).concat([{
+              id: id++,
+              view: action.view,
+              title: title
+            }])
+          };
+        }
 
       case 'CLOSE_WINDOW':
         return {

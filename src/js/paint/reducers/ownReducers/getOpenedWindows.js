@@ -12,20 +12,23 @@ module.exports = () => (state = def, action) => {
         case 'OPEN_WINDOW':
             if (action.view === 'newFile') {
                 title = 'Create new file';
-
-                if (state.own.some(el => el.view === 'newFile')) {
-                    return state;
-                }
+            } else if (action.view === 'basicInstrument') {
+                title = 'Basic Instrument';
             }
 
-            return {
-                id: id + 1,
-                own: [...state.own, {
-                    id: id++,
-                    view: action.view,
-                    title
-                }]
-            };
+            if (state.own.some(el => el.view === action.view)) {
+                return state;
+            } else {
+                return {
+                    id: id + 1,
+                    own: [...state.own, {
+                        id: id++,
+                        view: action.view,
+                        title
+                    }]
+                };
+            }
+
         case 'CLOSE_WINDOW':
             return {
                 id,

@@ -3,18 +3,18 @@
 const React = require('react');
 const ReactRedux = require('react-redux');
 
-class File extends React.Component {
+class Winsows extends React.Component {
     render() {
         return (
             <div className="header__container">
-                <span className="headerContainer__title">file</span>
+                <span className="headerContainer__title">windows</span>
                 <ul className="headerContainer__subMenu">
                     <li>
                         <span
-                            className="newFile"
-                            ref={nf => this._newFile = nf}
+                            className="basicInstrument"
+                            ref={bi => this._basicInstrument = bi}
                         >
-                            New file
+                            Basic instrument
                         </span>
                     </li>
                 </ul>
@@ -23,22 +23,22 @@ class File extends React.Component {
     }
 
     componentDidMount() {
-        this._newFile.addEventListener('click', this._createNewFile.bind(this));
+        this._basicInstrument.addEventListener('click', this._createNewBasicInstrumentWindow.bind(this));
     }
 
-    _createNewFile() {
-        this.props.newFile();
+    _createNewBasicInstrumentWindow() {
+        this.props.newWindow('basicInstrument');
     }
 }
 
 module.exports = ReactRedux.connect(
     state => ({}),
     dispatch => ({
-        newFile: () => {
+        newWindow: view => {
             dispatch({
                 type: 'OPEN_WINDOW',
-                view: 'newFile'
+                view
             })
         }
     })
-)(File);
+)(Winsows);

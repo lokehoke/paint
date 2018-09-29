@@ -17,7 +17,7 @@ class DrugonWindowWrapper extends React.Component {
 
     render() {
         return this.props.openedWindows.map((el, i) =>
-            <DropWindow element={el} key={i}/>
+            <DropWindow element={el} key={el.id} />
         );
     }
 }
