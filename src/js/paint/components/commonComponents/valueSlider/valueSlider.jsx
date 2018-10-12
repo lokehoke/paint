@@ -5,6 +5,8 @@ const PropTypes = require('prop-types')
 
 const PimpDote = require('./../simpleComponents/pimpDote.jsx');
 
+const DragnDrop = require('./../../../commonInterface/dragnDrop.js');
+
 let stylesValueSlider = {
     position: 'relative',
     display: 'flex',
@@ -42,11 +44,27 @@ module.exports = class ValueSlider extends React.Component {
         config: PropTypes.object
     };
 
+    constructor(props) {
+        super(props);
+        this._pimp = React.createRef();
+    }
+
     render() {
         return (
             <div style={stylesValueSlider}>
-                <PimpDote style={stylePip}/>
+                <PimpDote style={stylePip} ref={pimp => this._pimp = pimp} />
             </div>
         );
+    }
+
+    componentDidMount() {
+        this._setUpDragnDrop();
+    }
+
+    _setUpDragnDrop() {
+        let dragn = new DragnDrop(this._pimp.getDom(), {
+            ignoreNoDrugon: true
+        });
+        dragn.startDragonDroping();
     }
 }

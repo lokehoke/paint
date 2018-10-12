@@ -10,6 +10,7 @@ class BasicInstrument extends React.Component {
         super(props);
         this._changeLineThickness = this._changeLineThickness.bind(this);
     }
+    
     render() {
         return (
             <div className="basicInstrument">

@@ -19,12 +19,12 @@ class DropWindow extends React.Component {
                     <div
                         className="__exitIcon"
                         ref={exit => this.exitBtn = exit}
-                        data-toogle="noToogle"
+                        data-drugon="noDrugon"
                     >
                         <FontAwesomeIcon icon={faTimesCircle} />
                     </div>
                 </header>
-                <main data-toogle="noToogle">
+                <main data-drugon="noDrugon">
                     {this._getMain(this.props.element)}
                 </main>
             </div>
@@ -33,7 +33,7 @@ class DropWindow extends React.Component {
 
     componentDidMount() {
         this._defineSize();
-        this._deleteDrugonDrop = this._setUpDragnDrop();
+        this._deleteDrugonDrop = (this._setUpDragnDrop() || (() => {}));
 
         this.exitBtn.addEventListener('click', e => {
             e.preventDefault();

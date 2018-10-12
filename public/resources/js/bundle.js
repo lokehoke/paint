@@ -29555,17 +29555,28 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+var defConfig = {
+  ignoreNoDrugon: false
+};
+var id = 0;
+
 module.exports =
 /*#__PURE__*/
 function () {
   function DragnDrop(item) {
+    var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
     _classCallCheck(this, DragnDrop);
 
     this._item = item;
     this._shiftX = 0;
     this._shiftY = 0;
+    this._config = Object.assign({}, defConfig, config);
+    this._shiftXAbsPar = 0;
+    this._shiftYAbsPar = 0;
     this._moveAt = this._moveAt.bind(this);
     this._endMoving = this._endMoving.bind(this);
+    this._id = id++;
   }
 
   _createClass(DragnDrop, [{
@@ -29579,9 +29590,11 @@ function () {
       });
 
       item.onmousedown = function (e) {
-        if (_this._issetNoDrop(e.path)) {
+        if (!_this._config.ignoreNoDrugon && _this._issetNoDrop(e.path)) {
           return true;
         } else {
+          _this._findAbsPar(e.path);
+
           var coords = _this._getCoords(item);
 
           _this._shiftX = e.pageX - coords.left;
@@ -29610,8 +29623,8 @@ function () {
   }, {
     key: "_moveAt",
     value: function _moveAt(e) {
-      this._item.style.left = e.pageX - this._shiftX + 'px';
-      this._item.style.top = e.pageY - this._shiftY + 'px';
+      this._item.style.left = e.pageX - this._shiftX - this._shiftXAbsPar + 'px';
+      this._item.style.top = e.pageY - this._shiftY - this._shiftYAbsPar + 'px';
     }
   }, {
     key: "_endMoving",
@@ -29626,11 +29639,25 @@ function () {
       this._item.style.right = 'auto';
     }
   }, {
+    key: "_findAbsPar",
+    value: function _findAbsPar(path) {
+      var _this2 = this;
+
+      var indexOwn = path.indexOf(this._item) + 1;
+      path.slice(indexOwn, -6).reverse().forEach(function (el) {
+        if (el.style.position === 'absolute' || el.style.position === 'relative' || el.style.position === 'fixed') {
+          var coor = el.getBoundingClientRect();
+          _this2._shiftXAbsPar = coor.left;
+          _this2._shiftYAbsPar = coor.top;
+        }
+      });
+    }
+  }, {
     key: "_issetNoDrop",
     value: function _issetNoDrop(path) {
       var isset = false;
       path.slice(0, -6).forEach(function (el) {
-        if (el.dataset.toogle === 'noToogle') {
+        if (el.dataset.drugon === 'noDrugon') {
           isset = true;
         }
       });
@@ -29771,10 +29798,20 @@ function (_React$Component) {
   _createClass(pimpDote, [{
     key: "render",
     value: function render() {
+      var _this = this;
+
       style = Object.assign({}, style, this.props.style);
       return React.createElement("div", {
-        style: style
+        style: style,
+        ref: function ref(dote) {
+          return _this._dote = dote;
+        }
       });
+    }
+  }, {
+    key: "getDom",
+    value: function getDom() {
+      return this._dote;
     }
   }]);
 
@@ -29825,6 +29862,8 @@ var PropTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types
 
 var PimpDote = __webpack_require__(/*! ./../simpleComponents/pimpDote.jsx */ "./src/js/paint/components/commonComponents/simpleComponents/pimpDote.jsx");
 
+var DragnDrop = __webpack_require__(/*! ./../../../commonInterface/dragnDrop.js */ "./src/js/paint/commonInterface/dragnDrop.js");
+
 var stylesValueSlider = {
   position: 'relative',
   display: 'flex',
@@ -29842,20 +29881,42 @@ module.exports = (_temp = _class =
 function (_React$Component) {
   _inherits(ValueSlider, _React$Component);
 
-  function ValueSlider() {
+  function ValueSlider(props) {
+    var _this;
+
     _classCallCheck(this, ValueSlider);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ValueSlider).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ValueSlider).call(this, props));
+    _this._pimp = React.createRef();
+    return _this;
   }
 
   _createClass(ValueSlider, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return React.createElement("div", {
         style: stylesValueSlider
       }, React.createElement(PimpDote, {
-        style: stylePip
+        style: stylePip,
+        ref: function ref(pimp) {
+          return _this2._pimp = pimp;
+        }
       }));
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this._setUpDragnDrop();
+    }
+  }, {
+    key: "_setUpDragnDrop",
+    value: function _setUpDragnDrop() {
+      var dragn = new DragnDrop(this._pimp.getDom(), {
+        ignoreNoDrugon: true
+      });
+      dragn.startDragonDroping();
     }
   }]);
 
@@ -30176,11 +30237,11 @@ function (_React$Component) {
         ref: function ref(exit) {
           return _this.exitBtn = exit;
         },
-        "data-toogle": "noToogle"
+        "data-drugon": "noDrugon"
       }, React.createElement(FontAwesomeIcon, {
         icon: faTimesCircle
       }))), React.createElement("main", {
-        "data-toogle": "noToogle"
+        "data-drugon": "noDrugon"
       }, this._getMain(this.props.element)));
     }
   }, {
@@ -30190,7 +30251,8 @@ function (_React$Component) {
 
       this._defineSize();
 
-      this._deleteDrugonDrop = this._setUpDragnDrop();
+      this._deleteDrugonDrop = this._setUpDragnDrop() || function () {};
+
       this.exitBtn.addEventListener('click', function (e) {
         e.preventDefault();
 
