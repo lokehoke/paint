@@ -2,7 +2,7 @@
 
 const React = require('react');
 const ReactRedux = require('react-redux');
-const FlexiblePlace = require('./../../../../../../../react-customScroll-movePlace-zoom/src/js/index.jsx');
+const FlexiblePlace = require('./../../commonComponents/scrollMoveZoomPlace/scrollMoveZoomPlace.jsx');
 
 const Modes = require('./modesDrowing/modes.js');
 

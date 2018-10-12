@@ -6,6 +6,7 @@ const FontAwesomeIcon = require('@fortawesome/react-fontawesome').FontAwesomeIco
 const faTimesCircle = require('@fortawesome/free-solid-svg-icons').faTimesCircle;
 
 const NewFile = require('./dropMain/newFile.jsx');
+const BasicInstrument = require('./dropMain/basicInstrument.jsx');
 
 const DragnDrop = require('./../../commonInterface/dragnDrop.js');
 
@@ -15,8 +16,12 @@ class DropWindow extends React.Component {
             <div className="dropWindow" ref={window => this._window = window}>
                 <header>
                     {this.props.element.title}
-                    <div className="__exitIcon" ref={exit => this.exitBtn = exit} >
-                        <FontAwesomeIcon icon={faTimesCircle} data-toogle="noToogle" />
+                    <div
+                        className="__exitIcon"
+                        ref={exit => this.exitBtn = exit}
+                        data-toogle="noToogle"
+                    >
+                        <FontAwesomeIcon icon={faTimesCircle} />
                     </div>
                 </header>
                 <main data-toogle="noToogle">
@@ -55,6 +60,10 @@ class DropWindow extends React.Component {
                 this._h = 180;
                 this._w = 260;
                 break;
+            case 'basicInstrument':
+                this._h = 180;
+                this._w = 260;
+                break;
         }
 
         this._window.style.height = `${this._h}px`;
@@ -66,7 +75,10 @@ class DropWindow extends React.Component {
 
         switch (el.view) {
             case 'newFile':
-                main = this._getNewFileMain();
+                main = (<NewFile id={this.props.element.id} />);
+                break;
+            case 'basicInstrument':
+                main = (<BasicInstrument id={this.props.element.id} />);
                 break;
         }
 
@@ -74,7 +86,7 @@ class DropWindow extends React.Component {
     }
 
     _getNewFileMain() {
-        return <NewFile id={this.props.element.id}/>;
+        return ;
     }
 }
 

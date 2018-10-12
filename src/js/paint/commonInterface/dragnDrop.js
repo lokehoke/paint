@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = class DragnDrop {
     constructor(item) {
         this._item = item;
@@ -14,7 +16,7 @@ module.exports = class DragnDrop {
 
         item.onmousedown = e => {
             if (this._issetNoDrop(e.path)) {
-                return false;
+                return true;
             } else {
                 let coords = this._getCoords(item);
 

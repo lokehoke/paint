@@ -4,7 +4,7 @@ module.exports = settings => (state = settings, action) => {
     switch (action.type) {
         case 'CHANGE_LINE_THICKNESS':
             return Object.assign({}, state, {
-                currentLineThickness: action.currentLineThickness
+                currentLineThickness: +action.currentLineThickness
             });
         case 'CHANGE_INSTRUMENTS':
             return Object.assign({}, state, {

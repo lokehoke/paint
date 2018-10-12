@@ -6,11 +6,11 @@ const PropTypes = require('prop-types');
 
 class SizeLine extends React.Component {
     static defaultProps = {
-        color: '16'
+        size: 16
     };
 
     static propTypes = {
-        size: PropTypes.string
+        size: PropTypes.number
     };
 
     render() {
@@ -23,5 +23,5 @@ class SizeLine extends React.Component {
 }
 
 module.exports = ReactRedux.connect(state => ({
-    size: state.instruments.currentLineThickness
+    size: +state.instruments.currentLineThickness
 }))(SizeLine);
