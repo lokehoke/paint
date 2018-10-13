@@ -48,7 +48,7 @@ class DropWindow extends React.Component {
 
     _setUpDragnDrop() {
         let dragn = new DragnDrop(this._window);
-        dragn.startDragonDroping();
+        return  dragn.startDragonDroping();
     }
 
     _defineSize() {

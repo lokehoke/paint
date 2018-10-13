@@ -10,7 +10,7 @@ const DragnDrop = require('./../../../commonInterface/dragnDrop.js');
 let stylesValueSlider = {
     position: 'relative',
     display: 'flex',
-    margin: '0 10px',
+    margin: '0 15px',
     flexGrow: 1,
     height: '2px',
     backgroundColor: 'black'
@@ -18,7 +18,8 @@ let stylesValueSlider = {
 
 let stylePip = {
         position: 'absolute',
-        top: '-8px'
+        top: '-10px',
+        left: '-10px'
 };
 
 module.exports = class ValueSlider extends React.Component {
@@ -47,6 +48,7 @@ module.exports = class ValueSlider extends React.Component {
     constructor(props) {
         super(props);
         this._pimp = React.createRef();
+        this._deleteDnd = () => {};
     }
 
     render() {
@@ -58,13 +60,32 @@ module.exports = class ValueSlider extends React.Component {
     }
 
     componentDidMount() {
-        this._setUpDragnDrop();
+        this._deleteDnd = this._setUpDragnDrop();
     }
 
     _setUpDragnDrop() {
         let dragn = new DragnDrop(this._pimp.getDom(), {
-            ignoreNoDrugon: true
+            ignoreNoDrugon: true,
+            onlyX: true,
+            piece: {
+                exist: true,
+                min: {
+                    x: this.props.min
+                },
+                max: {
+                    x: this.props.max
+                },
+                step: {
+                    x: this.props.changingValue
+                },
+                exitFromContur: true
+            }
         });
-        dragn.startDragonDroping();
+
+        return dragn.startDragonDroping();
+    }
+
+    componentWillUnmount() {
+        this._deleteDnd();
     }
 }

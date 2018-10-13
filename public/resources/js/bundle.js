@@ -29549,82 +29549,151 @@ var paint = new Paint('#root');
 "use strict";
 
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var defConfig = {
-  ignoreNoDrugon: false
+var Coor =
+/*#__PURE__*/
+function () {
+  function Coor() {
+    var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+    var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+
+    _classCallCheck(this, Coor);
+
+    this.x = x;
+    this.y = y;
+  }
+
+  _createClass(Coor, [{
+    key: "division",
+    value: function division(coor) {
+      if (coor.x && typeof coor.x === 'number') {
+        this.x /= coor.x;
+      } else if (coor.x === 0) {
+        this.x = 0;
+      }
+
+      if (coor.y && typeof coor.y === 'number') {
+        this.y /= coor.y;
+      } else if (coor.y === 0) {
+        this.y = 0;
+      }
+
+      return this;
+    }
+  }], [{
+    key: "sub",
+    value: function sub(coor1, coor2) {
+      return new Coor(coor1.x - coor2.x, coor1.y - coor2.y);
+    }
+  }]);
+
+  return Coor;
+}();
+
+var DefConfig = function DefConfig() {
+  _classCallCheck(this, DefConfig);
+
+  this.ignoreNoDrugon = false;
+  this.onlyX = false;
+  this.onlyY = false;
+  this.piece = {
+    exist: false,
+    min: new Coor(),
+    max: new Coor(),
+    step: new Coor(),
+    exitFromContur: false
+  };
 };
-var id = 0;
+
+;
 
 module.exports =
 /*#__PURE__*/
 function () {
   function DragnDrop(item) {
-    var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
     _classCallCheck(this, DragnDrop);
 
     this._item = item;
-    this._shiftX = 0;
-    this._shiftY = 0;
-    this._config = Object.assign({}, defConfig, config);
-    this._shiftXAbsPar = 0;
-    this._shiftYAbsPar = 0;
+    this._config = this._makeSetting(config);
+    this._step = new Coor();
+    this._shift = new Coor();
+    this._shiftPar = new Coor();
+    this._shiftMaxPar = new Coor();
+    this._numStep = new Coor();
     this._moveAt = this._moveAt.bind(this);
     this._endMoving = this._endMoving.bind(this);
-    this._id = id++;
+    this._mouseDowning = this._mouseDowning.bind(this);
+    this._deleteDrop = this._deleteDrop.bind(this);
   }
 
   _createClass(DragnDrop, [{
     key: "startDragonDroping",
     value: function startDragonDroping() {
-      var _this = this;
-
-      var item = this._item;
-      item.addEventListener('dragstart', function (e) {
+      this._item.addEventListener('dragstart', function (e) {
         return false;
       });
 
-      item.onmousedown = function (e) {
-        if (!_this._config.ignoreNoDrugon && _this._issetNoDrop(e.path)) {
-          return true;
-        } else {
-          _this._findAbsPar(e.path);
+      this._item.addEventListener('mousedown', this._mouseDowning);
 
-          var coords = _this._getCoords(item);
+      return this._deleteDrop;
+    }
+  }, {
+    key: "_mouseDowning",
+    value: function _mouseDowning(e) {
+      var item = this._item;
 
-          _this._shiftX = e.pageX - coords.left;
-          _this._shiftY = e.pageY - coords.top;
+      if (!this._config.ignoreNoDrugon && this._issetNoDrop(e.path)) {
+        return true;
+      } else {
+        this._findAbsPar(e.path);
 
-          _this._moveAt(e);
-
-          _this._emptyPositions();
-
-          _this._item.parentElement.appendChild(item);
-
-          document.addEventListener('mousemove', _this._moveAt);
-          document.addEventListener('mouseup', _this._endMoving);
+        if (this._config.piece.exist) {
+          this._defineStep();
         }
-      };
+
+        var coords = this._getCoords(item);
+
+        this._shift.x = e.pageX - coords.x;
+        this._shift.y = e.pageY - coords.y;
+
+        this._moveAt(e);
+
+        this._emptyPositions();
+
+        this._item.parentElement.appendChild(item);
+
+        document.addEventListener('mousemove', this._moveAt);
+        document.addEventListener('mouseup', this._endMoving);
+      }
+    }
+  }, {
+    key: "_deleteDrop",
+    value: function _deleteDrop() {
+      this._item.removeEventListener('mousedown', this._mouseDowning);
     }
   }, {
     key: "_getCoords",
     value: function _getCoords(elem) {
       var box = elem.getBoundingClientRect();
-      return {
-        top: box.top,
-        left: box.left
-      };
+      return new Coor(box.left, box.top);
     }
   }, {
     key: "_moveAt",
     value: function _moveAt(e) {
-      this._item.style.left = e.pageX - this._shiftX - this._shiftXAbsPar + 'px';
-      this._item.style.top = e.pageY - this._shiftY - this._shiftYAbsPar + 'px';
+      if (this._config.piece.exist) {
+        this._movingWithPiece(e);
+      } else {
+        this._movingWithoutPiece(e);
+      }
     }
   }, {
     key: "_endMoving",
@@ -29641,16 +29710,37 @@ function () {
   }, {
     key: "_findAbsPar",
     value: function _findAbsPar(path) {
-      var _this2 = this;
+      var _this = this;
 
       var indexOwn = path.indexOf(this._item) + 1;
       path.slice(indexOwn, -6).reverse().forEach(function (el) {
         if (el.style.position === 'absolute' || el.style.position === 'relative' || el.style.position === 'fixed') {
-          var coor = el.getBoundingClientRect();
-          _this2._shiftXAbsPar = coor.left;
-          _this2._shiftYAbsPar = coor.top;
+          var coor = _this._getCoords(el);
+
+          _this._shiftPar.x = coor.x;
+          _this._shiftPar.y = coor.y;
+
+          if (_this._config.piece.exist) {
+            _this._defineMaxParAndStep(el);
+          }
         }
       });
+    }
+  }, {
+    key: "_defineMaxParAndStep",
+    value: function _defineMaxParAndStep(el) {
+      this._shiftMaxPar.x = this._shiftPar.x + el.offsetWidth - this._item.offsetWidth + 1;
+      this._shiftMaxPar.y = this._shiftPar.y + el.offsetHeight - this._item.offsetHeight + 1;
+
+      if (this._config.piece.exitFromContur) {
+        this._shiftPar.x -= this._item.offsetWidth / 2;
+        this._shiftPar.y -= this._item.offsetHeight / 2;
+        this._shiftMaxPar.x += this._item.offsetWidth / 2;
+        this._shiftMaxPar.y += this._item.offsetHeight / 2;
+      }
+
+      this._numStep = Coor.sub(this._config.piece.max, this._config.piece.min).division(this._config.piece.step);
+      this._step = Coor.sub(this._shiftMaxPar, this._shiftPar).division(this._numStep);
     }
   }, {
     key: "_issetNoDrop",
@@ -29662,6 +29752,83 @@ function () {
         }
       });
       return isset;
+    }
+  }, {
+    key: "_movingWithPiece",
+    value: function _movingWithPiece(e) {
+      var assumption = 0.0;
+      var part = 0.0;
+      var cond = this._config.piece.exitFromContur;
+
+      if (!this._config.onlyX) {
+        assumption = Math.floor((e.pageY - this._shiftPar.y) / this._step.y) * this._step.y;
+        part = this._item.offsetHeight / 2;
+
+        if (assumption <= 0) {
+          this._item.style.top = 0 - (cond ? part : 0) + 'px';
+        } else if (assumption >= this._shiftMaxPar.y - this._shiftPar.y) {
+          this._item.style.top = this._numStep.y * this._step.y - (cond ? part : 0) + 'px';
+        } else {
+          this._item.style.top = assumption - (cond ? part : 0) + 'px';
+        }
+      }
+
+      if (!this._config.onlyY) {
+        assumption = Math.floor((e.pageX - this._shiftPar.x) / this._step.x) * this._step.x;
+        part = this._item.offsetWidth / 2;
+
+        if (assumption <= 0) {
+          this._item.style.left = 0 - (cond ? part : 0) + 'px';
+        } else if (assumption >= this._shiftMaxPar.x - this._shiftPar.x) {
+          this._item.style.left = this._numStep.x * this._step.x - (cond ? part : 0) + 'px';
+        } else {
+          this._item.style.left = assumption - (cond ? part : 0) + 'px';
+        }
+      }
+    }
+  }, {
+    key: "_movingWithoutPiece",
+    value: function _movingWithoutPiece(e) {
+      if (!this._config.onlyX) {
+        this._item.style.top = e.pageY - this._shift.y - this._shiftPar.y + 'px';
+      }
+
+      if (!this._config.onlyY) {
+        this._item.style.left = e.pageX - this._shift.x - this._shiftPar.x + 'px';
+      }
+    }
+  }, {
+    key: "_defineStep",
+    value: function _defineStep() {
+      var addx = 0;
+      var addY = 0;
+
+      if (this._config.exitFromContur) {}
+    }
+  }, {
+    key: "_makeSetting",
+    value: function _makeSetting(config) {
+      var defaults = new DefConfig();
+
+      var reWrite = function reWrite(obj, standartObj) {
+        if (_typeof(obj) === 'object' && obj !== null && _typeof(standartObj) === 'object' && standartObj !== null) {
+          for (var value in standartObj) {
+            if (_typeof(standartObj[value]) !== _typeof(obj[value])) {
+              continue;
+            } else if (_typeof(standartObj[value]) !== 'object') {
+              standartObj[value] = obj[value];
+            } else {
+              reWrite(obj[value], standartObj[value]);
+            }
+          }
+        }
+      };
+
+      if (_typeof(config) === 'object' && config !== null) {
+        reWrite(config, defaults);
+      }
+
+      return defaults;
     }
   }]);
 
@@ -29867,14 +30034,15 @@ var DragnDrop = __webpack_require__(/*! ./../../../commonInterface/dragnDrop.js 
 var stylesValueSlider = {
   position: 'relative',
   display: 'flex',
-  margin: '0 10px',
+  margin: '0 15px',
   flexGrow: 1,
   height: '2px',
   backgroundColor: 'black'
 };
 var stylePip = {
   position: 'absolute',
-  top: '-8px'
+  top: '-10px',
+  left: '-10px'
 };
 module.exports = (_temp = _class =
 /*#__PURE__*/
@@ -29888,6 +30056,9 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ValueSlider).call(this, props));
     _this._pimp = React.createRef();
+
+    _this._deleteDnd = function () {};
+
     return _this;
   }
 
@@ -29908,15 +30079,34 @@ function (_React$Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      this._setUpDragnDrop();
+      this._deleteDnd = this._setUpDragnDrop();
     }
   }, {
     key: "_setUpDragnDrop",
     value: function _setUpDragnDrop() {
       var dragn = new DragnDrop(this._pimp.getDom(), {
-        ignoreNoDrugon: true
+        ignoreNoDrugon: true,
+        onlyX: true,
+        piece: {
+          exist: true,
+          min: {
+            x: this.props.min
+          },
+          max: {
+            x: this.props.max
+          },
+          step: {
+            x: this.props.changingValue
+          },
+          exitFromContur: true
+        }
       });
-      dragn.startDragonDroping();
+      return dragn.startDragonDroping();
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this._deleteDnd();
     }
   }]);
 
@@ -30270,7 +30460,7 @@ function (_React$Component) {
     key: "_setUpDragnDrop",
     value: function _setUpDragnDrop() {
       var dragn = new DragnDrop(this._window);
-      dragn.startDragonDroping();
+      return dragn.startDragonDroping();
     }
   }, {
     key: "_defineSize",
