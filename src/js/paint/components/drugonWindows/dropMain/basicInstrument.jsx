@@ -18,7 +18,7 @@ class BasicInstrument extends React.Component {
                     <span>Font size: </span>
                     <ValueSlider
                         min={2}
-                        max={100}
+                        max={40}
                         cur={this.props.curFontSize}
                         changing={this._changeLineThickness}
                         changingValue={2}

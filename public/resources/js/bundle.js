@@ -38702,8 +38702,20 @@ function () {
   }
 
   _createClass(Coor, [{
-    key: "division",
-    value: function division(coor, type) {
+    key: "sub",
+    value: function sub(coor) {
+      this.setCoor(Coor.sub(this, coor));
+      return this;
+    }
+  }, {
+    key: "sum",
+    value: function sum(coor) {
+      this.setCoor(Coor.sum(this, coor));
+      return this;
+    }
+  }, {
+    key: "divisionOnCoor",
+    value: function divisionOnCoor(coor, type) {
       if (coor.x && typeof coor.x === 'number') {
         this.x /= coor.x;
       } else if (coor.x === 0) {
@@ -38723,10 +38735,28 @@ function () {
 
       return this;
     }
+  }, {
+    key: "divisionOnNumber",
+    value: function divisionOnNumber(num) {
+      this.x /= num;
+      this.y /= num;
+      return this;
+    }
+  }, {
+    key: "setCoor",
+    value: function setCoor(coor) {
+      this.x = coor.x;
+      this.y = coor.y;
+    }
   }], [{
     key: "sub",
     value: function sub(coor1, coor2) {
       return new Coor(coor1.x - coor2.x, coor1.y - coor2.y);
+    }
+  }, {
+    key: "sum",
+    value: function sum(coor1, coor2) {
+      return new Coor(coor1.x + coor2.x, coor1.y + coor2.y);
     }
   }]);
 
@@ -38736,10 +38766,12 @@ function () {
 var DefConfig = function DefConfig() {
   _classCallCheck(this, DefConfig);
 
+  this.startAsync = true;
   this.ignoreNoDrugon = false;
   this.showAfterMount = {
     isset: false,
-    type: 'flex'
+    type: 'flex',
+    sizeItem: new Coor()
   };
   this.onlyX = false;
   this.onlyY = false;
@@ -38783,18 +38815,30 @@ function () {
 
   _createClass(DragnDrop, [{
     key: "startDragonDroping",
+    value: function startDragonDroping() {
+      this._startAsync();
+
+      return this._deleteDrop;
+    }
+  }, {
+    key: "_startAsync",
     value: function () {
-      var _startDragonDroping = _asyncToGenerator(
+      var _startAsync2 = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee() {
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+                if (!this._config.startAsync) {
+                  _context.next = 3;
+                  break;
+                }
+
+                _context.next = 3;
                 return setTimeout(function () {}, 0);
 
-              case 2:
+              case 3:
                 this._item.addEventListener('dragstart', function (e) {
                   return false;
                 });
@@ -38807,13 +38851,13 @@ function () {
                   this._movingWithPiece({
                     setUp: true
                   });
+
+                  this._emptyPositions();
                 }
 
                 if (this._config.showAfterMount.isset) {
                   this._item.style.display = this._config.showAfterMount.type;
                 }
-
-                return _context.abrupt("return", this._deleteDrop);
 
               case 7:
               case "end":
@@ -38823,8 +38867,8 @@ function () {
         }, _callee, this);
       }));
 
-      return function startDragonDroping() {
-        return _startDragonDroping.apply(this, arguments);
+      return function _startAsync() {
+        return _startAsync2.apply(this, arguments);
       };
     }()
   }, {
@@ -38894,8 +38938,6 @@ function () {
 
       var coor = this._getCoords(par || document.body);
 
-      console.log(par);
-      console.log(coor);
       this._coorMinPar = coor;
 
       if (this._config.piece.exist) {
@@ -38905,18 +38947,37 @@ function () {
   }, {
     key: "_defineMaxParAndStep",
     value: function _defineMaxParAndStep(el) {
-      this._coorMaxPar.x = this._coorMinPar.x + el.offsetWidth - this._item.offsetWidth + 1;
-      this._coorMaxPar.y = this._coorMinPar.y + el.offsetHeight - this._item.offsetHeight + 1;
+      var sizeItem = this._getSizeItem();
+
+      this._coorMaxPar.x = this._coorMinPar.x + el.offsetWidth - sizeItem.x;
+      this._coorMaxPar.y = this._coorMinPar.y + el.offsetHeight - sizeItem.y;
 
       if (this._config.piece.exitFromContur) {
-        this._coorMinPar.x -= this._item.offsetWidth / 2;
-        this._coorMinPar.y -= this._item.offsetHeight / 2;
-        this._coorMaxPar.x += this._item.offsetWidth / 2;
-        this._coorMaxPar.y += this._item.offsetHeight / 2;
+        this._coorMinPar.sub(sizeItem.divisionOnNumber(2));
+
+        this._coorMaxPar.sum(sizeItem.divisionOnNumber(2));
       }
 
-      this._steps.max = Coor.sub(this._config.piece.max, this._config.piece.min).division(this._config.piece.step, 'int');
-      this._stepPx = Coor.sub(this._coorMaxPar, this._coorMinPar).division(this._steps.max);
+      this._steps.max = Coor.sub(this._config.piece.max, this._config.piece.min).divisionOnCoor(this._config.piece.step, 'int');
+      this._stepPx = Coor.sub(this._coorMaxPar, this._coorMinPar).divisionOnCoor(this._steps.max);
+    }
+  }, {
+    key: "_getSizeItem",
+    value: function _getSizeItem() {
+      var sizeItem = new Coor();
+
+      if (this._config.showAfterMount.isset) {
+        if (this._config.showAfterMount.sizeItem) {
+          sizeItem.setCoor(this._config.showAfterMount.sizeItem);
+        } else {
+          throw "need set sizeItem in showAfterMount";
+        }
+      } else {
+        sizeItem.x = this._item.offsetWidth;
+        sizeItem.y = this._item.offsetHeight;
+      }
+
+      return sizeItem;
     }
   }, {
     key: "_issetNoDrop",
@@ -38933,38 +38994,39 @@ function () {
     key: "_movingWithPiece",
     value: function _movingWithPiece(e) {
       var assumptionOfNewPosition = 0.0;
-      var partOfExitFromConturPx = 0.0;
+
+      var partOfExitFromConturPx = this._getSizeItem().divisionOnNumber(2);
+
       var condOfExitFromContur = this._config.piece.exitFromContur;
       var dominateAxis = '';
       var changingSide = '';
 
       if (!this._config.onlyX) {
         dominateAxis = 'y';
-        partOfExitFromConturPx = this._item.offsetHeight / 2;
         changingSide = 'top';
       } else if (!this._config.onlyY) {
         dominateAxis = 'x';
-        partOfExitFromConturPx = this._item.offsetWidth / 2;
         changingSide = 'left';
       }
 
-      var newStep = Math.floor((this._config.piece.cur[dominateAxis] - this._config.piece.min[dominateAxis]) / this._config.piece.step[dominateAxis]);
+      var newStep = this._config.piece.cur[dominateAxis] / 2 - 1;
 
       if (!e.setUp) {
         var pageCoorOfMouse = new Coor(e.pageX, e.pageY);
-        newStep = Math.floor((pageCoorOfMouse[dominateAxis] - this._coorMinPar[dominateAxis]) / this._stepPx[dominateAxis]);
+        newStep = Math.ceil((pageCoorOfMouse[dominateAxis] - this._coorMinPar[dominateAxis] - this._shiftOnItemPx[dominateAxis]) / this._stepPx[dominateAxis]);
       }
 
+      console.log(newStep);
       assumptionOfNewPosition = newStep * this._stepPx[dominateAxis];
 
       if (assumptionOfNewPosition <= 0) {
-        this._item.style[changingSide] = 0 - (condOfExitFromContur ? partOfExitFromConturPx : 0) + 'px';
+        this._item.style[changingSide] = 0 - (condOfExitFromContur ? partOfExitFromConturPx[dominateAxis] : 0) + 'px';
         this._steps.current[dominateAxis] = 0;
       } else if (assumptionOfNewPosition >= this._coorMaxPar[dominateAxis] - this._coorMinPar[dominateAxis]) {
-        this._item.style[changingSide] = this._steps.max[dominateAxis] * this._stepPx[dominateAxis] - (condOfExitFromContur ? partOfExitFromConturPx : 0) + 'px';
+        this._item.style[changingSide] = this._steps.max[dominateAxis] * this._stepPx[dominateAxis] - (condOfExitFromContur ? partOfExitFromConturPx[dominateAxis] : 0) + 'px';
         this._steps.current[dominateAxis] = this._steps.max[dominateAxis];
       } else {
-        this._item.style[changingSide] = assumptionOfNewPosition - (condOfExitFromContur ? partOfExitFromConturPx : 0) + 'px';
+        this._item.style[changingSide] = assumptionOfNewPosition - (condOfExitFromContur ? partOfExitFromConturPx[dominateAxis] : 0) + 'px';
         this._steps.current[dominateAxis] = newStep;
       }
 
@@ -39223,6 +39285,7 @@ var PimpDote = __webpack_require__(/*! ./../simpleComponents/pimpDote.jsx */ "./
 
 var DragnDrop = __webpack_require__(/*! ./../../../commonInterface/dragnDrop.js */ "./src/js/paint/commonInterface/dragnDrop.js");
 
+var sizePoint = 20;
 var stylesValueSlider = {
   position: 'relative',
   display: 'flex',
@@ -39235,7 +39298,9 @@ var stylePip = {
   position: 'absolute',
   top: '-10px',
   left: '-10px',
-  display: 'none'
+  display: 'none',
+  width: "".concat(sizePoint, "px"),
+  height: "".concat(sizePoint, "px")
 };
 module.exports = (_temp = _class =
 /*#__PURE__*/
@@ -39281,7 +39346,11 @@ function (_React$Component) {
         ignoreNoDrugon: true,
         onlyX: true,
         showAfterMount: {
-          isset: true
+          isset: true,
+          sizeItem: {
+            x: sizePoint,
+            y: sizePoint
+          }
         },
         piece: {
           exist: true,
@@ -39396,7 +39465,7 @@ function (_React$Component) {
         className: "basicInstrument__inner"
       }, React.createElement("span", null, "Font size: "), React.createElement(ValueSlider, {
         min: 2,
-        max: 100,
+        max: 40,
         cur: this.props.curFontSize,
         changing: this._changeLineThickness,
         changingValue: 2

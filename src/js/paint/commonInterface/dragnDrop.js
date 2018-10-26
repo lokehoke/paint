@@ -10,7 +10,21 @@ class Coor {
         return new Coor(coor1.x - coor2.x, coor1.y - coor2.y);
     }
 
-    division(coor, type) {
+    static sum(coor1, coor2) {
+        return new Coor(coor1.x + coor2.x, coor1.y + coor2.y);
+    }
+
+    sub(coor) {
+        this.setCoor(Coor.sub(this, coor));
+        return this;
+    }
+
+    sum(coor) {
+        this.setCoor(Coor.sum(this, coor));
+        return this;
+    }
+
+    divisionOnCoor(coor, type) {
         if (coor.x && typeof coor.x === 'number') {
             this.x /= coor.x;
         } else if (coor.x === 0) {
@@ -30,15 +44,28 @@ class Coor {
 
         return this;
     }
+
+    divisionOnNumber(num) {
+        this.x /= num;
+        this.y /= num;
+        return this;
+    }
+
+    setCoor(coor) {
+        this.x = coor.x;
+        this.y = coor.y;
+    }
 }
 
 class DefConfig {
     constructor() {
+        this.startAsync = true;
         this.ignoreNoDrugon = false;
         this.showAfterMount = {
             isset: false,
-            type: 'flex'
-        }
+            type: 'flex',
+            sizeItem: new Coor()
+        };
         this.onlyX = false;
         this.onlyY = false;
         this.piece = {
@@ -74,8 +101,16 @@ module.exports = class DragnDrop {
         this._deleteDrop = this._deleteDrop.bind(this);
     }
 
-    async startDragonDroping() {
-        await setTimeout(() => {}, 0);
+    startDragonDroping() {
+        this._startAsync();
+        return this._deleteDrop;
+    }
+
+    async _startAsync() {
+        if (this._config.startAsync) {
+            await setTimeout(() => {}, 0);
+        }
+
         this._item.addEventListener('dragstart', e => false);
         this._item.addEventListener('mousedown', this._mouseDowning);
 
@@ -84,13 +119,12 @@ module.exports = class DragnDrop {
             this._movingWithPiece({
                 setUp: true
             });
+            this._emptyPositions();
         }
 
         if (this._config.showAfterMount.isset) {
             this._item.style.display = this._config.showAfterMount.type;
         }
-
-        return this._deleteDrop;
     }
 
     _mouseDowning(e) {
@@ -146,8 +180,6 @@ module.exports = class DragnDrop {
             (el.style.position === 'absolute' || el.style.position === 'relative' || el.style.position === 'fixed')
         );
         let coor = this._getCoords(par || document.body);
-        console.log(par);
-        console.log(coor);
         this._coorMinPar = coor;
         if (this._config.piece.exist) {
             this._defineMaxParAndStep(par);
@@ -155,19 +187,35 @@ module.exports = class DragnDrop {
     }
 
     _defineMaxParAndStep(el) {
-        this._coorMaxPar.x = this._coorMinPar.x + el.offsetWidth - this._item.offsetWidth + 1;
-        this._coorMaxPar.y = this._coorMinPar.y + el.offsetHeight - this._item.offsetHeight + 1;
+        let sizeItem = this._getSizeItem();
+
+        this._coorMaxPar.x = this._coorMinPar.x + el.offsetWidth - sizeItem.x;
+        this._coorMaxPar.y = this._coorMinPar.y + el.offsetHeight - sizeItem.y;
 
         if (this._config.piece.exitFromContur) {
-            this._coorMinPar.x -= this._item.offsetWidth / 2;
-            this._coorMinPar.y -= this._item.offsetHeight / 2;
-
-            this._coorMaxPar.x += this._item.offsetWidth / 2;
-            this._coorMaxPar.y += this._item.offsetHeight / 2;
+            this._coorMinPar.sub(sizeItem.divisionOnNumber(2));
+            this._coorMaxPar.sum(sizeItem.divisionOnNumber(2));
         }
 
-        this._steps.max = Coor.sub(this._config.piece.max, this._config.piece.min).division(this._config.piece.step, 'int');
-        this._stepPx = Coor.sub(this._coorMaxPar, this._coorMinPar).division(this._steps.max);
+        this._steps.max = Coor.sub(this._config.piece.max, this._config.piece.min).divisionOnCoor(this._config.piece.step, 'int');
+        this._stepPx = Coor.sub(this._coorMaxPar, this._coorMinPar).divisionOnCoor(this._steps.max);
+    }
+
+    _getSizeItem() {
+        let sizeItem = new Coor();
+
+        if (this._config.showAfterMount.isset) {
+            if (this._config.showAfterMount.sizeItem) {
+                sizeItem.setCoor(this._config.showAfterMount.sizeItem);
+            } else {
+                throw "need set sizeItem in showAfterMount";
+            }
+        } else {
+            sizeItem.x = this._item.offsetWidth;
+            sizeItem.y = this._item.offsetHeight;
+        }
+
+        return sizeItem;
     }
 
     _issetNoDrop(path) {
@@ -183,39 +231,40 @@ module.exports = class DragnDrop {
     _movingWithPiece(e) {
         let assumptionOfNewPosition = 0.0;
 
-        let partOfExitFromConturPx = 0.0;
+        let partOfExitFromConturPx = this._getSizeItem().divisionOnNumber(2);
         let condOfExitFromContur = this._config.piece.exitFromContur;
 
         let dominateAxis = '';
         let changingSide = '';
 
+
         if (!this._config.onlyX) {
             dominateAxis = 'y';
-            partOfExitFromConturPx = this._item.offsetHeight / 2;
             changingSide = 'top';
         } else if(!this._config.onlyY) {
             dominateAxis = 'x';
-            partOfExitFromConturPx = this._item.offsetWidth / 2;
             changingSide = 'left';
         }
 
-        let newStep = Math.floor((this._config.piece.cur[dominateAxis] - this._config.piece.min[dominateAxis])/this._config.piece.step[dominateAxis]);
+        let newStep = this._config.piece.cur[dominateAxis] / 2 - 1;
 
         if (!e.setUp) {
             let pageCoorOfMouse = new Coor(e.pageX, e.pageY);
-            newStep = Math.floor((pageCoorOfMouse[dominateAxis] - this._coorMinPar[dominateAxis]) / this._stepPx[dominateAxis]);
+            newStep = Math.ceil((pageCoorOfMouse[dominateAxis] - this._coorMinPar[dominateAxis]  - this._shiftOnItemPx[dominateAxis]) / this._stepPx[dominateAxis]);
         }
+
+        console.log(newStep);
 
         assumptionOfNewPosition = newStep * this._stepPx[dominateAxis];
 
         if (assumptionOfNewPosition <= 0) {
-            this._item.style[changingSide] = 0 - (condOfExitFromContur ? partOfExitFromConturPx : 0) + 'px';
+            this._item.style[changingSide] = 0 - (condOfExitFromContur ? partOfExitFromConturPx[dominateAxis] : 0) + 'px';
             this._steps.current[dominateAxis] = 0;
         } else if (assumptionOfNewPosition >= this._coorMaxPar[dominateAxis] - this._coorMinPar[dominateAxis]) {
-            this._item.style[changingSide] = this._steps.max[dominateAxis] * this._stepPx[dominateAxis] - (condOfExitFromContur ? partOfExitFromConturPx : 0) + 'px';
+            this._item.style[changingSide] = this._steps.max[dominateAxis] * this._stepPx[dominateAxis] - (condOfExitFromContur ? partOfExitFromConturPx[dominateAxis] : 0) + 'px';
             this._steps.current[dominateAxis] = this._steps.max[dominateAxis];
         } else {
-            this._item.style[changingSide] = assumptionOfNewPosition - (condOfExitFromContur ? partOfExitFromConturPx : 0) + 'px';
+            this._item.style[changingSide] = assumptionOfNewPosition - (condOfExitFromContur ? partOfExitFromConturPx[dominateAxis] : 0) + 'px';
             this._steps.current[dominateAxis] = newStep;
         }
 

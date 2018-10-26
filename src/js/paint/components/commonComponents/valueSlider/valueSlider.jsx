@@ -7,6 +7,8 @@ const PimpDote = require('./../simpleComponents/pimpDote.jsx');
 
 const DragnDrop = require('./../../../commonInterface/dragnDrop.js');
 
+let sizePoint = 20;
+
 let stylesValueSlider = {
     position: 'relative',
     display: 'flex',
@@ -20,7 +22,9 @@ let stylePip = {
     position: 'absolute',
     top: '-10px',
     left: '-10px',
-    display: 'none'
+    display: 'none',
+    width: `${sizePoint}px`,
+    height: `${sizePoint}px`
 };
 
 module.exports = class ValueSlider extends React.Component {
@@ -72,7 +76,11 @@ module.exports = class ValueSlider extends React.Component {
             ignoreNoDrugon: true,
             onlyX: true,
             showAfterMount: {
-                isset: true
+                isset: true,
+                sizeItem: {
+                    x: sizePoint,
+                    y: sizePoint
+                }
             },
             piece: {
                 exist: true,

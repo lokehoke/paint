@@ -24,7 +24,10 @@ module.exports = class pimpDote extends React.Component {
     render() {
         style = Object.assign({}, style, this.props.style);
         return (
-            <div style={style} ref={dote => this._dote = dote} />
+            <div
+                style={style}
+                ref={dote => this._dote = dote}
+            />
         );
     }
 
