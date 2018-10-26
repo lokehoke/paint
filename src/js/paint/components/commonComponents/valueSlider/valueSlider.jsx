@@ -5,7 +5,7 @@ const PropTypes = require('prop-types')
 
 const PimpDote = require('./../simpleComponents/pimpDote.jsx');
 
-const DragnDrop = require('./../../../commonInterface/dragnDrop.js');
+const DragnDrop = require('./../../../commonInterface/dragonDrop/dragnDrop.js');
 
 let sizePoint = 20;
 

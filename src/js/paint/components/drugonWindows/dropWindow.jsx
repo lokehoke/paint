@@ -8,7 +8,7 @@ const faTimesCircle = require('@fortawesome/free-solid-svg-icons').faTimesCircle
 const NewFile = require('./dropMain/newFile.jsx');
 const BasicInstrument = require('./dropMain/basicInstrument.jsx');
 
-const DragnDrop = require('./../../commonInterface/dragnDrop.js');
+const DragnDrop = require('./../../commonInterface/dragonDrop/dragnDrop.js');
 
 class DropWindow extends React.Component {
     render() {

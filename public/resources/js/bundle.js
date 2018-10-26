@@ -38666,104 +38666,18 @@ var paint = new Paint('#root');
 
 /***/ }),
 
-/***/ "./src/js/paint/commonInterface/dragnDrop.js":
-/*!***************************************************!*\
-  !*** ./src/js/paint/commonInterface/dragnDrop.js ***!
-  \***************************************************/
+/***/ "./src/js/paint/commonInterface/dragonDrop/defaultSetting.js":
+/*!*******************************************************************!*\
+  !*** ./src/js/paint/commonInterface/dragonDrop/defaultSetting.js ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+var Coor = __webpack_require__(/*! ./../../structDate/coor.js */ "./src/js/paint/structDate/coor.js");
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var Coor =
-/*#__PURE__*/
-function () {
-  function Coor() {
-    var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0.0;
-    var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.0;
-
-    _classCallCheck(this, Coor);
-
-    this.x = x;
-    this.y = y;
-  }
-
-  _createClass(Coor, [{
-    key: "sub",
-    value: function sub(coor) {
-      this.setCoor(Coor.sub(this, coor));
-      return this;
-    }
-  }, {
-    key: "sum",
-    value: function sum(coor) {
-      this.setCoor(Coor.sum(this, coor));
-      return this;
-    }
-  }, {
-    key: "divisionOnCoor",
-    value: function divisionOnCoor(coor, type) {
-      if (coor.x && typeof coor.x === 'number') {
-        this.x /= coor.x;
-      } else if (coor.x === 0) {
-        this.x = 0;
-      }
-
-      if (coor.y && typeof coor.y === 'number') {
-        this.y /= coor.y;
-      } else if (coor.y === 0) {
-        this.y = 0;
-      }
-
-      if (type === 'int') {
-        this.x = Math.floor(this.x);
-        this.y = Math.floor(this.y);
-      }
-
-      return this;
-    }
-  }, {
-    key: "divisionOnNumber",
-    value: function divisionOnNumber(num) {
-      this.x /= num;
-      this.y /= num;
-      return this;
-    }
-  }, {
-    key: "setCoor",
-    value: function setCoor(coor) {
-      this.x = coor.x;
-      this.y = coor.y;
-    }
-  }], [{
-    key: "sub",
-    value: function sub(coor1, coor2) {
-      return new Coor(coor1.x - coor2.x, coor1.y - coor2.y);
-    }
-  }, {
-    key: "sum",
-    value: function sum(coor1, coor2) {
-      return new Coor(coor1.x + coor2.x, coor1.y + coor2.y);
-    }
-  }]);
-
-  return Coor;
-}();
-
-var DefConfig = function DefConfig() {
+module.exports = function DefConfig() {
   _classCallCheck(this, DefConfig);
 
   this.startAsync = true;
@@ -38787,7 +38701,33 @@ var DefConfig = function DefConfig() {
   this.transferDate = function () {};
 };
 
-;
+/***/ }),
+
+/***/ "./src/js/paint/commonInterface/dragonDrop/dragnDrop.js":
+/*!**************************************************************!*\
+  !*** ./src/js/paint/commonInterface/dragonDrop/dragnDrop.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var DefConfig = __webpack_require__(/*! ./defaultSetting.js */ "./src/js/paint/commonInterface/dragonDrop/defaultSetting.js");
+
+var Coor = __webpack_require__(/*! ./../../structDate/coor.js */ "./src/js/paint/structDate/coor.js");
 
 module.exports =
 /*#__PURE__*/
@@ -39283,7 +39223,7 @@ var PropTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types
 
 var PimpDote = __webpack_require__(/*! ./../simpleComponents/pimpDote.jsx */ "./src/js/paint/components/commonComponents/simpleComponents/pimpDote.jsx");
 
-var DragnDrop = __webpack_require__(/*! ./../../../commonInterface/dragnDrop.js */ "./src/js/paint/commonInterface/dragnDrop.js");
+var DragnDrop = __webpack_require__(/*! ./../../../commonInterface/dragonDrop/dragnDrop.js */ "./src/js/paint/commonInterface/dragonDrop/dragnDrop.js");
 
 var sizePoint = 20;
 var stylesValueSlider = {
@@ -39673,7 +39613,7 @@ var NewFile = __webpack_require__(/*! ./dropMain/newFile.jsx */ "./src/js/paint/
 
 var BasicInstrument = __webpack_require__(/*! ./dropMain/basicInstrument.jsx */ "./src/js/paint/components/drugonWindows/dropMain/basicInstrument.jsx");
 
-var DragnDrop = __webpack_require__(/*! ./../../commonInterface/dragnDrop.js */ "./src/js/paint/commonInterface/dragnDrop.js");
+var DragnDrop = __webpack_require__(/*! ./../../commonInterface/dragonDrop/dragnDrop.js */ "./src/js/paint/commonInterface/dragonDrop/dragnDrop.js");
 
 var DropWindow =
 /*#__PURE__*/
@@ -41528,6 +41468,96 @@ module.exports = function () {
 /***/ (function(module) {
 
 module.exports = {"currentColor":"#000","currentLineThickness":"16","activeInstrument":"brush","currentInstruments":{"brush":true}};
+
+/***/ }),
+
+/***/ "./src/js/paint/structDate/coor.js":
+/*!*****************************************!*\
+  !*** ./src/js/paint/structDate/coor.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+module.exports =
+/*#__PURE__*/
+function () {
+  function Coor() {
+    var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0.0;
+    var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.0;
+
+    _classCallCheck(this, Coor);
+
+    this.x = x;
+    this.y = y;
+  }
+
+  _createClass(Coor, [{
+    key: "sub",
+    value: function sub(coor) {
+      this.setCoor(Coor.sub(this, coor));
+      return this;
+    }
+  }, {
+    key: "sum",
+    value: function sum(coor) {
+      this.setCoor(Coor.sum(this, coor));
+      return this;
+    }
+  }, {
+    key: "divisionOnCoor",
+    value: function divisionOnCoor(coor, type) {
+      if (coor.x && typeof coor.x === 'number') {
+        this.x /= coor.x;
+      } else if (coor.x === 0) {
+        this.x = 0;
+      }
+
+      if (coor.y && typeof coor.y === 'number') {
+        this.y /= coor.y;
+      } else if (coor.y === 0) {
+        this.y = 0;
+      }
+
+      if (type === 'int') {
+        this.x = Math.floor(this.x);
+        this.y = Math.floor(this.y);
+      }
+
+      return this;
+    }
+  }, {
+    key: "divisionOnNumber",
+    value: function divisionOnNumber(num) {
+      this.x /= num;
+      this.y /= num;
+      return this;
+    }
+  }, {
+    key: "setCoor",
+    value: function setCoor(coor) {
+      this.x = coor.x;
+      this.y = coor.y;
+    }
+  }], [{
+    key: "sub",
+    value: function sub(coor1, coor2) {
+      return new Coor(coor1.x - coor2.x, coor1.y - coor2.y);
+    }
+  }, {
+    key: "sum",
+    value: function sum(coor1, coor2) {
+      return new Coor(coor1.x + coor2.x, coor1.y + coor2.y);
+    }
+  }]);
+
+  return Coor;
+}();
 
 /***/ }),
 
