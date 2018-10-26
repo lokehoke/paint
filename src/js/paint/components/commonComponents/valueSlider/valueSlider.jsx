@@ -17,9 +17,10 @@ let stylesValueSlider = {
 };
 
 let stylePip = {
-        position: 'absolute',
-        top: '-10px',
-        left: '-10px'
+    position: 'absolute',
+    top: '-10px',
+    left: '-10px',
+    display: 'none'
 };
 
 module.exports = class ValueSlider extends React.Component {
@@ -54,7 +55,10 @@ module.exports = class ValueSlider extends React.Component {
     render() {
         return (
             <div style={stylesValueSlider}>
-                <PimpDote style={stylePip} ref={pimp => this._pimp = pimp} />
+                <PimpDote
+                    style={stylePip}
+                    ref={pimp => this._pimp = pimp}
+                />
             </div>
         );
     }
@@ -67,6 +71,9 @@ module.exports = class ValueSlider extends React.Component {
         let dragn = new DragnDrop(this._pimp.getDom(), {
             ignoreNoDrugon: true,
             onlyX: true,
+            showAfterMount: {
+                isset: true
+            },
             piece: {
                 exist: true,
                 min: {
@@ -78,11 +85,19 @@ module.exports = class ValueSlider extends React.Component {
                 step: {
                     x: this.props.changingValue
                 },
+                cur: {
+                    x: this.props.cur
+                },
                 exitFromContur: true
-            }
+            },
+            transferDate: this._changeValue.bind(this)
         });
 
         return dragn.startDragonDroping();
+    }
+
+    _changeValue(e) {
+        this.props.changing(e);
     }
 
     componentWillUnmount() {

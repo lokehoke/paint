@@ -11,6 +11,7 @@ let config = {
     mode: 'development',
     entry: {
         main: [
+            '@babel/polyfill',
             './src/scss/index.scss',
             './src/js/index.js'
         ]

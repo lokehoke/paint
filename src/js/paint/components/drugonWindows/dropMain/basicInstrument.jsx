@@ -10,14 +10,14 @@ class BasicInstrument extends React.Component {
         super(props);
         this._changeLineThickness = this._changeLineThickness.bind(this);
     }
-    
+
     render() {
         return (
             <div className="basicInstrument">
                 <div className="basicInstrument__inner">
                     <span>Font size: </span>
                     <ValueSlider
-                        min={0}
+                        min={2}
                         max={100}
                         cur={this.props.curFontSize}
                         changing={this._changeLineThickness}
@@ -28,8 +28,8 @@ class BasicInstrument extends React.Component {
         );
     }
 
-    _changeLineThickness(cur) {
-        this.props.changeLineThickness(cur);
+    _changeLineThickness(e) {
+        this.props.changeLineThickness(e.currentStep);
     }
 }
 
