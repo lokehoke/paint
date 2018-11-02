@@ -176,8 +176,6 @@ module.exports = class DragnDrop {
             newStep = Math.ceil((pageCoorOfMouse[dominateAxis] - this._coorMinPar[dominateAxis]  - this._shiftOnItemPx[dominateAxis]) / this._stepPx[dominateAxis]);
         }
 
-        console.log(newStep);
-
         assumptionOfNewPosition = newStep * this._stepPx[dominateAxis];
 
         if (assumptionOfNewPosition <= 0) {

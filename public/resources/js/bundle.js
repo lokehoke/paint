@@ -38956,7 +38956,6 @@ function () {
         newStep = Math.ceil((pageCoorOfMouse[dominateAxis] - this._coorMinPar[dominateAxis] - this._shiftOnItemPx[dominateAxis]) / this._stepPx[dominateAxis]);
       }
 
-      console.log(newStep);
       assumptionOfNewPosition = newStep * this._stepPx[dominateAxis];
 
       if (assumptionOfNewPosition <= 0) {
@@ -40430,14 +40429,18 @@ function () {
         }
 
         ctx.beginPath();
-        ctx.arc(e.offsetX, e.offsetY, _this._lineThickness / 2, 0, 2 * Math.PI);
         ctx.fill();
         ctx.beginPath();
       };
 
-      var mouseDown = function mouseDown() {
+      var mouseDown = function mouseDown(e) {
+        if (!checkCanvTarget(e.target)) {
+          return false;
+        }
+
         ctx.lineWidth = _this._lineThickness;
         ctx.fillStyle = _this._color;
+        ctx.lineCap = 'round';
 
         var moving = function moving(e) {
           if (!checkCanvTarget(e.target)) {
@@ -40459,6 +40462,7 @@ function () {
 
         document.addEventListener('mousemove', moving);
         document.addEventListener('mouseup', downing);
+        return true;
       };
 
       document.addEventListener('click', click);

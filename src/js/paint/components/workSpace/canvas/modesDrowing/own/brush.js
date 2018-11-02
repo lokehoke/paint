@@ -19,14 +19,17 @@ module.exports = class BrushMode {
             }
 
             ctx.beginPath();
-            ctx.arc(e.offsetX, e.offsetY, this._lineThickness / 2, 0, 2 * Math.PI);
             ctx.fill();
             ctx.beginPath();
         };
 
-        let mouseDown = () => {
+        let mouseDown = (e) => {
+            if (!checkCanvTarget(e.target)) {
+                return false;
+            }
             ctx.lineWidth = this._lineThickness;
             ctx.fillStyle = this._color;
+            ctx.lineCap = 'round';
 
 
             let moving = e => {
@@ -51,6 +54,7 @@ module.exports = class BrushMode {
 
             document.addEventListener('mousemove', moving);
             document.addEventListener('mouseup', downing);
+            return true;
         };
 
         document.addEventListener('click', click);
