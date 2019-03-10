@@ -7,6 +7,7 @@ const faTimesCircle = require('@fortawesome/free-solid-svg-icons').faTimesCircle
 
 const NewFile = require('./dropMain/newFile.jsx');
 const BasicInstrument = require('./dropMain/basicInstrument.jsx');
+const Palette = require('./dropMain/palette.jsx');
 
 const DragnDrop = require('./../../commonInterface/dragonDrop/dragnDrop.js');
 
@@ -64,10 +65,13 @@ class DropWindow extends React.Component {
                 this._h = 180;
                 this._w = 260;
                 break;
+            case 'palette':
+                this._h = 280;
+                this._w = 280;
         }
 
-        this._window.style.height = `${this._h}px`;
-        this._window.style.width = `${this._w}px`;
+        this._window.style.height = `${this._h+2}px`;
+        this._window.style.width = `${this._w+2}px`;
     }
 
     _getMain(el) {
@@ -79,6 +83,9 @@ class DropWindow extends React.Component {
                 break;
             case 'basicInstrument':
                 main = (<BasicInstrument id={this.props.element.id} />);
+                break;
+            case 'palette':
+                main = (<Palette id={this.props.element.id} />);
                 break;
         }
 

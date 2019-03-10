@@ -102,7 +102,8 @@ module.exports = class DragnDrop {
         let par = path.find(el =>
             (el.style.position === 'absolute' || el.style.position === 'relative' || el.style.position === 'fixed')
         );
-        let coor = this._getCoords(par || document.body);
+        par = par || document.body;
+        let coor = this._getCoords(par);
         this._coorMinPar = coor;
         if (this._config.piece.exist) {
             this._defineMaxParAndStep(par);

@@ -29,6 +29,7 @@ module.exports = class BrushMode {
             }
             ctx.lineWidth = this._lineThickness;
             ctx.fillStyle = this._color;
+            ctx.strokeStyle = this._color;
             ctx.lineCap = 'round';
 
 

@@ -10,11 +10,13 @@ class Winsows extends React.Component {
                 <span className="headerContainer__title">windows</span>
                 <ul className="headerContainer__subMenu">
                     <li>
-                        <span
-                            className="basicInstrument"
-                            ref={bi => this._basicInstrument = bi}
-                        >
+                        <span ref={bi => this._basicInstrument = bi} >
                             Basic instrument
+                        </span>
+                    </li>
+                    <li>
+                        <span ref={p => this._palette = p} >
+                            Palette
                         </span>
                     </li>
                 </ul>
@@ -24,10 +26,15 @@ class Winsows extends React.Component {
 
     componentDidMount() {
         this._basicInstrument.addEventListener('click', this._createNewBasicInstrumentWindow.bind(this));
+        this._palette.addEventListener('click', this._createNewPalette.bind(this));
     }
 
     _createNewBasicInstrumentWindow() {
         this.props.newWindow('basicInstrument');
+    }
+
+    _createNewPalette() {
+        this.props.newWindow('palette');
     }
 }
 

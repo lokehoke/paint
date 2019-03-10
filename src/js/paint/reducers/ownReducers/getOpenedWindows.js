@@ -14,6 +14,8 @@ module.exports = () => (state = def, action) => {
                 title = 'Create new file';
             } else if (action.view === 'basicInstrument') {
                 title = 'Basic Instrument';
+            } else if (action.view === 'palette') {
+                title = 'Palette';
             }
 
             if (state.own.some(el => el.view === action.view)) {

@@ -12,7 +12,7 @@
             cursor: pointer;
         }
 
-        .headerContainer__subMenu {
+        ul.headerContainer__subMenu {
             z-index: 9999;
             padding: 5px;
             padding-left: 10px;
@@ -24,8 +24,13 @@
             border: 1px solid white;
             cursor: pointer;
 
-            &:hover {
-                background: $blue;
+            li {
+                border-radius: 5px;
+                padding: 5px;
+
+                &:hover {
+                    background: $blue;
+                }
             }
         }
 
