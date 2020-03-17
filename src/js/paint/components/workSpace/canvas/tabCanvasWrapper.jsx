@@ -4,7 +4,7 @@ const React = require('react');
 const ReactRedux = require('react-redux');
 const FlexiblePlace = require('./../../commonComponents/scrollMoveZoomPlace/scrollMoveZoomPlace.jsx');
 
-const Modes = require('./modesDrowing/modes.js');
+const Modes = require('./modesDrawing/modes.js');
 
 class Tabs extends React.Component {
     render() {
@@ -39,7 +39,7 @@ class Tabs extends React.Component {
         }
 
         if (this.props.activeTab >= 0) {
-            this._changeDrowingMode();
+            this._changeDrawingMode();
         }
     }
 
@@ -52,20 +52,20 @@ class Tabs extends React.Component {
         &&
             this.props.tabs[this.props.tabs.length - 1].id !== this._idLastCanvas
         ) {
-            this._drowNewCanvas();
+            this._drawNewCanvas();
             this._idLastCanvas = this.props.tabs[this.props.tabs.length - 1].id;
         } else if (this.props.activeTab >= 0) {
-            this._changeDrowingMode();
+            this._changeDrawingMode();
         }
     }
 
-    _drowNewCanvas() {
+    _drawNewCanvas() {
         let canvas = this._canv[this._canv.length - 1];
         let ctx = this._ctx[this._ctx.length - 1];
 
         ctx.fillStyle = 'white';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        this._changeDrowingMode();
+        this._changeDrawingMode();
     }
 
     _setContext() {
@@ -75,7 +75,7 @@ class Tabs extends React.Component {
         });
     }
 
-    _changeDrowingMode() {
+    _changeDrawingMode() {
         this._deleteListeners();
         let active = this._idArr.indexOf(this.props.activeTab);
 
@@ -91,7 +91,7 @@ class Tabs extends React.Component {
 module.exports = ReactRedux.connect(
     state => ({
         size: {
-            height: state.sizeScreen.height - 75,
+            height: state.sizeScreen.height - 85,
             width: state.sizeScreen.width - 45
         },
         tabs: state.tabs.own,
