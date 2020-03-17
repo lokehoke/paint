@@ -2,7 +2,7 @@
     "name": "paint",
     "version": "0.0.1",
     "description": "paint",
-    "main": "index.js",
+    "main": "src/js/index.js",
     "repository": "https://github.com/Lpkehoke/paint.git",
     "author": "lokeHoke <ibymif2000@yandex.ru>",
     "license": "MIT",
