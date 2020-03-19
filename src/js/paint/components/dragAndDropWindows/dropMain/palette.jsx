@@ -3,7 +3,7 @@
 const React = require('react');
 const ReactRedux = require('react-redux');
 
-const PaleеteBasic = require('./../../commonComponents/palette/palette.jsx');
+const PaletteBasic = require('../../commonComponents/palette/palette.jsx');
 
 class Palette extends React.Component {
     constructor(props) {
@@ -14,7 +14,7 @@ class Palette extends React.Component {
     render() {
         return (
             <div>
-                <PaleеteBasic
+                <PaletteBasic
                     mainSide={200}
                     changing={this._changeColor}
                 />

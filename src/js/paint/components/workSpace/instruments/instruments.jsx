@@ -5,21 +5,21 @@ const ReactRedux = require('react-redux');
 
 const Instrument = require('./instrument.jsx');
 
-class Instrumensts extends React.Component {
+class Instruments extends React.Component {
     render() {
-        let insts = [];
+        let instruments = [];
         let active = false;
 
         for (let key in this.props.instruments) {
             if (this.props.instruments[key]) {
                 active = (key === this.props.active ? true : false);
-                insts.push(<Instrument type={key} key={key} active={active} />);
+                instruments.push(<Instrument type={key} key={key} active={active} />);
             }
         }
 
         return (
             <aside className="instrumentWrapper">
-                {insts}
+                {instruments}
             </aside>
         );
     }
@@ -30,4 +30,4 @@ module.exports = ReactRedux.connect((state) => {
         instruments: state.instruments.currentInstruments,
         active: state.instruments.activeInstrument
     };
-})(Instrumensts);
+})(Instruments);

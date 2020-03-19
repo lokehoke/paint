@@ -1,9 +1,9 @@
 'use strict';
 
 const DefConfig = require('./defaultSetting.js');
-const Coor = require('./../../structDate/coor.js');
+const Coor = require('../../structDate/coor.js');
 
-module.exports = class DragnDrop {
+module.exports = class DragAndDrop {
     constructor(item, config = null) {
         this._item = item;
         this._config = this._makeSetting(config);
@@ -24,7 +24,7 @@ module.exports = class DragnDrop {
         this._deleteDrop = this._deleteDrop.bind(this);
     }
 
-    startDragonDroping() {
+    startDragAndDrop() {
         this._startAsync();
         return this._deleteDrop;
     }
@@ -53,7 +53,7 @@ module.exports = class DragnDrop {
     _mouseDowning(e) {
         let item = this._item;
 
-        if (!this._config.ignoreNoDrugon && this._issetNoDrop(e.path)) {
+        if (!this._config.ignoreNoDragAndDrop && this._issetNoDrop(e.path)) {
             return true;
         } else {
             this._findAbsPar();
@@ -98,7 +98,7 @@ module.exports = class DragnDrop {
     }
 
     _findAbsPar() {
-        let path = this._makeParrentPath();
+        let path = this._makeParentPath();
         let par = path.find(el =>
             (el.style.position === 'absolute' || el.style.position === 'relative' || el.style.position === 'fixed')
         );
@@ -116,7 +116,7 @@ module.exports = class DragnDrop {
         this._coorMaxPar.x = this._coorMinPar.x + el.offsetWidth - sizeItem.x;
         this._coorMaxPar.y = this._coorMinPar.y + el.offsetHeight - sizeItem.y;
 
-        if (this._config.piece.exitFromContur) {
+        if (this._config.piece.exitFromContour) {
             this._coorMinPar.sub(sizeItem.divisionOnNumber(2));
             this._coorMaxPar.sum(sizeItem.divisionOnNumber(2));
         }
@@ -145,7 +145,7 @@ module.exports = class DragnDrop {
     _issetNoDrop(path) {
         let isset = false;
         path.slice(0, -6).forEach(el => {
-            if (el.dataset.drugon === 'noDrugon') {
+            if (el.dataset.dragAndDrop === 'noDragAndDrop') {
                 isset = true;
             }
         });
@@ -155,8 +155,8 @@ module.exports = class DragnDrop {
     _movingWithPiece(e) {
         let assumptionOfNewPosition = 0.0;
 
-        let partOfExitFromConturPx = this._getSizeItem().divisionOnNumber(2);
-        let condOfExitFromContur = this._config.piece.exitFromContur;
+        let partOfExitFromContourPx = this._getSizeItem().divisionOnNumber(2);
+        let condOfExitFromContour = this._config.piece.exitFromContour;
 
         let dominateAxis = '';
         let changingSide = '';
@@ -180,13 +180,13 @@ module.exports = class DragnDrop {
         assumptionOfNewPosition = newStep * this._stepPx[dominateAxis];
 
         if (assumptionOfNewPosition <= 0) {
-            this._item.style[changingSide] = 0 - (condOfExitFromContur ? partOfExitFromConturPx[dominateAxis] : 0) + 'px';
+            this._item.style[changingSide] = 0 - (condOfExitFromContour ? partOfExitFromContourPx[dominateAxis] : 0) + 'px';
             this._steps.current[dominateAxis] = 0;
         } else if (assumptionOfNewPosition >= this._coorMaxPar[dominateAxis] - this._coorMinPar[dominateAxis]) {
-            this._item.style[changingSide] = this._steps.max[dominateAxis] * this._stepPx[dominateAxis] - (condOfExitFromContur ? partOfExitFromConturPx[dominateAxis] : 0) + 'px';
+            this._item.style[changingSide] = this._steps.max[dominateAxis] * this._stepPx[dominateAxis] - (condOfExitFromContour ? partOfExitFromContourPx[dominateAxis] : 0) + 'px';
             this._steps.current[dominateAxis] = this._steps.max[dominateAxis];
         } else {
-            this._item.style[changingSide] = assumptionOfNewPosition - (condOfExitFromContur ? partOfExitFromConturPx[dominateAxis] : 0) + 'px';
+            this._item.style[changingSide] = assumptionOfNewPosition - (condOfExitFromContour ? partOfExitFromContourPx[dominateAxis] : 0) + 'px';
             this._steps.current[dominateAxis] = newStep;
         }
 
@@ -207,15 +207,15 @@ module.exports = class DragnDrop {
 
     _makeSetting(config) {
         let defaults = new DefConfig();
-        let reWrite = (obj, standartObj) => {
-            if (typeof obj === 'object' && obj !== null && typeof standartObj === 'object' && standartObj !== null ) {
-                for (let value in standartObj) {
-                    if (typeof standartObj[value] !== typeof obj[value]) {
+        let reWrite = (obj, commonObject) => {
+            if (typeof obj === 'object' && obj !== null && typeof commonObject === 'object' && commonObject !== null) {
+                for (let value in commonObject) {
+                    if (typeof commonObject[value] !== typeof obj[value]) {
                         continue;
-                    } else if (typeof standartObj[value] !== 'object') {
-                        standartObj[value] = obj[value];
+                    } else if (typeof commonObject[value] !== 'object') {
+                        commonObject[value] = obj[value];
                     } else {
-                        reWrite(obj[value], standartObj[value]);
+                        reWrite(obj[value], commonObject[value]);
                     }
                 }
             }
@@ -228,7 +228,7 @@ module.exports = class DragnDrop {
         return defaults;
     }
 
-    _makeParrentPath() {
+    _makeParentPath() {
         let path = [];
         let curItem = this._item;
         while(curItem.parentNode) {

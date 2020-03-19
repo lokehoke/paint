@@ -3,7 +3,7 @@
 const React = require('react');
 const ReactRedux = require('react-redux');
 
-class Winsows extends React.Component {
+class Windows extends React.Component {
     render() {
         return (
             <div className="header__container">
@@ -48,4 +48,4 @@ module.exports = ReactRedux.connect(
             })
         }
     })
-)(Winsows);
+)(Windows);

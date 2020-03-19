@@ -1,9 +1,9 @@
-const Coor = require('./../../structDate/coor.js');
+const Coor = require('../../structDate/coor.js');
 
 module.exports =  class DefConfig {
     constructor() {
         this.startAsync = true;
-        this.ignoreNoDrugon = false;
+        this.ignoreNoDragAndDrop = false;
         this.showAfterMount = {
             isset: false,
             type: 'flex',
@@ -16,7 +16,7 @@ module.exports =  class DefConfig {
             min: new Coor(),
             max: new Coor(),
             step: new Coor(),
-            exitFromContur: false,
+            exitFromContour: false,
             cur: new Coor()
         };
         this.transferDate = () => {};

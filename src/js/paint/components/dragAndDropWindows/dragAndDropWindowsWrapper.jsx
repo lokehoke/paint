@@ -6,7 +6,7 @@ const PropTypes = require('prop-types');
 
 const DropWindow = require('./dropWindow.jsx');
 
-class DrugonWindowWrapper extends React.Component {
+class DragAndDropWindowWrapper extends React.Component {
     static defaultProps = {
         openedWindows: []
     };
@@ -27,4 +27,4 @@ module.exports = ReactRedux.connect(
         openedWindows: state.openedWindows.own
     }),
     dispatch => ({})
-)(DrugonWindowWrapper);
+)(DragAndDropWindowWrapper);

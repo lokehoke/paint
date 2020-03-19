@@ -3,7 +3,7 @@
 const React = require('react');
 const ReactRedux = require('react-redux');
 
-const ValueSlider = require('./../../commonComponents/valueSlider/valueSlider.jsx');
+const ValueSlider = require('../../commonComponents/valueSlider/valueSlider.jsx');
 
 class BasicInstrument extends React.Component {
     constructor(props) {

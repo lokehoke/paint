@@ -9,7 +9,6 @@ module.exports = class Modes {
         switch (mode) {
             case 'brush':
                 return this._brush;
-                break;
         }
     }
 }

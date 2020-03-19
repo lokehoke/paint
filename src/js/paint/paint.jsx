@@ -12,7 +12,7 @@ const rootReducer = (require('./reducers/getRootReducer.js'))(setting);
 const Header = require('./components/header/header.jsx');
 const WorkSpace = require('./components/workSpace/workSpace.jsx');
 const Footer = require('./components/footer/footer.jsx');
-const DrugonWindowWrapper = require('./components/drugonWindows/drugonWindowsWrapper.jsx');
+const DragAndDropWindowWrapper = require('./components/dragAndDropWindows/dragAndDropWindowsWrapper.jsx');
 
 module.exports = class Paint {
     constructor(selector) {
@@ -37,7 +37,7 @@ module.exports = class Paint {
                     <Header />
                     <WorkSpace />
                     <Footer />
-                    <DrugonWindowWrapper />
+                    <DragAndDropWindowWrapper />
                 </div>
              </Provider>,
             this._mountPoint

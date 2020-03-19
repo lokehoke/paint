@@ -47,7 +47,7 @@ module.exports = class pimpDote extends React.Component {
         style.width = conf.width;
         style.height = conf.height;
         style.right = 5;
-        console.log(style);
+
         let rectangle = {
             width: conf.width,
             height: conf.height / 5,

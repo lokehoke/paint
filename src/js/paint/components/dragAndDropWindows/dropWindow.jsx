@@ -9,7 +9,7 @@ const NewFile = require('./dropMain/newFile.jsx');
 const BasicInstrument = require('./dropMain/basicInstrument.jsx');
 const Palette = require('./dropMain/palette.jsx');
 
-const DragnDrop = require('./../../commonInterface/dragonDrop/dragnDrop.js');
+const DragAndDrop = require('../../commonInterface/dragAndDrop/dragAndDrop.js');
 
 class DropWindow extends React.Component {
     render() {
@@ -20,12 +20,12 @@ class DropWindow extends React.Component {
                     <div
                         className="__exitIcon"
                         ref={exit => this.exitBtn = exit}
-                        data-drugon="noDrugon"
+                        data-drag-and-drop="noDragAndDrop"
                     >
                         <FontAwesomeIcon icon={faTimesCircle} />
                     </div>
                 </header>
-                <main data-drugon="noDrugon">
+                <main data-drag-and-drop="noDragAndDrop">
                     {this._getMain(this.props.element)}
                 </main>
             </div>
@@ -34,7 +34,7 @@ class DropWindow extends React.Component {
 
     componentDidMount() {
         this._defineSize();
-        this._deleteDrugonDrop = (this._setUpDragnDrop() || (() => {}));
+        this._deleteDragAndDrop = (this._setUpDragAndDrop() || (() => {}));
 
         this.exitBtn.addEventListener('click', e => {
             e.preventDefault();
@@ -44,12 +44,12 @@ class DropWindow extends React.Component {
     }
 
     componentWiilUnmount() {
-        this._deleteDrugonDrop();
+        this._deleteDragAndDrop();
     }
 
-    _setUpDragnDrop() {
-        let dragn = new DragnDrop(this._window);
-        return  dragn.startDragonDroping();
+    _setUpDragAndDrop() {
+        let drag = new DragAndDrop(this._window);
+        return drag.startDragAndDrop();
     }
 
     _defineSize() {
@@ -89,7 +89,7 @@ class DropWindow extends React.Component {
                 break;
         }
 
-        return main;;
+        return main;
     }
 
     _getNewFileMain() {

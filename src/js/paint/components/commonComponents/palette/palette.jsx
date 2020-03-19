@@ -3,7 +3,7 @@
 const React = require('react');
 const PropTypes = require('prop-types');
 
-const DragnDrop = require('./../../../commonInterface/dragonDrop/dragnDrop.js');
+const DragAndDrop = require('../../../commonInterface/dragAndDrop/dragAndDrop.js');
 
 const PointerArrow = require('./../simpleComponents/pointerArrow.jsx');
 
@@ -83,16 +83,16 @@ module.exports = class Palette extends React.Component {
         this._hueStx = this._hue.getContext('2d');
         this._createHue();
 
-        this._deleteDnd = this._setUpDragnDrop();
+        this._deleteDnd = this._setUpDragAndDrop();
     }
 
     componentWillUnmount() {
         this._deleteDnd();
     }
 
-    _setUpDragnDrop() {
-        let dragn = new DragnDrop(this._pointerArrow.getDom(), {
-            ignoreNoDrugon: true,
+    _setUpDragAndDrop() {
+        let drag = new DragAndDrop(this._pointerArrow.getDom(), {
+            ignoreNoDragAndDrop: true,
             onlyY: true,
             showAfterMount: {
                 isset: true,
@@ -103,7 +103,7 @@ module.exports = class Palette extends React.Component {
             },
             piece: {
                 exist: true,
-                exitFromContur: true,
+                exitFromContour: true,
                 min: {
                     y: 0
                 },
@@ -120,7 +120,7 @@ module.exports = class Palette extends React.Component {
             transferDate: this._changeValue.bind(this)
         });
 
-        return dragn.startDragonDroping();
+        return drag.startDragAndDrop();
     }
 
     _changeValue() {}

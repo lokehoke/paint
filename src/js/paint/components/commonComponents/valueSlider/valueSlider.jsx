@@ -5,7 +5,7 @@ const PropTypes = require('prop-types')
 
 const PimpDote = require('./../simpleComponents/pimpDote.jsx');
 
-const DragnDrop = require('./../../../commonInterface/dragonDrop/dragnDrop.js');
+const DragAndDrop = require('../../../commonInterface/dragAndDrop/dragAndDrop.js');
 
 let sizePoint = 20;
 
@@ -68,12 +68,12 @@ module.exports = class ValueSlider extends React.Component {
     }
 
     componentDidMount() {
-        this._deleteDnd = this._setUpDragnDrop();
+        this._deleteDnd = this._setUpDragAndDrop();
     }
 
-    _setUpDragnDrop() {
-        let dragn = new DragnDrop(this._pimp.getDom(), {
-            ignoreNoDrugon: true,
+    _setUpDragAndDrop() {
+        let drag = new DragAndDrop(this._pimp.getDom(), {
+            ignoreNoDragAndDrop: true,
             onlyX: true,
             showAfterMount: {
                 isset: true,
@@ -96,12 +96,12 @@ module.exports = class ValueSlider extends React.Component {
                 cur: {
                     x: this.props.cur
                 },
-                exitFromContur: true
+                exitFromContour: true
             },
             transferDate: this._changeValue.bind(this)
         });
 
-        return dragn.startDragonDroping();
+        return drag.startDragAndDrop();
     }
 
     _changeValue(e) {

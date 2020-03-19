@@ -47,13 +47,11 @@ class Tabs extends React.Component {
         this._removeNullElFromCanvArr();
         this._setContext();
 
-        if (
-            this.props.tabs[this.props.tabs.length - 1]
-        &&
-            this.props.tabs[this.props.tabs.length - 1].id !== this._idLastCanvas
-        ) {
+        let l = this.props.tabs.length;
+
+        if ( this.props.tabs[l-1] && this.props.tabs[l - 1].id !== this._idLastCanvas) {
             this._drawNewCanvas();
-            this._idLastCanvas = this.props.tabs[this.props.tabs.length - 1].id;
+            this._idLastCanvas = this.props.tabs[l - 1].id;
         } else if (this.props.activeTab >= 0) {
             this._changeDrawingMode();
         }
@@ -70,7 +68,7 @@ class Tabs extends React.Component {
 
     _setContext() {
         this._ctx = [];
-        this._canv.forEach((el) => {
+        this._canv.forEach(el => {
             this._ctx.push(el.getContext('2d'));
         });
     }

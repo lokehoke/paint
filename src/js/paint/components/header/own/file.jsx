@@ -10,10 +10,7 @@ class File extends React.Component {
                 <span className="headerContainer__title">file</span>
                 <ul className="headerContainer__subMenu">
                     <li>
-                        <span
-                            className="newFile"
-                            ref={nf => this._newFile = nf}
-                        >
+                        <span className="newFile" ref={nf => this._newFile = nf} >
                             New file
                         </span>
                     </li>
