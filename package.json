@@ -4,7 +4,7 @@
     "description": "paint",
     "main": "src/js/index.js",
     "repository": "https://github.com/Lpkehoke/paint.git",
-    "author": "lokeHoke <ibymif2000@yandex.ru>",
+    "author": "lokehoke <ibymif2000@yandex.ru>",
     "license": "MIT",
     "devDependencies": {
         "@babel/cli": "^7.0.0",
@@ -19,7 +19,6 @@
         "autoprefixer": "^9.1.5",
         "babel-loader": "^8.0.2",
         "css-loader": "^1.0.0",
-        "json-loader": "^0.5.7",
         "node-sass": "^4.9.3",
         "postcss-loader": "^3.0.0",
         "react": "^16.5.0",

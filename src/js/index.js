@@ -1,5 +1,5 @@
 'use strict';
 
-const Paint = require('./paint/paint.jsx');
+import Paint from './paint/paint.jsx';
 
 const paint = new Paint('#root');

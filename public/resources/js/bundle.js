@@ -52566,15 +52566,16 @@ module.exports = function(originalModule) {
 /*!*************************!*\
   !*** ./src/js/index.js ***!
   \*************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _paint_paint_jsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./paint/paint.jsx */ "./src/js/paint/paint.jsx");
 
 
-var Paint = __webpack_require__(/*! ./paint/paint.jsx */ "./src/js/paint/paint.jsx");
 
-var paint = new Paint('#root');
+var paint = new _paint_paint_jsx__WEBPACK_IMPORTED_MODULE_0__["default"]('#root');
 
 /***/ }),
 
@@ -55439,43 +55440,53 @@ module.exports = WorkSpace;
 /*!********************************!*\
   !*** ./src/js/paint/paint.jsx ***!
   \********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Paint; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _settings_defaultSetting_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./settings/defaultSetting.json */ "./src/js/paint/settings/defaultSetting.json");
+var _settings_defaultSetting_json__WEBPACK_IMPORTED_MODULE_4___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./settings/defaultSetting.json */ "./src/js/paint/settings/defaultSetting.json", 1);
+/* harmony import */ var _reducers_getRootReducer_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./reducers/getRootReducer.js */ "./src/js/paint/reducers/getRootReducer.js");
+/* harmony import */ var _reducers_getRootReducer_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_reducers_getRootReducer_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _components_header_header_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/header/header.jsx */ "./src/js/paint/components/header/header.jsx");
+/* harmony import */ var _components_header_header_jsx__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_components_header_header_jsx__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _components_workSpace_workSpace_jsx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/workSpace/workSpace.jsx */ "./src/js/paint/components/workSpace/workSpace.jsx");
+/* harmony import */ var _components_workSpace_workSpace_jsx__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_components_workSpace_workSpace_jsx__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _components_footer_footer_jsx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/footer/footer.jsx */ "./src/js/paint/components/footer/footer.jsx");
+/* harmony import */ var _components_footer_footer_jsx__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_components_footer_footer_jsx__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _components_dragAndDropWindows_dragAndDropWindowsWrapper_jsx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/dragAndDropWindows/dragAndDropWindowsWrapper.jsx */ "./src/js/paint/components/dragAndDropWindows/dragAndDropWindowsWrapper.jsx");
+/* harmony import */ var _components_dragAndDropWindows_dragAndDropWindowsWrapper_jsx__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_components_dragAndDropWindows_dragAndDropWindowsWrapper_jsx__WEBPACK_IMPORTED_MODULE_9__);
 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-var ReactDom = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 
-var Redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 
-var ReactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
-var Provider = ReactRedux.Provider;
 
-var setting = __webpack_require__(/*! ./settings/defaultSetting.json */ "./src/js/paint/settings/defaultSetting.json");
 
-var rootReducer = __webpack_require__(/*! ./reducers/getRootReducer.js */ "./src/js/paint/reducers/getRootReducer.js")(setting);
+var rootReducer = _reducers_getRootReducer_js__WEBPACK_IMPORTED_MODULE_5___default()(_settings_defaultSetting_json__WEBPACK_IMPORTED_MODULE_4__);
 
-var Header = __webpack_require__(/*! ./components/header/header.jsx */ "./src/js/paint/components/header/header.jsx");
 
-var WorkSpace = __webpack_require__(/*! ./components/workSpace/workSpace.jsx */ "./src/js/paint/components/workSpace/workSpace.jsx");
 
-var Footer = __webpack_require__(/*! ./components/footer/footer.jsx */ "./src/js/paint/components/footer/footer.jsx");
 
-var DragAndDropWindowWrapper = __webpack_require__(/*! ./components/dragAndDropWindows/dragAndDropWindowsWrapper.jsx */ "./src/js/paint/components/dragAndDropWindows/dragAndDropWindowsWrapper.jsx");
 
-module.exports = function Paint(selector) {
+var Paint = function Paint(selector) {
   var _this = this;
 
   _classCallCheck(this, Paint);
 
   this._mountPoint = document.querySelector(selector);
-  this._store = Redux.createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__({
+  this._store = Object(redux__WEBPACK_IMPORTED_MODULE_2__["createStore"])(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__({
     serialize: true
   }));
 
@@ -55489,11 +55500,11 @@ module.exports = function Paint(selector) {
     });
   };
 
-  ReactDom.render(React.createElement(Provider, {
+  Object(react_dom__WEBPACK_IMPORTED_MODULE_1__["render"])(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_3__["Provider"], {
     store: this._store
-  }, React.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "paintWrapper"
-  }, React.createElement(Header, null), React.createElement(WorkSpace, null), React.createElement(Footer, null), React.createElement(DragAndDropWindowWrapper, null))), this._mountPoint);
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_header_header_jsx__WEBPACK_IMPORTED_MODULE_6___default.a, null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_workSpace_workSpace_jsx__WEBPACK_IMPORTED_MODULE_7___default.a, null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_footer_footer_jsx__WEBPACK_IMPORTED_MODULE_8___default.a, null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_dragAndDropWindows_dragAndDropWindowsWrapper_jsx__WEBPACK_IMPORTED_MODULE_9___default.a, null))), this._mountPoint);
   document.addEventListener('selectstart', function (e) {
     e.preventDefault();
     return false;
@@ -55503,6 +55514,8 @@ module.exports = function Paint(selector) {
     return false;
   });
 };
+
+
 
 /***/ }),
 

@@ -1,23 +1,24 @@
 'use strict';
 
-const React = require('react');
-const ReactDom = require('react-dom');
-const Redux = require('redux');
-const ReactRedux = require('react-redux');
-const Provider = ReactRedux.Provider;
+import React from 'react';
+import { render } from 'react-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
-const setting = require('!./settings/defaultSetting.json');
-const rootReducer = (require('./reducers/getRootReducer.js'))(setting);
+import setting from './settings/defaultSetting.json';
 
-const Header = require('./components/header/header.jsx');
-const WorkSpace = require('./components/workSpace/workSpace.jsx');
-const Footer = require('./components/footer/footer.jsx');
-const DragAndDropWindowWrapper = require('./components/dragAndDropWindows/dragAndDropWindowsWrapper.jsx');
+import RootReducer from './reducers/getRootReducer.js';
+const rootReducer = RootReducer(setting);
 
-module.exports = class Paint {
+import Header from './components/header/header.jsx';
+import WorkSpace from './components/workSpace/workSpace.jsx';
+import Footer from './components/footer/footer.jsx';
+import DragAndDropWindowWrapper from './components/dragAndDropWindows/dragAndDropWindowsWrapper.jsx';
+
+export default class Paint {
     constructor(selector) {
         this._mountPoint = document.querySelector(selector);
-        this._store = Redux.createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__({
+        this._store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__({
            serialize: true
         }));
 
@@ -31,7 +32,7 @@ module.exports = class Paint {
             });
         };
 
-        ReactDom.render(
+        render(
             <Provider store={this._store}>
                 <div className="paintWrapper">
                     <Header />
