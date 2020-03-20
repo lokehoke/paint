@@ -55455,7 +55455,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _settings_defaultSetting_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./settings/defaultSetting.json */ "./src/js/paint/settings/defaultSetting.json");
 var _settings_defaultSetting_json__WEBPACK_IMPORTED_MODULE_4___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./settings/defaultSetting.json */ "./src/js/paint/settings/defaultSetting.json", 1);
 /* harmony import */ var _reducers_getRootReducer_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./reducers/getRootReducer.js */ "./src/js/paint/reducers/getRootReducer.js");
-/* harmony import */ var _reducers_getRootReducer_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_reducers_getRootReducer_js__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _components_header_header_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/header/header.jsx */ "./src/js/paint/components/header/header.jsx");
 /* harmony import */ var _components_header_header_jsx__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_components_header_header_jsx__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _components_workSpace_workSpace_jsx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/workSpace/workSpace.jsx */ "./src/js/paint/components/workSpace/workSpace.jsx");
@@ -55474,7 +55473,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
 
-var rootReducer = _reducers_getRootReducer_js__WEBPACK_IMPORTED_MODULE_5___default()(_settings_defaultSetting_json__WEBPACK_IMPORTED_MODULE_4__);
+var rootReducer = Object(_reducers_getRootReducer_js__WEBPACK_IMPORTED_MODULE_5__["default"])(_settings_defaultSetting_json__WEBPACK_IMPORTED_MODULE_4__);
 
 
 
@@ -55523,31 +55522,31 @@ var Paint = function Paint(selector) {
 /*!*************************************************!*\
   !*** ./src/js/paint/reducers/getRootReducer.js ***!
   \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var _ownReducers_getTabs_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ownReducers/getTabs.js */ "./src/js/paint/reducers/ownReducers/getTabs.js");
+/* harmony import */ var _ownReducers_getOpenedWindows__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ownReducers/getOpenedWindows */ "./src/js/paint/reducers/ownReducers/getOpenedWindows.js");
+/* harmony import */ var _ownReducers_getSizeScreen__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ownReducers/getSizeScreen */ "./src/js/paint/reducers/ownReducers/getSizeScreen.js");
+/* harmony import */ var _ownReducers_getInstruments_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ownReducers/getInstruments.js */ "./src/js/paint/reducers/ownReducers/getInstruments.js");
 
 
-var Redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 
-module.exports = function (settings) {
-  var tabs = __webpack_require__(/*! ./ownReducers/getTabs.js */ "./src/js/paint/reducers/ownReducers/getTabs.js")();
 
-  var openedWindows = __webpack_require__(/*! ./ownReducers/getOpenedWindows */ "./src/js/paint/reducers/ownReducers/getOpenedWindows.js")();
 
-  var sizeScreen = __webpack_require__(/*! ./ownReducers/getSizeScreen */ "./src/js/paint/reducers/ownReducers/getSizeScreen.js")();
 
-  var instruments = __webpack_require__(/*! ./ownReducers/getInstruments.js */ "./src/js/paint/reducers/ownReducers/getInstruments.js")(settings);
 
-  return Redux.combineReducers({
-    tabs: tabs,
-    openedWindows: openedWindows,
-    sizeScreen: sizeScreen,
-    instruments: instruments
+/* harmony default export */ __webpack_exports__["default"] = (function (settings) {
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
+    tabs: Object(_ownReducers_getTabs_js__WEBPACK_IMPORTED_MODULE_1__["default"])(JSON.parse(JSON.stringify(settings))),
+    openedWindows: Object(_ownReducers_getOpenedWindows__WEBPACK_IMPORTED_MODULE_2__["default"])(JSON.parse(JSON.stringify(settings))),
+    sizeScreen: Object(_ownReducers_getSizeScreen__WEBPACK_IMPORTED_MODULE_3__["default"])(JSON.parse(JSON.stringify(settings))),
+    instruments: Object(_ownReducers_getInstruments_js__WEBPACK_IMPORTED_MODULE_4__["default"])(JSON.parse(JSON.stringify(settings)))
   });
-  ;
-};
+});
 
 /***/ }),
 
@@ -55555,13 +55554,14 @@ module.exports = function (settings) {
 /*!*************************************************************!*\
   !*** ./src/js/paint/reducers/ownReducers/getInstruments.js ***!
   \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
 
 
-module.exports = function (settings) {
+/* harmony default export */ __webpack_exports__["default"] = (function (settings) {
   return function () {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : settings;
     var action = arguments.length > 1 ? arguments[1] : undefined;
@@ -55586,7 +55586,7 @@ module.exports = function (settings) {
         return state;
     }
   };
-};
+});
 
 /***/ }),
 
@@ -55594,10 +55594,11 @@ module.exports = function (settings) {
 /*!***************************************************************!*\
   !*** ./src/js/paint/reducers/ownReducers/getOpenedWindows.js ***!
   \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
 
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -55613,8 +55614,7 @@ var def = {
   id: id,
   own: []
 };
-
-module.exports = function () {
+/* harmony default export */ __webpack_exports__["default"] = (function () {
   return function () {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : def;
     var action = arguments.length > 1 ? arguments[1] : undefined;
@@ -55622,12 +55622,18 @@ module.exports = function () {
 
     switch (action.type) {
       case 'OPEN_WINDOW':
-        if (action.view === 'newFile') {
-          title = 'Create new file';
-        } else if (action.view === 'basicInstrument') {
-          title = 'Basic Instrument';
-        } else if (action.view === 'palette') {
-          title = 'Palette';
+        switch (action.view) {
+          case 'newFile':
+            title = 'Create new file';
+            break;
+
+          case 'basicInstrument':
+            title = 'Basic Instrument';
+            break;
+
+          case 'palette':
+            title = 'Palette';
+            break;
         }
 
         if (state.own.some(function (el) {
@@ -55657,7 +55663,7 @@ module.exports = function () {
         return state;
     }
   };
-};
+});
 
 /***/ }),
 
@@ -55665,18 +55671,18 @@ module.exports = function () {
 /*!************************************************************!*\
   !*** ./src/js/paint/reducers/ownReducers/getSizeScreen.js ***!
   \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
 
 
 var def = {
   height: window.innerHeight,
   width: window.innerWidth
 };
-
-module.exports = function () {
+/* harmony default export */ __webpack_exports__["default"] = (function () {
   return function () {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : def;
     var action = arguments.length > 1 ? arguments[1] : undefined;
@@ -55689,7 +55695,7 @@ module.exports = function () {
         return state;
     }
   };
-};
+});
 
 /***/ }),
 
@@ -55697,8 +55703,13 @@ module.exports = function () {
 /*!******************************************************!*\
   !*** ./src/js/paint/reducers/ownReducers/getTabs.js ***!
   \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _structDate_infoTab_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../../structDate/infoTab.js */ "./src/js/paint/structDate/infoTab.js");
+
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
@@ -55708,15 +55719,13 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-var InfoTab = __webpack_require__(/*! ./../../structDate/infoTab.js */ "./src/js/paint/structDate/infoTab.js");
 
 var def = {
   id: -1,
   activeTab: -1,
   own: []
 };
-
-module.exports = function () {
+/* harmony default export */ __webpack_exports__["default"] = (function () {
   return function () {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : def;
     var action = arguments.length > 1 ? arguments[1] : undefined;
@@ -55726,17 +55735,27 @@ module.exports = function () {
         return Object.assign({}, state, {
           id: +state.id + 1,
           activeTab: +state.id + 1,
-          own: [].concat(_toConsumableArray(state.own), [new InfoTab(state.id + 1, action.title, action.size)])
+          own: [].concat(_toConsumableArray(state.own), [new _structDate_infoTab_js__WEBPACK_IMPORTED_MODULE_0__["default"](state.id + 1, action.title, action.size)])
         });
 
       case 'CLOSE_TAB':
-        var newOwn = _toConsumableArray(state.own.filter(function (el) {
+        var own = _toConsumableArray(state.own.filter(function (el) {
           return el.id !== action.id;
         }));
 
+        var activeTab = state.activeTab;
+
+        if (+action.id === +state.activeTab) {
+          if (own[own.length - 1]) {
+            activeTab = +own[own.length - 1].id;
+          } else {
+            activeTab = -1;
+          }
+        }
+
         return Object.assign({}, state, {
-          activeTab: +action.id === +state.activeTab ? newOwn[newOwn.length - 1] ? +newOwn[newOwn.length - 1].id : -1 : state.activeTab,
-          own: newOwn
+          activeTab: activeTab,
+          own: own
         });
 
       case 'CHANGE_ACTIVE_TAB':
@@ -55748,7 +55767,7 @@ module.exports = function () {
         return state;
     }
   };
-};
+});
 
 /***/ }),
 
@@ -55855,18 +55874,23 @@ module.exports = /*#__PURE__*/function () {
 /*!********************************************!*\
   !*** ./src/js/paint/structDate/infoTab.js ***!
   \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return InfoTab; });
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-module.exports = function InfoTab(id, title, size) {
+var InfoTab = function InfoTab(id, title, size) {
   _classCallCheck(this, InfoTab);
 
   this.id = id;
   this.title = title;
   this.size = size;
 };
+
+
 
 /***/ }),
 

@@ -1,13 +1,14 @@
+'use strict';
 
-const InfoTab = require('./../../structDate/infoTab.js');
+import InfoTab from './../../structDate/infoTab.js';
 
 let def = {
     id: -1,
     activeTab: -1,
-    own: []
+    own: [],
 };
 
-module.exports = () => (state = def, action) => {
+export default () => (state = def, action) => {
     switch (action.type) {
         case 'NEW_TAB':
             return Object.assign({}, state, {
@@ -15,29 +16,33 @@ module.exports = () => (state = def, action) => {
                 activeTab: +state.id + 1,
                 own: [
                     ...state.own,
-                    new InfoTab(state.id + 1, action.title, action.size)
-                ]
+                    new InfoTab(state.id + 1, action.title, action.size),
+                ],
             });
+
         case 'CLOSE_TAB':
-            let newOwn = [...(state.own.filter(el => el.id !== action.id))];
+            let own = [...(state.own.filter(el => el.id !== action.id))];
+            let activeTab = state.activeTab;
+
+            if (+action.id === +state.activeTab) {
+                if (own[own.length - 1]) {
+                    activeTab = +own[own.length - 1].id;
+                } else {
+                    activeTab = -1;
+                }
+            }
 
             return Object.assign({}, state, {
-                activeTab: (
-                    +action.id === +state.activeTab
-                        ? (
-                            newOwn[newOwn.length - 1]
-                                ? +newOwn[newOwn.length - 1].id
-                                : -1
-                        )
-                        : state.activeTab
-                ),
-                own: newOwn
+                activeTab,
+                own,
             });
-        case 'CHANGE_ACTIVE_TAB':
-            return Object.assign({}, state, {
-                activeTab: +action.activeTab
-            });
-        default:
-            return state;
+
+            case 'CHANGE_ACTIVE_TAB':
+                return Object.assign({}, state, {
+                    activeTab: +action.activeTab,
+                });
+
+            default:
+               return state;
     }
-};
+}

@@ -1,4 +1,4 @@
-module.exports = class InfoTab {
+export default class InfoTab {
     constructor(id, title, size) {
         this.id = id;
         this.title = title;

@@ -3,19 +3,24 @@
 let id = 0;
 let def = {
     id,
-    own: []
+    own: [],
 };
 
-module.exports = () => (state = def, action) => {
+export default () => (state = def, action) => {
     let title = '';
+
     switch (action.type) {
         case 'OPEN_WINDOW':
-            if (action.view === 'newFile') {
-                title = 'Create new file';
-            } else if (action.view === 'basicInstrument') {
-                title = 'Basic Instrument';
-            } else if (action.view === 'palette') {
-                title = 'Palette';
+            switch (action.view) {
+                case 'newFile':
+                    title = 'Create new file';
+                    break;
+                case 'basicInstrument':
+                    title = 'Basic Instrument';
+                    break;
+                case 'palette':
+                    title = 'Palette';
+                    break;
             }
 
             if (state.own.some(el => el.view === action.view)) {
@@ -26,7 +31,7 @@ module.exports = () => (state = def, action) => {
                     own: [...state.own, {
                         id: id++,
                         view: action.view,
-                        title
+                        title,
                     }]
                 };
             }
@@ -36,6 +41,7 @@ module.exports = () => (state = def, action) => {
                 id,
                 own: [...(state.own.filter(el => el.id !== action.id))]
             };
+
         default:
             return state;
     }

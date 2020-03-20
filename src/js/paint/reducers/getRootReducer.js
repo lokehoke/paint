@@ -1,17 +1,18 @@
 'use strict';
 
-const Redux = require('redux');
+import { combineReducers } from 'redux';
 
-module.exports = settings => {
-    const tabs = (require('./ownReducers/getTabs.js'))();
-    const openedWindows = (require('./ownReducers/getOpenedWindows'))();
-    const sizeScreen = require('./ownReducers/getSizeScreen')();
-    const instruments = require('./ownReducers/getInstruments.js')(settings);
+import getTabs from './ownReducers/getTabs.js';
+import getOpenedWindows from './ownReducers/getOpenedWindows';
+import getSizeScreen from './ownReducers/getSizeScreen';
+import getInstruments from './ownReducers/getInstruments.js';
 
-    return Redux.combineReducers({
-        tabs,
-        openedWindows,
-        sizeScreen,
-        instruments
-    });;
+export default settings => {
+
+    return combineReducers({
+        tabs: getTabs(JSON.parse(JSON.stringify(settings))),
+        openedWindows: getOpenedWindows(JSON.parse(JSON.stringify(settings))),
+        sizeScreen: getSizeScreen(JSON.parse(JSON.stringify(settings))),
+        instruments: getInstruments(JSON.parse(JSON.stringify(settings))),
+    });
 }

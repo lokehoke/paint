@@ -19,7 +19,7 @@ export default class Paint {
     constructor(selector) {
         this._mountPoint = document.querySelector(selector);
         this._store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__({
-           serialize: true
+           serialize: true,
         }));
 
         window.onresize = () => {
@@ -27,8 +27,8 @@ export default class Paint {
                 type: 'CHANGE_SIZE_SCREEN',
                 size: {
                     height: window.innerHeight,
-                    width: window.innerWidth
-                }
+                    width: window.innerWidth,
+                },
             });
         };
 
