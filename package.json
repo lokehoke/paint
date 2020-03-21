@@ -7,9 +7,9 @@
     "author": "lokehoke <lokehoke@yandex.ru>",
     "license": "GNU GPL v3",
     "browserslist": [
-		"ie >= 8",
-		"last 4 version"
-	],
+        "ie >= 8",
+        "last 4 version"
+    ],
     "devDependencies": {
         "@babel/cli": "^7.0.0",
         "@babel/core": "^7.0.0",
@@ -28,7 +28,6 @@
         "react": "^16.5.0",
         "react-dom": "^16.5.0",
         "react-redux": "^5.0.7",
-        "react-scroll-move-zoom-place": "^0.0.1",
         "redux": "^4.0.0",
         "reset-css": "^4.0.1",
         "sass-loader": "^7.1.0",

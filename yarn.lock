@@ -3960,14 +3960,7 @@ react-redux@^5.0.7:
     react-is "^16.6.0"
     react-lifecycles-compat "^3.0.0"
 
-react-scroll-move-zoom-place@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/react-scroll-move-zoom-place/-/react-scroll-move-zoom-place-0.0.1.tgz#c1f582b0d758b3488df2ccf74eceb2d9dad45da8"
-  integrity sha512-C3OudL8Uu/QNgTklFn6ntjVSIbnnEaSrwEr6xlfGhOI7JNEWC3MaHtyg8H+MzjGVTd3COV+KK4qcub8K1CYjEA==
-  dependencies:
-    react "^16.5.1"
-
-react@^16.5.0, react@^16.5.1:
+react@^16.5.0:
   version "16.13.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.0.tgz#d046eabcdf64e457bbeed1e792e235e1b9934cf7"
   integrity sha512-TSavZz2iSLkq5/oiE7gnFzmURKZMltmi193rm5HEoUDAXpzT9Kzw6oNZnGoai/4+fUnm7FqS5dwgUL34TujcWQ==
