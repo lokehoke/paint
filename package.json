@@ -6,6 +6,10 @@
     "repository": "https://github.com/Lpkehoke/paint.git",
     "author": "lokehoke <ibymif2000@yandex.ru>",
     "license": "MIT",
+    "browserslist": [
+		"ie >= 8",
+		"last 4 version"
+	],
     "devDependencies": {
         "@babel/cli": "^7.0.0",
         "@babel/core": "^7.0.0",
