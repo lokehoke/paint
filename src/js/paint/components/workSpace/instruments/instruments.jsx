@@ -1,9 +1,9 @@
 'use strict';
 
-const React = require('react');
-const ReactRedux = require('react-redux');
+import React from 'react';
+import { connect } from 'react-redux';
 
-const Instrument = require('./instrument.jsx');
+import Instrument from './instrument.jsx';
 
 class Instruments extends React.Component {
     render() {
@@ -25,7 +25,7 @@ class Instruments extends React.Component {
     }
 }
 
-module.exports = ReactRedux.connect((state) => {
+export default connect((state) => {
     return {
         instruments: state.instruments.currentInstruments,
         active: state.instruments.activeInstrument

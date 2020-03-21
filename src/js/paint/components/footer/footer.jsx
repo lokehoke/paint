@@ -1,9 +1,9 @@
 'use strict';
 
-const React = require('react');
+import React from 'react';
 
-const SizeLine = require('./own/lineSize.jsx');
-const Color = require('./own/color.jsx');
+import SizeLine from './own/lineSize.jsx';
+import Color from './own/color.jsx';
 
 class Footer extends React.Component {
     render() {
@@ -16,4 +16,4 @@ class Footer extends React.Component {
     }
 }
 
-module.exports = Footer;
+export default Footer;

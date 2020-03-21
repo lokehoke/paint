@@ -1,8 +1,10 @@
 'use strict';
 
-module.exports = class Modes {
+import Brush from './own/brush.js';
+
+export default class Modes {
     constructor() {
-        this._brush = require('./own/brush.js');
+        this._brush = Brush;
     }
 
     getMode(mode) {

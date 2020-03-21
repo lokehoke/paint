@@ -1,7 +1,7 @@
 'use strict';
 
-const React = require('react');
-const ReactRedux = require('react-redux');
+import React from 'react';
+import { connect } from 'react-redux';
 
 class File extends React.Component {
     render() {
@@ -28,14 +28,14 @@ class File extends React.Component {
     }
 }
 
-module.exports = ReactRedux.connect(
-    state => ({}),
+export default connect(
+    null,
     dispatch => ({
         newFile: () => {
             dispatch({
                 type: 'OPEN_WINDOW',
-                view: 'newFile'
+                view: 'newFile',
             })
-        }
+        },
     })
 )(File);

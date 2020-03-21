@@ -1,3 +1,5 @@
+'use strict';
+
 export default class InfoTab {
     constructor(id, title, size) {
         this.id = id;

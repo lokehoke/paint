@@ -1,20 +1,20 @@
 'use strict';
 
-const React = require('react');
-const ReactRedux = require('react-redux');
-const PropTypes = require('prop-types');
+import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const Tab = require('./tab.jsx');
+import Tab from './tab.jsx';
 
 class ListTabs extends React.Component {
     static defaultProps = {
         activeTab: 0,
-        tabs: []
+        tabs: [],
     };
 
     static propTypes = {
         activeTab: PropTypes.number,
-        tabs: PropTypes.array
+        tabs: PropTypes.array,
     };
 
     componentWillUpdate() {
@@ -42,7 +42,7 @@ class ListTabs extends React.Component {
     }
 }
 
-module.exports = ReactRedux.connect(
+export default connect(
     state => ({
         tabs: state.tabs.own,
         active: state.tabs.activeTab

@@ -1,46 +1,48 @@
 'use strict';
 
-const DefConfig = require('./defaultSetting.js');
-const Coor = require('../../structDate/coor.js');
+import DefaultConfig from './defaultSetting.js';
+import Vector2 from './../../structDate/vector2.js';
 
-module.exports = class DragAndDrop {
+export default class DragAndDrop {
     constructor(item, config = null) {
-        this._item = item;
+        this._item   = item;
         this._config = this._makeSetting(config);
 
-        this._stepPx = new Coor();
-        this._shiftOnItemPx = new Coor();
-        this._coorMinPar = new Coor();
-        this._coorMaxPar = new Coor();
+        this._stepPx          = new Vector2();
+        this._shiftOnItemPx   = new Vector2();
+        this._vectorMinParent = new Vector2();
+        this._vectorMaxParent = new Vector2();
 
         this._steps = {
-            current: new Coor(),
-            max: new Coor()
+            current: new Vector2(),
+            max:     new Vector2(),
         };
 
-        this._moveAt = this._moveAt.bind(this);
-        this._endMoving = this._endMoving.bind(this);
+        this._moveAt       = this._moveAt.bind(this);
+        this._endMoving    = this._endMoving.bind(this);
         this._mouseDowning = this._mouseDowning.bind(this);
-        this._deleteDrop = this._deleteDrop.bind(this);
+        this._deleteDrop   = this._deleteDrop.bind(this);
     }
 
     startDragAndDrop() {
-        this._startAsync();
+        this._as_startAsync();
         return this._deleteDrop;
     }
 
-    async _startAsync() {
+    async _as_startAsync() {
         if (this._config.startAsync) {
-            await setTimeout(() => {}, 0);
+            await new Promise(res => {
+                setTimeout(() => {res()}, 0);
+            });
         }
 
         this._item.addEventListener('dragstart', e => false);
         this._item.addEventListener('mousedown', this._mouseDowning);
 
         if (this._config.piece.exist) {
-            this._findAbsPar();
+            this._findAbsParent();
             this._movingWithPiece({
-                setUp: true
+                setUp: true,
             });
             this._emptyPositions();
         }
@@ -56,10 +58,10 @@ module.exports = class DragAndDrop {
         if (!this._config.ignoreNoDragAndDrop && this._issetNoDrop(e.path)) {
             return true;
         } else {
-            this._findAbsPar();
-            let coords = this._getCoords(item);
+            this._findAbsParent();
+            let coords = this._getVector(item);
 
-            this._shiftOnItemPx = Coor.sub(new Coor(e.pageX, e.pageY), coords);
+            this._shiftOnItemPx = Vector2.sub(new Vector2(e.pageX, e.pageY), coords);
 
             this._moveAt(e);
             this._emptyPositions();
@@ -74,9 +76,9 @@ module.exports = class DragAndDrop {
         this._item.removeEventListener('mousedown', this._mouseDowning);
     }
 
-    _getCoords(elem) {
+    _getVector(elem) {
         let box = elem.getBoundingClientRect();
-        return new Coor(box.left, box.top);
+        return new Vector2(box.left, box.top);
     }
 
     _moveAt(e) {
@@ -97,40 +99,40 @@ module.exports = class DragAndDrop {
         this._item.style.right = 'auto';
     }
 
-    _findAbsPar() {
+    _findAbsParent() {
         let path = this._makeParentPath();
-        let par = path.find(el =>
+        let parent = path.find(el =>
             (el.style.position === 'absolute' || el.style.position === 'relative' || el.style.position === 'fixed')
         );
-        par = par || document.body;
-        let coor = this._getCoords(par);
-        this._coorMinPar = coor;
+        parent = parent || document.body;
+        let vector = this._getVector(parent);
+        this._vectorMinParent = vector;
         if (this._config.piece.exist) {
-            this._defineMaxParAndStep(par);
+            this._defineMaxParAndStep(parent);
         }
     }
 
     _defineMaxParAndStep(el) {
         let sizeItem = this._getSizeItem();
 
-        this._coorMaxPar.x = this._coorMinPar.x + el.offsetWidth - sizeItem.x;
-        this._coorMaxPar.y = this._coorMinPar.y + el.offsetHeight - sizeItem.y;
+        this._vectorMaxParent.x = this._vectorMinParent.x + el.offsetWidth - sizeItem.x;
+        this._vectorMaxParent.y = this._vectorMinParent.y + el.offsetHeight - sizeItem.y;
 
         if (this._config.piece.exitFromContour) {
-            this._coorMinPar.sub(sizeItem.divisionOnNumber(2));
-            this._coorMaxPar.sum(sizeItem.divisionOnNumber(2));
+            this._vectorMinParent.sub(sizeItem.divisionOnNumber(2));
+            this._vectorMaxParent.sum(sizeItem.divisionOnNumber(2));
         }
 
-        this._steps.max = Coor.sub(this._config.piece.max, this._config.piece.min).divisionOnCoor(this._config.piece.step, 'int');
-        this._stepPx = Coor.sub(this._coorMaxPar, this._coorMinPar).divisionOnCoor(this._steps.max);
+        this._steps.max = Vector2.sub(this._config.piece.max, this._config.piece.min).divisionOnVector(this._config.piece.step, 'int');
+        this._stepPx = Vector2.sub(this._vectorMaxParent, this._vectorMinParent).divisionOnVector(this._steps.max);
     }
 
     _getSizeItem() {
-        let sizeItem = new Coor();
+        let sizeItem = new Vector2();
 
         if (this._config.showAfterMount.isset) {
             if (this._config.showAfterMount.sizeItem) {
-                sizeItem.setCoor(this._config.showAfterMount.sizeItem);
+                sizeItem.setDimensions(this._config.showAfterMount.sizeItem);
             } else {
                 throw "need set sizeItem in showAfterMount";
             }
@@ -173,8 +175,8 @@ module.exports = class DragAndDrop {
         let newStep = this._config.piece.cur[dominateAxis] / 2 - 1;
 
         if (!e.setUp) {
-            let pageCoorOfMouse = new Coor(e.pageX, e.pageY);
-            newStep = Math.ceil((pageCoorOfMouse[dominateAxis] - this._coorMinPar[dominateAxis]  - this._shiftOnItemPx[dominateAxis]) / this._stepPx[dominateAxis]);
+            let pageVectorOfMouse = new Vector2(e.pageX, e.pageY);
+            newStep = Math.ceil((pageVectorOfMouse[dominateAxis] - this._vectorMinParent[dominateAxis]  - this._shiftOnItemPx[dominateAxis]) / this._stepPx[dominateAxis]);
         }
 
         assumptionOfNewPosition = newStep * this._stepPx[dominateAxis];
@@ -182,7 +184,7 @@ module.exports = class DragAndDrop {
         if (assumptionOfNewPosition <= 0) {
             this._item.style[changingSide] = 0 - (condOfExitFromContour ? partOfExitFromContourPx[dominateAxis] : 0) + 'px';
             this._steps.current[dominateAxis] = 0;
-        } else if (assumptionOfNewPosition >= this._coorMaxPar[dominateAxis] - this._coorMinPar[dominateAxis]) {
+        } else if (assumptionOfNewPosition >= this._vectorMaxParent[dominateAxis] - this._vectorMinParent[dominateAxis]) {
             this._item.style[changingSide] = this._steps.max[dominateAxis] * this._stepPx[dominateAxis] - (condOfExitFromContour ? partOfExitFromContourPx[dominateAxis] : 0) + 'px';
             this._steps.current[dominateAxis] = this._steps.max[dominateAxis];
         } else {
@@ -197,16 +199,16 @@ module.exports = class DragAndDrop {
 
     _movingWithoutPiece(e) {
         if (!this._config.onlyX) {
-            this._item.style.top = e.pageY - this._shiftOnItemPx.y - this._coorMinPar.y + 'px';
+            this._item.style.top = e.pageY - this._shiftOnItemPx.y - this._vectorMinParent.y + 'px';
         }
 
         if (!this._config.onlyY) {
-            this._item.style.left = e.pageX - this._shiftOnItemPx.x - this._coorMinPar.x + 'px';
+            this._item.style.left = e.pageX - this._shiftOnItemPx.x - this._vectorMinParent.x + 'px';
         }
     }
 
     _makeSetting(config) {
-        let defaults = new DefConfig();
+        let defaults = new DefaultConfig();
         let reWrite = (obj, commonObject) => {
             if (typeof obj === 'object' && obj !== null && typeof commonObject === 'object' && commonObject !== null) {
                 for (let value in commonObject) {

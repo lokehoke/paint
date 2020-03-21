@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = class BrushMode {
+export default class BrushMode {
     constructor(instrumentary) {
         this._type = 'brush';
         this._color = instrumentary.currentColor;
@@ -27,11 +27,11 @@ module.exports = class BrushMode {
             if (!checkCanvTarget(e.target)) {
                 return false;
             }
+
             ctx.lineWidth = this._lineThickness;
             ctx.fillStyle = this._color;
             ctx.strokeStyle = this._color;
             ctx.lineCap = 'round';
-
 
             let moving = e => {
                 if (!checkCanvTarget(e.target)) {

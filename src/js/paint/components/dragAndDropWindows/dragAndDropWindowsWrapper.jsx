@@ -1,18 +1,17 @@
 'use strict';
 
-const React = require('react');
-const ReactRedux = require('react-redux');
-const PropTypes = require('prop-types');
-
-const DropWindow = require('./dropWindow.jsx');
+import React from 'react';
+import { connect } from 'react-redux';
+import { array } from 'prop-types';
+import DropWindow from './dropWindow.jsx';
 
 class DragAndDropWindowWrapper extends React.Component {
     static defaultProps = {
-        openedWindows: []
+        openedWindows: [],
     };
 
     static propTypes = {
-        openedWindows: PropTypes.array
+        openedWindows: array,
     };
 
     render() {
@@ -22,9 +21,8 @@ class DragAndDropWindowWrapper extends React.Component {
     }
 }
 
-module.exports = ReactRedux.connect(
+export default connect(
     state => ({
-        openedWindows: state.openedWindows.own
+        openedWindows: state.openedWindows.own,
     }),
-    dispatch => ({})
 )(DragAndDropWindowWrapper);

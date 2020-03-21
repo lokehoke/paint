@@ -1,9 +1,9 @@
 'use strict';
 
-const React = require('react');
+import React from 'react';
 
-const File = require('./own/file.jsx');
-const Windows =require('./own/windows.jsx');
+import File from './own/file.jsx';
+import Windows from './own/windows.jsx';
 
 class Header extends React.Component {
     render() {
@@ -16,4 +16,4 @@ class Header extends React.Component {
     }
 }
 
-module.exports = Header;
+export default Header;

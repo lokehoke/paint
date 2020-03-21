@@ -1,16 +1,16 @@
 'use strict';
 
-const React = require('react');
-const ReactRedux = require('react-redux');
-const PropTypes = require('prop-types');
+import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class Color extends React.Component {
     static defaultProps = {
-        color: '#000'
+        color: '#000',
     };
 
     static propTypes = {
-        color: PropTypes.string
+        color: PropTypes.string,
     };
 
     render() {
@@ -22,6 +22,6 @@ class Color extends React.Component {
     }
 }
 
-module.exports = ReactRedux.connect(state => ({
-    color: state.instruments.currentColor
+export default connect(state => ({
+    color: state.instruments.currentColor,
 }))(Color);

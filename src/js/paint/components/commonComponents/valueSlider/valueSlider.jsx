@@ -1,11 +1,11 @@
 'use strict';
 
-const React = require('react');
-const PropTypes = require('prop-types')
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const PimpDote = require('./../simpleComponents/pimpDote.jsx');
+import PimpDote from './../simpleComponents/pimpDote.jsx';
 
-const DragAndDrop = require('../../../commonInterface/dragAndDrop/dragAndDrop.js');
+import DragAndDrop from './../../../commonInterface/dragAndDrop/dragAndDrop.js';
 
 let sizePoint = 20;
 
@@ -15,7 +15,7 @@ let stylesValueSlider = {
     margin: '0 15px',
     flexGrow: 1,
     height: '2px',
-    backgroundColor: 'black'
+    backgroundColor: 'black',
 };
 
 let stylePip = {
@@ -24,10 +24,10 @@ let stylePip = {
     left: '-10px',
     display: 'none',
     width: `${sizePoint}px`,
-    height: `${sizePoint}px`
+    height: `${sizePoint}px`,
 };
 
-module.exports = class ValueSlider extends React.Component {
+export default class ValueSlider extends React.Component {
     static defaultProps = {
         min: 0,
         max: 0,
@@ -37,8 +37,8 @@ module.exports = class ValueSlider extends React.Component {
         config: {
             subValue: false,
             showValue: false,
-            styles: {}
-        }
+            styles: {},
+        },
     };
 
     static propTypes = {
@@ -47,7 +47,7 @@ module.exports = class ValueSlider extends React.Component {
         max: PropTypes.number,
         changingValue: PropTypes.number,
         changing: PropTypes.func,
-        config: PropTypes.object
+        config: PropTypes.object,
     };
 
     constructor(props) {
@@ -79,8 +79,8 @@ module.exports = class ValueSlider extends React.Component {
                 isset: true,
                 sizeItem: {
                     x: sizePoint,
-                    y: sizePoint
-                }
+                    y: sizePoint,
+                },
             },
             piece: {
                 exist: true,
@@ -96,9 +96,9 @@ module.exports = class ValueSlider extends React.Component {
                 cur: {
                     x: this.props.cur
                 },
-                exitFromContour: true
+                exitFromContour: true,
             },
-            transferDate: this._changeValue.bind(this)
+            transferDate: this._changeValue.bind(this),
         });
 
         return drag.startDragAndDrop();

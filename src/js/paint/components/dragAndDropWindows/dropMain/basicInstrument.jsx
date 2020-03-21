@@ -1,9 +1,9 @@
 'use strict';
 
-const React = require('react');
-const ReactRedux = require('react-redux');
+import React from 'react';
+import { connect } from 'react-redux';
 
-const ValueSlider = require('../../commonComponents/valueSlider/valueSlider.jsx');
+import ValueSlider from './../../commonComponents/valueSlider/valueSlider.jsx';
 
 class BasicInstrument extends React.Component {
     constructor(props) {
@@ -34,15 +34,15 @@ class BasicInstrument extends React.Component {
 }
 
 
-module.exports = ReactRedux.connect(
+export default connect(
     state => ({
-        curFontSize: +state.instruments.currentLineThickness
+        curFontSize: +state.instruments.currentLineThickness,
     }), dispatch => ({
         changeLineThickness: (val) => {
             dispatch({
                 type: 'CHANGE_LINE_THICKNESS',
-                currentLineThickness: val
+                currentLineThickness: val,
             });
-        }
+        },
     })
 )(BasicInstrument);

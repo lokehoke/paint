@@ -1,23 +1,25 @@
-const Coor = require('../../structDate/coor.js');
+'use strict';
 
-module.exports =  class DefConfig {
+import vector2 from '../../structDate/vector2.js';
+
+export default class DefaultConfig {
     constructor() {
         this.startAsync = true;
         this.ignoreNoDragAndDrop = false;
         this.showAfterMount = {
             isset: false,
             type: 'flex',
-            sizeItem: new Coor()
+            sizeItem: new vector2(),
         };
         this.onlyX = false;
         this.onlyY = false;
         this.piece = {
             exist: false,
-            min: new Coor(),
-            max: new Coor(),
-            step: new Coor(),
+            min: new vector2(),
+            max: new vector2(),
+            step: new vector2(),
             exitFromContour: false,
-            cur: new Coor()
+            cur: new vector2(),
         };
         this.transferDate = () => {};
     }

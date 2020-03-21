@@ -1,13 +1,13 @@
 'use strict';
 
-const React = require('react');
+import React from 'react';
 
-module.exports = class FlexiblePlace extends React.Component {
+export default class FlexiblePlace extends React.Component { // TODO piece of shit!!!!!!!!!
     render() {
         let style = {
             height: this.props.height,
             width: this.props.width,
-            overflow: 'hidden'
+            overflow: 'hidden',
         };
 
         return (

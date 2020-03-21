@@ -1,33 +1,33 @@
 'use strict';
 
-const React = require('react');
-const PropTypes = require('prop-types');
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const DragAndDrop = require('../../../commonInterface/dragAndDrop/dragAndDrop.js');
+import DragAndDrop from './../../../commonInterface/dragAndDrop/dragAndDrop.js';
 
-const PointerArrow = require('./../simpleComponents/pointerArrow.jsx');
+import PointerArrow from './../simpleComponents/pointerArrow.jsx';
 
 let mainStyleBlock = {
     display: 'flex',
-    position: 'relative'
+    position: 'relative',
 };
 
 let containerPointerArrowStyle = {
     display: 'flex',
     position: 'absolute',
     top: '0',
-    right: '0'
+    right: '0',
 };
 
-module.exports = class Palette extends React.Component {
+export default class Palette extends React.Component {
     static defaultProps = {
         changing: () => {},
-        side: 100
+        side: 100,
     }
 
     static propTypes = {
         changing: PropTypes.func,
-        mainSide: PropTypes.number
+        mainSide: PropTypes.number,
     }
 
     constructor(props) {
@@ -37,17 +37,17 @@ module.exports = class Palette extends React.Component {
         this._svStyle = {
             width: this.props.mainSide,
             height: this.props.mainSide,
-            marginRight: this.props.mainSide / 10
+            marginRight: this.props.mainSide / 10,
         };
         this._hueStyle = {
             width: this.props.mainSide / 10,
-            height: this.props.mainSide
+            height: this.props.mainSide,
         };
 
         containerPointerArrowStyle = Object.assign(
             {},
             containerPointerArrowStyle,
-            this._hueStyle
+            this._hueStyle,
         );
     }
 
@@ -69,7 +69,7 @@ module.exports = class Palette extends React.Component {
                     <PointerArrow
                         style={{
                             height: 10,
-                            right: -5
+                            right: -5,
                         }}
                         ref={pointerArrow => this._pointerArrow = pointerArrow}
                     />
@@ -98,26 +98,26 @@ module.exports = class Palette extends React.Component {
                 isset: true,
                 sizeItem: {
                     x: 30,
-                    y: 10
+                    y: 10,
                 }
             },
             piece: {
                 exist: true,
                 exitFromContour: true,
                 min: {
-                    y: 0
+                    y: 0,
                 },
                 max: {
-                    y: 360
+                    y: 360,
                 },
                 step: {
-                    y: 1
+                    y: 1,
                 },
                 cur: {
-                    y: 0
+                    y: 0,
                 }
             },
-            transferDate: this._changeValue.bind(this)
+            transferDate: this._changeValue.bind(this),
         });
 
         return drag.startDragAndDrop();
@@ -133,7 +133,7 @@ module.exports = class Palette extends React.Component {
             ['00ffff'],
             ['0000ff'],
             ['ff00ff'],
-            ['ff0000']
+            ['ff0000'],
         ];
 
         let ctx = this._hueStx;

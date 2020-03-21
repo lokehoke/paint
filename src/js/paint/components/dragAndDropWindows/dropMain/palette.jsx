@@ -1,9 +1,9 @@
 'use strict';
 
-const React = require('react');
-const ReactRedux = require('react-redux');
+import React from 'react';
+import { connect } from 'react-redux';
 
-const PaletteBasic = require('../../commonComponents/palette/palette.jsx');
+import PaletteBasic from './../../commonComponents/palette/palette.jsx';
 
 class Palette extends React.Component {
     constructor(props) {
@@ -14,10 +14,7 @@ class Palette extends React.Component {
     render() {
         return (
             <div>
-                <PaletteBasic
-                    mainSide={200}
-                    changing={this._changeColor}
-                />
+                <PaletteBasic mainSide={200} changing={this._changeColor} />
             </div>
         );
     }
@@ -28,15 +25,15 @@ class Palette extends React.Component {
 }
 
 
-module.exports = ReactRedux.connect(
+export default connect(
     state => ({
-        currentColor: +state.instruments.currentColor
+        currentColor: +state.instruments.currentColor,
     }), dispatch => ({
-        changeColor: (val) => {
+        changeColor: val => {
             dispatch({
                 type: 'CHANGE_COLOR',
-                color: val
+                color: val,
             });
-        }
+        },
     })
 )(Palette);

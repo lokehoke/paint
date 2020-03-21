@@ -1,7 +1,7 @@
 'use strict';
 
-const React = require('react');
-const ReactRedux = require('react-redux');
+import React from 'react';
+import { connect } from 'react-redux';
 
 class NewFile extends React.Component {
     render() {
@@ -25,7 +25,7 @@ class NewFile extends React.Component {
     }
 
     componentDidMount() {
-        this.createBtn.addEventListener(('click'), e => {
+        this.createBtn.addEventListener('click', e => {
             let x = this._getValue('x');
             let y = this._getValue('y');
             let title = (this.title.value !== '' ? this.title.value : 'untitled');
@@ -35,7 +35,7 @@ class NewFile extends React.Component {
         });
     }
 
-    _getValue(type) {
+    _getValue(type) { // TODO digits!!!!
         if (+this[type].value > 10000 || +this[type].value <= 0 || this[type].value === '') {
             if (type === 'x') {
                 return 1080;
@@ -48,26 +48,24 @@ class NewFile extends React.Component {
     }
 }
 
-
-module.exports = ReactRedux.connect(
-    state => ({
-    }),
+export default connect(
+    null,
     dispatch => ({
         createNew: (x, y, title) => {
             dispatch({
                 type: 'NEW_TAB',
                 size: {
                     x,
-                    y
+                    y,
                 },
-                title
+                title,
             });
         },
         deleteThisTab: id => {
             dispatch({
                 type: 'CLOSE_WINDOW',
-                id
+                id,
             })
-        }
+        },
     })
 )(NewFile);

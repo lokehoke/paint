@@ -1,10 +1,11 @@
 'use strict';
 
-const React = require('react');
-const ReactRedux = require('react-redux');
-const FlexiblePlace = require('./../../commonComponents/scrollMoveZoomPlace/scrollMoveZoomPlace.jsx');
+import React from 'react';
+import { connect } from 'react-redux';
 
-const Modes = require('./modesDrawing/modes.js');
+import FlexiblePlace from './../../commonComponents/scrollMoveZoomPlace/scrollMoveZoomPlace.jsx';
+
+import Modes from './modesDrawing/modes.js';
 
 class Tabs extends React.Component {
     render() {
@@ -82,11 +83,11 @@ class Tabs extends React.Component {
     }
 
     _removeNullElFromCanvArr() {
-        this._canv = this._canv.filter(el => el)
+        this._canv = this._canv.filter(el => el);
     }
 }
 
-module.exports = ReactRedux.connect(
+export default connect(
     state => ({
         size: {
             height: state.sizeScreen.height - 85,
@@ -94,6 +95,6 @@ module.exports = ReactRedux.connect(
         },
         tabs: state.tabs.own,
         activeTab: state.tabs.activeTab,
-        instrumentary: state.instruments
+        instrumentary: state.instruments,
     })
 )(Tabs);

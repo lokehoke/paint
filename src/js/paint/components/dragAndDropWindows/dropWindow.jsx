@@ -1,15 +1,15 @@
 'use strict';
 
-const React = require('react');
-const ReactRedux = require('react-redux');
-const FontAwesomeIcon = require('@fortawesome/react-fontawesome').FontAwesomeIcon;
-const faTimesCircle = require('@fortawesome/free-solid-svg-icons').faTimesCircle;
+import React from 'react';
+import { connect } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
-const NewFile = require('./dropMain/newFile.jsx');
-const BasicInstrument = require('./dropMain/basicInstrument.jsx');
-const Palette = require('./dropMain/palette.jsx');
+import NewFile from './dropMain/newFile.jsx';
+import BasicInstrument from './dropMain/basicInstrument.jsx';
+import Palette from './dropMain/palette.jsx';
 
-const DragAndDrop = require('../../commonInterface/dragAndDrop/dragAndDrop.js');
+import DragAndDrop from './../../commonInterface/dragAndDrop/dragAndDrop.js';
 
 class DropWindow extends React.Component {
     render() {
@@ -34,16 +34,17 @@ class DropWindow extends React.Component {
 
     componentDidMount() {
         this._defineSize();
-        this._deleteDragAndDrop = (this._setUpDragAndDrop() || (() => {}));
+        this._deleteDragAndDrop = this._setUpDragAndDrop() || (() => {});
 
         this.exitBtn.addEventListener('click', e => {
             e.preventDefault();
             this.props.closeWindow(this.props.element.id);
+            
             return false;
         });
     }
 
-    componentWiilUnmount() {
+    componentWillUnmount() {
         this._deleteDragAndDrop();
     }
 
@@ -52,7 +53,7 @@ class DropWindow extends React.Component {
         return drag.startDragAndDrop();
     }
 
-    _defineSize() {
+    _defineSize() { // TODO move digits!!!!!!!!
         this._h = 200;
         this._w = 200;
 
@@ -91,21 +92,16 @@ class DropWindow extends React.Component {
 
         return main;
     }
-
-    _getNewFileMain() {
-        return ;
-    }
 }
 
-
-module.exports = ReactRedux.connect(
-    () => ({}),
+export default connect(
+    null,
     dispatch => ({
         closeWindow: id => {
             dispatch({
                 type: 'CLOSE_WINDOW',
-                id
+                id,
             })
-        }
+        },
     })
 )(DropWindow);

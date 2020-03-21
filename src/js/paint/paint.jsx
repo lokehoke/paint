@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import setting from './settings/defaultSetting.json';
 
 import RootReducer from './reducers/getRootReducer.js';
-const rootReducer = RootReducer(setting);
+const rootReducer = RootReducer(JSON.parse(JSON.stringify(setting)));
 
 import Header from './components/header/header.jsx';
 import WorkSpace from './components/workSpace/workSpace.jsx';

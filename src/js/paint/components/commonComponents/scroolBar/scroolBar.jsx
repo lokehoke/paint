@@ -1,8 +1,8 @@
-'use stricr';
+'use strict';
 
-const React = require('react');
+import React from 'react';
 
-module.exports = class ScrollBar extends React.Component {
+export default class ScrollBar extends React.Component {
     render() {
         return (
             <div></div>

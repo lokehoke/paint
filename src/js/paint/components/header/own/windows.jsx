@@ -1,7 +1,7 @@
 'use strict';
 
-const React = require('react');
-const ReactRedux = require('react-redux');
+import React from 'react';
+import { connect } from 'react-redux';
 
 class Windows extends React.Component {
     render() {
@@ -38,14 +38,14 @@ class Windows extends React.Component {
     }
 }
 
-module.exports = ReactRedux.connect(
-    state => ({}),
+export default connect(
+    null,
     dispatch => ({
         newWindow: view => {
             dispatch({
                 type: 'OPEN_WINDOW',
-                view
+                view,
             })
-        }
+        },
     })
 )(Windows);

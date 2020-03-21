@@ -1,8 +1,8 @@
 'use strict';
 
-const React = require('react');
-const ReactRedux = require('react-redux');
-const PropTypes = require('prop-types');
+import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class SizeLine extends React.Component {
     static defaultProps = {
@@ -22,6 +22,6 @@ class SizeLine extends React.Component {
     }
 }
 
-module.exports = ReactRedux.connect(state => ({
+export default connect(state => ({
     size: +state.instruments.currentLineThickness
 }))(SizeLine);

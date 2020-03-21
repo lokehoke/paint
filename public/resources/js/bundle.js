@@ -52583,36 +52583,45 @@ var paint = new _paint_paint_jsx__WEBPACK_IMPORTED_MODULE_0__["default"]('#root'
 /*!********************************************************************!*\
   !*** ./src/js/paint/commonInterface/dragAndDrop/defaultSetting.js ***!
   \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return DefaultConfig; });
+/* harmony import */ var _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../structDate/vector2.js */ "./src/js/paint/structDate/vector2.js");
+
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Coor = __webpack_require__(/*! ../../structDate/coor.js */ "./src/js/paint/structDate/coor.js");
 
-module.exports = function DefConfig() {
-  _classCallCheck(this, DefConfig);
+
+var DefaultConfig = function DefaultConfig() {
+  _classCallCheck(this, DefaultConfig);
 
   this.startAsync = true;
   this.ignoreNoDragAndDrop = false;
   this.showAfterMount = {
     isset: false,
     type: 'flex',
-    sizeItem: new Coor()
+    sizeItem: new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_0__["default"]()
   };
   this.onlyX = false;
   this.onlyY = false;
   this.piece = {
     exist: false,
-    min: new Coor(),
-    max: new Coor(),
-    step: new Coor(),
+    min: new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_0__["default"](),
+    max: new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_0__["default"](),
+    step: new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_0__["default"](),
     exitFromContour: false,
-    cur: new Coor()
+    cur: new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_0__["default"]()
   };
 
   this.transferDate = function () {};
 };
+
+
+;
 
 /***/ }),
 
@@ -52620,10 +52629,14 @@ module.exports = function DefConfig() {
 /*!*****************************************************************!*\
   !*** ./src/js/paint/commonInterface/dragAndDrop/dragAndDrop.js ***!
   \*****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return DragAndDrop; });
+/* harmony import */ var _defaultSetting_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./defaultSetting.js */ "./src/js/paint/commonInterface/dragAndDrop/defaultSetting.js");
+/* harmony import */ var _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../structDate/vector2.js */ "./src/js/paint/structDate/vector2.js");
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -52638,11 +52651,10 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var DefConfig = __webpack_require__(/*! ./defaultSetting.js */ "./src/js/paint/commonInterface/dragAndDrop/defaultSetting.js");
 
-var Coor = __webpack_require__(/*! ../../structDate/coor.js */ "./src/js/paint/structDate/coor.js");
 
-module.exports = /*#__PURE__*/function () {
+
+var DragAndDrop = /*#__PURE__*/function () {
   function DragAndDrop(item) {
     var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
@@ -52650,13 +52662,13 @@ module.exports = /*#__PURE__*/function () {
 
     this._item = item;
     this._config = this._makeSetting(config);
-    this._stepPx = new Coor();
-    this._shiftOnItemPx = new Coor();
-    this._coorMinPar = new Coor();
-    this._coorMaxPar = new Coor();
+    this._stepPx = new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__["default"]();
+    this._shiftOnItemPx = new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__["default"]();
+    this._vectorMinParent = new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__["default"]();
+    this._vectorMaxParent = new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__["default"]();
     this._steps = {
-      current: new Coor(),
-      max: new Coor()
+      current: new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__["default"](),
+      max: new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__["default"]()
     };
     this._moveAt = this._moveAt.bind(this);
     this._endMoving = this._endMoving.bind(this);
@@ -52667,14 +52679,14 @@ module.exports = /*#__PURE__*/function () {
   _createClass(DragAndDrop, [{
     key: "startDragAndDrop",
     value: function startDragAndDrop() {
-      this._startAsync();
+      this._as_startAsync();
 
       return this._deleteDrop;
     }
   }, {
-    key: "_startAsync",
+    key: "_as_startAsync",
     value: function () {
-      var _startAsync2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+      var _as_startAsync2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -52685,7 +52697,11 @@ module.exports = /*#__PURE__*/function () {
                 }
 
                 _context.next = 3;
-                return setTimeout(function () {}, 0);
+                return new Promise(function (res) {
+                  setTimeout(function () {
+                    res();
+                  }, 0);
+                });
 
               case 3:
                 this._item.addEventListener('dragstart', function (e) {
@@ -52695,7 +52711,7 @@ module.exports = /*#__PURE__*/function () {
                 this._item.addEventListener('mousedown', this._mouseDowning);
 
                 if (this._config.piece.exist) {
-                  this._findAbsPar();
+                  this._findAbsParent();
 
                   this._movingWithPiece({
                     setUp: true
@@ -52716,11 +52732,11 @@ module.exports = /*#__PURE__*/function () {
         }, _callee, this);
       }));
 
-      function _startAsync() {
-        return _startAsync2.apply(this, arguments);
+      function _as_startAsync() {
+        return _as_startAsync2.apply(this, arguments);
       }
 
-      return _startAsync;
+      return _as_startAsync;
     }()
   }, {
     key: "_mouseDowning",
@@ -52730,11 +52746,11 @@ module.exports = /*#__PURE__*/function () {
       if (!this._config.ignoreNoDragAndDrop && this._issetNoDrop(e.path)) {
         return true;
       } else {
-        this._findAbsPar();
+        this._findAbsParent();
 
-        var coords = this._getCoords(item);
+        var coords = this._getVector(item);
 
-        this._shiftOnItemPx = Coor.sub(new Coor(e.pageX, e.pageY), coords);
+        this._shiftOnItemPx = _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__["default"].sub(new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__["default"](e.pageX, e.pageY), coords);
 
         this._moveAt(e);
 
@@ -52752,10 +52768,10 @@ module.exports = /*#__PURE__*/function () {
       this._item.removeEventListener('mousedown', this._mouseDowning);
     }
   }, {
-    key: "_getCoords",
-    value: function _getCoords(elem) {
+    key: "_getVector",
+    value: function _getVector(elem) {
       var box = elem.getBoundingClientRect();
-      return new Coor(box.left, box.top);
+      return new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__["default"](box.left, box.top);
     }
   }, {
     key: "_moveAt",
@@ -52779,21 +52795,21 @@ module.exports = /*#__PURE__*/function () {
       this._item.style.right = 'auto';
     }
   }, {
-    key: "_findAbsPar",
-    value: function _findAbsPar() {
+    key: "_findAbsParent",
+    value: function _findAbsParent() {
       var path = this._makeParentPath();
 
-      var par = path.find(function (el) {
+      var parent = path.find(function (el) {
         return el.style.position === 'absolute' || el.style.position === 'relative' || el.style.position === 'fixed';
       });
-      par = par || document.body;
+      parent = parent || document.body;
 
-      var coor = this._getCoords(par);
+      var vector = this._getVector(parent);
 
-      this._coorMinPar = coor;
+      this._vectorMinParent = vector;
 
       if (this._config.piece.exist) {
-        this._defineMaxParAndStep(par);
+        this._defineMaxParAndStep(parent);
       }
     }
   }, {
@@ -52801,26 +52817,26 @@ module.exports = /*#__PURE__*/function () {
     value: function _defineMaxParAndStep(el) {
       var sizeItem = this._getSizeItem();
 
-      this._coorMaxPar.x = this._coorMinPar.x + el.offsetWidth - sizeItem.x;
-      this._coorMaxPar.y = this._coorMinPar.y + el.offsetHeight - sizeItem.y;
+      this._vectorMaxParent.x = this._vectorMinParent.x + el.offsetWidth - sizeItem.x;
+      this._vectorMaxParent.y = this._vectorMinParent.y + el.offsetHeight - sizeItem.y;
 
       if (this._config.piece.exitFromContour) {
-        this._coorMinPar.sub(sizeItem.divisionOnNumber(2));
+        this._vectorMinParent.sub(sizeItem.divisionOnNumber(2));
 
-        this._coorMaxPar.sum(sizeItem.divisionOnNumber(2));
+        this._vectorMaxParent.sum(sizeItem.divisionOnNumber(2));
       }
 
-      this._steps.max = Coor.sub(this._config.piece.max, this._config.piece.min).divisionOnCoor(this._config.piece.step, 'int');
-      this._stepPx = Coor.sub(this._coorMaxPar, this._coorMinPar).divisionOnCoor(this._steps.max);
+      this._steps.max = _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__["default"].sub(this._config.piece.max, this._config.piece.min).divisionOnVector(this._config.piece.step, 'int');
+      this._stepPx = _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__["default"].sub(this._vectorMaxParent, this._vectorMinParent).divisionOnVector(this._steps.max);
     }
   }, {
     key: "_getSizeItem",
     value: function _getSizeItem() {
-      var sizeItem = new Coor();
+      var sizeItem = new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__["default"]();
 
       if (this._config.showAfterMount.isset) {
         if (this._config.showAfterMount.sizeItem) {
-          sizeItem.setCoor(this._config.showAfterMount.sizeItem);
+          sizeItem.setDimensions(this._config.showAfterMount.sizeItem);
         } else {
           throw "need set sizeItem in showAfterMount";
         }
@@ -52864,8 +52880,8 @@ module.exports = /*#__PURE__*/function () {
       var newStep = this._config.piece.cur[dominateAxis] / 2 - 1;
 
       if (!e.setUp) {
-        var pageCoorOfMouse = new Coor(e.pageX, e.pageY);
-        newStep = Math.ceil((pageCoorOfMouse[dominateAxis] - this._coorMinPar[dominateAxis] - this._shiftOnItemPx[dominateAxis]) / this._stepPx[dominateAxis]);
+        var pageVectorOfMouse = new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__["default"](e.pageX, e.pageY);
+        newStep = Math.ceil((pageVectorOfMouse[dominateAxis] - this._vectorMinParent[dominateAxis] - this._shiftOnItemPx[dominateAxis]) / this._stepPx[dominateAxis]);
       }
 
       assumptionOfNewPosition = newStep * this._stepPx[dominateAxis];
@@ -52873,7 +52889,7 @@ module.exports = /*#__PURE__*/function () {
       if (assumptionOfNewPosition <= 0) {
         this._item.style[changingSide] = 0 - (condOfExitFromContour ? partOfExitFromContourPx[dominateAxis] : 0) + 'px';
         this._steps.current[dominateAxis] = 0;
-      } else if (assumptionOfNewPosition >= this._coorMaxPar[dominateAxis] - this._coorMinPar[dominateAxis]) {
+      } else if (assumptionOfNewPosition >= this._vectorMaxParent[dominateAxis] - this._vectorMinParent[dominateAxis]) {
         this._item.style[changingSide] = this._steps.max[dominateAxis] * this._stepPx[dominateAxis] - (condOfExitFromContour ? partOfExitFromContourPx[dominateAxis] : 0) + 'px';
         this._steps.current[dominateAxis] = this._steps.max[dominateAxis];
       } else {
@@ -52889,17 +52905,17 @@ module.exports = /*#__PURE__*/function () {
     key: "_movingWithoutPiece",
     value: function _movingWithoutPiece(e) {
       if (!this._config.onlyX) {
-        this._item.style.top = e.pageY - this._shiftOnItemPx.y - this._coorMinPar.y + 'px';
+        this._item.style.top = e.pageY - this._shiftOnItemPx.y - this._vectorMinParent.y + 'px';
       }
 
       if (!this._config.onlyY) {
-        this._item.style.left = e.pageX - this._shiftOnItemPx.x - this._coorMinPar.x + 'px';
+        this._item.style.left = e.pageX - this._shiftOnItemPx.x - this._vectorMinParent.x + 'px';
       }
     }
   }, {
     key: "_makeSetting",
     value: function _makeSetting(config) {
-      var defaults = new DefConfig();
+      var defaults = new _defaultSetting_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
 
       var reWrite = function reWrite(obj, commonObject) {
         if (_typeof(obj) === 'object' && obj !== null && _typeof(commonObject) === 'object' && commonObject !== null) {
@@ -52940,19 +52956,27 @@ module.exports = /*#__PURE__*/function () {
   return DragAndDrop;
 }();
 
+
+
 /***/ }),
 
 /***/ "./src/js/paint/components/commonComponents/palette/palette.jsx":
 /*!**********************************************************************!*\
   !*** ./src/js/paint/components/commonComponents/palette/palette.jsx ***!
   \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Palette; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _commonInterface_dragAndDrop_dragAndDrop_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../../commonInterface/dragAndDrop/dragAndDrop.js */ "./src/js/paint/commonInterface/dragAndDrop/dragAndDrop.js");
+/* harmony import */ var _simpleComponents_pointerArrow_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../simpleComponents/pointerArrow.jsx */ "./src/js/paint/components/commonComponents/simpleComponents/pointerArrow.jsx");
 
-
-var _class, _temp;
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -52974,13 +52998,9 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-var PropTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 
-var DragAndDrop = __webpack_require__(/*! ../../../commonInterface/dragAndDrop/dragAndDrop.js */ "./src/js/paint/commonInterface/dragAndDrop/dragAndDrop.js");
 
-var PointerArrow = __webpack_require__(/*! ./../simpleComponents/pointerArrow.jsx */ "./src/js/paint/components/commonComponents/simpleComponents/pointerArrow.jsx");
 
 var mainStyleBlock = {
   display: 'flex',
@@ -52992,7 +53012,8 @@ var containerPointerArrowStyle = {
   top: '0',
   right: '0'
 };
-module.exports = (_temp = _class = /*#__PURE__*/function (_React$Component) {
+
+var Palette = /*#__PURE__*/function (_React$Component) {
   _inherits(Palette, _React$Component);
 
   function Palette(props) {
@@ -53021,24 +53042,24 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      return React.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: mainStyleBlock
-      }, React.createElement("canvas", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("canvas", {
         height: this._svStyle.height,
         width: this._svStyle.width,
         style: this._svStyle,
         ref: function ref(sv) {
           return _this2._sv = sv;
         }
-      }), React.createElement("canvas", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("canvas", {
         height: this._hueStyle.height,
         width: this._hueStyle.width,
         ref: function ref(hue) {
           return _this2._hue = hue;
         }
-      }), React.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: containerPointerArrowStyle
-      }, React.createElement(PointerArrow, {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_simpleComponents_pointerArrow_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
         style: {
           height: 10,
           right: -5
@@ -53066,7 +53087,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "_setUpDragAndDrop",
     value: function _setUpDragAndDrop() {
-      var drag = new DragAndDrop(this._pointerArrow.getDom(), {
+      var drag = new _commonInterface_dragAndDrop_dragAndDrop_js__WEBPACK_IMPORTED_MODULE_2__["default"](this._pointerArrow.getDom(), {
         ignoreNoDragAndDrop: true,
         onlyY: true,
         showAfterMount: {
@@ -53117,13 +53138,19 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return Palette;
-}(React.Component), _defineProperty(_class, "defaultProps", {
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+_defineProperty(Palette, "defaultProps", {
   changing: function changing() {},
   side: 100
-}), _defineProperty(_class, "propTypes", {
-  changing: PropTypes.func,
-  mainSide: PropTypes.number
-}), _temp);
+});
+
+_defineProperty(Palette, "propTypes", {
+  changing: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
+  mainSide: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number
+});
+
+
 
 /***/ }),
 
@@ -53131,10 +53158,14 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_React$Component) {
 /*!**********************************************************************************************!*\
   !*** ./src/js/paint/components/commonComponents/scrollMoveZoomPlace/scrollMoveZoomPlace.jsx ***!
   \**********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return FlexiblePlace; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -53155,9 +53186,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-module.exports = /*#__PURE__*/function (_React$Component) {
+
+var FlexiblePlace = /*#__PURE__*/function (_React$Component) {
   _inherits(FlexiblePlace, _React$Component);
 
   function FlexiblePlace() {
@@ -53168,6 +53199,7 @@ module.exports = /*#__PURE__*/function (_React$Component) {
 
   _createClass(FlexiblePlace, [{
     key: "render",
+    // TODO piece of shit!!!!!!!!!
     value: function render() {
       var _this = this;
 
@@ -53176,7 +53208,7 @@ module.exports = /*#__PURE__*/function (_React$Component) {
         width: this.props.width,
         overflow: 'hidden'
       };
-      return React.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: style,
         ref: function ref(inner) {
           return _this.inner = inner;
@@ -53191,7 +53223,9 @@ module.exports = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return FlexiblePlace;
-}(React.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
 
 /***/ }),
 
@@ -53199,13 +53233,17 @@ module.exports = /*#__PURE__*/function (_React$Component) {
 /*!********************************************************************************!*\
   !*** ./src/js/paint/components/commonComponents/simpleComponents/pimpDote.jsx ***!
   \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return pimpDote; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
 
-
-var _class, _temp;
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -53227,9 +53265,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-var PropTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 
 var style = {
   display: 'flex',
@@ -53239,7 +53275,8 @@ var style = {
   backgroundColor: '#f1e5dd',
   cursor: 'pointer'
 };
-module.exports = (_temp = _class = /*#__PURE__*/function (_React$Component) {
+
+var pimpDote = /*#__PURE__*/function (_React$Component) {
   _inherits(pimpDote, _React$Component);
 
   function pimpDote() {
@@ -53254,7 +53291,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_React$Component) {
       var _this = this;
 
       style = Object.assign({}, style, this.props.style);
-      return React.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: style,
         ref: function ref(dote) {
           return _this._dote = dote;
@@ -53269,11 +53306,17 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return pimpDote;
-}(React.Component), _defineProperty(_class, "defaultProps", {
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+_defineProperty(pimpDote, "defaultProps", {
   style: style
-}), _defineProperty(_class, "propTypes", {
-  style: PropTypes.object
-}), _temp);
+});
+
+_defineProperty(pimpDote, "propTypes", {
+  style: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object
+});
+
+
 
 /***/ }),
 
@@ -53281,13 +53324,17 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_React$Component) {
 /*!************************************************************************************!*\
   !*** ./src/js/paint/components/commonComponents/simpleComponents/pointerArrow.jsx ***!
   \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return pimpDote; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
 
-
-var _class, _temp;
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -53309,9 +53356,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-var PropTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 
 var bundleStyle = {
   height: 10,
@@ -53325,7 +53370,8 @@ var style = {
   alignItems: 'center',
   position: 'absolute'
 };
-module.exports = (_temp = _class = /*#__PURE__*/function (_React$Component) {
+
+var pimpDote = /*#__PURE__*/function (_React$Component) {
   _inherits(pimpDote, _React$Component);
 
   function pimpDote() {
@@ -53368,16 +53414,16 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_React$Component) {
         background: conf.colorRectangle,
         position: 'absolute'
       };
-      return React.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: style,
         ref: function ref(pointer) {
           return _this._pointer = pointer;
         }
-      }, React.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: leftArrow
-      }), React.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: rectangle
-      }), React.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: rightArrow
       }));
     }
@@ -53389,9 +53435,13 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return pimpDote;
-}(React.Component), _defineProperty(_class, "propTypes", {
-  style: PropTypes.object
-}), _temp);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+_defineProperty(pimpDote, "propTypes", {
+  style: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object
+});
+
+
 
 /***/ }),
 
@@ -53399,13 +53449,19 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_React$Component) {
 /*!******************************************************************************!*\
   !*** ./src/js/paint/components/commonComponents/valueSlider/valueSlider.jsx ***!
   \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ValueSlider; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _simpleComponents_pimpDote_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../simpleComponents/pimpDote.jsx */ "./src/js/paint/components/commonComponents/simpleComponents/pimpDote.jsx");
+/* harmony import */ var _commonInterface_dragAndDrop_dragAndDrop_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../../commonInterface/dragAndDrop/dragAndDrop.js */ "./src/js/paint/commonInterface/dragAndDrop/dragAndDrop.js");
 
-
-var _class, _temp;
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -53427,13 +53483,9 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-var PropTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 
-var PimpDote = __webpack_require__(/*! ./../simpleComponents/pimpDote.jsx */ "./src/js/paint/components/commonComponents/simpleComponents/pimpDote.jsx");
 
-var DragAndDrop = __webpack_require__(/*! ../../../commonInterface/dragAndDrop/dragAndDrop.js */ "./src/js/paint/commonInterface/dragAndDrop/dragAndDrop.js");
 
 var sizePoint = 20;
 var stylesValueSlider = {
@@ -53452,7 +53504,8 @@ var stylePip = {
   width: "".concat(sizePoint, "px"),
   height: "".concat(sizePoint, "px")
 };
-module.exports = (_temp = _class = /*#__PURE__*/function (_React$Component) {
+
+var ValueSlider = /*#__PURE__*/function (_React$Component) {
   _inherits(ValueSlider, _React$Component);
 
   function ValueSlider(props) {
@@ -53461,7 +53514,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, ValueSlider);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ValueSlider).call(this, props));
-    _this._pimp = React.createRef();
+    _this._pimp = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
 
     _this._deleteDnd = function () {};
 
@@ -53473,9 +53526,9 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      return React.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: stylesValueSlider
-      }, React.createElement(PimpDote, {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_simpleComponents_pimpDote_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
         style: stylePip,
         ref: function ref(pimp) {
           return _this2._pimp = pimp;
@@ -53490,7 +53543,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "_setUpDragAndDrop",
     value: function _setUpDragAndDrop() {
-      var drag = new DragAndDrop(this._pimp.getDom(), {
+      var drag = new _commonInterface_dragAndDrop_dragAndDrop_js__WEBPACK_IMPORTED_MODULE_3__["default"](this._pimp.getDom(), {
         ignoreNoDragAndDrop: true,
         onlyX: true,
         showAfterMount: {
@@ -53533,7 +53586,9 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return ValueSlider;
-}(React.Component), _defineProperty(_class, "defaultProps", {
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+_defineProperty(ValueSlider, "defaultProps", {
   min: 0,
   max: 0,
   cur: 0,
@@ -53544,14 +53599,18 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_React$Component) {
     showValue: false,
     styles: {}
   }
-}), _defineProperty(_class, "propTypes", {
-  min: PropTypes.number,
-  cur: PropTypes.number,
-  max: PropTypes.number,
-  changingValue: PropTypes.number,
-  changing: PropTypes.func,
-  config: PropTypes.object
-}), _temp);
+});
+
+_defineProperty(ValueSlider, "propTypes", {
+  min: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
+  cur: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
+  max: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
+  changingValue: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
+  changing: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
+  config: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object
+});
+
+
 
 /***/ }),
 
@@ -53559,10 +53618,17 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_React$Component) {
 /*!**********************************************************************************!*\
   !*** ./src/js/paint/components/dragAndDropWindows/dragAndDropWindowsWrapper.jsx ***!
   \**********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _dropWindow_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dropWindow.jsx */ "./src/js/paint/components/dragAndDropWindows/dropWindow.jsx");
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -53585,13 +53651,10 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-var ReactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
-var PropTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 
-var DropWindow = __webpack_require__(/*! ./dropWindow.jsx */ "./src/js/paint/components/dragAndDropWindows/dropWindow.jsx");
+
 
 var DragAndDropWindowWrapper = /*#__PURE__*/function (_React$Component) {
   _inherits(DragAndDropWindowWrapper, _React$Component);
@@ -53606,7 +53669,7 @@ var DragAndDropWindowWrapper = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       return this.props.openedWindows.map(function (el, i) {
-        return React.createElement(DropWindow, {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dropWindow_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
           element: el,
           key: el.id
         });
@@ -53615,23 +53678,21 @@ var DragAndDropWindowWrapper = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return DragAndDropWindowWrapper;
-}(React.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 _defineProperty(DragAndDropWindowWrapper, "defaultProps", {
   openedWindows: []
 });
 
 _defineProperty(DragAndDropWindowWrapper, "propTypes", {
-  openedWindows: PropTypes.array
+  openedWindows: prop_types__WEBPACK_IMPORTED_MODULE_2__["array"]
 });
 
-module.exports = ReactRedux.connect(function (state) {
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(function (state) {
   return {
     openedWindows: state.openedWindows.own
   };
-}, function (dispatch) {
-  return {};
-})(DragAndDropWindowWrapper);
+})(DragAndDropWindowWrapper));
 
 /***/ }),
 
@@ -53639,10 +53700,15 @@ module.exports = ReactRedux.connect(function (state) {
 /*!*********************************************************************************!*\
   !*** ./src/js/paint/components/dragAndDropWindows/dropMain/basicInstrument.jsx ***!
   \*********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _commonComponents_valueSlider_valueSlider_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../commonComponents/valueSlider/valueSlider.jsx */ "./src/js/paint/components/commonComponents/valueSlider/valueSlider.jsx");
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -53663,11 +53729,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-var ReactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
-var ValueSlider = __webpack_require__(/*! ../../commonComponents/valueSlider/valueSlider.jsx */ "./src/js/paint/components/commonComponents/valueSlider/valueSlider.jsx");
+
 
 var BasicInstrument = /*#__PURE__*/function (_React$Component) {
   _inherits(BasicInstrument, _React$Component);
@@ -53685,11 +53749,11 @@ var BasicInstrument = /*#__PURE__*/function (_React$Component) {
   _createClass(BasicInstrument, [{
     key: "render",
     value: function render() {
-      return React.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "basicInstrument"
-      }, React.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "basicInstrument__inner"
-      }, React.createElement("span", null, "Font size: "), React.createElement(ValueSlider, {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Font size: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_commonComponents_valueSlider_valueSlider_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
         min: 2,
         max: 40,
         cur: this.props.curFontSize,
@@ -53705,9 +53769,9 @@ var BasicInstrument = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return BasicInstrument;
-}(React.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-module.exports = ReactRedux.connect(function (state) {
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(function (state) {
   return {
     curFontSize: +state.instruments.currentLineThickness
   };
@@ -53720,7 +53784,7 @@ module.exports = ReactRedux.connect(function (state) {
       });
     }
   };
-})(BasicInstrument);
+})(BasicInstrument));
 
 /***/ }),
 
@@ -53728,10 +53792,14 @@ module.exports = ReactRedux.connect(function (state) {
 /*!*************************************************************************!*\
   !*** ./src/js/paint/components/dragAndDropWindows/dropMain/newFile.jsx ***!
   \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -53752,9 +53820,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-var ReactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
 
 var NewFile = /*#__PURE__*/function (_React$Component) {
   _inherits(NewFile, _React$Component);
@@ -53770,28 +53837,28 @@ var NewFile = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this = this;
 
-      return React.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "newFile"
-      }, React.createElement("div", null, React.createElement("span", null, "Title\xA0"), React.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Title\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         ref: function ref(inp) {
           return _this.title = inp;
         },
         maxLength: "10"
-      })), React.createElement("div", null, React.createElement("span", null, "Size\xA0"), React.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Size\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         ref: function ref(inp) {
           return _this.x = inp;
         },
         type: "number",
         max: "10000",
         min: "0"
-      }), "\xA0x\xA0", React.createElement("input", {
+      }), "\xA0x\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         ref: function ref(inp) {
           return _this.y = inp;
         },
         type: "number",
         max: "10000",
         min: "0"
-      })), React.createElement("div", null, React.createElement("button", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         ref: function ref(btn) {
           return _this.createBtn = btn;
         }
@@ -53817,6 +53884,7 @@ var NewFile = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "_getValue",
     value: function _getValue(type) {
+      // TODO digits!!!!
       if (+this[type].value > 10000 || +this[type].value <= 0 || this[type].value === '') {
         if (type === 'x') {
           return 1080;
@@ -53830,11 +53898,9 @@ var NewFile = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return NewFile;
-}(React.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-module.exports = ReactRedux.connect(function (state) {
-  return {};
-}, function (dispatch) {
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, function (dispatch) {
   return {
     createNew: function createNew(x, y, title) {
       dispatch({
@@ -53853,7 +53919,7 @@ module.exports = ReactRedux.connect(function (state) {
       });
     }
   };
-})(NewFile);
+})(NewFile));
 
 /***/ }),
 
@@ -53861,10 +53927,15 @@ module.exports = ReactRedux.connect(function (state) {
 /*!*************************************************************************!*\
   !*** ./src/js/paint/components/dragAndDropWindows/dropMain/palette.jsx ***!
   \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _commonComponents_palette_palette_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../commonComponents/palette/palette.jsx */ "./src/js/paint/components/commonComponents/palette/palette.jsx");
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -53885,11 +53956,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-var ReactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
-var PaletteBasic = __webpack_require__(/*! ../../commonComponents/palette/palette.jsx */ "./src/js/paint/components/commonComponents/palette/palette.jsx");
+
 
 var Palette = /*#__PURE__*/function (_React$Component) {
   _inherits(Palette, _React$Component);
@@ -53907,7 +53976,7 @@ var Palette = /*#__PURE__*/function (_React$Component) {
   _createClass(Palette, [{
     key: "render",
     value: function render() {
-      return React.createElement("div", null, React.createElement(PaletteBasic, {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_commonComponents_palette_palette_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
         mainSide: 200,
         changing: this._changeColor
       }));
@@ -53920,9 +53989,9 @@ var Palette = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return Palette;
-}(React.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-module.exports = ReactRedux.connect(function (state) {
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(function (state) {
   return {
     currentColor: +state.instruments.currentColor
   };
@@ -53935,7 +54004,7 @@ module.exports = ReactRedux.connect(function (state) {
       });
     }
   };
-})(Palette);
+})(Palette));
 
 /***/ }),
 
@@ -53943,10 +54012,20 @@ module.exports = ReactRedux.connect(function (state) {
 /*!*******************************************************************!*\
   !*** ./src/js/paint/components/dragAndDropWindows/dropWindow.jsx ***!
   \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var _dropMain_newFile_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dropMain/newFile.jsx */ "./src/js/paint/components/dragAndDropWindows/dropMain/newFile.jsx");
+/* harmony import */ var _dropMain_basicInstrument_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dropMain/basicInstrument.jsx */ "./src/js/paint/components/dragAndDropWindows/dropMain/basicInstrument.jsx");
+/* harmony import */ var _dropMain_palette_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dropMain/palette.jsx */ "./src/js/paint/components/dragAndDropWindows/dropMain/palette.jsx");
+/* harmony import */ var _commonInterface_dragAndDrop_dragAndDrop_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../../commonInterface/dragAndDrop/dragAndDrop.js */ "./src/js/paint/commonInterface/dragAndDrop/dragAndDrop.js");
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -53967,21 +54046,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-var ReactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
-var FontAwesomeIcon = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js").FontAwesomeIcon;
 
-var faTimesCircle = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js").faTimesCircle;
 
-var NewFile = __webpack_require__(/*! ./dropMain/newFile.jsx */ "./src/js/paint/components/dragAndDropWindows/dropMain/newFile.jsx");
 
-var BasicInstrument = __webpack_require__(/*! ./dropMain/basicInstrument.jsx */ "./src/js/paint/components/dragAndDropWindows/dropMain/basicInstrument.jsx");
 
-var Palette = __webpack_require__(/*! ./dropMain/palette.jsx */ "./src/js/paint/components/dragAndDropWindows/dropMain/palette.jsx");
 
-var DragAndDrop = __webpack_require__(/*! ../../commonInterface/dragAndDrop/dragAndDrop.js */ "./src/js/paint/commonInterface/dragAndDrop/dragAndDrop.js");
+
 
 var DropWindow = /*#__PURE__*/function (_React$Component) {
   _inherits(DropWindow, _React$Component);
@@ -53997,20 +54069,20 @@ var DropWindow = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this = this;
 
-      return React.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dropWindow",
         ref: function ref(window) {
           return _this._window = window;
         }
-      }, React.createElement("header", null, this.props.element.title, React.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, this.props.element.title, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "__exitIcon",
         ref: function ref(exit) {
           return _this.exitBtn = exit;
         },
         "data-drag-and-drop": "noDragAndDrop"
-      }, React.createElement(FontAwesomeIcon, {
-        icon: faTimesCircle
-      }))), React.createElement("main", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faTimesCircle"]
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", {
         "data-drag-and-drop": "noDragAndDrop"
       }, this._getMain(this.props.element)));
     }
@@ -54032,19 +54104,20 @@ var DropWindow = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "componentWiilUnmount",
-    value: function componentWiilUnmount() {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
       this._deleteDragAndDrop();
     }
   }, {
     key: "_setUpDragAndDrop",
     value: function _setUpDragAndDrop() {
-      var drag = new DragAndDrop(this._window);
+      var drag = new _commonInterface_dragAndDrop_dragAndDrop_js__WEBPACK_IMPORTED_MODULE_7__["default"](this._window);
       return drag.startDragAndDrop();
     }
   }, {
     key: "_defineSize",
     value: function _defineSize() {
+      // TODO move digits!!!!!!!!
       this._h = 200;
       this._w = 200;
 
@@ -54074,19 +54147,19 @@ var DropWindow = /*#__PURE__*/function (_React$Component) {
 
       switch (el.view) {
         case 'newFile':
-          main = React.createElement(NewFile, {
+          main = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dropMain_newFile_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
             id: this.props.element.id
           });
           break;
 
         case 'basicInstrument':
-          main = React.createElement(BasicInstrument, {
+          main = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dropMain_basicInstrument_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], {
             id: this.props.element.id
           });
           break;
 
         case 'palette':
-          main = React.createElement(Palette, {
+          main = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dropMain_palette_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], {
             id: this.props.element.id
           });
           break;
@@ -54094,19 +54167,12 @@ var DropWindow = /*#__PURE__*/function (_React$Component) {
 
       return main;
     }
-  }, {
-    key: "_getNewFileMain",
-    value: function _getNewFileMain() {
-      return;
-    }
   }]);
 
   return DropWindow;
-}(React.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-module.exports = ReactRedux.connect(function () {
-  return {};
-}, function (dispatch) {
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, function (dispatch) {
   return {
     closeWindow: function closeWindow(id) {
       dispatch({
@@ -54115,7 +54181,7 @@ module.exports = ReactRedux.connect(function () {
       });
     }
   };
-})(DropWindow);
+})(DropWindow));
 
 /***/ }),
 
@@ -54123,10 +54189,15 @@ module.exports = ReactRedux.connect(function () {
 /*!***************************************************!*\
   !*** ./src/js/paint/components/footer/footer.jsx ***!
   \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _own_lineSize_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./own/lineSize.jsx */ "./src/js/paint/components/footer/own/lineSize.jsx");
+/* harmony import */ var _own_color_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./own/color.jsx */ "./src/js/paint/components/footer/own/color.jsx");
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -54147,11 +54218,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-var SizeLine = __webpack_require__(/*! ./own/lineSize.jsx */ "./src/js/paint/components/footer/own/lineSize.jsx");
 
-var Color = __webpack_require__(/*! ./own/color.jsx */ "./src/js/paint/components/footer/own/color.jsx");
+
 
 var Footer = /*#__PURE__*/function (_React$Component) {
   _inherits(Footer, _React$Component);
@@ -54165,16 +54234,16 @@ var Footer = /*#__PURE__*/function (_React$Component) {
   _createClass(Footer, [{
     key: "render",
     value: function render() {
-      return React.createElement("footer", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
         className: "footer"
-      }, React.createElement(SizeLine, null), React.createElement(Color, null));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_own_lineSize_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_own_color_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null));
     }
   }]);
 
   return Footer;
-}(React.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-module.exports = Footer;
+/* harmony default export */ __webpack_exports__["default"] = (Footer);
 
 /***/ }),
 
@@ -54182,10 +54251,16 @@ module.exports = Footer;
 /*!******************************************************!*\
   !*** ./src/js/paint/components/footer/own/color.jsx ***!
   \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -54208,11 +54283,9 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-var ReactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
-var PropTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
 
 var Color = /*#__PURE__*/function (_React$Component) {
   _inherits(Color, _React$Component);
@@ -54226,28 +54299,28 @@ var Color = /*#__PURE__*/function (_React$Component) {
   _createClass(Color, [{
     key: "render",
     value: function render() {
-      return React.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "footerObject"
       }, this.props.color);
     }
   }]);
 
   return Color;
-}(React.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 _defineProperty(Color, "defaultProps", {
   color: '#000'
 });
 
 _defineProperty(Color, "propTypes", {
-  color: PropTypes.string
+  color: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string
 });
 
-module.exports = ReactRedux.connect(function (state) {
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(function (state) {
   return {
     color: state.instruments.currentColor
   };
-})(Color);
+})(Color));
 
 /***/ }),
 
@@ -54255,10 +54328,16 @@ module.exports = ReactRedux.connect(function (state) {
 /*!*********************************************************!*\
   !*** ./src/js/paint/components/footer/own/lineSize.jsx ***!
   \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -54281,11 +54360,9 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-var ReactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
-var PropTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
 
 var SizeLine = /*#__PURE__*/function (_React$Component) {
   _inherits(SizeLine, _React$Component);
@@ -54299,28 +54376,28 @@ var SizeLine = /*#__PURE__*/function (_React$Component) {
   _createClass(SizeLine, [{
     key: "render",
     value: function render() {
-      return React.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "footerObject"
       }, this.props.size, "px");
     }
   }]);
 
   return SizeLine;
-}(React.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 _defineProperty(SizeLine, "defaultProps", {
   size: 16
 });
 
 _defineProperty(SizeLine, "propTypes", {
-  size: PropTypes.number
+  size: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number
 });
 
-module.exports = ReactRedux.connect(function (state) {
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(function (state) {
   return {
     size: +state.instruments.currentLineThickness
   };
-})(SizeLine);
+})(SizeLine));
 
 /***/ }),
 
@@ -54328,10 +54405,15 @@ module.exports = ReactRedux.connect(function (state) {
 /*!***************************************************!*\
   !*** ./src/js/paint/components/header/header.jsx ***!
   \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _own_file_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./own/file.jsx */ "./src/js/paint/components/header/own/file.jsx");
+/* harmony import */ var _own_windows_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./own/windows.jsx */ "./src/js/paint/components/header/own/windows.jsx");
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -54352,11 +54434,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-var File = __webpack_require__(/*! ./own/file.jsx */ "./src/js/paint/components/header/own/file.jsx");
 
-var Windows = __webpack_require__(/*! ./own/windows.jsx */ "./src/js/paint/components/header/own/windows.jsx");
+
 
 var Header = /*#__PURE__*/function (_React$Component) {
   _inherits(Header, _React$Component);
@@ -54372,19 +54452,19 @@ var Header = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this = this;
 
-      return React.createElement("header", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
         className: "header",
         ref: function ref(h) {
           return _this.header = h;
         }
-      }, React.createElement(File, null), React.createElement(Windows, null));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_own_file_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_own_windows_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null));
     }
   }]);
 
   return Header;
-}(React.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-module.exports = Header;
+/* harmony default export */ __webpack_exports__["default"] = (Header);
 
 /***/ }),
 
@@ -54392,10 +54472,14 @@ module.exports = Header;
 /*!*****************************************************!*\
   !*** ./src/js/paint/components/header/own/file.jsx ***!
   \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -54416,9 +54500,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-var ReactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
 
 var File = /*#__PURE__*/function (_React$Component) {
   _inherits(File, _React$Component);
@@ -54434,13 +54517,13 @@ var File = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this = this;
 
-      return React.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "header__container"
-      }, React.createElement("span", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "headerContainer__title"
-      }, "file"), React.createElement("ul", {
+      }, "file"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "headerContainer__subMenu"
-      }, React.createElement("li", null, React.createElement("span", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "newFile",
         ref: function ref(nf) {
           return _this._newFile = nf;
@@ -54460,11 +54543,9 @@ var File = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return File;
-}(React.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-module.exports = ReactRedux.connect(function (state) {
-  return {};
-}, function (dispatch) {
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, function (dispatch) {
   return {
     newFile: function newFile() {
       dispatch({
@@ -54473,7 +54554,7 @@ module.exports = ReactRedux.connect(function (state) {
       });
     }
   };
-})(File);
+})(File));
 
 /***/ }),
 
@@ -54481,10 +54562,14 @@ module.exports = ReactRedux.connect(function (state) {
 /*!********************************************************!*\
   !*** ./src/js/paint/components/header/own/windows.jsx ***!
   \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -54505,9 +54590,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-var ReactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
 
 var Windows = /*#__PURE__*/function (_React$Component) {
   _inherits(Windows, _React$Component);
@@ -54523,17 +54607,17 @@ var Windows = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this = this;
 
-      return React.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "header__container"
-      }, React.createElement("span", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "headerContainer__title"
-      }, "windows"), React.createElement("ul", {
+      }, "windows"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "headerContainer__subMenu"
-      }, React.createElement("li", null, React.createElement("span", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         ref: function ref(bi) {
           return _this._basicInstrument = bi;
         }
-      }, "Basic instrument")), React.createElement("li", null, React.createElement("span", {
+      }, "Basic instrument")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         ref: function ref(p) {
           return _this._palette = p;
         }
@@ -54559,11 +54643,9 @@ var Windows = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return Windows;
-}(React.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-module.exports = ReactRedux.connect(function (state) {
-  return {};
-}, function (dispatch) {
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, function (dispatch) {
   return {
     newWindow: function newWindow(view) {
       dispatch({
@@ -54572,7 +54654,7 @@ module.exports = ReactRedux.connect(function (state) {
       });
     }
   };
-})(Windows);
+})(Windows));
 
 /***/ }),
 
@@ -54580,10 +54662,16 @@ module.exports = ReactRedux.connect(function (state) {
 /*!*************************************************************!*\
   !*** ./src/js/paint/components/workSpace/canvas/canvas.jsx ***!
   \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Canvas; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tabCanvasWrapper_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tabCanvasWrapper.jsx */ "./src/js/paint/components/workSpace/canvas/tabCanvasWrapper.jsx");
+/* harmony import */ var _tabs_listTabs_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tabs/listTabs.jsx */ "./src/js/paint/components/workSpace/canvas/tabs/listTabs.jsx");
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -54604,11 +54692,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-var TabCanvas = __webpack_require__(/*! ./tabCanvasWrapper.jsx */ "./src/js/paint/components/workSpace/canvas/tabCanvasWrapper.jsx");
 
-var ListTabs = __webpack_require__(/*! ./tabs/listTabs.jsx */ "./src/js/paint/components/workSpace/canvas/tabs/listTabs.jsx");
+
 
 var Canvas = /*#__PURE__*/function (_React$Component) {
   _inherits(Canvas, _React$Component);
@@ -54622,16 +54708,16 @@ var Canvas = /*#__PURE__*/function (_React$Component) {
   _createClass(Canvas, [{
     key: "render",
     value: function render() {
-      return React.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "canvasWrapper"
-      }, React.createElement(ListTabs, null), React.createElement(TabCanvas, null));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tabs_listTabs_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tabCanvasWrapper_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null));
     }
   }]);
 
   return Canvas;
-}(React.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-module.exports = Canvas;
+
 
 /***/ }),
 
@@ -54639,10 +54725,13 @@ module.exports = Canvas;
 /*!************************************************************************!*\
   !*** ./src/js/paint/components/workSpace/canvas/modesDrawing/modes.js ***!
   \************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Modes; });
+/* harmony import */ var _own_brush_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./own/brush.js */ "./src/js/paint/components/workSpace/canvas/modesDrawing/own/brush.js");
 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -54651,11 +54740,13 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-module.exports = /*#__PURE__*/function () {
+
+
+var Modes = /*#__PURE__*/function () {
   function Modes() {
     _classCallCheck(this, Modes);
 
-    this._brush = __webpack_require__(/*! ./own/brush.js */ "./src/js/paint/components/workSpace/canvas/modesDrawing/own/brush.js");
+    this._brush = _own_brush_js__WEBPACK_IMPORTED_MODULE_0__["default"];
   }
 
   _createClass(Modes, [{
@@ -54671,16 +54762,20 @@ module.exports = /*#__PURE__*/function () {
   return Modes;
 }();
 
+
+
 /***/ }),
 
 /***/ "./src/js/paint/components/workSpace/canvas/modesDrawing/own/brush.js":
 /*!****************************************************************************!*\
   !*** ./src/js/paint/components/workSpace/canvas/modesDrawing/own/brush.js ***!
   \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BrushMode; });
 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -54689,7 +54784,7 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-module.exports = /*#__PURE__*/function () {
+var BrushMode = /*#__PURE__*/function () {
   function BrushMode(instrumentary) {
     _classCallCheck(this, BrushMode);
 
@@ -54763,16 +54858,24 @@ module.exports = /*#__PURE__*/function () {
   return BrushMode;
 }();
 
+
+
 /***/ }),
 
 /***/ "./src/js/paint/components/workSpace/canvas/tabCanvasWrapper.jsx":
 /*!***********************************************************************!*\
   !*** ./src/js/paint/components/workSpace/canvas/tabCanvasWrapper.jsx ***!
   \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _commonComponents_scrollMoveZoomPlace_scrollMoveZoomPlace_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../commonComponents/scrollMoveZoomPlace/scrollMoveZoomPlace.jsx */ "./src/js/paint/components/commonComponents/scrollMoveZoomPlace/scrollMoveZoomPlace.jsx");
+/* harmony import */ var _modesDrawing_modes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modesDrawing/modes.js */ "./src/js/paint/components/workSpace/canvas/modesDrawing/modes.js");
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -54793,13 +54896,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-var ReactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
-var FlexiblePlace = __webpack_require__(/*! ./../../commonComponents/scrollMoveZoomPlace/scrollMoveZoomPlace.jsx */ "./src/js/paint/components/commonComponents/scrollMoveZoomPlace/scrollMoveZoomPlace.jsx");
 
-var Modes = __webpack_require__(/*! ./modesDrawing/modes.js */ "./src/js/paint/components/workSpace/canvas/modesDrawing/modes.js");
+
 
 var Tabs = /*#__PURE__*/function (_React$Component) {
   _inherits(Tabs, _React$Component);
@@ -54820,7 +54920,7 @@ var Tabs = /*#__PURE__*/function (_React$Component) {
       this._idArr = [];
       var tabs = this.props.tabs.map(function (el, i) {
         _this._idArr[i] = el.id;
-        return React.createElement("canvas", {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("canvas", {
           key: i,
           ref: function ref(canv) {
             return _this._canv[i] = canv;
@@ -54830,7 +54930,7 @@ var Tabs = /*#__PURE__*/function (_React$Component) {
           width: el.size.y
         });
       });
-      return React.createElement(FlexiblePlace, {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_commonComponents_scrollMoveZoomPlace_scrollMoveZoomPlace_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
         height: this.props.size.height,
         width: this.props.size.width
       }, tabs);
@@ -54840,7 +54940,7 @@ var Tabs = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       this._setContext();
 
-      this._mode = new Modes();
+      this._mode = new _modesDrawing_modes_js__WEBPACK_IMPORTED_MODULE_3__["default"]();
 
       this._deleteListeners = function () {};
 
@@ -54912,9 +55012,9 @@ var Tabs = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return Tabs;
-}(React.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-module.exports = ReactRedux.connect(function (state) {
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(function (state) {
   return {
     size: {
       height: state.sizeScreen.height - 85,
@@ -54924,7 +55024,7 @@ module.exports = ReactRedux.connect(function (state) {
     activeTab: state.tabs.activeTab,
     instrumentary: state.instruments
   };
-})(Tabs);
+})(Tabs));
 
 /***/ }),
 
@@ -54932,10 +55032,17 @@ module.exports = ReactRedux.connect(function (state) {
 /*!********************************************************************!*\
   !*** ./src/js/paint/components/workSpace/canvas/tabs/listTabs.jsx ***!
   \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _tab_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tab.jsx */ "./src/js/paint/components/workSpace/canvas/tabs/tab.jsx");
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -54958,13 +55065,10 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-var ReactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
-var PropTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 
-var Tab = __webpack_require__(/*! ./tab.jsx */ "./src/js/paint/components/workSpace/canvas/tabs/tab.jsx");
+
 
 var ListTabs = /*#__PURE__*/function (_React$Component) {
   _inherits(ListTabs, _React$Component);
@@ -54991,13 +55095,13 @@ var ListTabs = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      return React.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "listTabs",
         ref: function ref(lt) {
           return _this2.listTabs = lt;
         }
       }, this.props.tabs.map(function (tab) {
-        return React.createElement(Tab, {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tab_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
           key: tab.id,
           tabId: tab.id
         });
@@ -55017,7 +55121,7 @@ var ListTabs = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return ListTabs;
-}(React.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 _defineProperty(ListTabs, "defaultProps", {
   activeTab: 0,
@@ -55025,11 +55129,11 @@ _defineProperty(ListTabs, "defaultProps", {
 });
 
 _defineProperty(ListTabs, "propTypes", {
-  activeTab: PropTypes.number,
-  tabs: PropTypes.array
+  activeTab: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number,
+  tabs: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.array
 });
 
-module.exports = ReactRedux.connect(function (state) {
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(function (state) {
   return {
     tabs: state.tabs.own,
     active: state.tabs.activeTab
@@ -55043,7 +55147,7 @@ module.exports = ReactRedux.connect(function (state) {
       });
     }
   };
-})(ListTabs);
+})(ListTabs));
 
 /***/ }),
 
@@ -55051,10 +55155,18 @@ module.exports = ReactRedux.connect(function (state) {
 /*!***************************************************************!*\
   !*** ./src/js/paint/components/workSpace/canvas/tabs/tab.jsx ***!
   \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -55077,15 +55189,11 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-var ReactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
-var PropTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 
-var FontAwesomeIcon = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js").FontAwesomeIcon;
 
-var faTimesCircle = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js").faTimesCircle;
+
 
 var Tab = /*#__PURE__*/function (_React$Component) {
   _inherits(Tab, _React$Component);
@@ -55107,19 +55215,19 @@ var Tab = /*#__PURE__*/function (_React$Component) {
         active = 'active';
       }
 
-      return React.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tab ".concat(active),
         "data-id": this.props.tabId,
         ref: function ref(tab) {
           return _this.tab = tab;
         }
-      }, "".concat(this.props.tab.title, " ").concat(this.props.tab.size.x, " : ").concat(this.props.tab.size.y), React.createElement("div", {
+      }, "".concat(this.props.tab.title, " ").concat(this.props.tab.size.x, " : ").concat(this.props.tab.size.y), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "__exitIcon",
         ref: function ref(exit) {
           return _this.exitBtn = exit;
         }
-      }, React.createElement(FontAwesomeIcon, {
-        icon: faTimesCircle
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__["faTimesCircle"]
       })));
     }
   }, {
@@ -55138,7 +55246,7 @@ var Tab = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return Tab;
-}(React.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 _defineProperty(Tab, "defaultProps", {
   tabId: 0,
@@ -55146,10 +55254,10 @@ _defineProperty(Tab, "defaultProps", {
 });
 
 _defineProperty(Tab, "propTypes", {
-  tabId: PropTypes.number
+  tabId: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number
 });
 
-module.exports = ReactRedux.connect(function (state, props) {
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(function (state, props) {
   return {
     tab: state.tabs.own.find(function (el) {
       return +el.id === +props.tabId;
@@ -55165,7 +55273,7 @@ module.exports = ReactRedux.connect(function (state, props) {
       });
     }
   };
-})(Tab);
+})(Tab));
 
 /***/ }),
 
@@ -55173,10 +55281,16 @@ module.exports = ReactRedux.connect(function (state, props) {
 /*!**********************************************************************!*\
   !*** ./src/js/paint/components/workSpace/instruments/instrument.jsx ***!
   \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Instrument; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -55197,11 +55311,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-var FontAwesomeIcon = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js").FontAwesomeIcon;
 
-var faPaintBrush = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js").faPaintBrush;
+
 
 var Instrument = /*#__PURE__*/function (_React$Component) {
   _inherits(Instrument, _React$Component);
@@ -55224,23 +55336,23 @@ var Instrument = /*#__PURE__*/function (_React$Component) {
 
       switch (this.props.type) {
         case 'brush':
-          icon = React.createElement(FontAwesomeIcon, {
-            icon: faPaintBrush,
+          icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+            icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faPaintBrush"],
             color: "white"
           });
           break;
       }
 
-      return React.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: 'instrument' + active
       }, icon);
     }
   }]);
 
   return Instrument;
-}(React.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-module.exports = Instrument;
+
 
 /***/ }),
 
@@ -55248,10 +55360,15 @@ module.exports = Instrument;
 /*!***********************************************************************!*\
   !*** ./src/js/paint/components/workSpace/instruments/instruments.jsx ***!
   \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _instrument_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./instrument.jsx */ "./src/js/paint/components/workSpace/instruments/instrument.jsx");
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -55272,11 +55389,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-var ReactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
-var Instrument = __webpack_require__(/*! ./instrument.jsx */ "./src/js/paint/components/workSpace/instruments/instrument.jsx");
+
 
 var Instruments = /*#__PURE__*/function (_React$Component) {
   _inherits(Instruments, _React$Component);
@@ -55296,7 +55411,7 @@ var Instruments = /*#__PURE__*/function (_React$Component) {
       for (var key in this.props.instruments) {
         if (this.props.instruments[key]) {
           active = key === this.props.active ? true : false;
-          instruments.push(React.createElement(Instrument, {
+          instruments.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_instrument_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
             type: key,
             key: key,
             active: active
@@ -55304,21 +55419,21 @@ var Instruments = /*#__PURE__*/function (_React$Component) {
         }
       }
 
-      return React.createElement("aside", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("aside", {
         className: "instrumentWrapper"
       }, instruments);
     }
   }]);
 
   return Instruments;
-}(React.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-module.exports = ReactRedux.connect(function (state) {
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(function (state) {
   return {
     instruments: state.instruments.currentInstruments,
     active: state.instruments.activeInstrument
   };
-})(Instruments);
+})(Instruments));
 
 /***/ }),
 
@@ -55326,10 +55441,14 @@ module.exports = ReactRedux.connect(function (state) {
 /*!*********************************************************************!*\
   !*** ./src/js/paint/components/workSpace/windows/windowWrapper.jsx ***!
   \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return WindowWrapper; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -55350,7 +55469,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
 
 var WindowWrapper = /*#__PURE__*/function (_React$Component) {
   _inherits(WindowWrapper, _React$Component);
@@ -55364,14 +55483,14 @@ var WindowWrapper = /*#__PURE__*/function (_React$Component) {
   _createClass(WindowWrapper, [{
     key: "render",
     value: function render() {
-      return React.createElement("div", null);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
     }
   }]);
 
   return WindowWrapper;
-}(React.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-module.exports = WindowWrapper;
+
 
 /***/ }),
 
@@ -55379,10 +55498,17 @@ module.exports = WindowWrapper;
 /*!*********************************************************!*\
   !*** ./src/js/paint/components/workSpace/workSpace.jsx ***!
   \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return WorkSpace; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _canvas_canvas_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./canvas/canvas.jsx */ "./src/js/paint/components/workSpace/canvas/canvas.jsx");
+/* harmony import */ var _instruments_instruments_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./instruments/instruments.jsx */ "./src/js/paint/components/workSpace/instruments/instruments.jsx");
+/* harmony import */ var _windows_windowWrapper_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./windows/windowWrapper.jsx */ "./src/js/paint/components/workSpace/windows/windowWrapper.jsx");
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -55403,13 +55529,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-var MainCanvas = __webpack_require__(/*! ./canvas/canvas.jsx */ "./src/js/paint/components/workSpace/canvas/canvas.jsx");
 
-var Instruments = __webpack_require__(/*! ./instruments/instruments.jsx */ "./src/js/paint/components/workSpace/instruments/instruments.jsx");
 
-var WindowWrapper = __webpack_require__(/*! ./windows/windowWrapper.jsx */ "./src/js/paint/components/workSpace/windows/windowWrapper.jsx");
+
 
 var WorkSpace = /*#__PURE__*/function (_React$Component) {
   _inherits(WorkSpace, _React$Component);
@@ -55423,16 +55546,16 @@ var WorkSpace = /*#__PURE__*/function (_React$Component) {
   _createClass(WorkSpace, [{
     key: "render",
     value: function render() {
-      return React.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "workSpace"
-      }, React.createElement(Instruments, null), React.createElement(MainCanvas, null), React.createElement(WindowWrapper, null));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_instruments_instruments_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_canvas_canvas_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_windows_windowWrapper_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null));
     }
   }]);
 
   return WorkSpace;
-}(React.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-module.exports = WorkSpace;
+
 
 /***/ }),
 
@@ -55456,13 +55579,9 @@ __webpack_require__.r(__webpack_exports__);
 var _settings_defaultSetting_json__WEBPACK_IMPORTED_MODULE_4___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./settings/defaultSetting.json */ "./src/js/paint/settings/defaultSetting.json", 1);
 /* harmony import */ var _reducers_getRootReducer_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./reducers/getRootReducer.js */ "./src/js/paint/reducers/getRootReducer.js");
 /* harmony import */ var _components_header_header_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/header/header.jsx */ "./src/js/paint/components/header/header.jsx");
-/* harmony import */ var _components_header_header_jsx__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_components_header_header_jsx__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _components_workSpace_workSpace_jsx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/workSpace/workSpace.jsx */ "./src/js/paint/components/workSpace/workSpace.jsx");
-/* harmony import */ var _components_workSpace_workSpace_jsx__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_components_workSpace_workSpace_jsx__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _components_footer_footer_jsx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/footer/footer.jsx */ "./src/js/paint/components/footer/footer.jsx");
-/* harmony import */ var _components_footer_footer_jsx__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_components_footer_footer_jsx__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _components_dragAndDropWindows_dragAndDropWindowsWrapper_jsx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/dragAndDropWindows/dragAndDropWindowsWrapper.jsx */ "./src/js/paint/components/dragAndDropWindows/dragAndDropWindowsWrapper.jsx");
-/* harmony import */ var _components_dragAndDropWindows_dragAndDropWindowsWrapper_jsx__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_components_dragAndDropWindows_dragAndDropWindowsWrapper_jsx__WEBPACK_IMPORTED_MODULE_9__);
 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -55473,7 +55592,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
 
-var rootReducer = Object(_reducers_getRootReducer_js__WEBPACK_IMPORTED_MODULE_5__["default"])(_settings_defaultSetting_json__WEBPACK_IMPORTED_MODULE_4__);
+var rootReducer = Object(_reducers_getRootReducer_js__WEBPACK_IMPORTED_MODULE_5__["default"])(JSON.parse(JSON.stringify(_settings_defaultSetting_json__WEBPACK_IMPORTED_MODULE_4__)));
 
 
 
@@ -55503,7 +55622,7 @@ var Paint = function Paint(selector) {
     store: this._store
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "paintWrapper"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_header_header_jsx__WEBPACK_IMPORTED_MODULE_6___default.a, null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_workSpace_workSpace_jsx__WEBPACK_IMPORTED_MODULE_7___default.a, null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_footer_footer_jsx__WEBPACK_IMPORTED_MODULE_8___default.a, null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_dragAndDropWindows_dragAndDropWindowsWrapper_jsx__WEBPACK_IMPORTED_MODULE_9___default.a, null))), this._mountPoint);
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_header_header_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_workSpace_workSpace_jsx__WEBPACK_IMPORTED_MODULE_7__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_footer_footer_jsx__WEBPACK_IMPORTED_MODULE_8__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_dragAndDropWindows_dragAndDropWindowsWrapper_jsx__WEBPACK_IMPORTED_MODULE_9__["default"], null))), this._mountPoint);
   document.addEventListener('selectstart', function (e) {
     e.preventDefault();
     return false;
@@ -55782,12 +55901,43 @@ module.exports = JSON.parse("{\"currentColor\":\"#000\",\"currentLineThickness\"
 
 /***/ }),
 
-/***/ "./src/js/paint/structDate/coor.js":
-/*!*****************************************!*\
-  !*** ./src/js/paint/structDate/coor.js ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ "./src/js/paint/structDate/infoTab.js":
+/*!********************************************!*\
+  !*** ./src/js/paint/structDate/infoTab.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return InfoTab; });
+
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var InfoTab = function InfoTab(id, title, size) {
+  _classCallCheck(this, InfoTab);
+
+  this.id = id;
+  this.title = title;
+  this.size = size;
+};
+
+
+
+/***/ }),
+
+/***/ "./src/js/paint/structDate/vector2.js":
+/*!********************************************!*\
+  !*** ./src/js/paint/structDate/vector2.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Vector2; });
+
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -55795,41 +55945,41 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-module.exports = /*#__PURE__*/function () {
-  function Coor() {
+var Vector2 = /*#__PURE__*/function () {
+  function Vector2() {
     var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0.0;
     var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.0;
 
-    _classCallCheck(this, Coor);
+    _classCallCheck(this, Vector2);
 
     this.x = x;
     this.y = y;
   }
 
-  _createClass(Coor, [{
+  _createClass(Vector2, [{
     key: "sub",
-    value: function sub(coor) {
-      this.setCoor(Coor.sub(this, coor));
+    value: function sub(vector) {
+      this.setDimensions(Vector2.sub(this, vector));
       return this;
     }
   }, {
     key: "sum",
-    value: function sum(coor) {
-      this.setCoor(Coor.sum(this, coor));
+    value: function sum(vector) {
+      this.setDimensions(Vector2.sum(this, vector));
       return this;
     }
   }, {
-    key: "divisionOnCoor",
-    value: function divisionOnCoor(coor, type) {
-      if (coor.x && typeof coor.x === 'number') {
-        this.x /= coor.x;
-      } else if (coor.x === 0) {
+    key: "divisionOnVector",
+    value: function divisionOnVector(vector, type) {
+      if (vector.x) {
+        this.x /= vector.x;
+      } else if (+vector.x === 0) {
         this.x = 0;
       }
 
-      if (coor.y && typeof coor.y === 'number') {
-        this.y /= coor.y;
-      } else if (coor.y === 0) {
+      if (vector.y) {
+        this.y /= vector.y;
+      } else if (+vector.y === 0) {
         this.y = 0;
       }
 
@@ -55848,47 +55998,25 @@ module.exports = /*#__PURE__*/function () {
       return this;
     }
   }, {
-    key: "setCoor",
-    value: function setCoor(coor) {
-      this.x = coor.x;
-      this.y = coor.y;
+    key: "setDimensions",
+    value: function setDimensions(vector) {
+      this.x = vector.x;
+      this.y = vector.y;
     }
   }], [{
     key: "sub",
-    value: function sub(coor1, coor2) {
-      return new Coor(coor1.x - coor2.x, coor1.y - coor2.y);
+    value: function sub(vector1, vector2) {
+      return new Vector2(vector1.x - vector2.x, vector1.y - vector2.y);
     }
   }, {
     key: "sum",
-    value: function sum(coor1, coor2) {
-      return new Coor(coor1.x + coor2.x, coor1.y + coor2.y);
+    value: function sum(vector1, vector2) {
+      return new Vector2(vector1.x + vector2.x, vector1.y + vector2.y);
     }
   }]);
 
-  return Coor;
+  return Vector2;
 }();
-
-/***/ }),
-
-/***/ "./src/js/paint/structDate/infoTab.js":
-/*!********************************************!*\
-  !*** ./src/js/paint/structDate/infoTab.js ***!
-  \********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return InfoTab; });
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var InfoTab = function InfoTab(id, title, size) {
-  _classCallCheck(this, InfoTab);
-
-  this.id = id;
-  this.title = title;
-  this.size = size;
-};
 
 
 

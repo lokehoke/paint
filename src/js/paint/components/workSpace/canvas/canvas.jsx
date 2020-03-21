@@ -1,11 +1,11 @@
 'use strict';
 
-const React = require('react');
+import React from 'react';
 
-const TabCanvas = require('./tabCanvasWrapper.jsx');
-const ListTabs = require('./tabs/listTabs.jsx');
+import TabCanvas from './tabCanvasWrapper.jsx';
+import ListTabs from './tabs/listTabs.jsx';
 
-class Canvas extends React.Component {
+export default class Canvas extends React.Component {
     render() {
         return (
             <div className="canvasWrapper">
@@ -15,5 +15,3 @@ class Canvas extends React.Component {
         );
     }
 }
-
-module.exports = Canvas;

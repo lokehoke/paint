@@ -1,12 +1,12 @@
 'use strict';
 
-const React = require('react');
+import React from 'react';
 
-const MainCanvas = require('./canvas/canvas.jsx');
-const Instruments = require('./instruments/instruments.jsx');
-const WindowWrapper = require('./windows/windowWrapper.jsx');
+import MainCanvas from './canvas/canvas.jsx';
+import Instruments from './instruments/instruments.jsx';
+import WindowWrapper from './windows/windowWrapper.jsx';
 
-class WorkSpace extends React.Component {
+export default class WorkSpace extends React.Component {
     render() {
         return (
             <div className="workSpace">
@@ -17,5 +17,3 @@ class WorkSpace extends React.Component {
         );
     }
 }
-
-module.exports = WorkSpace;

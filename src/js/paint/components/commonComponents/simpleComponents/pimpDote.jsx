@@ -1,7 +1,7 @@
 'use strict';
 
-const React = require('react');
-const PropTypes = require('prop-types');
+import React from 'react';
+import PropTypes from 'prop-types';
 
 let style = {
     display: 'flex',
@@ -9,10 +9,10 @@ let style = {
     width: '20px',
     borderRadius: '100%',
     backgroundColor: '#f1e5dd',
-    cursor: 'pointer'
+    cursor: 'pointer',
 };
 
-module.exports = class pimpDote extends React.Component {
+export default class pimpDote extends React.Component {
     static defaultProps = {
         style: style
     };
@@ -24,10 +24,7 @@ module.exports = class pimpDote extends React.Component {
     render() {
         style = Object.assign({}, style, this.props.style);
         return (
-            <div
-                style={style}
-                ref={dote => this._dote = dote}
-            />
+            <div style={style} ref={dote => this._dote = dote} />
         );
     }
 

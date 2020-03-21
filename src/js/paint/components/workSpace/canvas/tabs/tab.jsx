@@ -1,20 +1,20 @@
 'use strict';
 
-const React = require('react');
-const ReactRedux = require('react-redux');
-const PropTypes = require('prop-types');
-const FontAwesomeIcon = require('@fortawesome/react-fontawesome').FontAwesomeIcon;
-const faTimesCircle = require('@fortawesome/free-solid-svg-icons').faTimesCircle;
+import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 class Tab extends React.Component {
     static defaultProps = {
         tabId: 0,
-        active: 0
+        active: 0,
     }
 
     static propTypes = {
-        tabId: PropTypes.number
+        tabId: PropTypes.number,
     }
 
     render() {
@@ -45,17 +45,17 @@ class Tab extends React.Component {
 }
 
 
-module.exports = ReactRedux.connect(
+export default connect(
     (state, props) => ({
         tab: state.tabs.own.find(el => +el.id === +props.tabId),
-        active: state.tabs.activeTab
+        active: state.tabs.activeTab,
     }),
     dispatch => ({
         closeTab: id => {
             dispatch({
                 type: 'CLOSE_TAB',
-                id
+                id,
             });
-        }
+        },
     })
 )(Tab);

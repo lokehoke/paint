@@ -1,10 +1,10 @@
 'use strict';
 
-const React = require('react');
-const FontAwesomeIcon = require('@fortawesome/react-fontawesome').FontAwesomeIcon;
-const faPaintBrush = require('@fortawesome/free-solid-svg-icons').faPaintBrush;
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPaintBrush } from '@fortawesome/free-solid-svg-icons';
 
-class Instrument extends React.Component {
+export default class Instrument extends React.Component {
     render() {
         let icon = null;
         let active = '';
@@ -26,5 +26,3 @@ class Instrument extends React.Component {
         );
     }
 }
-
-module.exports = Instrument;
