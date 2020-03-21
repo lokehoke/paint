@@ -17,12 +17,6 @@ class ListTabs extends React.Component {
         tabs: PropTypes.array,
     };
 
-    componentWillUpdate() {
-        if(this.props.tabs[0] && !this.props.tabs.some(tab => tab.id === this.props.active)) {
-            this.props.changeActive(this.props.tabs[this.props.tabs.length-1].id);
-        }
-    }
-
     render() {
         return (
             <div className="listTabs" ref={lt => this.listTabs = lt}>

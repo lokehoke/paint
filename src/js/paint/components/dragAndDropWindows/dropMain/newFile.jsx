@@ -3,7 +3,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { screenSizeRestrictions as ssr } from './../../../settings/globalSetting.json';
+
 class NewFile extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this._clickNewFile = this._clickNewFile.bind(this)
+        this._getValue     = this._getValue.bind(this);
+    }
+    
     render() {
         return (
             <div className="newFile">
@@ -13,9 +22,9 @@ class NewFile extends React.Component {
                 </div>
                 <div>
                     <span>Size&nbsp;</span>
-                    <input ref={inp => this.x = inp} type="number" max="10000" min="0" />
+                    <input ref={inp => this.x = inp} type="number" max={ssr['x'].max} min={ssr['x'].min} />
                     &nbsp;x&nbsp;
-                    <input ref={inp => this.y = inp} type="number" max="10000" min="0" />
+                    <input ref={inp => this.y = inp} type="number" max={ssr['y'].max} min={ssr['y'].min} />
                 </div>
                 <div>
                     <button ref={btn => this.createBtn = btn}>Create</button>
@@ -25,23 +34,33 @@ class NewFile extends React.Component {
     }
 
     componentDidMount() {
-        this.createBtn.addEventListener('click', e => {
-            let x = this._getValue('x');
-            let y = this._getValue('y');
-            let title = (this.title.value !== '' ? this.title.value : 'untitled');
+        this.createBtn.addEventListener('click', this._clickNewFile);
 
-            this.props.deleteThisTab(this.props.id);
-            this.props.createNew(x, y, title);
-        });
+        // document.addEventListener('keyup', e => { // TODO need active dropWindow
+        //     console.log(e);
+            
+        //     if (e.keyCode === 13) {
+        //         return this._clickNewFile(e);
+        //     }
+        // });
     }
 
-    _getValue(type) { // TODO digits!!!!
-        if (+this[type].value > 10000 || +this[type].value <= 0 || this[type].value === '') {
-            if (type === 'x') {
-                return 1080;
-            } else {
-                return 1920;
-            }
+    _clickNewFile(e) {
+        e.preventDefault();
+
+        let x = this._getValue('x');
+        let y = this._getValue('y');
+        let title = (this.title.value !== '' ? this.title.value : 'untitled');
+
+        this.props.deleteThisTab(this.props.id);
+        this.props.createNew(x, y, title);
+        
+        return false;
+    }
+
+    _getValue(type) {
+        if (+this[type].value > ssr[type].max || +this[type].value <= ssr[type].min || this[type].value === '') {
+            return ssr[type].default;
         } else {
             return +this[type].value;
         }

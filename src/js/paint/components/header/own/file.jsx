@@ -4,6 +4,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 class File extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this._createNewFile = this._createNewFile.bind(this)
+    }
+
     render() {
         return (
             <div className="header__container">
@@ -20,7 +26,7 @@ class File extends React.Component {
     }
 
     componentDidMount() {
-        this._newFile.addEventListener('click', this._createNewFile.bind(this));
+        this._newFile.addEventListener('click', this._createNewFile);
     }
 
     _createNewFile() {

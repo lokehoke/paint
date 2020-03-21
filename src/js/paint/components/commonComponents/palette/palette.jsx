@@ -99,7 +99,7 @@ export default class Palette extends React.Component {
                 sizeItem: {
                     x: 30,
                     y: 10,
-                }
+                },
             },
             piece: {
                 exist: true,
@@ -115,7 +115,7 @@ export default class Palette extends React.Component {
                 },
                 cur: {
                     y: 0,
-                }
+                },
             },
             transferDate: this._changeValue.bind(this),
         });

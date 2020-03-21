@@ -5,10 +5,10 @@ import { render } from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
-import setting from './settings/defaultSetting.json';
+import defaultStore from './settings/defaultStore.json';
 
 import RootReducer from './reducers/getRootReducer.js';
-const rootReducer = RootReducer(JSON.parse(JSON.stringify(setting)));
+const rootReducer = RootReducer(JSON.parse(JSON.stringify(defaultStore)));
 
 import Header from './components/header/header.jsx';
 import WorkSpace from './components/workSpace/workSpace.jsx';

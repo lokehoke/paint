@@ -53800,6 +53800,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _settings_globalSetting_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../../settings/globalSetting.json */ "./src/js/paint/settings/globalSetting.json");
+var _settings_globalSetting_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./../../../settings/globalSetting.json */ "./src/js/paint/settings/globalSetting.json", 1);
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -53812,9 +53814,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -53823,74 +53825,82 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var NewFile = /*#__PURE__*/function (_React$Component) {
   _inherits(NewFile, _React$Component);
 
-  function NewFile() {
+  function NewFile(props) {
+    var _this;
+
     _classCallCheck(this, NewFile);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(NewFile).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(NewFile).call(this, props));
+    _this._clickNewFile = _this._clickNewFile.bind(_assertThisInitialized(_this));
+    _this._getValue = _this._getValue.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(NewFile, [{
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this2 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "newFile"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Title\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         ref: function ref(inp) {
-          return _this.title = inp;
+          return _this2.title = inp;
         },
         maxLength: "10"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Size\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         ref: function ref(inp) {
-          return _this.x = inp;
+          return _this2.x = inp;
         },
         type: "number",
-        max: "10000",
-        min: "0"
+        max: _settings_globalSetting_json__WEBPACK_IMPORTED_MODULE_2__["screenSizeRestrictions"]['x'].max,
+        min: _settings_globalSetting_json__WEBPACK_IMPORTED_MODULE_2__["screenSizeRestrictions"]['x'].min
       }), "\xA0x\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         ref: function ref(inp) {
-          return _this.y = inp;
+          return _this2.y = inp;
         },
         type: "number",
-        max: "10000",
-        min: "0"
+        max: _settings_globalSetting_json__WEBPACK_IMPORTED_MODULE_2__["screenSizeRestrictions"]['y'].max,
+        min: _settings_globalSetting_json__WEBPACK_IMPORTED_MODULE_2__["screenSizeRestrictions"]['y'].min
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         ref: function ref(btn) {
-          return _this.createBtn = btn;
+          return _this2.createBtn = btn;
         }
       }, "Create")));
     }
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this2 = this;
+      this.createBtn.addEventListener('click', this._clickNewFile); // document.addEventListener('keyup', e => { // TODO need active dropWindow
+      //     console.log(e);
+      //     if (e.keyCode === 13) {
+      //         return this._clickNewFile(e);
+      //     }
+      // });
+    }
+  }, {
+    key: "_clickNewFile",
+    value: function _clickNewFile(e) {
+      e.preventDefault();
 
-      this.createBtn.addEventListener('click', function (e) {
-        var x = _this2._getValue('x');
+      var x = this._getValue('x');
 
-        var y = _this2._getValue('y');
+      var y = this._getValue('y');
 
-        var title = _this2.title.value !== '' ? _this2.title.value : 'untitled';
-
-        _this2.props.deleteThisTab(_this2.props.id);
-
-        _this2.props.createNew(x, y, title);
-      });
+      var title = this.title.value !== '' ? this.title.value : 'untitled';
+      this.props.deleteThisTab(this.props.id);
+      this.props.createNew(x, y, title);
+      return false;
     }
   }, {
     key: "_getValue",
     value: function _getValue(type) {
-      // TODO digits!!!!
-      if (+this[type].value > 10000 || +this[type].value <= 0 || this[type].value === '') {
-        if (type === 'x') {
-          return 1080;
-        } else {
-          return 1920;
-        }
+      if (+this[type].value > _settings_globalSetting_json__WEBPACK_IMPORTED_MODULE_2__["screenSizeRestrictions"][type].max || +this[type].value <= _settings_globalSetting_json__WEBPACK_IMPORTED_MODULE_2__["screenSizeRestrictions"][type].min || this[type].value === '') {
+        return _settings_globalSetting_json__WEBPACK_IMPORTED_MODULE_2__["screenSizeRestrictions"][type]["default"];
       } else {
         return +this[type].value;
       }
@@ -54492,9 +54502,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -54506,16 +54516,20 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 var File = /*#__PURE__*/function (_React$Component) {
   _inherits(File, _React$Component);
 
-  function File() {
+  function File(props) {
+    var _this;
+
     _classCallCheck(this, File);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(File).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(File).call(this, props));
+    _this._createNewFile = _this._createNewFile.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(File, [{
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this2 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "header__container"
@@ -54526,14 +54540,14 @@ var File = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "newFile",
         ref: function ref(nf) {
-          return _this._newFile = nf;
+          return _this2._newFile = nf;
         }
       }, "New file"))));
     }
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      this._newFile.addEventListener('click', this._createNewFile.bind(this));
+      this._newFile.addEventListener('click', this._createNewFile);
     }
   }, {
     key: "_createNewFile",
@@ -55080,25 +55094,14 @@ var ListTabs = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(ListTabs, [{
-    key: "componentWillUpdate",
-    value: function componentWillUpdate() {
-      var _this = this;
-
-      if (this.props.tabs[0] && !this.props.tabs.some(function (tab) {
-        return tab.id === _this.props.active;
-      })) {
-        this.props.changeActive(this.props.tabs[this.props.tabs.length - 1].id);
-      }
-    }
-  }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "listTabs",
         ref: function ref(lt) {
-          return _this2.listTabs = lt;
+          return _this.listTabs = lt;
         }
       }, this.props.tabs.map(function (tab) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tab_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -55110,11 +55113,11 @@ var ListTabs = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this3 = this;
+      var _this2 = this;
 
       this.listTabs.addEventListener('click', function (e) {
         if (e.target.classList.contains('tab')) {
-          _this3.props.changeActive(e.target.dataset.id);
+          _this2.props.changeActive(e.target.dataset.id);
         }
       });
     }
@@ -55575,8 +55578,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _settings_defaultSetting_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./settings/defaultSetting.json */ "./src/js/paint/settings/defaultSetting.json");
-var _settings_defaultSetting_json__WEBPACK_IMPORTED_MODULE_4___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./settings/defaultSetting.json */ "./src/js/paint/settings/defaultSetting.json", 1);
+/* harmony import */ var _settings_defaultStore_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./settings/defaultStore.json */ "./src/js/paint/settings/defaultStore.json");
+var _settings_defaultStore_json__WEBPACK_IMPORTED_MODULE_4___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./settings/defaultStore.json */ "./src/js/paint/settings/defaultStore.json", 1);
 /* harmony import */ var _reducers_getRootReducer_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./reducers/getRootReducer.js */ "./src/js/paint/reducers/getRootReducer.js");
 /* harmony import */ var _components_header_header_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/header/header.jsx */ "./src/js/paint/components/header/header.jsx");
 /* harmony import */ var _components_workSpace_workSpace_jsx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/workSpace/workSpace.jsx */ "./src/js/paint/components/workSpace/workSpace.jsx");
@@ -55592,7 +55595,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
 
-var rootReducer = Object(_reducers_getRootReducer_js__WEBPACK_IMPORTED_MODULE_5__["default"])(JSON.parse(JSON.stringify(_settings_defaultSetting_json__WEBPACK_IMPORTED_MODULE_4__)));
+var rootReducer = Object(_reducers_getRootReducer_js__WEBPACK_IMPORTED_MODULE_5__["default"])(JSON.parse(JSON.stringify(_settings_defaultStore_json__WEBPACK_IMPORTED_MODULE_4__)));
 
 
 
@@ -55890,14 +55893,25 @@ var def = {
 
 /***/ }),
 
-/***/ "./src/js/paint/settings/defaultSetting.json":
-/*!***************************************************!*\
-  !*** ./src/js/paint/settings/defaultSetting.json ***!
-  \***************************************************/
+/***/ "./src/js/paint/settings/defaultStore.json":
+/*!*************************************************!*\
+  !*** ./src/js/paint/settings/defaultStore.json ***!
+  \*************************************************/
 /*! exports provided: currentColor, currentLineThickness, activeInstrument, currentInstruments, default */
 /***/ (function(module) {
 
 module.exports = JSON.parse("{\"currentColor\":\"#000\",\"currentLineThickness\":\"16\",\"activeInstrument\":\"brush\",\"currentInstruments\":{\"brush\":true}}");
+
+/***/ }),
+
+/***/ "./src/js/paint/settings/globalSetting.json":
+/*!**************************************************!*\
+  !*** ./src/js/paint/settings/globalSetting.json ***!
+  \**************************************************/
+/*! exports provided: screenSizeRestrictions, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"screenSizeRestrictions\":{\"x\":{\"min\":0,\"max\":10000,\"default\":1080},\"y\":{\"min\":0,\"max\":10000,\"default\":1920}}}");
 
 /***/ }),
 
