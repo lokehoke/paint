@@ -3,9 +3,9 @@
     "version": "0.0.1",
     "description": "paint",
     "main": "src/js/index.js",
-    "repository": "https://github.com/Lpkehoke/paint.git",
-    "author": "lokehoke <ibymif2000@yandex.ru>",
-    "license": "MIT",
+    "repository": "https://github.com/lokehoke/paint.git",
+    "author": "lokehoke <lokehoke@yandex.ru>",
+    "license": "GNU GPL v3",
     "browserslist": [
 		"ie >= 8",
 		"last 4 version"
