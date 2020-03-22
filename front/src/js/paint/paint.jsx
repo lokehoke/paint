@@ -2,8 +2,9 @@
 
 import React from 'react';
 import { render } from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import defaultStore from './settings/defaultStore.json';
 
@@ -14,22 +15,18 @@ import Header from './components/header/header.jsx';
 import WorkSpace from './components/workSpace/workSpace.jsx';
 import Footer from './components/footer/footer.jsx';
 import DragAndDropWindowWrapper from './components/dragAndDropWindows/dragAndDropWindowsWrapper.jsx';
+import { Vector2 } from './structDate/vector2';
+import { ChangeSizeScreenAction } from './actions/sizeScreenActions';
 
 export default class Paint {
     constructor(selector) {
         this._mountPoint = document.querySelector(selector);
-        this._store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__({
-           serialize: true,
-        }));
+        this._store = createStore(rootReducer, composeWithDevTools(
+            applyMiddleware(),
+        ));
 
         window.onresize = () => {
-            this._store.dispatch({
-                type: 'CHANGE_SIZE_SCREEN',
-                size: {
-                    height: window.innerHeight,
-                    width: window.innerWidth,
-                },
-            });
+            this._store.dispatch(ChangeSizeScreenAction(new Vector2(window.innerHeight, window.innerWidth)));
         };
 
         render(

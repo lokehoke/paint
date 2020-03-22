@@ -13,7 +13,6 @@ module.exports = {
 	{
 		main:
 		[
-            '@babel/polyfill',
             './src/scss/index.scss',
             './src/js/index.ts',
         ],
@@ -71,8 +70,8 @@ module.exports = {
 						{
 							sourceMap: true,
 						},
-					}
-				]
+					},
+				],
 			},
 			{
 				test: /\.(js|jsx|ts|tsx)$/,
