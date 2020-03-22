@@ -1,0 +1,13 @@
+{
+  "name": "paint",
+  "version": "0.0.1",
+  "description": "paint",
+  "main": "init.sh",
+  "repository": "git@github.com:lokehoke/paint.git",
+  "author": "lokehoke <ibymif2000@yandex.ru>",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "@types/node": "^13.9.2",
+    "typescript": "^3.8.3"
+  }
+}

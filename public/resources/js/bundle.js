@@ -52589,7 +52589,7 @@ var paint = new _paint_paint_jsx__WEBPACK_IMPORTED_MODULE_0__["default"]('#root'
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return DefaultConfig; });
-/* harmony import */ var _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../structDate/vector2.js */ "./src/js/paint/structDate/vector2.js");
+/* harmony import */ var _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../structDate/vector2.ts */ "./src/js/paint/structDate/vector2.ts");
 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -52604,17 +52604,17 @@ var DefaultConfig = function DefaultConfig() {
   this.showAfterMount = {
     isset: false,
     type: 'flex',
-    sizeItem: new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_0__["default"]()
+    sizeItem: new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_0__["Vector2"]()
   };
   this.onlyX = false;
   this.onlyY = false;
   this.piece = {
     exist: false,
-    min: new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_0__["default"](),
-    max: new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_0__["default"](),
-    step: new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_0__["default"](),
+    min: new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_0__["Vector2"](),
+    max: new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_0__["Vector2"](),
+    step: new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_0__["Vector2"](),
     exitFromContour: false,
-    cur: new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_0__["default"]()
+    cur: new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_0__["Vector2"]()
   };
 
   this.transferDate = function () {};
@@ -52636,7 +52636,7 @@ var DefaultConfig = function DefaultConfig() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return DragAndDrop; });
 /* harmony import */ var _defaultSetting_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./defaultSetting.js */ "./src/js/paint/commonInterface/dragAndDrop/defaultSetting.js");
-/* harmony import */ var _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../structDate/vector2.js */ "./src/js/paint/structDate/vector2.js");
+/* harmony import */ var _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../structDate/vector2.ts */ "./src/js/paint/structDate/vector2.ts");
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -52662,13 +52662,13 @@ var DragAndDrop = /*#__PURE__*/function () {
 
     this._item = item;
     this._config = this._makeSetting(config);
-    this._stepPx = new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__["default"]();
-    this._shiftOnItemPx = new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__["default"]();
-    this._vectorMinParent = new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__["default"]();
-    this._vectorMaxParent = new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__["default"]();
+    this._stepPx = new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"]();
+    this._shiftOnItemPx = new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"]();
+    this._vectorMinParent = new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"]();
+    this._vectorMaxParent = new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"]();
     this._steps = {
-      current: new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__["default"](),
-      max: new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__["default"]()
+      current: new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"](),
+      max: new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"]()
     };
     this._moveAt = this._moveAt.bind(this);
     this._endMoving = this._endMoving.bind(this);
@@ -52750,7 +52750,7 @@ var DragAndDrop = /*#__PURE__*/function () {
 
         var coords = this._getVector(item);
 
-        this._shiftOnItemPx = _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__["default"].sub(new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__["default"](e.pageX, e.pageY), coords);
+        this._shiftOnItemPx = _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"].sub(new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"](e.pageX, e.pageY), coords);
 
         this._moveAt(e);
 
@@ -52771,7 +52771,7 @@ var DragAndDrop = /*#__PURE__*/function () {
     key: "_getVector",
     value: function _getVector(elem) {
       var box = elem.getBoundingClientRect();
-      return new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__["default"](box.left, box.top);
+      return new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"](box.left, box.top);
     }
   }, {
     key: "_moveAt",
@@ -52826,13 +52826,13 @@ var DragAndDrop = /*#__PURE__*/function () {
         this._vectorMaxParent.sum(sizeItem.divisionOnNumber(2));
       }
 
-      this._steps.max = _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__["default"].sub(this._config.piece.max, this._config.piece.min).divisionOnVector(this._config.piece.step, 'int');
-      this._stepPx = _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__["default"].sub(this._vectorMaxParent, this._vectorMinParent).divisionOnVector(this._steps.max);
+      this._steps.max = _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"].sub(this._config.piece.max, this._config.piece.min).divisionOnVector(this._config.piece.step, 'int');
+      this._stepPx = _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"].sub(this._vectorMaxParent, this._vectorMinParent).divisionOnVector(this._steps.max);
     }
   }, {
     key: "_getSizeItem",
     value: function _getSizeItem() {
-      var sizeItem = new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__["default"]();
+      var sizeItem = new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"]();
 
       if (this._config.showAfterMount.isset) {
         if (this._config.showAfterMount.sizeItem) {
@@ -52880,7 +52880,7 @@ var DragAndDrop = /*#__PURE__*/function () {
       var newStep = this._config.piece.cur[dominateAxis] / 2 - 1;
 
       if (!e.setUp) {
-        var pageVectorOfMouse = new _structDate_vector2_js__WEBPACK_IMPORTED_MODULE_1__["default"](e.pageX, e.pageY);
+        var pageVectorOfMouse = new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"](e.pageX, e.pageY);
         newStep = Math.ceil((pageVectorOfMouse[dominateAxis] - this._vectorMinParent[dominateAxis] - this._shiftOnItemPx[dominateAxis]) / this._stepPx[dominateAxis]);
       }
 
@@ -55830,7 +55830,7 @@ var def = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _structDate_infoTab_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../../structDate/infoTab.js */ "./src/js/paint/structDate/infoTab.js");
+/* harmony import */ var _structDate_infoTab_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../../structDate/infoTab.ts */ "./src/js/paint/structDate/infoTab.ts");
 
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -55857,7 +55857,7 @@ var def = {
         return Object.assign({}, state, {
           id: +state.id + 1,
           activeTab: +state.id + 1,
-          own: [].concat(_toConsumableArray(state.own), [new _structDate_infoTab_js__WEBPACK_IMPORTED_MODULE_0__["default"](state.id + 1, action.title, action.size)])
+          own: [].concat(_toConsumableArray(state.own), [new _structDate_infoTab_ts__WEBPACK_IMPORTED_MODULE_0__["InfoTab"](state.id + 1, action.title, action.size)])
         });
 
       case 'CLOSE_TAB':
@@ -55915,42 +55915,48 @@ module.exports = JSON.parse("{\"screenSizeRestrictions\":{\"x\":{\"min\":0,\"max
 
 /***/ }),
 
-/***/ "./src/js/paint/structDate/infoTab.js":
+/***/ "./src/js/paint/structDate/infoTab.ts":
 /*!********************************************!*\
-  !*** ./src/js/paint/structDate/infoTab.js ***!
+  !*** ./src/js/paint/structDate/infoTab.ts ***!
   \********************************************/
-/*! exports provided: default */
+/*! exports provided: InfoTab */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return InfoTab; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InfoTab", function() { return InfoTab; });
 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var InfoTab = function InfoTab(id, title, size) {
   _classCallCheck(this, InfoTab);
+
+  _defineProperty(this, "id", void 0);
+
+  _defineProperty(this, "title", void 0);
+
+  _defineProperty(this, "size", void 0);
 
   this.id = id;
   this.title = title;
   this.size = size;
 };
 
-
-
 /***/ }),
 
-/***/ "./src/js/paint/structDate/vector2.js":
+/***/ "./src/js/paint/structDate/vector2.ts":
 /*!********************************************!*\
-  !*** ./src/js/paint/structDate/vector2.js ***!
+  !*** ./src/js/paint/structDate/vector2.ts ***!
   \********************************************/
-/*! exports provided: default */
+/*! exports provided: Vector2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Vector2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Vector2", function() { return Vector2; });
 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -55959,12 +55965,18 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var Vector2 = /*#__PURE__*/function () {
   function Vector2() {
     var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0.0;
     var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.0;
 
     _classCallCheck(this, Vector2);
+
+    _defineProperty(this, "x", void 0);
+
+    _defineProperty(this, "y", void 0);
 
     this.x = x;
     this.y = y;
@@ -56031,8 +56043,6 @@ var Vector2 = /*#__PURE__*/function () {
 
   return Vector2;
 }();
-
-
 
 /***/ }),
 

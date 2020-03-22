@@ -1,6 +1,6 @@
 'use strict';
 
-import vector2 from '../../structDate/vector2.js';
+import { Vector2 } from './../../structDate/vector2.ts';
 
 export default class DefaultConfig {
     constructor() {
@@ -9,17 +9,17 @@ export default class DefaultConfig {
         this.showAfterMount = {
             isset: false,
             type: 'flex',
-            sizeItem: new vector2(),
+            sizeItem: new Vector2(),
         };
         this.onlyX = false;
         this.onlyY = false;
         this.piece = {
             exist: false,
-            min: new vector2(),
-            max: new vector2(),
-            step: new vector2(),
+            min: new Vector2(),
+            max: new Vector2(),
+            step: new Vector2(),
             exitFromContour: false,
-            cur: new vector2(),
+            cur: new Vector2(),
         };
         this.transferDate = () => {};
     }

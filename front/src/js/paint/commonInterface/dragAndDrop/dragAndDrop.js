@@ -1,7 +1,7 @@
 'use strict';
 
 import DefaultConfig from './defaultSetting.js';
-import Vector2 from './../../structDate/vector2.js';
+import { Vector2 } from './../../structDate/vector2.ts';
 
 export default class DragAndDrop {
     constructor(item, config = null) {

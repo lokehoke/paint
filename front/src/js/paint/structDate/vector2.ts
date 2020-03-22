@@ -1,30 +1,33 @@
 'use strict';
 
-export default class Vector2 {
-    constructor(x = 0.0, y = 0.0) {
+export class Vector2 {
+    x: number;
+    y: number;
+
+    constructor(x: number = 0.0, y: number = 0.0) {
         this.x = x;
         this.y = y;
     }
 
-    static sub(vector1, vector2) {
+    static sub(vector1: Vector2, vector2: Vector2) {
         return new Vector2(vector1.x - vector2.x, vector1.y - vector2.y);
     }
 
-    static sum(vector1, vector2) {
+    static sum(vector1: Vector2, vector2: Vector2) {
         return new Vector2(vector1.x + vector2.x, vector1.y + vector2.y);
     }
 
-    sub(vector) {
+    sub(vector: Vector2) {
         this.setDimensions(Vector2.sub(this, vector));
         return this;
     }
 
-    sum(vector) {
+    sum(vector: Vector2) {
         this.setDimensions(Vector2.sum(this, vector));
         return this;
     }
 
-    divisionOnVector(vector, type) {
+    divisionOnVector(vector: Vector2, type: string) {
         if (vector.x) {
             this.x /= vector.x;
         } else if (+vector.x === 0) {
@@ -45,14 +48,14 @@ export default class Vector2 {
         return this;
     }
 
-    divisionOnNumber(num) {
+    divisionOnNumber(num: number) {
         this.x /= num;
         this.y /= num;
         
         return this;
     }
 
-    setDimensions(vector) {
+    setDimensions(vector: Vector2) {
         this.x = vector.x;
         this.y = vector.y;
     }

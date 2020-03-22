@@ -1,6 +1,6 @@
 'use strict';
 
-import InfoTab from './../../structDate/infoTab.js';
+import { InfoTab } from './../../structDate/infoTab.ts';
 
 let def = {
     id: -1,
