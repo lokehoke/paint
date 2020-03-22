@@ -3,7 +3,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { screenSizeRestrictions as ssr } from './../../../settings/globalSetting.json';
+import { screenSizeRestrictions as ssr } from '../../../settings/globalSetting.json';
+import { Vector2 } from '../../../structDate/vector2';
+import { newTabAction } from '../../../actions/tabActions';
 
 class NewFile extends React.Component {
     constructor(props) {
@@ -48,12 +50,11 @@ class NewFile extends React.Component {
     _clickNewFile(e) {
         e.preventDefault();
 
-        let x = this._getValue('x');
-        let y = this._getValue('y');
+        let size = new Vector2(this._getValue('x'), this._getValue('y'));
         let title = (this.title.value !== '' ? this.title.value : 'untitled');
 
         this.props.deleteThisTab(this.props.id);
-        this.props.createNew(x, y, title);
+        this.props.createNew(size, title);
         
         return false;
     }
@@ -70,16 +71,7 @@ class NewFile extends React.Component {
 export default connect(
     null,
     dispatch => ({
-        createNew: (x, y, title) => {
-            dispatch({
-                type: 'NEW_TAB',
-                size: {
-                    x,
-                    y,
-                },
-                title,
-            });
-        },
+        createNew: (size, title) => dispatch(newTabAction(title, size)),
         deleteThisTab: id => {
             dispatch({
                 type: 'CLOSE_WINDOW',

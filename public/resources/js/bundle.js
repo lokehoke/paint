@@ -53467,8 +53467,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _settings_globalSetting_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../../settings/globalSetting.json */ "./src/js/paint/settings/globalSetting.json");
-var _settings_globalSetting_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./../../../settings/globalSetting.json */ "./src/js/paint/settings/globalSetting.json", 1);
+/* harmony import */ var _settings_globalSetting_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../settings/globalSetting.json */ "./src/js/paint/settings/globalSetting.json");
+var _settings_globalSetting_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../../../settings/globalSetting.json */ "./src/js/paint/settings/globalSetting.json", 1);
+/* harmony import */ var _structDate_vector2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../structDate/vector2 */ "./src/js/paint/structDate/vector2.ts");
+/* harmony import */ var _actions_tabActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../actions/tabActions */ "./src/js/paint/actions/tabActions.ts");
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -53488,6 +53490,8 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
 
 
 
@@ -53553,14 +53557,10 @@ var NewFile = /*#__PURE__*/function (_React$Component) {
     key: "_clickNewFile",
     value: function _clickNewFile(e) {
       e.preventDefault();
-
-      var x = this._getValue('x');
-
-      var y = this._getValue('y');
-
+      var size = new _structDate_vector2__WEBPACK_IMPORTED_MODULE_3__["Vector2"](this._getValue('x'), this._getValue('y'));
       var title = this.title.value !== '' ? this.title.value : 'untitled';
       this.props.deleteThisTab(this.props.id);
-      this.props.createNew(x, y, title);
+      this.props.createNew(size, title);
       return false;
     }
   }, {
@@ -53579,15 +53579,8 @@ var NewFile = /*#__PURE__*/function (_React$Component) {
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, function (dispatch) {
   return {
-    createNew: function createNew(x, y, title) {
-      dispatch({
-        type: 'NEW_TAB',
-        size: {
-          x: x,
-          y: y
-        },
-        title: title
-      });
+    createNew: function createNew(size, title) {
+      return dispatch(Object(_actions_tabActions__WEBPACK_IMPORTED_MODULE_4__["newTabAction"])(title, size));
     },
     deleteThisTab: function deleteThisTab(id) {
       dispatch({
@@ -54697,6 +54690,7 @@ var Tabs = /*#__PURE__*/function (_React$Component) {
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(function (state) {
   return {
+    // TODO magic digits 
     size: {
       height: state.sizeScreen.height - 85,
       width: state.sizeScreen.width - 45
@@ -54724,6 +54718,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _tab_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tab.jsx */ "./src/js/paint/components/workSpace/canvas/tabs/tab.jsx");
+/* harmony import */ var _actions_tabActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../actions/tabActions */ "./src/js/paint/actions/tabActions.ts");
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -54745,6 +54740,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -54811,10 +54807,7 @@ _defineProperty(ListTabs, "propTypes", {
 }, function (dispatch) {
   return {
     changeActive: function changeActive(id) {
-      dispatch({
-        type: 'CHANGE_ACTIVE_TAB',
-        activeTab: id
-      });
+      return dispatch(Object(_actions_tabActions__WEBPACK_IMPORTED_MODULE_4__["changeTabAction"])(+id));
     }
   };
 })(ListTabs));
@@ -54837,6 +54830,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var _actions_tabActions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../actions/tabActions */ "./src/js/paint/actions/tabActions.ts");
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -54858,6 +54852,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -54937,10 +54932,7 @@ _defineProperty(Tab, "propTypes", {
 }, function (dispatch) {
   return {
     closeTab: function closeTab(id) {
-      dispatch({
-        type: 'CLOSE_TAB',
-        id: id
-      });
+      return dispatch(Object(_actions_tabActions__WEBPACK_IMPORTED_MODULE_5__["closeTabAction"])(id));
     }
   };
 })(Tab));
@@ -55902,6 +55894,7 @@ var getTabs = function getTabs() {
   return function () {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : def;
     var action = arguments.length > 1 ? arguments[1] : undefined;
+    console.log(action);
 
     switch (action.type) {
       case _actions_tabActions__WEBPACK_IMPORTED_MODULE_1__["NEW_TAB"]:

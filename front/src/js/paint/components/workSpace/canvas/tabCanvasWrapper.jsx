@@ -88,7 +88,7 @@ class Tabs extends React.Component {
 }
 
 export default connect(
-    state => ({
+    state => ({ // TODO magic digits 
         size: {
             height: state.sizeScreen.height - 85,
             width: state.sizeScreen.width - 45

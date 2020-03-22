@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Tab from './tab.jsx';
+import { changeTabAction } from '../../../../actions/tabActions';
 
 class ListTabs extends React.Component {
     static defaultProps = {
@@ -39,14 +40,9 @@ class ListTabs extends React.Component {
 export default connect(
     state => ({
         tabs: state.tabs.own,
-        active: state.tabs.activeTab
+        active: state.tabs.activeTab,
     }),
     dispatch =>({
-        changeActive: id => {
-            dispatch({
-                type: 'CHANGE_ACTIVE_TAB',
-                activeTab: id
-            });
-        }
+        changeActive: id => dispatch(changeTabAction(+id)),
     })
 )(ListTabs);

@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { closeTabAction } from '../../../../actions/tabActions';
 
 class Tab extends React.Component {
     static defaultProps = {
@@ -51,11 +52,6 @@ export default connect(
         active: state.tabs.activeTab,
     }),
     dispatch => ({
-        closeTab: id => {
-            dispatch({
-                type: 'CLOSE_TAB',
-                id,
-            });
-        },
+        closeTab: id => dispatch(closeTabAction(id)),
     })
 )(Tab);
