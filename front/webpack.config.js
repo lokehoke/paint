@@ -15,7 +15,7 @@ module.exports = {
 		[
             '@babel/polyfill',
             './src/scss/index.scss',
-            './src/js/index.js',
+            './src/js/index.ts',
         ],
     },
 	output:
@@ -23,7 +23,20 @@ module.exports = {
 		path: path.join(__dirname, '../public/resources/js'),
 		filename: 'bundle.js',
 	},
-	module:
+	resolve: {
+		extensions:
+		[
+			'.tsx',
+			'.ts',
+			'.jsx',
+			'.js',
+			'.json',
+			'.scss',
+			'.sass',
+			'.css',
+		],
+	},
+	module:	
 	{
 		rules:
 		[

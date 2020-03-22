@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import PimpDote from './../simpleComponents/pimpDote.jsx';
 
-import DragAndDrop from './../../../commonInterface/dragAndDrop/dragAndDrop.js';
+import DragAndDrop from './../../../libs/dragAndDrop/dragAndDrop.js';
 
 let sizePoint = 20;
 

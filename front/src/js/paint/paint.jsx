@@ -7,8 +7,8 @@ import { Provider } from 'react-redux';
 
 import defaultStore from './settings/defaultStore.json';
 
-import RootReducer from './reducers/getRootReducer.js';
-const rootReducer = RootReducer(JSON.parse(JSON.stringify(defaultStore)));
+import GetRootReducer from './reducers/getRootReducer.js';
+const rootReducer = GetRootReducer(JSON.parse(JSON.stringify(defaultStore)));
 
 import Header from './components/header/header.jsx';
 import WorkSpace from './components/workSpace/workSpace.jsx';

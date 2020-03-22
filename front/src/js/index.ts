@@ -2,4 +2,4 @@
 
 import Paint from './paint/paint.jsx';
 
-const paint = new Paint('#root');
+const paint: Paint = new Paint('#root');

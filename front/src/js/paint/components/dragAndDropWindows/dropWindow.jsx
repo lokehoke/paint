@@ -9,7 +9,7 @@ import NewFile from './dropMain/newFile.jsx';
 import BasicInstrument from './dropMain/basicInstrument.jsx';
 import Palette from './dropMain/palette.jsx';
 
-import DragAndDrop from './../../commonInterface/dragAndDrop/dragAndDrop.js';
+import DragAndDrop from './../../libs/dragAndDrop/dragAndDrop.js';
 
 class DropWindow extends React.Component {
     render() {

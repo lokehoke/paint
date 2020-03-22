@@ -52562,9 +52562,9 @@ module.exports = function(originalModule) {
 
 /***/ }),
 
-/***/ "./src/js/index.js":
+/***/ "./src/js/index.ts":
 /*!*************************!*\
-  !*** ./src/js/index.js ***!
+  !*** ./src/js/index.ts ***!
   \*************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -52579,384 +52579,51 @@ var paint = new _paint_paint_jsx__WEBPACK_IMPORTED_MODULE_0__["default"]('#root'
 
 /***/ }),
 
-/***/ "./src/js/paint/commonInterface/dragAndDrop/defaultSetting.js":
-/*!********************************************************************!*\
-  !*** ./src/js/paint/commonInterface/dragAndDrop/defaultSetting.js ***!
-  \********************************************************************/
-/*! exports provided: default */
+/***/ "./src/js/paint/actions/tabActions.ts":
+/*!********************************************!*\
+  !*** ./src/js/paint/actions/tabActions.ts ***!
+  \********************************************/
+/*! exports provided: NEW_TAB, CLOSE_TAB, CHANGE_ACTIVE_TAB, newTabAction, closeTabAction, changeTabAction */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return DefaultConfig; });
-/* harmony import */ var _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../structDate/vector2.ts */ "./src/js/paint/structDate/vector2.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NEW_TAB", function() { return NEW_TAB; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLOSE_TAB", function() { return CLOSE_TAB; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHANGE_ACTIVE_TAB", function() { return CHANGE_ACTIVE_TAB; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "newTabAction", function() { return newTabAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "closeTabAction", function() { return closeTabAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeTabAction", function() { return changeTabAction; });
 
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-var DefaultConfig = function DefaultConfig() {
-  _classCallCheck(this, DefaultConfig);
-
-  this.startAsync = true;
-  this.ignoreNoDragAndDrop = false;
-  this.showAfterMount = {
-    isset: false,
-    type: 'flex',
-    sizeItem: new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_0__["Vector2"]()
-  };
-  this.onlyX = false;
-  this.onlyY = false;
-  this.piece = {
-    exist: false,
-    min: new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_0__["Vector2"](),
-    max: new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_0__["Vector2"](),
-    step: new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_0__["Vector2"](),
-    exitFromContour: false,
-    cur: new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_0__["Vector2"]()
-  };
-
-  this.transferDate = function () {};
-};
-
-
+var NEW_TAB = 'NEW_TAB';
+var CLOSE_TAB = 'CLOSE_TAB';
+var CHANGE_ACTIVE_TAB = 'CHANGE_ACTIVE_TAB';
 ;
-
-/***/ }),
-
-/***/ "./src/js/paint/commonInterface/dragAndDrop/dragAndDrop.js":
-/*!*****************************************************************!*\
-  !*** ./src/js/paint/commonInterface/dragAndDrop/dragAndDrop.js ***!
-  \*****************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return DragAndDrop; });
-/* harmony import */ var _defaultSetting_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./defaultSetting.js */ "./src/js/paint/commonInterface/dragAndDrop/defaultSetting.js");
-/* harmony import */ var _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../structDate/vector2.ts */ "./src/js/paint/structDate/vector2.ts");
-
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
-
-var DragAndDrop = /*#__PURE__*/function () {
-  function DragAndDrop(item) {
-    var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
-    _classCallCheck(this, DragAndDrop);
-
-    this._item = item;
-    this._config = this._makeSetting(config);
-    this._stepPx = new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"]();
-    this._shiftOnItemPx = new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"]();
-    this._vectorMinParent = new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"]();
-    this._vectorMaxParent = new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"]();
-    this._steps = {
-      current: new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"](),
-      max: new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"]()
-    };
-    this._moveAt = this._moveAt.bind(this);
-    this._endMoving = this._endMoving.bind(this);
-    this._mouseDowning = this._mouseDowning.bind(this);
-    this._deleteDrop = this._deleteDrop.bind(this);
-  }
-
-  _createClass(DragAndDrop, [{
-    key: "startDragAndDrop",
-    value: function startDragAndDrop() {
-      this._as_startAsync();
-
-      return this._deleteDrop;
-    }
-  }, {
-    key: "_as_startAsync",
-    value: function () {
-      var _as_startAsync2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                if (!this._config.startAsync) {
-                  _context.next = 3;
-                  break;
-                }
-
-                _context.next = 3;
-                return new Promise(function (res) {
-                  setTimeout(function () {
-                    res();
-                  }, 0);
-                });
-
-              case 3:
-                this._item.addEventListener('dragstart', function (e) {
-                  return false;
-                });
-
-                this._item.addEventListener('mousedown', this._mouseDowning);
-
-                if (this._config.piece.exist) {
-                  this._findAbsParent();
-
-                  this._movingWithPiece({
-                    setUp: true
-                  });
-
-                  this._emptyPositions();
-                }
-
-                if (this._config.showAfterMount.isset) {
-                  this._item.style.display = this._config.showAfterMount.type;
-                }
-
-              case 7:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      function _as_startAsync() {
-        return _as_startAsync2.apply(this, arguments);
-      }
-
-      return _as_startAsync;
-    }()
-  }, {
-    key: "_mouseDowning",
-    value: function _mouseDowning(e) {
-      var item = this._item;
-
-      if (!this._config.ignoreNoDragAndDrop && this._issetNoDrop(e.path)) {
-        return true;
-      } else {
-        this._findAbsParent();
-
-        var coords = this._getVector(item);
-
-        this._shiftOnItemPx = _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"].sub(new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"](e.pageX, e.pageY), coords);
-
-        this._moveAt(e);
-
-        this._emptyPositions();
-
-        this._item.parentElement.appendChild(item);
-
-        document.addEventListener('mousemove', this._moveAt);
-        document.addEventListener('mouseup', this._endMoving);
-      }
-    }
-  }, {
-    key: "_deleteDrop",
-    value: function _deleteDrop() {
-      this._item.removeEventListener('mousedown', this._mouseDowning);
-    }
-  }, {
-    key: "_getVector",
-    value: function _getVector(elem) {
-      var box = elem.getBoundingClientRect();
-      return new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"](box.left, box.top);
-    }
-  }, {
-    key: "_moveAt",
-    value: function _moveAt(e) {
-      if (this._config.piece.exist) {
-        this._movingWithPiece(e);
-      } else {
-        this._movingWithoutPiece(e);
-      }
-    }
-  }, {
-    key: "_endMoving",
-    value: function _endMoving() {
-      document.removeEventListener('mousemove', this._moveAt);
-      document.removeEventListener('mouseup', this._endMoving);
-    }
-  }, {
-    key: "_emptyPositions",
-    value: function _emptyPositions() {
-      this._item.style.bottom = 'auto';
-      this._item.style.right = 'auto';
-    }
-  }, {
-    key: "_findAbsParent",
-    value: function _findAbsParent() {
-      var path = this._makeParentPath();
-
-      var parent = path.find(function (el) {
-        return el.style.position === 'absolute' || el.style.position === 'relative' || el.style.position === 'fixed';
-      });
-      parent = parent || document.body;
-
-      var vector = this._getVector(parent);
-
-      this._vectorMinParent = vector;
-
-      if (this._config.piece.exist) {
-        this._defineMaxParAndStep(parent);
-      }
-    }
-  }, {
-    key: "_defineMaxParAndStep",
-    value: function _defineMaxParAndStep(el) {
-      var sizeItem = this._getSizeItem();
-
-      this._vectorMaxParent.x = this._vectorMinParent.x + el.offsetWidth - sizeItem.x;
-      this._vectorMaxParent.y = this._vectorMinParent.y + el.offsetHeight - sizeItem.y;
-
-      if (this._config.piece.exitFromContour) {
-        this._vectorMinParent.sub(sizeItem.divisionOnNumber(2));
-
-        this._vectorMaxParent.sum(sizeItem.divisionOnNumber(2));
-      }
-
-      this._steps.max = _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"].sub(this._config.piece.max, this._config.piece.min).divisionOnVector(this._config.piece.step, 'int');
-      this._stepPx = _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"].sub(this._vectorMaxParent, this._vectorMinParent).divisionOnVector(this._steps.max);
-    }
-  }, {
-    key: "_getSizeItem",
-    value: function _getSizeItem() {
-      var sizeItem = new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"]();
-
-      if (this._config.showAfterMount.isset) {
-        if (this._config.showAfterMount.sizeItem) {
-          sizeItem.setDimensions(this._config.showAfterMount.sizeItem);
-        } else {
-          throw "need set sizeItem in showAfterMount";
-        }
-      } else {
-        sizeItem.x = this._item.offsetWidth;
-        sizeItem.y = this._item.offsetHeight;
-      }
-
-      return sizeItem;
-    }
-  }, {
-    key: "_issetNoDrop",
-    value: function _issetNoDrop(path) {
-      var isset = false;
-      path.slice(0, -6).forEach(function (el) {
-        if (el.dataset.dragAndDrop === 'noDragAndDrop') {
-          isset = true;
-        }
-      });
-      return isset;
-    }
-  }, {
-    key: "_movingWithPiece",
-    value: function _movingWithPiece(e) {
-      var assumptionOfNewPosition = 0.0;
-
-      var partOfExitFromContourPx = this._getSizeItem().divisionOnNumber(2);
-
-      var condOfExitFromContour = this._config.piece.exitFromContour;
-      var dominateAxis = '';
-      var changingSide = '';
-
-      if (!this._config.onlyX) {
-        dominateAxis = 'y';
-        changingSide = 'top';
-      } else if (!this._config.onlyY) {
-        dominateAxis = 'x';
-        changingSide = 'left';
-      }
-
-      var newStep = this._config.piece.cur[dominateAxis] / 2 - 1;
-
-      if (!e.setUp) {
-        var pageVectorOfMouse = new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"](e.pageX, e.pageY);
-        newStep = Math.ceil((pageVectorOfMouse[dominateAxis] - this._vectorMinParent[dominateAxis] - this._shiftOnItemPx[dominateAxis]) / this._stepPx[dominateAxis]);
-      }
-
-      assumptionOfNewPosition = newStep * this._stepPx[dominateAxis];
-
-      if (assumptionOfNewPosition <= 0) {
-        this._item.style[changingSide] = 0 - (condOfExitFromContour ? partOfExitFromContourPx[dominateAxis] : 0) + 'px';
-        this._steps.current[dominateAxis] = 0;
-      } else if (assumptionOfNewPosition >= this._vectorMaxParent[dominateAxis] - this._vectorMinParent[dominateAxis]) {
-        this._item.style[changingSide] = this._steps.max[dominateAxis] * this._stepPx[dominateAxis] - (condOfExitFromContour ? partOfExitFromContourPx[dominateAxis] : 0) + 'px';
-        this._steps.current[dominateAxis] = this._steps.max[dominateAxis];
-      } else {
-        this._item.style[changingSide] = assumptionOfNewPosition - (condOfExitFromContour ? partOfExitFromContourPx[dominateAxis] : 0) + 'px';
-        this._steps.current[dominateAxis] = newStep;
-      }
-
-      this._config.transferDate({
-        currentStep: this._steps.current[dominateAxis] * this._config.piece.step[dominateAxis] + this._config.piece.min[dominateAxis]
-      });
-    }
-  }, {
-    key: "_movingWithoutPiece",
-    value: function _movingWithoutPiece(e) {
-      if (!this._config.onlyX) {
-        this._item.style.top = e.pageY - this._shiftOnItemPx.y - this._vectorMinParent.y + 'px';
-      }
-
-      if (!this._config.onlyY) {
-        this._item.style.left = e.pageX - this._shiftOnItemPx.x - this._vectorMinParent.x + 'px';
-      }
-    }
-  }, {
-    key: "_makeSetting",
-    value: function _makeSetting(config) {
-      var defaults = new _defaultSetting_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
-
-      var reWrite = function reWrite(obj, commonObject) {
-        if (_typeof(obj) === 'object' && obj !== null && _typeof(commonObject) === 'object' && commonObject !== null) {
-          for (var value in commonObject) {
-            if (_typeof(commonObject[value]) !== _typeof(obj[value])) {
-              continue;
-            } else if (_typeof(commonObject[value]) !== 'object') {
-              commonObject[value] = obj[value];
-            } else {
-              reWrite(obj[value], commonObject[value]);
-            }
-          }
-        }
-      };
-
-      if (_typeof(config) === 'object' && config !== null) {
-        reWrite(config, defaults);
-      }
-
-      return defaults;
-    }
-  }, {
-    key: "_makeParentPath",
-    value: function _makeParentPath() {
-      var path = [];
-      var curItem = this._item;
-
-      while (curItem.parentNode) {
-        path.push(curItem.parentNode);
-        curItem = curItem.parentNode;
-      }
-
-      path.pop();
-      return path;
-    }
-  }]);
-
-  return DragAndDrop;
-}();
-
-
+;
+;
+function newTabAction(title, size) {
+  return {
+    type: NEW_TAB,
+    title: title,
+    size: size
+  };
+}
+;
+function closeTabAction(id) {
+  return {
+    type: CLOSE_TAB,
+    id: id
+  };
+}
+;
+function changeTabAction(activeTab) {
+  return {
+    type: CHANGE_ACTIVE_TAB,
+    activeTab: activeTab
+  };
+}
+;
 
 /***/ }),
 
@@ -52974,7 +52641,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _commonInterface_dragAndDrop_dragAndDrop_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../../commonInterface/dragAndDrop/dragAndDrop.js */ "./src/js/paint/commonInterface/dragAndDrop/dragAndDrop.js");
+/* harmony import */ var _libs_dragAndDrop_dragAndDrop_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../../libs/dragAndDrop/dragAndDrop.js */ "./src/js/paint/libs/dragAndDrop/dragAndDrop.js");
 /* harmony import */ var _simpleComponents_pointerArrow_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../simpleComponents/pointerArrow.jsx */ "./src/js/paint/components/commonComponents/simpleComponents/pointerArrow.jsx");
 
 
@@ -53087,7 +52754,7 @@ var Palette = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "_setUpDragAndDrop",
     value: function _setUpDragAndDrop() {
-      var drag = new _commonInterface_dragAndDrop_dragAndDrop_js__WEBPACK_IMPORTED_MODULE_2__["default"](this._pointerArrow.getDom(), {
+      var drag = new _libs_dragAndDrop_dragAndDrop_js__WEBPACK_IMPORTED_MODULE_2__["default"](this._pointerArrow.getDom(), {
         ignoreNoDragAndDrop: true,
         onlyY: true,
         showAfterMount: {
@@ -53460,7 +53127,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _simpleComponents_pimpDote_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../simpleComponents/pimpDote.jsx */ "./src/js/paint/components/commonComponents/simpleComponents/pimpDote.jsx");
-/* harmony import */ var _commonInterface_dragAndDrop_dragAndDrop_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../../commonInterface/dragAndDrop/dragAndDrop.js */ "./src/js/paint/commonInterface/dragAndDrop/dragAndDrop.js");
+/* harmony import */ var _libs_dragAndDrop_dragAndDrop_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../../libs/dragAndDrop/dragAndDrop.js */ "./src/js/paint/libs/dragAndDrop/dragAndDrop.js");
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -53543,7 +53210,7 @@ var ValueSlider = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "_setUpDragAndDrop",
     value: function _setUpDragAndDrop() {
-      var drag = new _commonInterface_dragAndDrop_dragAndDrop_js__WEBPACK_IMPORTED_MODULE_3__["default"](this._pimp.getDom(), {
+      var drag = new _libs_dragAndDrop_dragAndDrop_js__WEBPACK_IMPORTED_MODULE_3__["default"](this._pimp.getDom(), {
         ignoreNoDragAndDrop: true,
         onlyX: true,
         showAfterMount: {
@@ -54035,7 +53702,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dropMain_newFile_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dropMain/newFile.jsx */ "./src/js/paint/components/dragAndDropWindows/dropMain/newFile.jsx");
 /* harmony import */ var _dropMain_basicInstrument_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dropMain/basicInstrument.jsx */ "./src/js/paint/components/dragAndDropWindows/dropMain/basicInstrument.jsx");
 /* harmony import */ var _dropMain_palette_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dropMain/palette.jsx */ "./src/js/paint/components/dragAndDropWindows/dropMain/palette.jsx");
-/* harmony import */ var _commonInterface_dragAndDrop_dragAndDrop_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../../commonInterface/dragAndDrop/dragAndDrop.js */ "./src/js/paint/commonInterface/dragAndDrop/dragAndDrop.js");
+/* harmony import */ var _libs_dragAndDrop_dragAndDrop_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../../libs/dragAndDrop/dragAndDrop.js */ "./src/js/paint/libs/dragAndDrop/dragAndDrop.js");
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -54121,7 +53788,7 @@ var DropWindow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "_setUpDragAndDrop",
     value: function _setUpDragAndDrop() {
-      var drag = new _commonInterface_dragAndDrop_dragAndDrop_js__WEBPACK_IMPORTED_MODULE_7__["default"](this._window);
+      var drag = new _libs_dragAndDrop_dragAndDrop_js__WEBPACK_IMPORTED_MODULE_7__["default"](this._window);
       return drag.startDragAndDrop();
     }
   }, {
@@ -55562,6 +55229,387 @@ var WorkSpace = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
+/***/ "./src/js/paint/libs/dragAndDrop/defaultSetting.js":
+/*!*********************************************************!*\
+  !*** ./src/js/paint/libs/dragAndDrop/defaultSetting.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return DefaultConfig; });
+/* harmony import */ var _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../../structDate/vector2.ts */ "./src/js/paint/structDate/vector2.ts");
+
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+var DefaultConfig = function DefaultConfig() {
+  _classCallCheck(this, DefaultConfig);
+
+  this.startAsync = true;
+  this.ignoreNoDragAndDrop = false;
+  this.showAfterMount = {
+    isset: false,
+    type: 'flex',
+    sizeItem: new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_0__["Vector2"]()
+  };
+  this.onlyX = false;
+  this.onlyY = false;
+  this.piece = {
+    exist: false,
+    min: new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_0__["Vector2"](),
+    max: new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_0__["Vector2"](),
+    step: new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_0__["Vector2"](),
+    exitFromContour: false,
+    cur: new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_0__["Vector2"]()
+  };
+
+  this.transferDate = function () {};
+};
+
+
+;
+
+/***/ }),
+
+/***/ "./src/js/paint/libs/dragAndDrop/dragAndDrop.js":
+/*!******************************************************!*\
+  !*** ./src/js/paint/libs/dragAndDrop/dragAndDrop.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return DragAndDrop; });
+/* harmony import */ var _defaultSetting_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./defaultSetting.js */ "./src/js/paint/libs/dragAndDrop/defaultSetting.js");
+/* harmony import */ var _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../structDate/vector2.ts */ "./src/js/paint/structDate/vector2.ts");
+
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+
+var DragAndDrop = /*#__PURE__*/function () {
+  function DragAndDrop(item) {
+    var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+    _classCallCheck(this, DragAndDrop);
+
+    this._item = item;
+    this._config = this._makeSetting(config);
+    this._stepPx = new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"]();
+    this._shiftOnItemPx = new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"]();
+    this._vectorMinParent = new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"]();
+    this._vectorMaxParent = new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"]();
+    this._steps = {
+      current: new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"](),
+      max: new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"]()
+    };
+    this._moveAt = this._moveAt.bind(this);
+    this._endMoving = this._endMoving.bind(this);
+    this._mouseDowning = this._mouseDowning.bind(this);
+    this._deleteDrop = this._deleteDrop.bind(this);
+  }
+
+  _createClass(DragAndDrop, [{
+    key: "startDragAndDrop",
+    value: function startDragAndDrop() {
+      this._as_startAsync();
+
+      return this._deleteDrop;
+    }
+  }, {
+    key: "_as_startAsync",
+    value: function () {
+      var _as_startAsync2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                if (!this._config.startAsync) {
+                  _context.next = 3;
+                  break;
+                }
+
+                _context.next = 3;
+                return new Promise(function (res) {
+                  setTimeout(function () {
+                    res();
+                  }, 0);
+                });
+
+              case 3:
+                this._item.addEventListener('dragstart', function (e) {
+                  return false;
+                });
+
+                this._item.addEventListener('mousedown', this._mouseDowning);
+
+                if (this._config.piece.exist) {
+                  this._findAbsParent();
+
+                  this._movingWithPiece({
+                    setUp: true
+                  });
+
+                  this._emptyPositions();
+                }
+
+                if (this._config.showAfterMount.isset) {
+                  this._item.style.display = this._config.showAfterMount.type;
+                }
+
+              case 7:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function _as_startAsync() {
+        return _as_startAsync2.apply(this, arguments);
+      }
+
+      return _as_startAsync;
+    }()
+  }, {
+    key: "_mouseDowning",
+    value: function _mouseDowning(e) {
+      var item = this._item;
+
+      if (!this._config.ignoreNoDragAndDrop && this._issetNoDrop(e.path)) {
+        return true;
+      } else {
+        this._findAbsParent();
+
+        var coords = this._getVector(item);
+
+        this._shiftOnItemPx = _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"].sub(new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"](e.pageX, e.pageY), coords);
+
+        this._moveAt(e);
+
+        this._emptyPositions();
+
+        this._item.parentElement.appendChild(item);
+
+        document.addEventListener('mousemove', this._moveAt);
+        document.addEventListener('mouseup', this._endMoving);
+      }
+    }
+  }, {
+    key: "_deleteDrop",
+    value: function _deleteDrop() {
+      this._item.removeEventListener('mousedown', this._mouseDowning);
+    }
+  }, {
+    key: "_getVector",
+    value: function _getVector(elem) {
+      var box = elem.getBoundingClientRect();
+      return new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"](box.left, box.top);
+    }
+  }, {
+    key: "_moveAt",
+    value: function _moveAt(e) {
+      if (this._config.piece.exist) {
+        this._movingWithPiece(e);
+      } else {
+        this._movingWithoutPiece(e);
+      }
+    }
+  }, {
+    key: "_endMoving",
+    value: function _endMoving() {
+      document.removeEventListener('mousemove', this._moveAt);
+      document.removeEventListener('mouseup', this._endMoving);
+    }
+  }, {
+    key: "_emptyPositions",
+    value: function _emptyPositions() {
+      this._item.style.bottom = 'auto';
+      this._item.style.right = 'auto';
+    }
+  }, {
+    key: "_findAbsParent",
+    value: function _findAbsParent() {
+      var path = this._makeParentPath();
+
+      var parent = path.find(function (el) {
+        return el.style.position === 'absolute' || el.style.position === 'relative' || el.style.position === 'fixed';
+      });
+      parent = parent || document.body;
+
+      var vector = this._getVector(parent);
+
+      this._vectorMinParent = vector;
+
+      if (this._config.piece.exist) {
+        this._defineMaxParAndStep(parent);
+      }
+    }
+  }, {
+    key: "_defineMaxParAndStep",
+    value: function _defineMaxParAndStep(el) {
+      var sizeItem = this._getSizeItem();
+
+      this._vectorMaxParent.x = this._vectorMinParent.x + el.offsetWidth - sizeItem.x;
+      this._vectorMaxParent.y = this._vectorMinParent.y + el.offsetHeight - sizeItem.y;
+
+      if (this._config.piece.exitFromContour) {
+        this._vectorMinParent.sub(sizeItem.divisionOnNumber(2));
+
+        this._vectorMaxParent.sum(sizeItem.divisionOnNumber(2));
+      }
+
+      this._steps.max = _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"].sub(this._config.piece.max, this._config.piece.min).divisionOnVector(this._config.piece.step, 'int');
+      this._stepPx = _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"].sub(this._vectorMaxParent, this._vectorMinParent).divisionOnVector(this._steps.max);
+    }
+  }, {
+    key: "_getSizeItem",
+    value: function _getSizeItem() {
+      var sizeItem = new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"]();
+
+      if (this._config.showAfterMount.isset) {
+        if (this._config.showAfterMount.sizeItem) {
+          sizeItem.setDimensions(this._config.showAfterMount.sizeItem);
+        } else {
+          throw "need set sizeItem in showAfterMount";
+        }
+      } else {
+        sizeItem.x = this._item.offsetWidth;
+        sizeItem.y = this._item.offsetHeight;
+      }
+
+      return sizeItem;
+    }
+  }, {
+    key: "_issetNoDrop",
+    value: function _issetNoDrop(path) {
+      var isset = false;
+      path.slice(0, -6).forEach(function (el) {
+        if (el.dataset.dragAndDrop === 'noDragAndDrop') {
+          isset = true;
+        }
+      });
+      return isset;
+    }
+  }, {
+    key: "_movingWithPiece",
+    value: function _movingWithPiece(e) {
+      var assumptionOfNewPosition = 0.0;
+
+      var partOfExitFromContourPx = this._getSizeItem().divisionOnNumber(2);
+
+      var condOfExitFromContour = this._config.piece.exitFromContour;
+      var dominateAxis = '';
+      var changingSide = '';
+
+      if (!this._config.onlyX) {
+        dominateAxis = 'y';
+        changingSide = 'top';
+      } else if (!this._config.onlyY) {
+        dominateAxis = 'x';
+        changingSide = 'left';
+      }
+
+      var newStep = this._config.piece.cur[dominateAxis] / 2 - 1;
+
+      if (!e.setUp) {
+        var pageVectorOfMouse = new _structDate_vector2_ts__WEBPACK_IMPORTED_MODULE_1__["Vector2"](e.pageX, e.pageY);
+        newStep = Math.ceil((pageVectorOfMouse[dominateAxis] - this._vectorMinParent[dominateAxis] - this._shiftOnItemPx[dominateAxis]) / this._stepPx[dominateAxis]);
+      }
+
+      assumptionOfNewPosition = newStep * this._stepPx[dominateAxis];
+
+      if (assumptionOfNewPosition <= 0) {
+        this._item.style[changingSide] = 0 - (condOfExitFromContour ? partOfExitFromContourPx[dominateAxis] : 0) + 'px';
+        this._steps.current[dominateAxis] = 0;
+      } else if (assumptionOfNewPosition >= this._vectorMaxParent[dominateAxis] - this._vectorMinParent[dominateAxis]) {
+        this._item.style[changingSide] = this._steps.max[dominateAxis] * this._stepPx[dominateAxis] - (condOfExitFromContour ? partOfExitFromContourPx[dominateAxis] : 0) + 'px';
+        this._steps.current[dominateAxis] = this._steps.max[dominateAxis];
+      } else {
+        this._item.style[changingSide] = assumptionOfNewPosition - (condOfExitFromContour ? partOfExitFromContourPx[dominateAxis] : 0) + 'px';
+        this._steps.current[dominateAxis] = newStep;
+      }
+
+      this._config.transferDate({
+        currentStep: this._steps.current[dominateAxis] * this._config.piece.step[dominateAxis] + this._config.piece.min[dominateAxis]
+      });
+    }
+  }, {
+    key: "_movingWithoutPiece",
+    value: function _movingWithoutPiece(e) {
+      if (!this._config.onlyX) {
+        this._item.style.top = e.pageY - this._shiftOnItemPx.y - this._vectorMinParent.y + 'px';
+      }
+
+      if (!this._config.onlyY) {
+        this._item.style.left = e.pageX - this._shiftOnItemPx.x - this._vectorMinParent.x + 'px';
+      }
+    }
+  }, {
+    key: "_makeSetting",
+    value: function _makeSetting(config) {
+      var defaults = new _defaultSetting_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
+
+      var reWrite = function reWrite(obj, commonObject) {
+        if (_typeof(obj) === 'object' && obj !== null && _typeof(commonObject) === 'object' && commonObject !== null) {
+          for (var value in commonObject) {
+            if (_typeof(commonObject[value]) !== _typeof(obj[value])) {
+              continue;
+            } else if (_typeof(commonObject[value]) !== 'object') {
+              commonObject[value] = obj[value];
+            } else {
+              reWrite(obj[value], commonObject[value]);
+            }
+          }
+        }
+      };
+
+      if (_typeof(config) === 'object' && config !== null) {
+        reWrite(config, defaults);
+      }
+
+      return defaults;
+    }
+  }, {
+    key: "_makeParentPath",
+    value: function _makeParentPath() {
+      var path = [];
+      var curItem = this._item;
+
+      while (curItem.parentNode) {
+        path.push(curItem.parentNode);
+        curItem = curItem.parentNode;
+      }
+
+      path.pop();
+      return path;
+    }
+  }]);
+
+  return DragAndDrop;
+}();
+
+
+
+/***/ }),
+
 /***/ "./src/js/paint/paint.jsx":
 /*!********************************!*\
   !*** ./src/js/paint/paint.jsx ***!
@@ -55650,7 +55698,7 @@ var Paint = function Paint(selector) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
-/* harmony import */ var _ownReducers_getTabs_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ownReducers/getTabs.js */ "./src/js/paint/reducers/ownReducers/getTabs.js");
+/* harmony import */ var _ownReducers_getTabs_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ownReducers/getTabs.ts */ "./src/js/paint/reducers/ownReducers/getTabs.ts");
 /* harmony import */ var _ownReducers_getOpenedWindows__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ownReducers/getOpenedWindows */ "./src/js/paint/reducers/ownReducers/getOpenedWindows.js");
 /* harmony import */ var _ownReducers_getSizeScreen__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ownReducers/getSizeScreen */ "./src/js/paint/reducers/ownReducers/getSizeScreen.js");
 /* harmony import */ var _ownReducers_getInstruments_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ownReducers/getInstruments.js */ "./src/js/paint/reducers/ownReducers/getInstruments.js");
@@ -55663,7 +55711,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = (function (settings) {
   return Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-    tabs: Object(_ownReducers_getTabs_js__WEBPACK_IMPORTED_MODULE_1__["default"])(JSON.parse(JSON.stringify(settings))),
+    tabs: Object(_ownReducers_getTabs_ts__WEBPACK_IMPORTED_MODULE_1__["getTabs"])(JSON.parse(JSON.stringify(settings))),
     openedWindows: Object(_ownReducers_getOpenedWindows__WEBPACK_IMPORTED_MODULE_2__["default"])(JSON.parse(JSON.stringify(settings))),
     sizeScreen: Object(_ownReducers_getSizeScreen__WEBPACK_IMPORTED_MODULE_3__["default"])(JSON.parse(JSON.stringify(settings))),
     instruments: Object(_ownReducers_getInstruments_js__WEBPACK_IMPORTED_MODULE_4__["default"])(JSON.parse(JSON.stringify(settings)))
@@ -55821,16 +55869,18 @@ var def = {
 
 /***/ }),
 
-/***/ "./src/js/paint/reducers/ownReducers/getTabs.js":
+/***/ "./src/js/paint/reducers/ownReducers/getTabs.ts":
 /*!******************************************************!*\
-  !*** ./src/js/paint/reducers/ownReducers/getTabs.js ***!
+  !*** ./src/js/paint/reducers/ownReducers/getTabs.ts ***!
   \******************************************************/
-/*! exports provided: default */
+/*! exports provided: getTabs */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _structDate_infoTab_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../../structDate/infoTab.ts */ "./src/js/paint/structDate/infoTab.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTabs", function() { return getTabs; });
+/* harmony import */ var _structDate_infoTab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../structDate/infoTab */ "./src/js/paint/structDate/infoTab.ts");
+/* harmony import */ var _actions_tabActions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/tabActions */ "./src/js/paint/actions/tabActions.ts");
 
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -55842,32 +55892,33 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 
+
 var def = {
   id: -1,
   activeTab: -1,
   own: []
 };
-/* harmony default export */ __webpack_exports__["default"] = (function () {
+var getTabs = function getTabs() {
   return function () {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : def;
     var action = arguments.length > 1 ? arguments[1] : undefined;
 
     switch (action.type) {
-      case 'NEW_TAB':
+      case _actions_tabActions__WEBPACK_IMPORTED_MODULE_1__["NEW_TAB"]:
         return Object.assign({}, state, {
-          id: +state.id + 1,
-          activeTab: +state.id + 1,
-          own: [].concat(_toConsumableArray(state.own), [new _structDate_infoTab_ts__WEBPACK_IMPORTED_MODULE_0__["InfoTab"](state.id + 1, action.title, action.size)])
+          id: state.id + 1,
+          activeTab: state.id + 1,
+          own: [].concat(_toConsumableArray(state.own), [new _structDate_infoTab__WEBPACK_IMPORTED_MODULE_0__["InfoTab"](state.id + 1, action.title, action.size)])
         });
 
-      case 'CLOSE_TAB':
+      case _actions_tabActions__WEBPACK_IMPORTED_MODULE_1__["CLOSE_TAB"]:
         var own = _toConsumableArray(state.own.filter(function (el) {
           return el.id !== action.id;
         }));
 
         var activeTab = state.activeTab;
 
-        if (+action.id === +state.activeTab) {
+        if (action.id === +state.activeTab) {
           if (own[own.length - 1]) {
             activeTab = +own[own.length - 1].id;
           } else {
@@ -55880,16 +55931,16 @@ var def = {
           own: own
         });
 
-      case 'CHANGE_ACTIVE_TAB':
+      case _actions_tabActions__WEBPACK_IMPORTED_MODULE_1__["CHANGE_ACTIVE_TAB"]:
         return Object.assign({}, state, {
-          activeTab: +action.activeTab
+          activeTab: action.activeTab
         });
 
       default:
         return state;
     }
   };
-});
+};
 
 /***/ }),
 
@@ -56078,14 +56129,14 @@ if(false) {}
 
 /***/ 0:
 /*!*********************************************************************!*\
-  !*** multi @babel/polyfill ./src/scss/index.scss ./src/js/index.js ***!
+  !*** multi @babel/polyfill ./src/scss/index.scss ./src/js/index.ts ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! @babel/polyfill */"./node_modules/@babel/polyfill/lib/index.js");
 __webpack_require__(/*! ./src/scss/index.scss */"./src/scss/index.scss");
-module.exports = __webpack_require__(/*! ./src/js/index.js */"./src/js/index.js");
+module.exports = __webpack_require__(/*! ./src/js/index.ts */"./src/js/index.ts");
 
 
 /***/ })

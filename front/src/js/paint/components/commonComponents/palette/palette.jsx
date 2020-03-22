@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import DragAndDrop from './../../../commonInterface/dragAndDrop/dragAndDrop.js';
+import DragAndDrop from './../../../libs/dragAndDrop/dragAndDrop.js';
 
 import PointerArrow from './../simpleComponents/pointerArrow.jsx';
 
