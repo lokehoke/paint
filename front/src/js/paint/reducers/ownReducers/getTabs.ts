@@ -2,7 +2,6 @@
 
 import { InfoTab } from '../../structDate/infoTab';
 import { TabActionType, NEW_TAB, CLOSE_TAB, CHANGE_ACTIVE_TAB } from '../../actions/tabActions';
-import { Vector2 } from '../../structDate/vector2';
 
 interface IState {
     id: number;
@@ -32,9 +31,9 @@ export const getTabs = () => function (state: IState = def, action: TabActionTyp
             let own = [...(state.own.filter(el => el.id !== action.id))];
             let activeTab = state.activeTab;
 
-            if (action.id === +state.activeTab) {
+            if (action.id === state.activeTab) {
                 if (own[own.length - 1]) {
-                    activeTab = +own[own.length - 1].id;
+                    activeTab = own[own.length - 1].id;
                 } else {
                     activeTab = -1;
                 }
