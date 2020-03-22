@@ -6,7 +6,7 @@ const autoprefixer = require('autoprefixer');
 const path = require('path');
 
 module.exports = {
-    watch: true,
+    watch: false,
     devtool: 'source-map',
     mode: 'development',
 	entry:
@@ -20,7 +20,7 @@ module.exports = {
     },
 	output:
 	{
-		path: path.join(__dirname, 'public/resources/js'),
+		path: path.join(__dirname, '../public/resources/js'),
 		filename: 'bundle.js',
 	},
 	module:
