@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import DragAndDrop from './../../../libs/dragAndDrop/dragAndDrop.js';
 
-import PointerArrow from './../simpleComponents/pointerArrow.jsx';
+import { PointerArrow } from '../simpleComponents/pointerArrow';
 
 let mainStyleBlock = {
     display: 'flex',

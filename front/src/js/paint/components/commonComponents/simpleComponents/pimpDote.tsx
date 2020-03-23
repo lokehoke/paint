@@ -18,19 +18,25 @@ export interface IProps {
 
 export class PimpDote extends React.Component<IProps, {}> {
     private _dote: HTMLDivElement;
+    private _style: css.Properties;
 
-    static defaultProps = {
-        style: style
+    static defaultProps: IProps = {
+        style,
     };
 
+    constructor(props: IProps) {
+        super(props);
+
+        this._style = Object.assign({}, style, this.props.style);
+    }
+
     render() {
-        style = Object.assign({}, style, this.props.style);
         return (
-            <div style={style} ref={(d: HTMLDivElement) => this._dote = d} />
+            <div style={this._style} ref={(d: HTMLDivElement) => this._dote = d} />
         );
     }
 
-    getDom() {
+    getDom(): HTMLDivElement {
         return this._dote;
     }
 }
