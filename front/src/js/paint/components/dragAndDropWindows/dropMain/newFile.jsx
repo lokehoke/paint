@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { screenSizeRestrictions as ssr } from '../../../settings/globalSetting.json';
 import { Vector2 } from '../../../structDate/vector2';
 import { newTabAction } from '../../../actions/tabActions';
+import { closeWindowAction } from '../../../actions/openedWindowsActions';
 
 class NewFile extends React.Component {
     constructor(props) {
@@ -72,11 +73,6 @@ export default connect(
     null,
     dispatch => ({
         createNew: (size, title) => dispatch(newTabAction(title, size)),
-        deleteThisTab: id => {
-            dispatch({
-                type: 'CLOSE_WINDOW',
-                id,
-            })
-        },
+        deleteThisTab: id => dispatch(closeWindowAction(+id)),
     })
 )(NewFile);

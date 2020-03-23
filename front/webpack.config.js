@@ -6,17 +6,17 @@ const autoprefixer = require('autoprefixer');
 const path = require('path');
 
 module.exports = {
-    watch: false,
-    devtool: 'source-map',
-    mode: 'production',
+	watch: false,
+	devtool: 'source-map',
+	mode: 'production',
 	entry:
 	{
 		main:
 		[
-            './src/scss/index.scss',
-            './src/js/index.ts',
-        ],
-    },
+			'./src/scss/index.scss',
+			'./src/js/index.ts',
+		],
+	},
 	output:
 	{
 		path: path.join(__dirname, '../public/resources/js'),
@@ -40,7 +40,7 @@ module.exports = {
 		rules:
 		[
 			{
-            	test: /\.scss$/,
+				test: /\.scss$/,
 				use:
 				[
 					{

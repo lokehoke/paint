@@ -1,6 +1,6 @@
 'use strict';
 
-import { CHANGE_LINE_THICKNESS, CHANGE_INSTRUMENTS, CHANGE_COLOR, InstrumentsActionType } from "../../actions/instrumentsActions";
+import { CHANGE_LINE_THICKNESS, CHANGE_COLOR, InstrumentsActionType, CHANGE_ACTIVE_INSTRUMENTS } from "../../actions/instrumentsActions";
 
 //TODO state type from json
 export const getInstruments = settings => (state = settings, action: InstrumentsActionType) => {
@@ -10,9 +10,9 @@ export const getInstruments = settings => (state = settings, action: Instruments
                 currentLineThickness: action.currentLineThickness,
             });
 
-        case CHANGE_INSTRUMENTS:
+        case CHANGE_ACTIVE_INSTRUMENTS:
             return Object.assign({}, state, {
-                currentInstruments: action.currentInstruments,
+                activeInstrument: action.activeInstrument,
             });
 
         case CHANGE_COLOR:

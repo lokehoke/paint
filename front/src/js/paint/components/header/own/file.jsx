@@ -2,6 +2,8 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import { newWindowAction } from '../../../actions/openedWindowsActions';
+import { View } from '../../../structDate/window';
 
 class File extends React.Component {
     constructor(props) {
@@ -37,11 +39,6 @@ class File extends React.Component {
 export default connect(
     null,
     dispatch => ({
-        newFile: () => {
-            dispatch({
-                type: 'OPEN_WINDOW',
-                view: 'newFile',
-            })
-        },
+        newFile: () => dispatch(newWindowAction(View.newFile)),
     })
 )(File);

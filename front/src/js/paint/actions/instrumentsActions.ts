@@ -1,8 +1,8 @@
 'use strict';
 
-export const CHANGE_LINE_THICKNESS = 'CHANGE_LINE_THICKNESS';
-export const CHANGE_INSTRUMENTS    = 'CHANGE_INSTRUMENTS';
-export const CHANGE_COLOR          = 'CHANGE_COLOR';
+export const CHANGE_LINE_THICKNESS        = 'CHANGE_LINE_THICKNESS';
+export const CHANGE_ACTIVE_INSTRUMENTS    = 'CHANGE_ACTIVE_INSTRUMENTS';
+export const CHANGE_COLOR                 = 'CHANGE_COLOR';
 
 interface IChangeLineThicknessAction {
     type: typeof CHANGE_LINE_THICKNESS;
@@ -10,8 +10,8 @@ interface IChangeLineThicknessAction {
 };
 
 interface IChangeInstrumentsActinon {
-    type: typeof CHANGE_INSTRUMENTS;
-    currentInstruments: string; // TODO ENUM
+    type: typeof CHANGE_ACTIVE_INSTRUMENTS;
+    activeInstrument: string; // TODO it is enum
 };
 
 interface IChangeColorAction {
@@ -28,10 +28,10 @@ export function changeLineThicknessAction(l: number) : InstrumentsActionType {
     };
 };
 
-export function changeInstrumentsAction(ins: string) : InstrumentsActionType {
+export function changeActiveInstrumentsAction(ins: string) : InstrumentsActionType {
     return {
-        type: CHANGE_INSTRUMENTS,
-        currentInstruments: ins,
+        type: CHANGE_ACTIVE_INSTRUMENTS,
+        activeInstrument: ins,
     };
 };
 

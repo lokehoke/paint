@@ -10,6 +10,8 @@ import BasicInstrument from './dropMain/basicInstrument.jsx';
 import Palette from './dropMain/palette.jsx';
 
 import DragAndDrop from './../../libs/dragAndDrop/dragAndDrop.js';
+import { closeWindowAction } from '../../actions/openedWindowsActions';
+import { View } from '../../structDate/window';
 
 class DropWindow extends React.Component {
     render() {
@@ -58,15 +60,15 @@ class DropWindow extends React.Component {
         this._w = 200;
 
         switch (this.props.element.view) {
-            case 'newFile':
+            case View.newFile:
                 this._h = 180;
                 this._w = 260;
                 break;
-            case 'basicInstrument':
+            case View.basicInstrument:
                 this._h = 180;
                 this._w = 260;
                 break;
-            case 'palette':
+            case View.palette:
                 this._h = 280;
                 this._w = 280;
         }
@@ -79,13 +81,13 @@ class DropWindow extends React.Component {
         let main = null;
 
         switch (el.view) {
-            case 'newFile':
+            case View.newFile:
                 main = (<NewFile id={this.props.element.id} />);
                 break;
-            case 'basicInstrument':
+            case View.basicInstrument:
                 main = (<BasicInstrument id={this.props.element.id} />);
                 break;
-            case 'palette':
+            case View.palette:
                 main = (<Palette id={this.props.element.id} />);
                 break;
         }
@@ -97,11 +99,6 @@ class DropWindow extends React.Component {
 export default connect(
     null,
     dispatch => ({
-        closeWindow: id => {
-            dispatch({
-                type: 'CLOSE_WINDOW',
-                id,
-            })
-        },
+        closeWindow: id => dispatch(closeWindowAction(+id)),
     })
 )(DropWindow);

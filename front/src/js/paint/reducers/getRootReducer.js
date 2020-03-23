@@ -3,7 +3,7 @@
 import { combineReducers } from 'redux';
 
 import { getTabs } from './ownReducers/getTabs';
-import getOpenedWindows from './ownReducers/getOpenedWindows';
+import { getOpenedWindows } from './ownReducers/getOpenedWindows';
 import { getSizeScreen } from './ownReducers/getSizeScreen';
 import { getInstruments } from './ownReducers/getInstruments';
 
