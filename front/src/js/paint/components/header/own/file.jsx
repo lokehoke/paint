@@ -17,8 +17,8 @@ class File extends React.Component {
             <div className="header__container">
                 <span className="headerContainer__title">file</span>
                 <ul className="headerContainer__subMenu">
-                    <li>
-                        <span className="newFile" ref={nf => this._newFile = nf} >
+                    <li ref={nf => this._newFile = nf}>
+                        <span className="newFile">
                             New file
                         </span>
                     </li>

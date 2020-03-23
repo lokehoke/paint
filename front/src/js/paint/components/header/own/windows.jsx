@@ -8,19 +8,19 @@ import { newWindowAction } from '../../../actions/openedWindowsActions';
 class Windows extends React.Component {
     _createNewPalette = this._createNewPalette.bind(this);
     _createNewBasicInstrumentWindow = this._createNewBasicInstrumentWindow.bind(this);
-   
+
     render() {
         return (
             <div className="header__container">
                 <span className="headerContainer__title">windows</span>
                 <ul className="headerContainer__subMenu">
-                    <li>
-                        <span ref={bi => this._basicInstrument = bi} >
+                    <li ref={bi => this._basicInstrument = bi} >
+                        <span>
                             Basic instrument
                         </span>
                     </li>
-                    <li>
-                        <span ref={p => this._palette = p} >
+                    <li ref={p => this._palette = p} >
+                        <span>
                             Palette
                         </span>
                     </li>

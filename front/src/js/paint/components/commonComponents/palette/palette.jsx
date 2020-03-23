@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import DragAndDrop from './../../../libs/dragAndDrop/dragAndDrop.js';
+import { DragAndDrop } from './../../../libs/dragAndDrop/dragAndDrop';
 
 import { PointerArrow } from '../simpleComponents/pointerArrow';
 
@@ -69,7 +69,7 @@ export default class Palette extends React.Component {
                     <PointerArrow
                         style={{
                             height: 10,
-                            right: -5,
+                            right:  -5,
                         }}
                         ref={pointerArrow => this._pointerArrow = pointerArrow}
                     />
@@ -105,7 +105,7 @@ export default class Palette extends React.Component {
                 exist: true,
                 exitFromContour: true,
                 min: {
-                    y: 0,
+                    y: 1,
                 },
                 max: {
                     y: 360,
@@ -114,7 +114,7 @@ export default class Palette extends React.Component {
                     y: 1,
                 },
                 cur: {
-                    y: 0,
+                    y: 1,
                 },
             },
             transferDate: this._changeValue.bind(this),
@@ -123,7 +123,9 @@ export default class Palette extends React.Component {
         return drag.startDragAndDrop();
     }
 
-    _changeValue() {}
+    _changeValue(e) {
+        console.log(e);
+    }
 
     _createHue() {
         let hue = [

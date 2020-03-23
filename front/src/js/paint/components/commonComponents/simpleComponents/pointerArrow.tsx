@@ -64,7 +64,7 @@ export class PointerArrow extends React.Component<IProps, {}> {
 
         this._style.width = this._conf.width;
         this._style.height = this._conf.height;
-        this._style.right = '5px';
+        this._style.right = this._conf.right;
 
         this._rectangle = {
             width: this._conf.width,
@@ -76,7 +76,7 @@ export class PointerArrow extends React.Component<IProps, {}> {
 
     render() {
         return (
-            <div style={style} ref={(pointer: HTMLDivElement) => this._pointer = pointer} >
+            <div style={this._style} ref={(pointer: HTMLDivElement) => this._pointer = pointer} >
                 <div style={this._leftArrow} />
                 <div style={this._rectangle} />
                 <div style={this._rightArrow} />

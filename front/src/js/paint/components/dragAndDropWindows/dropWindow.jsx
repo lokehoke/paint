@@ -9,7 +9,7 @@ import NewFile from './dropMain/newFile.jsx';
 import BasicInstrument from './dropMain/basicInstrument.jsx';
 import Palette from './dropMain/palette.jsx';
 
-import DragAndDrop from './../../libs/dragAndDrop/dragAndDrop.js';
+import { DragAndDrop } from './../../libs/dragAndDrop/dragAndDrop';
 import { closeWindowAction } from '../../actions/openedWindowsActions';
 import { View } from '../../structDate/window';
 
@@ -41,7 +41,7 @@ class DropWindow extends React.Component {
         this.exitBtn.addEventListener('click', e => {
             e.preventDefault();
             this.props.closeWindow(this.props.element.id);
-            
+
             return false;
         });
     }

@@ -5,5 +5,8 @@
   "main": "init.sh",
   "repository": "git@github.com:lokehoke/paint.git",
   "author": "lokehoke <ibymif2000@yandex.ru>",
-  "license": "GPL-3.0"
+  "license": "GPL-3.0",
+  "dependencies": {
+    "bind-decorator": "^1.0.11"
+  }
 }

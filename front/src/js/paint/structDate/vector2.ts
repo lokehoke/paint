@@ -17,6 +17,20 @@ export class Vector2 {
         return new Vector2(vector1.x + vector2.x, vector1.y + vector2.y);
     }
 
+    static divisionOnNumber(a: Vector2, b: number): Vector2 {
+        let t: Vector2 = new Vector2();
+        t.setDimensions(a);
+        return t.divisionOnNumber(b);
+    }
+
+    static divisionVector(a: Vector2, b: Vector2, type: string = 'double'): Vector2 {
+        let t1: Vector2 = new Vector2();
+        t1.setDimensions(a);
+        let t2: Vector2 = new Vector2();
+        t2.setDimensions(b);
+        return t1.divisionOnVector(t2, type);
+    }
+
     sub(vector: Vector2) {
         this.setDimensions(Vector2.sub(this, vector));
         return this;
@@ -27,16 +41,16 @@ export class Vector2 {
         return this;
     }
 
-    divisionOnVector(vector: Vector2, type: string) {
-        if (vector.x) {
-            this.x /= vector.x;
-        } else if (+vector.x === 0) {
+    divisionOnVector(a: Vector2, type: string = 'double') {
+        if (a.x) {
+            this.x /= a.x;
+        } else if (a.x === 0) {
             this.x = 0;
         }
 
-        if (vector.y) {
-            this.y /= vector.y;
-        } else if (+vector.y === 0) {
+        if (a.y) {
+            this.y /= a.y;
+        } else if (a.y === 0) {
             this.y = 0;
         }
 
