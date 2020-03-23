@@ -5,3 +5,9 @@ simple paint
 ```bash
 $ ./init.sh
 ```
+
+## To develop front
+```bash
+$ ./scripts/develop_front.sh
+```
+It is start webpack in watch mode
