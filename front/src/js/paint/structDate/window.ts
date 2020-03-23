@@ -7,9 +7,9 @@ export enum View {
 }
 
 export class WindowClass {
-    public id: number;
-    public title: string;
-    public view: View;
+    public readonly id: number;
+    public readonly title: string;
+    public readonly view: View;
 
     constructor(id: number, view: View) {
         this.id = id;

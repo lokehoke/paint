@@ -6,7 +6,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
  
-import defaultStore from './settings/defaultInstrumentStore.json';
+import defaultStore from './settings/defaultInstrumentStore.json'; // TODO typing
 
 import GetRootReducer from './reducers/getRootReducer.js';
 const rootReducer = GetRootReducer(JSON.parse(JSON.stringify(defaultStore)));

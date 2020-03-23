@@ -51,7 +51,7 @@ export class Vector2 {
     divisionOnNumber(num: number) {
         this.x /= num;
         this.y /= num;
-        
+
         return this;
     }
 

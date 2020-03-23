@@ -1,9 +1,9 @@
 'use strict';
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { createRef } from 'react';
+import css from 'csstype';
 
-let style = {
+let style: css.Properties = {
     display: 'flex',
     height: '20px',
     width: '20px',
@@ -12,19 +12,21 @@ let style = {
     cursor: 'pointer',
 };
 
-export default class pimpDote extends React.Component {
+export interface IProps {
+    style: css.Properties;
+}
+
+export class PimpDote extends React.Component<IProps, {}> {
+    private _dote: HTMLDivElement;
+
     static defaultProps = {
         style: style
-    };
-
-    static propTypes = {
-        style: PropTypes.object
     };
 
     render() {
         style = Object.assign({}, style, this.props.style);
         return (
-            <div style={style} ref={dote => this._dote = dote} />
+            <div style={style} ref={(d: HTMLDivElement) => this._dote = d} />
         );
     }
 

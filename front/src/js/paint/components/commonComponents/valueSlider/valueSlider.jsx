@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import PimpDote from './../simpleComponents/pimpDote.jsx';
+import { PimpDote } from '../simpleComponents/pimpDote';
 
 import DragAndDrop from './../../../libs/dragAndDrop/dragAndDrop.js';
 
