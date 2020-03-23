@@ -52,4 +52,4 @@ export const getTabs = () => function (state: IState = def, action: TabActionTyp
         default:
             return state;
     }
-}
+};

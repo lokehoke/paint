@@ -4,6 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import PaletteBasic from './../../commonComponents/palette/palette.jsx';
+import { changeColorAction } from '../../../actions/instrumentsActions';
 
 class Palette extends React.Component {
     constructor(props) {
@@ -29,11 +30,6 @@ export default connect(
     state => ({
         currentColor: +state.instruments.currentColor,
     }), dispatch => ({
-        changeColor: val => {
-            dispatch({
-                type: 'CHANGE_COLOR',
-                color: val,
-            });
-        },
+        changeColor: val => dispatch(changeColorAction(val)),
     })
 )(Palette);

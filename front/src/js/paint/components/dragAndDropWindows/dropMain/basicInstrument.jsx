@@ -4,6 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import ValueSlider from './../../commonComponents/valueSlider/valueSlider.jsx';
+import { changeLineThicknessAction } from '../../../actions/instrumentsActions';
 
 class BasicInstrument extends React.Component {
     constructor(props) {
@@ -38,11 +39,6 @@ export default connect(
     state => ({
         curFontSize: +state.instruments.currentLineThickness,
     }), dispatch => ({
-        changeLineThickness: (val) => {
-            dispatch({
-                type: 'CHANGE_LINE_THICKNESS',
-                currentLineThickness: val,
-            });
-        },
+        changeLineThickness: val => dispatch(changeLineThicknessAction(+val)),
     })
 )(BasicInstrument);
