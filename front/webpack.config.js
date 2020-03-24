@@ -8,7 +8,7 @@ const path = require('path');
 module.exports = {
 	watch: false,
 	devtool: 'source-map',
-	mode: 'production',
+	mode: 'development',
 	entry:
 	{
 		main:

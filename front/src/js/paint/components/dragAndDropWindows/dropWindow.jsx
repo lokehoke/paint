@@ -1,5 +1,7 @@
 'use strict';
 
+//TODO fix move out of box!!!
+
 import React from 'react';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -69,7 +71,7 @@ class DropWindow extends React.Component {
                 this._w = 260;
                 break;
             case View.palette:
-                this._h = 280;
+                this._h = 300;
                 this._w = 280;
         }
 

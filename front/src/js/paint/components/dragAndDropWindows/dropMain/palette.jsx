@@ -14,9 +14,7 @@ class Palette extends React.Component {
 
     render() { // TODO random digits
         return (
-            <div>
-                <PaletteBasic mainSide={200} changing={this._changeColor} />
-            </div>
+            <PaletteBasic mainSide={200} changing={this._changeColor} />
         );
     }
 

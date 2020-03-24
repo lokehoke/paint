@@ -1,5 +1,7 @@
 'use strict';
 
+//TODO current in piece not work!!!
+
 import bind from 'bind-decorator';
 
 import { ConfigDragAndDrop, ConfigDragAndDropType }  from './configDragAndDrop';

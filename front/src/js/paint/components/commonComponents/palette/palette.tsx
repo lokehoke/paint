@@ -21,10 +21,24 @@ let containerPointerArrowStyle: css.Properties = {
     right: '0',
 };
 
+let wrapperStyle: css.Properties = {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
+    height: '100%',
+};
+
+let infoBlockStyle: css.Properties = {
+    display: 'flex',
+    borderTop: '1px solid black',
+    borderBottom: '1px solid black',
+};
+
 export interface IProps {
     changing: Function;
     mainSide: number;
 }
+
 
 export class Palette extends React.Component {
     static defaultProps = {
@@ -50,8 +64,10 @@ export class Palette extends React.Component {
 
     private _deleteDnd: () => void;
 
+    private _color: IColor;
+
     constructor(props: IProps) {
-        super(props);
+        super(props); // TODO style is fucking shit!!!!
 
         this._svStx  = null;
         this._hueStx = null;
@@ -73,30 +89,47 @@ export class Palette extends React.Component {
             containerPointerArrowStyle,
             this._hueStyle,
         );
+
+        mainStyleBlock = Object.assign(
+            mainStyleBlock,
+            {
+                height: props.mainSide,
+                width: this._svSize.y + this._hueSize.y + props.mainSide/10,
+            },
+        )
     }
 
     render() {
         return (
-            <div style={mainStyleBlock}>
-                <canvas
-                    height={this._svStyle.height}
-                    width={this._svStyle.width}
-                    style={this._svStyle}
-                    ref={sv => this._sv = sv}
-                />
-                <canvas
-                    height={this._hueStyle.height}
-                    width={this._hueStyle.width}
-                    ref={hue => this._hue = hue}
-                />
-                <div style={containerPointerArrowStyle}>
-                    <PointerArrow
-                        style={{
-                            height: 10,
-                            right:  -5,
-                        }}
-                        ref={pointerArrow => this._pointerArrow = pointerArrow}
+            <div style={wrapperStyle}>
+                <div style={mainStyleBlock}>
+                    <canvas
+                        height={this._svStyle.height}
+                        width={this._svStyle.width}
+                        style={this._svStyle}
+                        ref={sv => this._sv = sv}
                     />
+                    <canvas
+                        height={this._hueStyle.height}
+                        width={this._hueStyle.width}
+                        ref={hue => this._hue = hue}
+                    />
+                    <div style={containerPointerArrowStyle}>
+                        <PointerArrow
+                            style={{
+                                height: 10,
+                                right:  -5,
+                            }}
+                            ref={pointerArrow => this._pointerArrow = pointerArrow}
+                        />
+                    </div>
+                </div>
+                <div style={infoBlockStyle}>
+                    <canvas height="33px" width="70px" />
+                    <div style={{display: 'flex', alignItems: 'center'}}>
+                        <span>HEX:</span>
+                        <span></span>
+                    </div>
                 </div>
             </div>
         );
@@ -106,6 +139,7 @@ export class Palette extends React.Component {
         this._svStx  = this._sv.getContext('2d');
         this._hueStx = this._hue.getContext('2d');
         this._createHue();
+        this._createSv();
 
         this._deleteDnd = this._setUpDragAndDrop();
     }
@@ -115,9 +149,7 @@ export class Palette extends React.Component {
     }
 
     private _setUpDragAndDrop(): () => void {
-        console.log(this);
-
-        let drag = new DragAndDrop(this._pointerArrow.getDom(), {
+        let drag: DragAndDrop = new DragAndDrop(this._pointerArrow.getDom(), {
             ignoreNoDragAndDrop: true,
             onlyY: true,
             showAfterMount: {
@@ -163,5 +195,11 @@ export class Palette extends React.Component {
         }
         ctx.fillStyle = grd;
         ctx.fillRect(0, 0, this._hueSize.y, this._hueSize.x);
+    }
+
+    private _createSv(): void {
+        let ctx = this._svStx;
+
+
     }
 }
