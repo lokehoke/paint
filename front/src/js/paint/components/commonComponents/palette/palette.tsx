@@ -1,51 +1,75 @@
 'use strict';
 
 import React from 'react';
-import PropTypes from 'prop-types';
+import css from 'csstype';
 
-import { DragAndDrop } from './../../../libs/dragAndDrop/dragAndDrop';
+import { DragAndDrop, ITransferDate } from '../../../libs/dragAndDrop/dragAndDrop';
 
 import { PointerArrow } from '../simpleComponents/pointerArrow';
+import { Vector2 } from '../../../structDate/vector2';
+import bind from 'bind-decorator';
 
-let mainStyleBlock = {
+let mainStyleBlock: css.Properties = {
     display: 'flex',
     position: 'relative',
 };
 
-let containerPointerArrowStyle = {
+let containerPointerArrowStyle: css.Properties = {
     display: 'flex',
     position: 'absolute',
     top: '0',
     right: '0',
 };
 
-export default class Palette extends React.Component {
+export interface IProps {
+    changing: Function;
+    mainSide: number;
+}
+
+export class Palette extends React.Component {
     static defaultProps = {
         changing: () => {},
-        side: 100,
-    }
+        mainSide: 100,
+    };
 
-    static propTypes = {
-        changing: PropTypes.func,
-        mainSide: PropTypes.number,
-    }
+    private _sv : HTMLCanvasElement;
+    private _hue: HTMLCanvasElement;
 
-    constructor(props) {
+    private _svStx : CanvasRenderingContext2D;
+    private _hueStx: CanvasRenderingContext2D;
+
+    private _svStyle : css.Properties;
+    private _hueStyle: css.Properties;
+
+    private _svSize: Vector2;
+    private _hueSize: Vector2;
+
+    props: IProps;
+
+    private _pointerArrow: PointerArrow;
+
+    private _deleteDnd: () => void;
+
+    constructor(props: IProps) {
         super(props);
-        this._svStx = null;
+
+        this._svStx  = null;
         this._hueStx = null;
+
+        this._svSize  = new Vector2(props.mainSide, props.mainSide);
+        this._hueSize = new Vector2(props.mainSide, props.mainSide/10);
+
         this._svStyle = {
-            width: this.props.mainSide,
-            height: this.props.mainSide,
-            marginRight: this.props.mainSide / 10,
+            height:      `${this._svSize.x}px`,
+            width:       `${this._svSize.y}px`,
+            marginRight: `${props.mainSide/10}px`,
         };
         this._hueStyle = {
-            width: this.props.mainSide / 10,
-            height: this.props.mainSide,
+            height: `${this._hueSize.x}px`,
+            width:  `${this._hueSize.y}px`,
         };
 
         containerPointerArrowStyle = Object.assign(
-            {},
             containerPointerArrowStyle,
             this._hueStyle,
         );
@@ -78,73 +102,66 @@ export default class Palette extends React.Component {
         );
     }
 
-    componentDidMount() {
-        this._svStx = this._sv.getContext('2d');
+    componentDidMount(): void {
+        this._svStx  = this._sv.getContext('2d');
         this._hueStx = this._hue.getContext('2d');
         this._createHue();
 
         this._deleteDnd = this._setUpDragAndDrop();
     }
 
-    componentWillUnmount() {
+    componentWillUnmount(): void {
         this._deleteDnd();
     }
 
-    _setUpDragAndDrop() {
+    private _setUpDragAndDrop(): () => void {
+        console.log(this);
+
         let drag = new DragAndDrop(this._pointerArrow.getDom(), {
             ignoreNoDragAndDrop: true,
             onlyY: true,
             showAfterMount: {
                 isset: true,
-                sizeItem: {
-                    x: 30,
-                    y: 10,
-                },
+                sizeItem: new Vector2(30, 10),
             },
             piece: {
                 exist: true,
                 exitFromContour: true,
-                min: {
-                    y: 1,
-                },
-                max: {
-                    y: 360,
-                },
-                step: {
-                    y: 1,
-                },
-                cur: {
-                    y: 1,
-                },
+                min:  new Vector2(0, 1),
+                max:  new Vector2(0, 360),
+                step: new Vector2(0, 1),
+                cur:  new Vector2(0, 1),
             },
-            transferDate: this._changeValue.bind(this),
+            transferDate: this._changeValue,
         });
 
         return drag.startDragAndDrop();
     }
 
-    _changeValue(e) {
+    @bind
+    private _changeValue(e: ITransferDate): void { // TODO
         console.log(e);
     }
 
-    _createHue() {
-        let hue = [
-            ['ff0000'],
-            ['ffff00'],
-            ['00ff00'],
-            ['00ffff'],
-            ['0000ff'],
-            ['ff00ff'],
-            ['ff0000'],
+    private _createHue(): void {
+        let hue: Array<string> = [
+            'ff0000',
+            'ffff00',
+            '00ff00',
+            '00ffff',
+            '0000ff',
+            'ff00ff',
+            'ff0000',
         ];
 
         let ctx = this._hueStx;
-        let grd = ctx.createLinearGradient(0, 0, 0, this._hueStyle.height);
+        let grd = ctx.createLinearGradient(0, 0, 0, this._hueSize.x);
+
         for (let i = 0; i < hue.length; i++) {
             let color = `#${hue[i]}`;
             grd.addColorStop(i / 6, color);
         }
         ctx.fillStyle = grd;
-        ctx.fillRect(0, 0, this._hueStyle.width, this._hueStyle.height);
+        ctx.fillRect(0, 0, this._hueSize.y, this._hueSize.x);
     }
 }

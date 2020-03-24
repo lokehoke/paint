@@ -3,6 +3,8 @@
         "lib": ["esnext", "dom"],
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "target": "ES5"
+        "target": "ES5",
+        "jsx": "react",
+        "esModuleInterop": true
     }
 }

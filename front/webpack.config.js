@@ -35,7 +35,7 @@ module.exports = {
 			'.css',
 		],
 	},
-	module:	
+	module:
 	{
 		rules:
 		[

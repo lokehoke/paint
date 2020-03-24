@@ -1,11 +1,11 @@
 'use strict';
 
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import css from 'csstype';
 
 export interface IProps {
-    style: css.Properties,
-};
+    style: Object,
+}
 
 let bundleStyle = {
     height: 10,
@@ -27,14 +27,14 @@ export class PointerArrow extends React.Component<IProps, {}> {
         style,
     };
 
-    private _conf;
-    private _arrow: css.Properties;
+    private _conf      : any;
+    private _arrow     : css.Properties;
     private _rightArrow: css.Properties;
-    private _leftArrow: css.Properties;
-    private _style: css.Properties = style;
-    private _rectangle: css.Properties;
+    private _leftArrow : css.Properties;
+    private _style     : css.Properties = style;
+    private _rectangle : css.Properties;
 
-    private _pointer: HTMLDivElement;
+    private _pointer   : HTMLDivElement;
 
     constructor(props: IProps) {
         super(props);

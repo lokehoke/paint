@@ -3,7 +3,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import PaletteBasic from './../../commonComponents/palette/palette.jsx';
+import { Palette as PaletteBasic } from '../../commonComponents/palette/palette';
 import { changeColorAction } from '../../../actions/instrumentsActions';
 
 class Palette extends React.Component {
@@ -12,7 +12,7 @@ class Palette extends React.Component {
         this._changeColor = this._changeColor.bind(this);
     }
 
-    render() {
+    render() { // TODO random digits
         return (
             <div>
                 <PaletteBasic mainSide={200} changing={this._changeColor} />
