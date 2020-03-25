@@ -34,11 +34,17 @@ let infoBlockStyle: css.Properties = {
     borderBottom: '1px solid black',
 };
 
+
+export interface IExportValue {
+    color: string
+};
+
+export type ChangeValueFunctionType = (val: IExportValue) => void;
+
 export interface IProps {
-    changing: Function;
+    changing: ChangeValueFunctionType;
     mainSide: number;
 }
-
 
 export class Palette extends React.Component {
     static defaultProps = {
@@ -63,8 +69,6 @@ export class Palette extends React.Component {
     private _pointerArrow: PointerArrow;
 
     private _deleteDnd: () => void;
-
-    private _color: IColor;
 
     constructor(props: IProps) {
         super(props); // TODO style is fucking shit!!!!
@@ -99,7 +103,7 @@ export class Palette extends React.Component {
         )
     }
 
-    render() {
+    render() { // TODO it is 2 component hue and other, maybe 3 component
         return (
             <div style={wrapperStyle}>
                 <div style={mainStyleBlock}>

@@ -1,6 +1,7 @@
 'use strict';
 
 //TODO current in piece not work!!!
+//TODO some piece not show
 
 import bind from 'bind-decorator';
 

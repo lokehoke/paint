@@ -9,7 +9,7 @@ import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 import NewFile from './dropMain/newFile.jsx';
 import BasicInstrument from './dropMain/basicInstrument.jsx';
-import Palette from './dropMain/palette.jsx';
+import Palette from './dropMain/palette.tsx';
 
 import { DragAndDrop } from './../../libs/dragAndDrop/dragAndDrop';
 import { closeWindowAction } from '../../actions/openedWindowsActions';
