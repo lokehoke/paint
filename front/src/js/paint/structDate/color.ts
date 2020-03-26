@@ -17,114 +17,160 @@ export class ColorParseError extends Error {
     }
 }
 
-export interface IHSV {
-    hue       : number, /* 0...359 */
-    saturation: number, /* 0...1   */
-    brightness: number, /* 0...1   */
+export enum TypeColorModel{
+    RGB = 'rgb',
+    HSV = 'hsv',
 }
 
-export interface IRGB {
-    red  : number, /* 0...255 */
-    green: number, /* 0...255 */
-    blue : number, /* 0...255 */
+export class HSV {
+    hue       : number = 0; /* 0...359 */
+    saturation: number = 0; /* 0...1   */
+    brightness: number = 0; /* 0...1   */
+
+    readonly type: TypeColorModel = TypeColorModel.HSV;
+
+    constructor(h: number = 0, s: number = 0, v: number = 0) {
+        this.hue = h;
+        this.saturation = s;
+        this.brightness = v;
+    }
+
+    toString(): string {
+        return `{ hue: ${this.hue} saturation: ${this.saturation} brightness: ${this.brightness} }`;
+    }
+
+    getClone(): HSV {
+        return new HSV(this.hue, this.saturation, this.brightness);
+    }
 }
+
+export class RGB {
+    red  : number = 0; /* 0...255 */
+    green: number = 0; /* 0...255 */
+    blue : number = 0; /* 0...255 */
+
+    readonly type: TypeColorModel = TypeColorModel.RGB;
+
+    constructor(r: number = 0, g: number = 0, b: number = 0) {
+        this.red   = r;
+        this.green = g;
+        this.blue  = b;
+    }
+
+    toString(): string {
+        return `{ red: ${this.red} green: ${this.green} blue: ${this.blue} }`;
+    }
+
+    getClone(): RGB {
+        return new RGB(this.red, this.green, this.blue);
+    }
+}
+
 
 export interface IColor {
-    hsv: IHSV,
-    rgb: IRGB,
+    hsv: HSV,
+    rgb: RGB,
 };
 
 export const LimitsMin: IColor = {
-    rgb: {
-        red  : 0,
-        green: 0,
-        blue : 0,
-    },
-    hsv: {
-        hue       : 0,
-        saturation: 0,
-        brightness: 0,
-    },
+    rgb: new RGB(0, 0, 0),
+    hsv: new HSV(0, 0, 0),
 };
 
 export const LimitsMax: IColor = {
-    rgb: {
-        red  : 255,
-        green: 255,
-        blue : 255,
-    },
-    hsv: {
-        hue       : 355,
-        saturation: 1,
-        brightness: 1,
-    },
+    rgb: new RGB(255, 255, 255),
+    hsv: new HSV(355, 1, 1),
 };
 
-
 export class Color {
-    private _color: IColor;
+    readonly accuracy: number = 2;
+    readonly factor: number = 100;
 
-    constructor() {}
+    private _color: IColor = {
+        rgb: LimitsMin.rgb.getClone(),
+        hsv: LimitsMin.hsv.getClone(),
+    };
 
-    setHSV(c: IHSV): void {
-        if (this._colorIsValid(c, 'hsv')) {
-            this._color.hsv = c;
-            this._HSVToRGB();
-        } else {
-            throw new ColorValidationError(`HSV is invalid: ${c}`);
-        }
-    }
-
-    setRGB(c: IRGB): void {
-        if (this._colorIsValid(c, 'rgb')) {
-            this._color.rgb = c;
-            this._RGBToHSV();
-        } else {
-            throw new ColorValidationError(`RGB is invalid: ${c}`);
-        }
-    }
-
-    getHSV(): IHSV {
-        return this._color.hsv;
-    }
-
-    getRGB(): IRGB {
-        return this._color.rgb;
-    }
-
-    static HSVToRGB(hsv: IHSV): IRGB {
+    static HSVToRGB(hsv: HSV): RGB {
         let c: Color = new Color();
         c.setHSV(hsv);
         return c.getRGB();
     }
 
-    static RGBToHSV(rgb: IRGB): IHSV {
+    static RGBToHSV(rgb: RGB): HSV {
         let c: Color = new Color();
         c.setRGB(rgb);
         return c.getHSV();
     }
 
-    static parseRgbString(rgb: string): IRGB {
+    static parseRgbString(rgb: string): RGB {
         rgb = rgb.substr(1, rgb.length - 1);
         if (rgb.length === 3) {
-            return {
-                red  : parseInt(rgb[0]+rgb[0], 16),
-                green: parseInt(rgb[1]+rgb[1], 16),
-                blue : parseInt(rgb[2]+rgb[2], 16),
-            }
-        } else if (rgb.length === 6) {
-            return {
-                red  : parseInt(rgb[0]+rgb[1], 16),
-                green: parseInt(rgb[2]+rgb[3], 16),
-                blue : parseInt(rgb[4]+rgb[5], 16),
-            }
+
+            return new RGB(
+                parseInt(`${rgb[0]}${rgb[0]}`, 16),
+                parseInt(`${rgb[1]}${rgb[1]}`, 16),
+                parseInt(`${rgb[2]}${rgb[2]}`, 16),
+                );
+            } else if (rgb.length === 6) {
+            return new RGB(
+                parseInt(`${rgb[0]}${rgb[1]}`, 16),
+                parseInt(`${rgb[2]}${rgb[3]}`, 16),
+                parseInt(`${rgb[4]}${rgb[5]}`, 16),
+            );
         } else {
             throw new ColorParseError(`sting ${rgb} is not color, length = ${rgb.length}`);
         }
     }
 
+    static RGBToString(rgb: RGB): string { // TODO
+        return '';
+    }
+
+    constructor(accuracy: number = 2) {
+        this.accuracy = accuracy;
+        this.factor   = Math.pow(10, accuracy);
+    }
+
+    setHSV(c: HSV): void {
+        if (this._colorIsValid(c)) {
+            this._color.hsv = c;
+            this._HSVToRGB();
+            this._roundAll();
+        } else {
+            throw new ColorValidationError(`HSV is invalid: ${c}`);
+        }
+    }
+
+    setRGB(c: RGB): void {
+        if (this._colorIsValid(c)) {
+            this._color.rgb = c;
+            this._RGBToHSV();
+            this._roundAll();
+
+        } else {
+            throw new ColorValidationError(`RGB is invalid: ${c}`);
+        }
+    }
+
+    setRGBString(c: string): void {
+        this.setRGB(Color.parseRgbString(c));
+    }
+
+    getHSV(): HSV {
+        return this._color.hsv;
+    }
+
+    getRGB(): RGB {
+        return this._color.rgb;
+    }
+
+    getRGBString(): string {
+        return Color.RGBToString(this._color.rgb);
+    }
+
     private _HSVToRGB(): void {
-        let hsv: IHSV = this._color.hsv;
+        let hsv: HSV = this._color.hsv;
 
         let h: number = hsv.hue;
         let v: number = hsv.brightness * 100;
@@ -137,67 +183,48 @@ export class Color {
         let vInc: number = vMin + a;
         let vDec: number = v - a;
 
+        v    *= 2.55;
+        vInc *= 2.55;
+        vMin *= 2.55;
+        vDec *= 2.55;
+
         switch(hi) {
             case 0:
-                this._color.rgb = {
-                    red: v,
-                    green: vInc,
-                    blue: vMin,
-                };
+                this._color.rgb = new RGB( v, vInc, vMin);
                 break;
 
             case 1:
-                this._color.rgb = {
-                    red: vDec,
-                    green: v,
-                    blue: vMin,
-                };
+                this._color.rgb = new RGB( vDec, v, vMin);
                 break;
 
             case 2:
-                this._color.rgb = {
-                    red: vMin,
-                    green: v,
-                    blue: vInc,
-                };
+                this._color.rgb = new RGB( vMin, v, vInc);
                 break;
 
             case 3:
-                this._color.rgb = {
-                    red: vMin,
-                    green: vDec,
-                    blue: v,
-                };
+                this._color.rgb = new RGB( vMin, vDec, v);
                 break;
 
             case 4:
-                this._color.rgb = {
-                    red: vInc,
-                    green: vMin,
-                    blue: v,
-                };
+                this._color.rgb = new RGB( vInc, vMin, v);
                 break;
 
             case 5:
-                this._color.rgb = {
-                    red: v,
-                    green: vMin,
-                    blue: vDec,
-                };
+                this._color.rgb = new RGB( v, vMin, vDec);
                 break;
         }
     }
 
     private _RGBToHSV(): void {
-        let r = this._color.rgb.red;
-        let g = this._color.rgb.green;
-        let b = this._color.rgb.blue;
+        let r = this._color.rgb.red   / 255;
+        let g = this._color.rgb.green / 255;
+        let b = this._color.rgb.blue  / 255;
 
         let max: number = Math.max(r, g, b);
         let min: number = Math.min(r, g, b);
 
         this._color.hsv.brightness = max;
-        this._color.hsv.saturation = (max === 0 ? 0: 1 - min/max);
+        this._color.hsv.saturation = (max === 0 ? 0: 1 - (max === 0 ? 0 : min/max));
 
         let mm: number = max - min;
 
@@ -214,7 +241,9 @@ export class Color {
         }
     }
 
-    private _colorIsValid(v: IHSV | IRGB, type: string): boolean {
+    private _colorIsValid(v: HSV | RGB): boolean {
+        let type: TypeColorModel = v.type;
+
         for (let key in v) {
             if (v[key] > LimitsMax[type][key] || v[key] < LimitsMin[type][key]) {
                 return false;
@@ -222,5 +251,17 @@ export class Color {
         }
 
         return true;
+    }
+
+    private _roundAll(): void {
+        let a: number = this.factor;
+
+        this._color.hsv.hue        = Math.round(this._color.hsv.hue);
+        this._color.hsv.saturation = Math.round(this._color.hsv.saturation * a) / a;
+        this._color.hsv.brightness = Math.round(this._color.hsv.brightness * a) / a;
+
+        this._color.rgb.red   = Math.round(this._color.rgb.red);
+        this._color.rgb.green = Math.round(this._color.rgb.green);
+        this._color.rgb.blue  = Math.round(this._color.rgb.blue);
     }
 }

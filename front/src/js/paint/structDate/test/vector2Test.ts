@@ -1,8 +1,7 @@
 'use strict';
 
-import { expect } from 'chai';
-
 import 'mocha';
+import { expect } from 'chai';
 
 import { Vector2 } from '../vector2';
 
