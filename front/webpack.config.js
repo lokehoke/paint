@@ -5,16 +5,16 @@ const Webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 
-module.exports = {
+module.exports = env => ({
 	watch: false,
 	devtool: 'source-map',
-	mode: 'production',
+    mode: (env.production ? 'production' : 'development'),
 	entry:
 	{
 		main:
 		[
-			'./src/scss/index.scss',
-			'./src/js/index.ts',
+			path.join(__dirname, 'src/scss/index.scss'),
+			path.join(__dirname, 'src/js/index.ts'),
 		],
 	},
 	output:
@@ -89,4 +89,4 @@ module.exports = {
 	[
 		new Webpack.NoEmitOnErrorsPlugin(),
 	],
-};
+});

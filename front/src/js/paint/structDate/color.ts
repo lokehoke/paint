@@ -10,6 +10,13 @@ export class ColorValidationError extends Error {
     }
 }
 
+export class ColorParseError extends Error {
+    constructor(message: string) {
+      super(message);
+      this.name = "ColorParseError";
+    }
+}
+
 export interface IHSV {
     hue       : number, /* 0...359 */
     saturation: number, /* 0...1   */
@@ -64,7 +71,7 @@ export class Color {
             this._color.hsv = c;
             this._HSVToRGB();
         } else {
-            throw new ColorValidationError("HSV is invalid");
+            throw new ColorValidationError(`HSV is invalid: ${c}`);
         }
     }
 
@@ -73,7 +80,7 @@ export class Color {
             this._color.rgb = c;
             this._RGBToHSV();
         } else {
-            throw new ColorValidationError("RGB is invalid");
+            throw new ColorValidationError(`RGB is invalid: ${c}`);
         }
     }
 
@@ -95,6 +102,25 @@ export class Color {
         let c: Color = new Color();
         c.setRGB(rgb);
         return c.getHSV();
+    }
+
+    static parseRgbString(rgb: string): IRGB {
+        rgb = rgb.substr(1, rgb.length - 1);
+        if (rgb.length === 3) {
+            return {
+                red  : parseInt(rgb[0]+rgb[0], 16),
+                green: parseInt(rgb[1]+rgb[1], 16),
+                blue : parseInt(rgb[2]+rgb[2], 16),
+            }
+        } else if (rgb.length === 6) {
+            return {
+                red  : parseInt(rgb[0]+rgb[1], 16),
+                green: parseInt(rgb[2]+rgb[3], 16),
+                blue : parseInt(rgb[4]+rgb[5], 16),
+            }
+        } else {
+            throw new ColorParseError(`sting ${rgb} is not color, length = ${rgb.length}`);
+        }
     }
 
     private _HSVToRGB(): void {

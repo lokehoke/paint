@@ -15,7 +15,7 @@ export interface IRootState {
 
 let connector = connect(
     (state: IRootState) => ({
-        currentColor: +state.instruments.currentColor,
+        currentColor: state.instruments.currentColor,
     }), dispatch => ({
         changeColor: (c: string) => dispatch(changeColorAction(c)),
     })
@@ -31,7 +31,7 @@ class Palette extends React.Component {
 
     render() { // TODO random digits
         return (
-            <PaletteBasic mainSide={200} changing={this._changeColor} />
+            <PaletteBasic color={this.props.currentColor} mainSide={200} changing={this._changeColor} />
         );
     }
 

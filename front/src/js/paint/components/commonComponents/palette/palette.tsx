@@ -44,6 +44,7 @@ export type ChangeValueFunctionType = (val: IExportValue) => void;
 export interface IProps {
     changing: ChangeValueFunctionType;
     mainSide: number;
+    color   : string;
 }
 
 export class Palette extends React.Component {
@@ -152,7 +153,7 @@ export class Palette extends React.Component {
         this._deleteDnd();
     }
 
-    private _setUpDragAndDrop(): () => void {
+    private _setUpDragAndDrop(): () => void { // it is hue dnd, need init
         let drag: DragAndDrop = new DragAndDrop(this._pointerArrow.getDom(), {
             ignoreNoDragAndDrop: true,
             onlyY: true,
@@ -201,7 +202,7 @@ export class Palette extends React.Component {
         ctx.fillRect(0, 0, this._hueSize.y, this._hueSize.x);
     }
 
-    private _createSv(): void {
+    private _createSv(): void { // TODO
         let ctx = this._svStx;
 
 
