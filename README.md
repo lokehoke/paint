@@ -15,3 +15,15 @@ It is update bundle.
 $ ./scripts/develop_front.sh
 ```
 It is start webpack in watch mode
+
+## Tests:
+It is start front test:
+```bash
+$ ./scripts/run_test_front.sh
+```
+
+And to start html test:
+```bash
+$ ./scripts/run_html_test.sh
+```
+After open http://localhost:8000/front/src/js/paint/ctx/testHTML/public/test.html
