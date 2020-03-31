@@ -6,12 +6,12 @@ import { expect } from 'chai';
 import { Color, RGB, HSV }  from '../color';
 
 const colorStrings: Array<string> = [
-    '#000',
-    '#fff',
+    '#000000',
+    '#ffffff',
     '#f2a305',
     '#f205a3',
-    '#14f248',
-    '#1441f9',
+    '#13f247',
+    '#1442fa',
 ];
 
 const colorRGB: Array<RGB> = [
@@ -64,6 +64,20 @@ describe('Color test', () => {
 
             c.setHSV(hsv);
             expect(c.getRGB()).to.deep.equal(rgb);
+        }
+    });
+
+    it('rgb to hex string', () => {
+        for (let s in colorRGB) {
+            expect(Color.RGBToHEXString(colorRGB[s])).to.equal(colorStrings[s]);
+        }
+    });
+
+    it('color to string', () => {
+        for (let s in colorRGB) {
+            let c: Color = new Color();
+            c.setRGB(colorRGB[s]);
+            expect(c.toString()).to.equal(`->RGB ` + c.getRGB().toString() + `\n->HEX ` + c.getRGBHEXString() + `\n->HSV ` + c.getHSV().toString());
         }
     });
 });
