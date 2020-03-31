@@ -1,7 +1,9 @@
 'use strict';
 
-import { CtxWrapper } from "../ctxWrapper";
-import { IRightAngle } from "../algorithms/rotate";
+import { CtxWrapper } from '../ctxWrapper';
+import { ERightAngle } from '../algorithms/rotate';
+import { EInstrumentMode } from '../drawingModes/modes';
+import { def as defContext } from '../../reducers/ownReducers/instruments';
 
 const height = 302;
 const width  = 605;
@@ -53,13 +55,13 @@ document.addEventListener('DOMContentLoaded', e => {
     root.appendChild(img);
     img.addEventListener('load', () => {
         let test1 = new TestDiv('Test black and white', async (cnv: HTMLCanvasElement) => {
-            let wrapper: CtxWrapper = new CtxWrapper(cnv);
+            let wrapper: CtxWrapper = new CtxWrapper(cnv, EInstrumentMode.brush, defContext);
             await wrapper.as_toBlackAndWhite();
         });
 
         let test2 = new TestDiv('Rotate 90 test', (cnv: HTMLCanvasElement) => {
-            let wrapper: CtxWrapper = new CtxWrapper(cnv);
-            wrapper.rotateRightAngle(IRightAngle.an90);
+            let wrapper: CtxWrapper = new CtxWrapper(cnv, EInstrumentMode.brush, defContext);
+            wrapper.rotateRightAngle(ERightAngle.an90);
         });
     });
 });

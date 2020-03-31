@@ -13,7 +13,7 @@ interface ISteps {
     max    : Vector2;
 }
 
-export interface ITransferDate {
+export interface IExportDate {
     currentStep: number;
 }
 
@@ -208,7 +208,7 @@ export class DragAndDrop {
             this._steps.current[dominateAxis] = newStep;
         }
 
-        let transferData: ITransferDate = {
+        let transferData: IExportDate = {
             currentStep: (this._steps.current[dominateAxis] * this._config.piece.step[dominateAxis]) + this._config.piece.min[dominateAxis]
         }
 

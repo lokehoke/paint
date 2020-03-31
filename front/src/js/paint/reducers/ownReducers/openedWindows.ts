@@ -14,7 +14,7 @@ let def: IState = {
     own: [],
 };
 
-export const getOpenedWindows = () => (state: IState = def, action: WindowActionType) => {
+export const openedWindows = (state: IState = def, action: WindowActionType) => {
     switch (action.type) {
         case OPEN_WINDOW:
             if (state.own.some(el => el.view === action.view)) {

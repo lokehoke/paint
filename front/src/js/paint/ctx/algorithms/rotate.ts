@@ -1,6 +1,6 @@
 'use strict';
 
-export enum IRightAngle {
+export enum ERightAngle {
     an0   = 0,
     an90  = 90,
     an180 = 180,
@@ -8,7 +8,7 @@ export enum IRightAngle {
 };
 
 export class RotateTransducers {
-    static do(d: ImageData, angle: IRightAngle): void {
+    static do(d: ImageData, angle: ERightAngle): void {
 
     }
 };

@@ -6,10 +6,11 @@ import { connect, ConnectedProps } from 'react-redux';
 import { Palette as PaletteBasic, IExportValue } from '../../commonComponents/palette/palette';
 import { changeColorAction } from '../../../actions/instrumentsActions';
 import bind from 'bind-decorator';
+import { Color } from '../../../structDate/color';
 
-export interface IRootState {
+interface IRootState {
     instruments: {
-        currentColor: string,
+        currentColor: Color,
     };
 };
 
@@ -17,12 +18,12 @@ let connector = connect(
     (state: IRootState) => ({
         currentColor: state.instruments.currentColor,
     }), dispatch => ({
-        changeColor: (c: string) => dispatch(changeColorAction(c)),
+        changeColor: (c: Color) => dispatch(changeColorAction(c)),
     })
 );
 
 type PropsReduxType = ConnectedProps<typeof connector>
-type PropsType = PropsReduxType & {
+export type PropsType = PropsReduxType & {
     id: number,
 }
 
@@ -31,7 +32,7 @@ class Palette extends React.Component {
 
     render() { // TODO random digits
         return (
-            <PaletteBasic color={this.props.currentColor} mainSide={200} changing={this._changeColor} />
+            <PaletteBasic color={this.props.currentColor} changing={this._changeColor} />
         );
     }
 

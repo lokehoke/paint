@@ -5,15 +5,12 @@ import { render } from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
- 
-import defaultStore from './settings/defaultInstrumentStore.json'; // TODO typing
 
-import GetRootReducer from './reducers/getRootReducer.js';
-const rootReducer = GetRootReducer(JSON.parse(JSON.stringify(defaultStore)));
+import { rootReducer } from './reducers/rootReducer.ts';
 
 import Header from './components/header/header.jsx';
-import WorkSpace from './components/workSpace/workSpace.jsx';
-import Footer from './components/footer/footer.jsx';
+import WorkSpace from './components/workSpace/workSpace.tsx';
+import { Footer } from './components/footer/footer.tsx';
 import DragAndDropWindowWrapper from './components/dragAndDropWindows/dragAndDropWindowsWrapper.jsx';
 import { Vector2 } from './structDate/vector2';
 import { ChangeSizeScreenAction } from './actions/sizeScreenActions';
@@ -31,7 +28,7 @@ export default class Paint {
 
         render(
             <Provider store={this._store}>
-                <div className="paintWrapper">
+                <div className='paintWrapper'>
                     <Header />
                     <WorkSpace />
                     <Footer />

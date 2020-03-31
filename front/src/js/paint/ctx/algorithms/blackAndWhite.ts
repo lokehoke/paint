@@ -1,13 +1,13 @@
 'use strict';
 
-export enum Mode {
+export enum EBlackAndWhiteMode {
     average = 'average',
 };
 
 export class BlackAndWhiteTransducer {
-    static async as_do(d: ImageData, mode: Mode = Mode.average): Promise<void> {
+    static async as_do(d: ImageData, mode: EBlackAndWhiteMode = EBlackAndWhiteMode.average): Promise<void> {
         switch(mode) {
-            case Mode.average:
+            case EBlackAndWhiteMode.average:
                 await this.as_average(d);
                 break;
         }

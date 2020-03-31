@@ -17,7 +17,7 @@ export class ColorParseError extends Error {
     }
 }
 
-export enum TypeColorModel{
+export enum ETypeColorModel{
     RGB = 'rgb',
     HSV = 'hsv',
 }
@@ -27,7 +27,7 @@ export class HSV {
     saturation: number = 0; /* 0...1   */
     brightness: number = 0; /* 0...1   */
 
-    readonly type: TypeColorModel = TypeColorModel.HSV;
+    readonly type: ETypeColorModel = ETypeColorModel.HSV;
 
     constructor(h: number = 0, s: number = 0, v: number = 0) {
         this.hue = h;
@@ -49,7 +49,7 @@ export class RGB {
     green: number = 0; /* 0...255 */
     blue : number = 0; /* 0...255 */
 
-    readonly type: TypeColorModel = TypeColorModel.RGB;
+    readonly type: ETypeColorModel = ETypeColorModel.RGB;
 
     constructor(r: number = 0, g: number = 0, b: number = 0) {
         this.red   = r;
@@ -124,7 +124,7 @@ export class Color {
     }
 
     static RGBToString(rgb: RGB): string { // TODO
-        return '';
+        return '#000';
     }
 
     constructor(accuracy: number = 2) {
@@ -158,15 +158,21 @@ export class Color {
     }
 
     getHSV(): HSV {
-        return this._color.hsv;
+        return this._color.hsv.getClone();
     }
 
     getRGB(): RGB {
-        return this._color.rgb;
+        return this._color.rgb.getClone();
     }
 
     getRGBString(): string {
         return Color.RGBToString(this._color.rgb);
+    }
+
+    getDeepClone(): Color {
+        let color: Color = new Color(this.accuracy);
+        color.setHSV(this._color.hsv);
+        return color;
     }
 
     private _HSVToRGB(): void {
@@ -242,7 +248,7 @@ export class Color {
     }
 
     private _colorIsValid(v: HSV | RGB): boolean {
-        let type: TypeColorModel = v.type;
+        let type: ETypeColorModel = v.type;
 
         for (let key in v) {
             if (v[key] > LimitsMax[type][key] || v[key] < LimitsMin[type][key]) {

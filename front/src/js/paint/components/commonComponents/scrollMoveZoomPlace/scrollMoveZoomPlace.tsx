@@ -1,17 +1,27 @@
 'use strict';
 
-import React from 'react';
+import React, { ReactNode } from 'react';
+import { Vector2 } from '../../../structDate/vector2';
+
+export interface IProps {
+    size: Vector2,
+    children: ReactNode,
+}
 
 export default class FlexiblePlace extends React.Component { // TODO piece of shit!!!!!!!!!
+    props: IProps;
+
+    private _inner: HTMLElement;
+
     render() {
         let style = {
-            height: this.props.height,
-            width: this.props.width,
+            height: `${this.props.size.x}px`,
+            width: `${this.props.size.y}px`,
             overflow: 'hidden',
         };
 
         return (
-            <div style={style} ref={inner => this.inner = inner}>
+            <div style={style} ref={(inner: HTMLElement) => this._inner = inner}>
                 {this.props.children}
             </div>
         );
