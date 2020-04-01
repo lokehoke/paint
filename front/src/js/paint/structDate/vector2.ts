@@ -91,6 +91,7 @@ export class Vector2 {
     }
 
     toString(): string {
-        return `->X ${this.x}\n->Y ${this.y}`;
+        return `->X ${this.x}
+->Y ${this.y}`;
     }
 }

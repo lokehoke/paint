@@ -226,7 +226,9 @@ export class Color {
     }
 	 
 	toString(): string {
-        return `->RGB ${this._color.rgb}\n->HEX ` +  this.getRGBHEXString() + `\n->HSV ${this.getHSV()}`;
+        return `->RGB ${this._color.rgb}
+->HEX ${ this.getRGBHEXString()}
+-> HSV ${ this.getHSV()}`;
     }
 	
     getRGBHEXString(): string {
