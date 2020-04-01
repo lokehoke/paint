@@ -5,12 +5,13 @@ import { WindowClass, View } from '../../structDate/window'
 
 interface IState {
     id: number;
+    activeWindow: number;
     own: Array<WindowClass>;
 };
 
-let id: number = 0;
 let def: IState = {
-    id,
+    id:-1,
+    activeWindow: -1,
     own: [],
 };
 
@@ -20,18 +21,29 @@ export const openedWindows = (state: IState = def, action: WindowActionType) => 
             if (state.own.some(el => el.view === action.view)) {
                 return state;
             } else {
-                let newWindow: WindowClass = new WindowClass(id + 1, action.view)
+                let newWindow: WindowClass = new WindowClass(state.id + 1, action.view);
                 return {
-                    id: ++id,
+                    id: state.id + 1,
+                    activeWindow: state.id + 1,
                     own: [...state.own, newWindow],
                 };
             }
 
         case CLOSE_WINDOW:
-            return {
-                id,
-                own: [...(state.own.filter(el => el.id !== action.id))]
-            };
+            let own = [...(state.own.filter(el => el.id !== action.id))];
+            let activeWindow = state.activeWindow;
+
+            if (action.id === state.activeWindow) {
+                if (own[own.length - 1]) {
+                    activeWindow = own[own.length - 1].id;
+                } else {
+                    activeWindow = -1;
+                }
+            }
+            return Object.assign({}, state, {
+                activeWindow,
+                own,
+            });
 
         default:
             return state;

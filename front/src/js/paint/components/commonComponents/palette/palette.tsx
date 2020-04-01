@@ -53,10 +53,10 @@ export class Palette extends React.Component {
     props: IProps;
 
     constructor(props: IProps) {
-        super(props); // TODO style is fucking shit!!!!
+        super(props);
 
         this._svSize  = new Vector2(props.mainSide, props.mainSide);
-        this._hueSize = new Vector2(props.mainSide, props.mainSide/10);
+        this._hueSize = new Vector2(props.mainSide, props.mainSide /10);
 
         mainStyleBlock = Object.assign(
             {},
@@ -69,17 +69,18 @@ export class Palette extends React.Component {
     }
 
     render() { // TODO it is 2 component hue and other, maybe 3 component
+        let hsv: HSV = this.props.color.getHSV();
         return (
             <div style={wrapperStyle}>
                 <div style={mainStyleBlock}>
                     <Sv
-                        saturation={this.props.color.getHSV().saturation}
-                        brightness={this.props.color.getHSV().brightness}
+                        saturation={hsv.saturation}
+                        brightness={hsv.brightness}
                         size={this._svSize}
                         changeValue={this._changeSv}
                     />
                     <Hue
-                        hue={this.props.color.getHSV().hue}
+                        hue={hsv.hue}
                         size={this._hueSize}
                         changeValue={this._changeHue}
                     />

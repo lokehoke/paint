@@ -106,13 +106,12 @@ export class Color {
     static parseRgbString(rgb: string): RGB {
         rgb = rgb.substr(1, rgb.length - 1);
         if (rgb.length === 3) {
-
             return new RGB(
                 parseInt(`${rgb[0]}${rgb[0]}`, 16),
                 parseInt(`${rgb[1]}${rgb[1]}`, 16),
                 parseInt(`${rgb[2]}${rgb[2]}`, 16),
-                );
-            } else if (rgb.length === 6) {
+            );
+        } else if (rgb.length === 6) {
             return new RGB(
                 parseInt(`${rgb[0]}${rgb[1]}`, 16),
                 parseInt(`${rgb[2]}${rgb[3]}`, 16),
