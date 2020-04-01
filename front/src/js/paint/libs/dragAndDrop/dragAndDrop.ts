@@ -24,10 +24,12 @@ export class DragAndDrop {
     private _shiftOnItemPx  : Vector2               = new Vector2();
     private _vectorMinParent: Vector2               = new Vector2();
     private _vectorMaxParent: Vector2               = new Vector2();
-    private _steps          : ISteps                = {current: new Vector2(), max: new Vector2()};
+    private _steps          : ISteps                = {current: new Vector2(),
+                                                       max    : new Vector2(),
+                                                       };
 
     constructor(item: HTMLElement = null, config: ConfigDragAndDropType = null) {
-        this._item   = item;
+        this._item = item;
         this._makeSetting(config);
     }
 
@@ -59,8 +61,9 @@ export class DragAndDrop {
     private _mouseDowning(e: MouseEvent): void {
 
         let item: HTMLElement = this._item;
+        let path: Array<HTMLElement> = this._makeParentPath(<HTMLElement>e.target);
 
-        if (this._config.ignoreNoDragAndDrop || !this._issetNoDrop(e.path)) { //TODO WoRK only in chrome
+        if (this._config.ignoreNoDragAndDrop || !this._issetNoDrop(path)) {
             this._findAbsParent();
             let coords = this._getVector(item);
 
@@ -111,7 +114,7 @@ export class DragAndDrop {
     }
 
     private _findAbsParent(): void {
-        let path  : Array<HTMLElement> = this._makeParentPath();
+        let path  : Array<HTMLElement> = this._makeParentPath(this._item);
         let parent: HTMLElement        = path.find((el: HTMLElement) => (
             el.style.position === 'absolute'||
             el.style.position === 'relative'||
@@ -249,15 +252,16 @@ export class DragAndDrop {
         this._config = defaults;
     }
 
-    private _makeParentPath(): Array<HTMLElement> {
+    private _makeParentPath(item: HTMLElement): Array<HTMLElement> {
         let path   : Array<HTMLElement> = [];
-        let curItem: HTMLElement        = this._item;
+        let curItem: HTMLElement        = item;
 
         while(curItem.parentNode) {
             path.push(curItem = curItem.parentNode as HTMLElement);
         }
 
         path.pop();
+        console.log(path);
         return path;
     }
 }

@@ -37,7 +37,7 @@ export class Sv extends React.Component {
 
     props: IProps;
 
-    private _deleteDnd: () => void;
+    private _deleteDnd: () => void = () => {};
 
     constructor(props: IProps) {
         super(props);
@@ -64,11 +64,19 @@ export class Sv extends React.Component {
 
     componentDidMount(): void {
         this._svStx  = this._sv.getContext('2d');
-        // this._createSv();
-        // this._deleteDnd = this._setUpDragAndDrop();
+        this._createSv();
+        this._setUpDragAndDrop();
     }
 
     componentWillUnmount(): void {
-        // this._deleteDnd();
+        this._deleteDnd();
+    }
+
+    _setUpDragAndDrop(): void {
+
+    }
+
+    _createSv(): void {
+
     }
 }
