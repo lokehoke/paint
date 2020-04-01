@@ -91,18 +91,6 @@ export class Color {
         hsv: LimitsMin.hsv.getClone(),
     };
 
-    static HSVToRGB(hsv: HSV): RGB {
-        let c: Color = new Color();
-        c.setHSV(hsv);
-        return c.getRGB();
-    }
-
-    static RGBToHSV(rgb: RGB): HSV {
-        let c: Color = new Color();
-        c.setRGB(rgb);
-        return c.getHSV();
-    }
-
     static parseRgbString(rgb: string): RGB {
         rgb = rgb.substr(1, rgb.length - 1);
         if (rgb.length === 3) {
@@ -126,20 +114,14 @@ export class Color {
     static RGBToHEXString(rgb: RGB): string {
         let str: string = '#';
         let array: Array<string> = [rgb.red.toString(16), rgb.green.toString(16), rgb.blue.toString(16)];
-        for (let s in array) {
-            let num: number = +array[s];
-            if (num < 10) {
-                str += '0' + array[s];
-            }
-            else {
-                str += array[s];
-            }
+        for (let s of array) {
+            let num: number = +s;
+            str += (num < 10 ? `0` + s : s);
         }
         return str;
     }
 
-    static _HSVToRGB(hsv: HSV): RGB {
-        let rgb: RGB = new RGB();
+    static HSVToRGB(hsv: HSV): RGB {
         let h: number = hsv.hue;
         let v: number = hsv.brightness * 100;
         let s: number = hsv.saturation * 100;
@@ -158,33 +140,27 @@ export class Color {
 
         switch (hi) {
             case 0:
-                rgb = new RGB(v, vInc, vMin);
-                break;
+                return new RGB(v, vInc, vMin);
 
             case 1:
-                rgb = new RGB(vDec, v, vMin);
-                break;
+                return new RGB(vDec, v, vMin);
 
             case 2:
-                rgb = new RGB(vMin, v, vInc);
-                break;
+                return new RGB(vMin, v, vInc);
 
             case 3:
-                rgb = new RGB(vMin, vDec, v);
-                break;
+                return new RGB(vMin, vDec, v);
 
             case 4:
-                rgb = new RGB(vInc, vMin, v);
-                break;
+                return new RGB(vInc, vMin, v);
 
             case 5:
-                rgb = new RGB(v, vMin, vDec);
-                break;
+                return new RGB(v, vMin, vDec);
         }
-        return rgb;
+        throw new Error("Variable hi has a bad value");
     }
 
-    static _RGBToHSV(rgb: RGB): HSV {
+    static RGBToHSV(rgb: RGB): HSV {
         let hsv: HSV = new HSV();
         let r = rgb.red / 255;
         let g = rgb.green / 255;
@@ -265,11 +241,11 @@ export class Color {
     }
 
     private _HSVToRGB(): void {
-        this._color.rgb = Color._HSVToRGB(this.getHSV());
+        this._color.rgb = Color.HSVToRGB(this.getHSV());
     }
 
     private _RGBToHSV(): void {
-        this._color.hsv = Color._RGBToHSV(this.getRGB());
+        this._color.hsv = Color.RGBToHSV(this.getRGB());
     }
 
     private _colorIsValid(v: HSV | RGB): boolean {

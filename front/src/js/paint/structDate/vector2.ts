@@ -6,16 +6,16 @@ export class Vector2 {
     public y: number;
 
     constructor(x: number = 0.0, y: number = 0.0, accuracy: number = 3) {
-        this.accuracy = accuracy;
         this.x = x;
         this.y = y;
+        this.setAccuracy(accuracy);
     }
 
-    static sub(a: Vector2, b: Vector2) {
+    static sub(a: Vector2, b: Vector2): Vector2 {
         return new Vector2(a.x - b.x, a.y - b.y);
     }
 
-    static sum(a: Vector2, b: Vector2) {
+    static sum(a: Vector2, b: Vector2): Vector2 {
         return new Vector2(a.x + b.x, a.y + b.y);
     }
 
@@ -41,7 +41,12 @@ export class Vector2 {
         return a.isEqual(b);
     }
 
-    setAccuracy(accuracy: number) {
+    setAccuracy(accuracy: number): void {
+        let accuracyRounded: number = Math.floor(accuracy);
+        if (this.accuracy > accuracyRounded) {
+            this.x = parseInt(this.x.toFixed(accuracyRounded), 10);
+            this.y = parseInt(this.y.toFixed(accuracyRounded), 10);
+        }
         this.accuracy = Math.floor(accuracy);
     }
 
@@ -53,7 +58,7 @@ export class Vector2 {
         return this.x === a.x && this.y === a.y;
     }
 
-    sub(a: Vector2) {
+    sub(a: Vector2): Vector2 {
         this.setDimensions(Vector2.sub(this, a));
         if (this.accuracy > a.accuracy) {
             this.accuracy = a.accuracy;
@@ -61,7 +66,7 @@ export class Vector2 {
         return this;
     }
 
-    sum(a: Vector2) {
+    sum(a: Vector2): Vector2 {
         this.setDimensions(Vector2.sum(this, a));
         if (this.accuracy > a.accuracy) {
             this.accuracy = a.accuracy;
@@ -69,7 +74,7 @@ export class Vector2 {
         return this;
     }
 
-    divisionOnVector(a: Vector2, type: string = 'double') {
+    divisionOnVector(a: Vector2, type: string = 'double'): Vector2 {
         this.x /= a.x;
         this.y /= a.y;
         if (this.accuracy > a.accuracy) {
@@ -83,10 +88,9 @@ export class Vector2 {
         return this;
     }
 
-    divisionOnNumber(num: number, type: string = 'double') {
+    divisionOnNumber(num: number, type: string = 'double'): Vector2 {
         this.x /= num;
         this.y /= num;
-        this.accuracy = this.accuracy / num;
         if (type === 'int') {
             this.toInt();
         }
@@ -104,7 +108,7 @@ export class Vector2 {
         return this;
     }
 
-    toInt() {
+    toInt(): Vector2 {
         this.x = Math.floor(this.x);
         this.y = Math.floor(this.y);
         return this;
