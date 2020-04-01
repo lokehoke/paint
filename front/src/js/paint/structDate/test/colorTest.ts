@@ -26,9 +26,9 @@ const colorRGB: Array<RGB> = [
 const colorHSV: Array<HSV> = [
     new HSV(0,   0,     0  ),
     new HSV(0,   0,     1  ),
-    new HSV(40,  0.98, 0.95),
-    new HSV(320, 0.98, 0.95),
-    new HSV(134, 0.92, 0.95),
+    new HSV(40,  0.979, 0.949),
+    new HSV(320, 0.979, 0.949),
+    new HSV(134, 0.921, 0.949),
     new HSV(228, 0.92, 0.98),
 ];
 
@@ -70,14 +70,6 @@ describe('Color test', () => {
     it('rgb to hex string', () => {
         for (let s in colorRGB) {
             expect(Color.RGBToHEXString(colorRGB[s])).to.equal(colorStrings[s]);
-        }
-    });
-
-    it('color to string', () => {
-        for (let s in colorRGB) {
-            let c: Color = new Color();
-            c.setRGB(colorRGB[s]);
-            expect(c.toString()).to.equal(`->RGB ` + c.getRGB().toString() + `\n->HEX ` + c.getRGBHEXString() + `\n->HSV ` + c.getHSV().toString());
         }
     });
 });

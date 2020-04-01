@@ -116,7 +116,7 @@ export class Color {
         let array: Array<string> = [rgb.red.toString(16), rgb.green.toString(16), rgb.blue.toString(16)];
         for (let s of array) {
             let num: number = +s;
-            str += (num < 10 ? `0` + s : s);
+            str += (num < 10 ? `0${s}` : s);
         }
         return str;
     }
@@ -157,7 +157,6 @@ export class Color {
             case 5:
                 return new RGB(v, vMin, vDec);
         }
-        throw new Error("Variable hi has a bad value");
     }
 
     static RGBToHSV(rgb: RGB): HSV {
@@ -190,7 +189,7 @@ export class Color {
 
     constructor(accuracy: number = 3) {
         this.accuracy = accuracy;
-        this.factor   = Math.pow(10, accuracy);
+        this.factor   = 10 ** accuracy;
     }
 
     setHSV(c: HSV): void {
@@ -227,7 +226,7 @@ export class Color {
     }
 	 
 	toString(): string {
-        return `->RGB ` + this._color.rgb.toString() + `\n->HEX ` + this.getRGBHEXString() + `\n->HSV ` +this.getHSV().toString();
+        return `->RGB ${this._color.rgb}\n->HEX ` +  this.getRGBHEXString() + `\n->HSV ${this.getHSV()}`;
     }
 	
     getRGBHEXString(): string {
@@ -241,11 +240,11 @@ export class Color {
     }
 
     private _HSVToRGB(): void {
-        this._color.rgb = Color.HSVToRGB(this.getHSV());
+        this._color.rgb = Color.HSVToRGB(this._color.hsv);
     }
 
     private _RGBToHSV(): void {
-        this._color.hsv = Color.RGBToHSV(this.getRGB());
+        this._color.hsv = Color.RGBToHSV(this._color.rgb);
     }
 
     private _colorIsValid(v: HSV | RGB): boolean {

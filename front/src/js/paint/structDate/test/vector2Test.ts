@@ -108,9 +108,4 @@ describe('Vector2 test', () => {
         v4.toInt();
         expect(v4.isEqual(v5)).to.be.true;
     });
-
-    it('to string', () => {
-        let v1: Vector2 = new Vector2(8, 9);
-        expect(v1.toString()).to.equal('->X 8\n->Y 9\n->Accuracy 3');
-    });
 });
