@@ -17,12 +17,12 @@ $ ./scripts/develop_front.sh
 It is start webpack in watch mode
 
 ## Tests:
-It is start front test:
+It is start front unit test:
 ```bash
 $ ./scripts/run_test_front.sh
 ```
 
-And to start html test:
+And to start html test, need python3 or use any http server
 ```bash
 $ ./scripts/run_html_test.sh
 ```
