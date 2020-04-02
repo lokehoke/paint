@@ -22,7 +22,7 @@ It is start front unit test:
 $ ./scripts/run_test_front.sh
 ```
 
-And to start html test, need python3 or use any http server
+And to start html test, need python3 or use any http server:
 ```bash
 $ ./scripts/run_html_test.sh
 ```
