@@ -38,9 +38,9 @@ export class DragAndDrop {
         return this._deleteDrop;
     }
 
-    private async _as_startAsync() {
+    private async _as_startAsync(): Promise<void> {
         if (this._config.startAsync) {
-            await new Promise(res => setTimeout(() => res(), 0));
+            await new Promise(res => setTimeout(() => res()));
         }
 
         this._item.addEventListener('dragstart', e => false);
@@ -59,9 +59,9 @@ export class DragAndDrop {
 
     @bind
     private _mouseDowning(e: MouseEvent): void {
-
-        let item: HTMLElement = this._item;
-        let path: Array<HTMLElement> = this._makeParentPath(<HTMLElement>e.target);
+        let item  : HTMLElement        = this._item;
+        let target: HTMLElement        = <HTMLElement>e.target;
+        let path  : Array<HTMLElement> = [target, ...this._makeParentPath(target)];
 
         if (this._config.ignoreNoDragAndDrop || !this._issetNoDrop(path)) {
             this._findAbsParent();
@@ -116,9 +116,9 @@ export class DragAndDrop {
     private _findAbsParent(): void {
         let path  : Array<HTMLElement> = this._makeParentPath(this._item);
         let parent: HTMLElement        = path.find((el: HTMLElement) => (
-            el.style.position === 'absolute'||
-            el.style.position === 'relative'||
-            el.style.position === 'fixed'
+               el.style.position === 'absolute'
+            || el.style.position === 'relative'
+            || el.style.position === 'fixed'
         ));
 
         parent = parent || document.body;
@@ -163,13 +163,9 @@ export class DragAndDrop {
     }
 
     private _issetNoDrop(path: Array<HTMLElement>): boolean {
-        let isset: boolean = false;
-        path.slice(0, -6).forEach((el: HTMLElement) => {
-            if (el.dataset.dragAndDrop === 'noDragAndDrop') {
-                isset = true;
-            }
+        return path.some((el: HTMLElement) => {
+            return el.dataset.dragAndDrop === 'noDragAndDrop';
         });
-        return isset;
     }
 
     private _movingWithPiece(e: MouseEvent, setUp: boolean = false): void {
@@ -261,7 +257,6 @@ export class DragAndDrop {
         }
 
         path.pop();
-        console.log(path);
         return path;
     }
 }
