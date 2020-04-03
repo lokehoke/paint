@@ -52,8 +52,8 @@ export class BrushMode implements IModeType {
         }
 
         ctx.lineWidth   = this._context.currentLineThickness;
-        ctx.fillStyle   = this._context.currentColor.getRGBString();
-        ctx.strokeStyle = this._context.currentColor.getRGBString();
+        ctx.fillStyle   = this._context.currentColor.getRGBHexString();
+        ctx.strokeStyle = this._context.currentColor.getRGBHexString();
         ctx.lineCap     = 'round';
 
         document.addEventListener('mousemove', this._moving);

@@ -12,7 +12,7 @@ export interface IRootState {
 
 let connector = connect(
     (state: IRootState) => ({
-        color: state.instruments.currentColor.getRGBString(),
+        color: state.instruments.currentColor.getRGBHexString(),
     })
 );
 

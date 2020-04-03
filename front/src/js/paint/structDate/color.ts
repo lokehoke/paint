@@ -223,15 +223,15 @@ export class Color {
     getRGB(): RGB {
         return this._color.rgb.getClone();
     }
-	 
+
 	toString(): string {
         return`
 ->RGB ${this._color.rgb}
-->HEX ${ this.getRGBHEXString()}
--> HSV ${ this.getHSV()}`;
+->HEX ${this.getRGBHexString()}
+->HSV ${this.getHSV()}`;
     }
-	
-    getRGBHEXString(): string {
+
+    getRGBHexString(): string {
         return Color.RGBToHEXString(this._color.rgb);
     }
 

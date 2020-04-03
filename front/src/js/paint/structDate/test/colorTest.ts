@@ -70,7 +70,10 @@ describe('Color test', () => {
 
     it('rgb to hex string', () => {
         for (let s in colorRGB) {
+            let c = new Color();
+            c.setRGB(colorRGB[s]);
             expect(Color.RGBToHEXString(colorRGB[s])).to.equal(colorStrings[s]);
+            expect(c.getRGBHexString()).to.equal(colorStrings[s]);
         }
     });
 });
