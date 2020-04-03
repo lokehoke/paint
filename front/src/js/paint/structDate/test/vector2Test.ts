@@ -74,10 +74,20 @@ describe('Vector2 test', () => {
 
         let rt: Vector2 = new Vector2(2, 4);
         expect(Vector2.divisionOnVector(v1, v2).isEqual(rt)).to.be.true;
-
         let r: Vector2  = v1.divisionOnVector(v2);
         expect(r.x).to.equal(2);
         expect(r.y).to.equal(4);
+    });
+
+    it('scalar multiplication method', () => {
+        let v1: Vector2 = new Vector2(4, 4);
+        let v2: Vector2 = new Vector2(5, 5);
+
+        let rt: number = 40
+        expect(Vector2.scalarMultiplication(v1, v2) == rt).to.be.true;
+
+        let r: number = v1.scalarMultiplication(v2);
+        expect(r).to.equal(40)
     });
 
     it('int mode', () => {

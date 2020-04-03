@@ -9,11 +9,11 @@ export class Vector2 {
         this.y = y;
     }
 
-    static sub(a: Vector2, b: Vector2) {
+    static sub(a: Vector2, b: Vector2): Vector2 {
         return new Vector2(a.x - b.x, a.y - b.y);
     }
 
-    static sum(a: Vector2, b: Vector2) {
+    static sum(a: Vector2, b: Vector2): Vector2 {
         return new Vector2(a.x + b.x, a.y + b.y);
     }
 
@@ -31,6 +31,10 @@ export class Vector2 {
         return t1.divisionOnVector(t2, type);
     }
 
+    static scalarMultiplication(a: Vector2, b: Vector2): number {
+        return a.x * b.x + a.y * b.y;
+    }
+
     static isEqualVectors(a: Vector2, b: Vector2): boolean {
         return a.isEqual(b);
     }
@@ -39,17 +43,17 @@ export class Vector2 {
         return this.x === a.x && this.y === a.y;
     }
 
-    sub(a: Vector2) {
+    sub(a: Vector2): Vector2 {
         this.setDimensions(Vector2.sub(this, a));
         return this;
     }
 
-    sum(a: Vector2) {
+    sum(a: Vector2): Vector2 {
         this.setDimensions(Vector2.sum(this, a));
         return this;
     }
 
-    divisionOnVector(a: Vector2, type: string = 'double') {
+    divisionOnVector(a: Vector2, type: string = 'double'): Vector2 {
         this.x /= a.x;
         this.y /= a.y;
 
@@ -60,10 +64,9 @@ export class Vector2 {
         return this;
     }
 
-    divisionOnNumber(num: number, type: string = 'double') {
+    divisionOnNumber(num: number, type: string = 'double'): Vector2 {
         this.x /= num;
         this.y /= num;
-
         if (type === 'int') {
             this.toInt();
         }
@@ -71,13 +74,24 @@ export class Vector2 {
         return this;
     }
 
+    scalarMultiplication(a: Vector2): number {
+        return this.x * a.x + this.y * a.y;
+    }
+
     setDimensions(a: Vector2) {
         this.x = a.x;
         this.y = a.y;
+        return this;
     }
 
-    toInt(): void {
+    toInt(): Vector2 {
         this.x = Math.floor(this.x);
         this.y = Math.floor(this.y);
+        return this;
+    }
+
+    toString(): string {
+        return `->X ${this.x}
+->Y ${this.y}`;
     }
 }
