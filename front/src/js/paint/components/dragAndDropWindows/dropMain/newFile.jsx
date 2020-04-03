@@ -15,7 +15,7 @@ class NewFile extends React.Component {
         this._clickNewFile = this._clickNewFile.bind(this)
         this._getValue     = this._getValue.bind(this);
     }
-    
+
     render() {
         return (
             <div className="newFile">
@@ -41,7 +41,7 @@ class NewFile extends React.Component {
 
         // document.addEventListener('keyup', e => { // TODO need active dropWindow
         //     console.log(e);
-            
+
         //     if (e.keyCode === 13) {
         //         return this._clickNewFile(e);
         //     }
@@ -56,7 +56,7 @@ class NewFile extends React.Component {
 
         this.props.deleteThisTab(this.props.id);
         this.props.createNew(size, title);
-        
+
         return false;
     }
 

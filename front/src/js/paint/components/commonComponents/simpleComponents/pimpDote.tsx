@@ -26,7 +26,6 @@ export class PimpDote extends React.Component<IProps, {}> {
 
     constructor(props: IProps) {
         super(props);
-
         this._style = Object.assign({}, style, this.props.style);
     }
 

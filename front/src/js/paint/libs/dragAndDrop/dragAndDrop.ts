@@ -13,7 +13,7 @@ interface ISteps {
     max    : Vector2;
 }
 
-export interface ITransferDate {
+export interface IExportDate {
     currentStep: number;
 }
 
@@ -24,10 +24,12 @@ export class DragAndDrop {
     private _shiftOnItemPx  : Vector2               = new Vector2();
     private _vectorMinParent: Vector2               = new Vector2();
     private _vectorMaxParent: Vector2               = new Vector2();
-    private _steps          : ISteps                = {current: new Vector2(), max: new Vector2()};
+    private _steps          : ISteps                = {current: new Vector2(),
+                                                       max    : new Vector2(),
+                                                       };
 
     constructor(item: HTMLElement = null, config: ConfigDragAndDropType = null) {
-        this._item   = item;
+        this._item = item;
         this._makeSetting(config);
     }
 
@@ -36,9 +38,9 @@ export class DragAndDrop {
         return this._deleteDrop;
     }
 
-    private async _as_startAsync() {
+    private async _as_startAsync(): Promise<void> {
         if (this._config.startAsync) {
-            await new Promise(res => setTimeout(() => res(), 0));
+            await new Promise(res => setTimeout(() => res()));
         }
 
         this._item.addEventListener('dragstart', e => false);
@@ -57,10 +59,11 @@ export class DragAndDrop {
 
     @bind
     private _mouseDowning(e: MouseEvent): void {
+        let item  : HTMLElement        = this._item;
+        let target: HTMLElement        = <HTMLElement>e.target;
+        let path  : Array<HTMLElement> = [target, ...this._makeParentPath(target)];
 
-        let item: HTMLElement = this._item;
-
-        if (this._config.ignoreNoDragAndDrop || !this._issetNoDrop(e.path)) { //TODO WoRK only in chrome
+        if (this._config.ignoreNoDragAndDrop || !this._issetNoDrop(path)) {
             this._findAbsParent();
             let coords = this._getVector(item);
 
@@ -111,11 +114,11 @@ export class DragAndDrop {
     }
 
     private _findAbsParent(): void {
-        let path  : Array<HTMLElement> = this._makeParentPath();
+        let path  : Array<HTMLElement> = this._makeParentPath(this._item);
         let parent: HTMLElement        = path.find((el: HTMLElement) => (
-            el.style.position === 'absolute'||
-            el.style.position === 'relative'||
-            el.style.position === 'fixed'
+               el.style.position === 'absolute'
+            || el.style.position === 'relative'
+            || el.style.position === 'fixed'
         ));
 
         parent = parent || document.body;
@@ -160,13 +163,9 @@ export class DragAndDrop {
     }
 
     private _issetNoDrop(path: Array<HTMLElement>): boolean {
-        let isset: boolean = false;
-        path.slice(0, -6).forEach((el: HTMLElement) => {
-            if (el.dataset.dragAndDrop === 'noDragAndDrop') {
-                isset = true;
-            }
+        return path.some((el: HTMLElement) => {
+            return el.dataset.dragAndDrop === 'noDragAndDrop';
         });
-        return isset;
     }
 
     private _movingWithPiece(e: MouseEvent, setUp: boolean = false): void {
@@ -208,7 +207,7 @@ export class DragAndDrop {
             this._steps.current[dominateAxis] = newStep;
         }
 
-        let transferData: ITransferDate = {
+        let transferData: IExportDate = {
             currentStep: (this._steps.current[dominateAxis] * this._config.piece.step[dominateAxis]) + this._config.piece.min[dominateAxis]
         }
 
@@ -249,9 +248,9 @@ export class DragAndDrop {
         this._config = defaults;
     }
 
-    private _makeParentPath(): Array<HTMLElement> {
+    private _makeParentPath(item: HTMLElement): Array<HTMLElement> {
         let path   : Array<HTMLElement> = [];
-        let curItem: HTMLElement        = this._item;
+        let curItem: HTMLElement        = item;
 
         while(curItem.parentNode) {
             path.push(curItem = curItem.parentNode as HTMLElement);

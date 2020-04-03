@@ -15,7 +15,7 @@ let def: IState = {
     own: [],
 };
 
-export const getTabs = () => function (state: IState = def, action: TabActionType) : IState {
+export const tabs = (state: IState = def, action: TabActionType) : IState => {
     switch (action.type) {
         case NEW_TAB:
             return Object.assign({}, state, {

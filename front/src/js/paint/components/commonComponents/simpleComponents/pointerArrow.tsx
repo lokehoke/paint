@@ -21,7 +21,6 @@ let style: css.Properties = {
     position: 'absolute',
 };
 
-
 export class PointerArrow extends React.Component<IProps, {}> {
     static defaultProps: IProps = {
         style,
@@ -31,7 +30,7 @@ export class PointerArrow extends React.Component<IProps, {}> {
     private _arrow     : css.Properties;
     private _rightArrow: css.Properties;
     private _leftArrow : css.Properties;
-    private _style     : css.Properties = style;
+    private _style     : css.Properties = Object.assign({}, style);
     private _rectangle : css.Properties;
 
     private _pointer   : HTMLDivElement;
