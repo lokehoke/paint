@@ -37,6 +37,7 @@ describe('Color test', () => {
         for (let s in colorStrings) {
             let c1: string = colorStrings[s];
             let rgb1: RGB = Color.parseRgbString(c1);
+            expect(rgb1).to.deep.equal(colorRGB[s]);
         }
     });
 
