@@ -84,7 +84,7 @@ describe('Vector2 test', () => {
         let v2: Vector2 = new Vector2(5, 5);
 
         let rt: number = 40
-        expect(Vector2.scalarMultiplication(v1, v2) == rt).to.be.true;
+        expect(Vector2.dotProduct(v1, v2) == rt).to.be.true;
 
         let r: number = v1.scalarMultiplication(v2);
         expect(r).to.equal(40)

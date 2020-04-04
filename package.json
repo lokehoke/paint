@@ -6,6 +6,14 @@
   "repository": "git@github.com:lokehoke/paint.git",
   "author": "lokehoke <ibymif2000@yandex.ru>",
   "license": "GPL-3.0",
+  "scripts": {
+    "init": "./scripts/init.sh",
+    "develop_front": "./scripts/develop_front.sh",
+    "check_coverage": "./scripts/check_coverage.sh",
+    "front_unit_test": "./scripts/run_test_front.sh",
+    "start_html_test": "./scripts/run_html_test.sh",
+    "develop_html_test": "./scripts/develop_html_test.sh"
+  },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
@@ -27,6 +35,7 @@
     "chai": "^4.2.0",
     "css-loader": "^3.4.2",
     "csstype": "^2.6.9",
+    "http-server": "^0.12.1",
     "mocha": "^7.1.1",
     "node-sass": "^4.13.1",
     "nyc": "^15.0.0",

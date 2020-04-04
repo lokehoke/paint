@@ -3,6 +3,13 @@
 import { BrushMode } from './own/brush';
 import { IModeContext } from '../../reducers/ownReducers/instruments'
 
+export class ModeError extends Error {
+    constructor(message: string) {
+        super(message);
+        this.name = "ModeError";
+    }
+}
+
 export enum EInstrumentMode {
     brush = 'brush',
 }
@@ -22,6 +29,8 @@ export class Modes {
         switch (mode) {
             case EInstrumentMode.brush:
                 return new BrushMode();
+            default:
+                throw new ModeError(`unknown mode: ${mode}`);
         }
     }
 }

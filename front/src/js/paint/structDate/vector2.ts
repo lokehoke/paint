@@ -31,7 +31,7 @@ export class Vector2 {
         return t1.divisionOnVector(t2, type);
     }
 
-    static scalarMultiplication(a: Vector2, b: Vector2): number {
+    static dotProduct(a: Vector2, b: Vector2): number {
         return a.x * b.x + a.y * b.y;
     }
 

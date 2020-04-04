@@ -22,22 +22,25 @@ export const def: IState = {
     ],
 };
 
-export const instruments = (state: IState = def, action: InstrumentsActionType) => {
+export const instruments = (state: IState = def, action: InstrumentsActionType): IState => {
     switch (action.type) {
         case CHANGE_LINE_THICKNESS:
-            return Object.assign({}, state, {
+            return {
+                ...state,
                 currentLineThickness: action.currentLineThickness,
-            });
+            };
 
         case CHANGE_ACTIVE_INSTRUMENTS:
-            return Object.assign({}, state, {
+            return {
+                ...state,
                 activeInstrument: action.activeInstrument,
-            });
+            };
 
         case CHANGE_COLOR:
-            return Object.assign({}, state, {
+            return {
+                ...state,
                 currentColor: action.currentColor,
-            });
+            };
 
         default:
             return state;

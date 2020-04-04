@@ -15,7 +15,7 @@ let def: IState = {
     own: [],
 };
 
-export const openedWindows = (state: IState = def, action: WindowActionType) => {
+export const openedWindows = (state: IState = def, action: WindowActionType): IState => {
     switch (action.type) {
         case OPEN_WINDOW:
             if (state.own.some(el => el.view === action.view)) {
@@ -40,10 +40,12 @@ export const openedWindows = (state: IState = def, action: WindowActionType) => 
                     activeWindow = -1;
                 }
             }
-            return Object.assign({}, state, {
+
+            return {
+                ...state,
                 activeWindow,
                 own,
-            });
+            };
 
         default:
             return state;

@@ -1,29 +1,34 @@
 # paint
 simple paint
 
-## To Local start open public/index.html 
+## To Local start open public/index.html
 
 ## To start all app
 ```bash
-$ ./init.sh
+$ yarn run init
 ```
 It is update bundle.
 
 
 ## To develop front
 ```bash
-$ ./scripts/develop_front.sh
+$ yarn run develop_front
 ```
 It is start webpack in watch mode
 
 ## Tests:
 It is start front unit test:
 ```bash
-$ ./scripts/run_test_front.sh
+$ yarn run front_unit_test
 ```
 
-And to start html test, need python3 or use any http server:
+And to start html test:
 ```bash
-$ ./scripts/run_html_test.sh
+$ yarn run start_html_test
 ```
-After open http://localhost:8000/front/src/js/paint/ctx/testHTML/public/test.html
+It is start test on local server http://localhost:8000
+If you want to develop with test start:
+```bash
+$ yarn run develop_html_test
+```
+It is start webpack in watch mode
