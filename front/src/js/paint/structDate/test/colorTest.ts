@@ -27,20 +27,20 @@ const colorHSV: Array<HSV> = [
 
 describe('Color test', () => {
     it('parse rgb string', () => {
-        for (let s in colorStrings) {
-            let c1: string = colorStrings[s];
-            let rgb1: RGB = Color.parseRgbString(c1);
+        for (const s in colorStrings) {
+            const c1 = colorStrings[s];
+            const rgb1 = Color.parseRgbString(c1);
             expect(rgb1).to.deep.equal(colorRGB[s]);
         }
     });
 
     it('rgb to hsv', () => {
-        let c: Color = new Color();
+        const c = new Color();
 
-        for (let s in colorStrings) {
-            let str: string = colorStrings[s];
-            let hsv: HSV = colorHSV[s].getClone();
-            let rgb: RGB = colorRGB[s].getClone();
+        for (const s in colorStrings) {
+            const str: string = colorStrings[s];
+            const hsv: HSV = colorHSV[s].getClone();
+            const rgb: RGB = colorRGB[s].getClone();
 
             c.setRGBString(str);
             expect(c.getHSV()).to.deep.equal(hsv);
@@ -50,11 +50,11 @@ describe('Color test', () => {
     });
 
     it('hsv to rgb', () => {
-        let c: Color = new Color();
+        const c: Color = new Color();
 
-        for (let s in colorStrings) {
-            let hsv: HSV = colorHSV[s].getClone();
-            let rgb: RGB = colorRGB[s].getClone();
+        for (const s in colorStrings) {
+            const hsv: HSV = colorHSV[s].getClone();
+            const rgb: RGB = colorRGB[s].getClone();
 
             c.setHSV(hsv);
             expect(c.getRGB()).to.deep.equal(rgb);
@@ -62,8 +62,8 @@ describe('Color test', () => {
     });
 
     it('rgb to hex string', () => {
-        for (let s in colorRGB) {
-            let c = new Color();
+        for (const s in colorRGB) {
+            const c = new Color();
             c.setRGB(colorRGB[s]);
             expect(Color.RGBToHEXString(colorRGB[s])).to.equal(colorStrings[s]);
             expect(c.getRGBHexString()).to.equal(colorStrings[s]);

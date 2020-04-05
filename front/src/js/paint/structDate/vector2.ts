@@ -74,7 +74,7 @@ export class Vector2 {
         return this;
     }
 
-    scalarMultiplication(a: Vector2): number {
+    dotProduct(a: Vector2): number {
         return this.x * a.x + this.y * a.y;
     }
 
