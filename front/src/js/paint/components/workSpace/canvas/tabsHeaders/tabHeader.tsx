@@ -10,26 +10,26 @@ import { InfoTab } from '../../../../structDate/infoTab';
 
 interface IRootState {
     tabs: {
-        own: Array<InfoTab>,
-        activeTab: number,
+        own: Array<InfoTab>;
+        activeTab: number;
     };
-};
-
-interface IProps {
-    tabId: number,
 }
 
-let connector = connect(
+interface IProps {
+    tabId: number;
+}
+
+const connector = connect(
     (state: IRootState, props: IProps) => ({
         tab: state.tabs.own.find((el: InfoTab) => el.id === props.tabId),
         active: state.tabs.activeTab,
     }),
-    dispatch => ({
+    (dispatch) => ({
         closeTab: (id: number) => dispatch(closeTabAction(id)),
-    })
+    }),
 );
 
-type PropsReduxType = ConnectedProps<typeof connector>
+type PropsReduxType = ConnectedProps<typeof connector>;
 export type PropsType = PropsReduxType & IProps;
 
 class Tab extends React.Component {
@@ -46,9 +46,9 @@ class Tab extends React.Component {
         }
 
         return (
-            <div className={`tab ${active}`} data-id={this.props.tabId} ref={tab => this._tab = tab}>
+            <div className={`tab ${active}`} data-id={this.props.tabId} ref={(tab) => (this._tab = tab)}>
                 {`${this.props.tab.title} ${this.props.tab.size.x} : ${this.props.tab.size.y}`}
-                <div className="__exitIcon" ref={exit => this._exitBtn = exit}>
+                <div className='__exitIcon' ref={(exit) => (this._exitBtn = exit)}>
                     <FontAwesomeIcon icon={faTimesCircle} />
                 </div>
             </div>
@@ -56,7 +56,7 @@ class Tab extends React.Component {
     }
 
     componentDidMount() {
-        this._exitBtn.addEventListener('click', e => {
+        this._exitBtn.addEventListener('click', (e) => {
             e.preventDefault();
             this.props.closeTab(this.props.tab.id);
 

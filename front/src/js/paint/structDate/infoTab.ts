@@ -8,8 +8,8 @@ export class InfoTab {
     public readonly size: Vector2;
 
     constructor(id: number, title: string, size: Vector2) {
-        this.id    = id;
+        this.id = id;
         this.title = title;
-        this.size  = size;
+        this.size = size;
     }
 }

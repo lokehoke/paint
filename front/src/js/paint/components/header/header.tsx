@@ -2,13 +2,13 @@
 
 import React from 'react';
 
-import File from './own/file.jsx';
-import Windows from './own/windows.jsx';
+import File from './own/file';
+import Windows from './own/windows';
 
 class Header extends React.Component {
-    render() {
+    render(): React.ReactNode {
         return (
-            <header className="header" ref={h => this.header = h}>
+            <header className='header'>
                 <File />
                 <Windows />
             </header>

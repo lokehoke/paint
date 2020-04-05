@@ -5,32 +5,32 @@
 
 export class ColorValidationError extends Error {
     constructor(message: string) {
-      super(message);
-      this.name = "ColorValidationError";
+        super(message);
+        this.name = 'ColorValidationError';
     }
 }
 
 export class ColorParseError extends Error {
     constructor(message: string) {
-      super(message);
-      this.name = "ColorParseError";
+        super(message);
+        this.name = 'ColorParseError';
     }
 }
 
-export enum ETypeColorModel{
+export enum ETypeColorModel {
     RGB = 'rgb',
     HSV = 'hsv',
 }
 
 export class HSV {
-    hue       : number = 0; /* 0...359 */
-    saturation: number = 0; /* 0...1   */
-    brightness: number = 0; /* 0...1   */
+    hue = 0; /* 0...359 */
+    saturation = 0; /* 0...1   */
+    brightness = 0; /* 0...1   */
 
     readonly type: ETypeColorModel = ETypeColorModel.HSV;
 
-    constructor(h: number = 0, s: number = 0, v: number = 0) {
-        this.hue        = h;
+    constructor(h = 0, s = 0, v = 0) {
+        this.hue = h;
         this.saturation = s;
         this.brightness = v;
     }
@@ -45,16 +45,16 @@ export class HSV {
 }
 
 export class RGB {
-    red  : number = 0; /* 0...255 */
-    green: number = 0; /* 0...255 */
-    blue : number = 0; /* 0...255 */
+    red = 0; /* 0...255 */
+    green = 0; /* 0...255 */
+    blue = 0; /* 0...255 */
 
     readonly type: ETypeColorModel = ETypeColorModel.RGB;
 
-    constructor(r: number = 0, g: number = 0, b: number = 0) {
-        this.red   = r;
+    constructor(r = 0, g = 0, b = 0) {
+        this.red = r;
         this.green = g;
-        this.blue  = b;
+        this.blue = b;
     }
 
     toString(): string {
@@ -66,11 +66,10 @@ export class RGB {
     }
 }
 
-
 export interface IColor {
-    hsv: HSV,
-    rgb: RGB,
-};
+    hsv: HSV;
+    rgb: RGB;
+}
 
 export const LimitsMin: IColor = {
     rgb: new RGB(0, 0, 0),
@@ -84,7 +83,7 @@ export const LimitsMax: IColor = {
 
 export class Color {
     readonly accuracy: number = 3;
-    readonly factor  : number = 100;
+    readonly factor: number = 100;
 
     private _color: IColor = {
         rgb: LimitsMin.rgb.getClone(),
@@ -111,24 +110,24 @@ export class Color {
     }
 
     static RGBToHEXString(rgb: RGB): string {
-        let str: string = '#';
-        let array: Array<string> = [rgb.red.toString(16), rgb.green.toString(16), rgb.blue.toString(16)];
-        for (let s of array) {
-            let num: number = +s;
-            str += (num < 10 ? `0${s}` : s);
+        let str = '#';
+        const array: Array<string> = [rgb.red.toString(16), rgb.green.toString(16), rgb.blue.toString(16)];
+        for (const s of array) {
+            const num: number = +s;
+            str += num < 10 ? `0${s}` : s;
         }
         return str;
     }
 
     static HSVToRGB(hsv: HSV): RGB {
-        let h: number = hsv.hue;
+        const h: number = hsv.hue;
         let v: number = hsv.brightness * 100;
-        let s: number = hsv.saturation * 100;
+        const s: number = hsv.saturation * 100;
 
-        let hi: number = Math.floor(h / 60) % 6;
+        const hi: number = Math.floor(h / 60) % 6;
 
-        let vMin: number = (100 - s) * v / 100;
-        let a: number = (v - vMin) * (h % 60) / 60;
+        let vMin: number = ((100 - s) * v) / 100;
+        const a: number = ((v - vMin) * (h % 60)) / 60;
         let vInc: number = vMin + a;
         let vDec: number = v - a;
 
@@ -159,36 +158,36 @@ export class Color {
     }
 
     static RGBToHSV(rgb: RGB): HSV {
-        let hsv: HSV = new HSV();
-        let r = rgb.red / 255;
-        let g = rgb.green / 255;
-        let b = rgb.blue / 255;
+        const hsv: HSV = new HSV();
+        const r = rgb.red / 255;
+        const g = rgb.green / 255;
+        const b = rgb.blue / 255;
 
-        let max: number = Math.max(r, g, b);
-        let min: number = Math.min(r, g, b);
+        const max: number = Math.max(r, g, b);
+        const min: number = Math.min(r, g, b);
 
         hsv.brightness = max;
-        hsv.saturation = (max === 0 ? 0 : 1 - (max === 0 ? 0 : min / max));
+        hsv.saturation = max === 0 ? 0 : 1 - (max === 0 ? 0 : min / max);
 
-        let mm: number = max - min;
+        const mm: number = max - min;
 
         if (max === min) {
             hsv.hue = 0;
         } else if (max === r && g >= b) {
-            hsv.hue = 60 * (g - b) / mm;
+            hsv.hue = (60 * (g - b)) / mm;
         } else if (max === r && g < b) {
-            hsv.hue = 60 * (g - b) / mm + 360;
+            hsv.hue = (60 * (g - b)) / mm + 360;
         } else if (max === g) {
-            hsv.hue = 60 * (b - r) / mm + 120;
+            hsv.hue = (60 * (b - r)) / mm + 120;
         } else if (max === b) {
-            hsv.hue = 60 * (r - g) / mm + 240;
+            hsv.hue = (60 * (r - g)) / mm + 240;
         }
         return hsv;
     }
 
-    constructor(accuracy: number = 3) {
+    constructor(accuracy = 3) {
         this.accuracy = accuracy;
-        this.factor   = 10 ** accuracy;
+        this.factor = 10 ** accuracy;
     }
 
     setHSV(c: HSV): void {
@@ -206,7 +205,6 @@ export class Color {
             this._color.rgb = c;
             this._RGBToHSV();
             this._roundAll();
-
         } else {
             throw new ColorValidationError(`RGB is invalid: ${c}`);
         }
@@ -224,8 +222,8 @@ export class Color {
         return this._color.rgb.getClone();
     }
 
-	toString(): string {
-        return`
+    toString(): string {
+        return `
 ->RGB ${this._color.rgb}
 ->HEX ${this.getRGBHexString()}
 ->HSV ${this.getHSV()}`;
@@ -236,7 +234,7 @@ export class Color {
     }
 
     getDeepClone(): Color {
-        let color: Color = new Color(this.accuracy);
+        const color: Color = new Color(this.accuracy);
         color.setHSV(this._color.hsv);
         return color;
     }
@@ -250,9 +248,9 @@ export class Color {
     }
 
     private _colorIsValid(v: HSV | RGB): boolean {
-        let type: ETypeColorModel = v.type;
+        const type: ETypeColorModel = v.type;
 
-        for (let key in v) {
+        for (const key in v) {
             if (v[key] > LimitsMax[type][key] || v[key] < LimitsMin[type][key]) {
                 return false;
             }
@@ -262,14 +260,14 @@ export class Color {
     }
 
     private _roundAll(): void {
-        let a: number = this.factor;
+        const a: number = this.factor;
 
-        this._color.hsv.hue        = Math.round(this._color.hsv.hue);
+        this._color.hsv.hue = Math.round(this._color.hsv.hue);
         this._color.hsv.saturation = Math.round(this._color.hsv.saturation * a) / a;
         this._color.hsv.brightness = Math.round(this._color.hsv.brightness * a) / a;
 
-        this._color.rgb.red   = Math.round(this._color.rgb.red);
+        this._color.rgb.red = Math.round(this._color.rgb.red);
         this._color.rgb.green = Math.round(this._color.rgb.green);
-        this._color.rgb.blue  = Math.round(this._color.rgb.blue);
+        this._color.rgb.blue = Math.round(this._color.rgb.blue);
     }
 }

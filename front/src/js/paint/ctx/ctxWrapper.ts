@@ -2,33 +2,33 @@
 
 import { EBlackAndWhiteMode, BlackAndWhiteTransducer } from './algorithms/blackAndWhite';
 import { ERightAngle, RotateTransducers } from './algorithms/rotate';
-import { EInstrumentMode, IModeType, Modes } from './drawingModes/modes';
-import { IModeContext } from '../reducers/ownReducers/instruments'
+import { IModeType, Modes } from './drawingModes/modes';
+import { IModeContext } from '../reducers/ownReducers/instruments';
 
 export class CtxWrapperAlreadyActive extends Error {
     constructor(message: string) {
-      super(message);
-      this.name = "CtxWrapperAlreadyActive";
+        super(message);
+        this.name = 'CtxWrapperAlreadyActive';
     }
 }
 
 export class CtxWrapperNoActive extends Error {
     constructor(message: string) {
-      super(message);
-      this.name = "CtxWrapperNoActive";
+        super(message);
+        this.name = 'CtxWrapperNoActive';
     }
 }
 
 export class CtxWrapper {
-    private _ctx   : CanvasRenderingContext2D;
+    private _ctx: CanvasRenderingContext2D;
     private _height: number;
-    private _width : number;
-    private _data  : ImageData;
+    private _width: number;
+    private _data: ImageData;
 
-    private _mode       : IModeType;
+    private _mode: IModeType;
     private _modeContext: IModeContext;
 
-    private _active: boolean = false;
+    private _active = false;
 
     constructor(canvas: HTMLCanvasElement, modeContext: IModeContext) {
         this._ctx = canvas.getContext('2d');
@@ -40,7 +40,7 @@ export class CtxWrapper {
         this._mode.updateContext(this._modeContext);
     }
 
-    isActive() {
+    isActive(): boolean {
         return this._active;
     }
 
@@ -69,24 +69,24 @@ export class CtxWrapper {
         this._mode.updateContext(modeContext);
     }
 
-    async as_toBlackAndWhite(mode: EBlackAndWhiteMode = EBlackAndWhiteMode.average): Promise<CtxWrapper> {
-        await BlackAndWhiteTransducer.as_do(this._data, mode);
+    async toBlackAndWhiteAsync(mode: EBlackAndWhiteMode = EBlackAndWhiteMode.average): Promise<CtxWrapper> {
+        await BlackAndWhiteTransducer.do(this._data, mode);
         this._ctx.putImageData(this._data, 0, 0);
         return this;
     }
 
-    rotateRightAngle(angle: ERightAngle): CtxWrapper { //TODO
+    rotateRightAngle(angle: ERightAngle): CtxWrapper {
+        //TODO
         if (angle == ERightAngle.an0 || angle == ERightAngle.an180) {
-
         } else {
             [this._height, this._width] = [this._width, this._height];
             RotateTransducers.do(this._data, angle);
             this._data = new ImageData(this._data.data, this._width, this._height);
             this._ctx.canvas.height = this._height;
-            this._ctx.canvas.width  = this._width;
+            this._ctx.canvas.width = this._width;
             this._ctx.putImageData(this._data, 0, 0);
         }
 
         return this;
     }
-};
+}

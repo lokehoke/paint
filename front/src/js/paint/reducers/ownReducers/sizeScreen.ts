@@ -3,9 +3,9 @@
 import { Vector2 } from '../../structDate/vector2';
 import { SizeScreenActionType, CHANGE_SIZE_SCREEN } from '../../actions/sizeScreenActions';
 
-let def: Vector2 = new Vector2(window.innerHeight, window.innerWidth);
+const def: Vector2 = new Vector2(window.innerHeight, window.innerWidth);
 
-export const sizeScreen = (state: Vector2 = def, action: SizeScreenActionType) : Vector2 => {
+export const sizeScreen = (state: Vector2 = def, action: SizeScreenActionType): Vector2 => {
     switch (action.type) {
         case CHANGE_SIZE_SCREEN:
             return action.size;

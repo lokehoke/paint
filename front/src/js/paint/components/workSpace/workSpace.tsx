@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import Instruments from './instruments/instruments'
+import Instruments from './instruments/instruments';
 import ListTabsHeader from './canvas/tabsHeaders/listTabsHeader';
 import TabsWrapper from './canvas/tabsWrapper';
 

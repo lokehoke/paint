@@ -10,30 +10,31 @@ import { Color } from '../../../structDate/color';
 
 interface IRootState {
     instruments: {
-        currentColor: Color,
+        currentColor: Color;
     };
-};
-
-let connector = connect(
-    (state: IRootState) => ({
-        currentColor: state.instruments.currentColor,
-    }), dispatch => ({
-        changeColor: (c: Color) => dispatch(changeColorAction(c)),
-    })
-);
-
-type PropsReduxType = ConnectedProps<typeof connector>
-export type PropsType = PropsReduxType & {
-    id: number,
 }
 
-class Palette extends React.Component {
+const connector = connect(
+    (state: IRootState) => ({
+        currentColor: state.instruments.currentColor,
+    }),
+    (dispatch) => ({
+        changeColor: (c: Color): void => {
+            dispatch(changeColorAction(c));
+        },
+    }),
+);
+
+type PropsReduxType = ConnectedProps<typeof connector>;
+export type PropsType = PropsReduxType & {
+    id: number;
+};
+
+class Palette extends React.Component<PropsType> {
     props: PropsType;
 
-    render() { // TODO random digits
-        return (
-            <PaletteBasic color={this.props.currentColor} changing={this._changeColor} />
-        );
+    render(): React.ReactNode {
+        return <PaletteBasic color={this.props.currentColor} changing={this._changeColor} />;
     }
 
     @bind

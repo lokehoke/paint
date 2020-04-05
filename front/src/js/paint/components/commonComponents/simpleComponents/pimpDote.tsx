@@ -3,7 +3,7 @@
 import React, { createRef } from 'react';
 import css from 'csstype';
 
-let style: css.Properties = {
+const style: css.Properties = {
     display: 'flex',
     height: '20px',
     width: '20px',
@@ -30,9 +30,7 @@ export class PimpDote extends React.Component<IProps, {}> {
     }
 
     render() {
-        return (
-            <div style={this._style} ref={(d: HTMLDivElement) => this._dote = d} />
-        );
+        return <div style={this._style} ref={(d: HTMLDivElement) => (this._dote = d)} />;
     }
 
     getDom(): HTMLDivElement {

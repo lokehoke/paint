@@ -1,6 +1,6 @@
 'use strict';
 
-export enum View {
+export enum EView {
     newFile,
     basicInstrument,
     palette,
@@ -9,21 +9,21 @@ export enum View {
 export class WindowClass {
     public readonly id: number;
     public readonly title: string;
-    public readonly view: View;
+    public readonly view: EView;
 
-    constructor(id: number, view: View) {
+    constructor(id: number, view: EView) {
         this.id = id;
         this.view = view;
         this.title = this._getTitle(view);
     }
 
-    private _getTitle(view: View): string {
+    private _getTitle(view: EView): string {
         switch (view) {
-            case View.newFile:
+            case EView.newFile:
                 return 'Create new file';
-            case View.basicInstrument:
+            case EView.basicInstrument:
                 return 'Basic Instrument';
-            case View.palette:
+            case EView.palette:
                 return 'Palette';
             default:
                 return '';

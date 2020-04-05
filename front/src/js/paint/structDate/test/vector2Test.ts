@@ -36,10 +36,9 @@ describe('Vector2 test', () => {
         let rt: Vector2 = new Vector2(1, 1);
         expect(Vector2.sub(v1, v2).isEqual(rt)).to.be.true;
 
-        let r: Vector2  = v1.sub(v2);
+        let r: Vector2 = v1.sub(v2);
         expect(r.x).to.equal(1);
         expect(r.y).to.equal(1);
-
     });
 
     it('sum method', () => {
@@ -49,10 +48,9 @@ describe('Vector2 test', () => {
         let rt: Vector2 = new Vector2(3, 3);
         expect(Vector2.sum(v1, v2).isEqual(rt)).to.be.true;
 
-        let r: Vector2  = v1.sum(v2);
+        let r: Vector2 = v1.sum(v2);
         expect(r.x).to.equal(3);
         expect(r.y).to.equal(3);
-
     });
 
     it('division on number method', () => {
@@ -62,10 +60,9 @@ describe('Vector2 test', () => {
         let rt: Vector2 = new Vector2(2, 2);
         expect(Vector2.divisionOnNumber(v1, num).isEqual(rt)).to.be.true;
 
-        let r: Vector2  = v1.divisionOnNumber(num);
+        let r: Vector2 = v1.divisionOnNumber(num);
         expect(r.x).to.equal(2);
         expect(r.y).to.equal(2);
-
     });
 
     it('division on Vector method', () => {
@@ -74,7 +71,7 @@ describe('Vector2 test', () => {
 
         let rt: Vector2 = new Vector2(2, 4);
         expect(Vector2.divisionOnVector(v1, v2).isEqual(rt)).to.be.true;
-        let r: Vector2  = v1.divisionOnVector(v2);
+        let r: Vector2 = v1.divisionOnVector(v2);
         expect(r.x).to.equal(2);
         expect(r.y).to.equal(4);
     });
@@ -83,11 +80,11 @@ describe('Vector2 test', () => {
         let v1: Vector2 = new Vector2(4, 4);
         let v2: Vector2 = new Vector2(5, 5);
 
-        let rt: number = 40
+        let rt: number = 40;
         expect(Vector2.dotProduct(v1, v2) == rt).to.be.true;
 
         let r: number = v1.scalarMultiplication(v2);
-        expect(r).to.equal(40)
+        expect(r).to.equal(40);
     });
 
     it('int mode', () => {

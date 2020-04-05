@@ -6,6 +6,7 @@
         "target": "ES5",
         "jsx": "react",
         "esModuleInterop": true,
-        "downlevelIteration": true
+        "downlevelIteration": true,
+        "resolveJsonModule": true
     }
 }

@@ -10,29 +10,29 @@ export class BrushMode implements IModeType {
 
     type: EInstrumentMode = EInstrumentMode.brush;
 
-    setListeners(canv: HTMLCanvasElement) {
+    setListeners(canv: HTMLCanvasElement): void {
         this._canvas = canv;
         document.addEventListener('click', this._click);
         document.addEventListener('mousedown', this._mouseDown);
     }
 
-    updateContext(context: IModeContext) {
+    updateContext(context: IModeContext): void {
         this._context = context;
     }
 
-    deleteListeners() {
+    deleteListeners(): void {
         document.removeEventListener('mousedown', this._mouseDown);
         document.removeEventListener('click', this._click);
     }
 
     @bind
     private _checkCanvTarget(target: EventTarget): boolean {
-        return (<HTMLElement>target === this._canvas);
+        return (target as HTMLElement) === this._canvas;
     }
 
     @bind
     private _click(e: MouseEvent): boolean {
-        let ctx: CanvasRenderingContext2D = this._canvas.getContext('2d');
+        const ctx: CanvasRenderingContext2D = this._canvas.getContext('2d');
         if (!this._checkCanvTarget(e.target)) {
             ctx.beginPath();
             return false;
@@ -45,16 +45,16 @@ export class BrushMode implements IModeType {
     }
 
     @bind
-    private _mouseDown(e: MouseEvent) {
-        let ctx: CanvasRenderingContext2D = this._canvas.getContext('2d');
+    private _mouseDown(e: MouseEvent): boolean {
+        const ctx: CanvasRenderingContext2D = this._canvas.getContext('2d');
         if (!this._checkCanvTarget(e.target)) {
             return false;
         }
 
-        ctx.lineWidth   = this._context.currentLineThickness;
-        ctx.fillStyle   = this._context.currentColor.getRGBHexString();
+        ctx.lineWidth = this._context.currentLineThickness;
+        ctx.fillStyle = this._context.currentColor.getRGBHexString();
         ctx.strokeStyle = this._context.currentColor.getRGBHexString();
-        ctx.lineCap     = 'round';
+        ctx.lineCap = 'round';
 
         document.addEventListener('mousemove', this._moving);
         document.addEventListener('mouseup', this._downing);
@@ -62,8 +62,8 @@ export class BrushMode implements IModeType {
     }
 
     @bind
-    private _moving(e: MouseEvent) {
-        let ctx: CanvasRenderingContext2D = this._canvas.getContext('2d');
+    private _moving(e: MouseEvent): boolean {
+        const ctx: CanvasRenderingContext2D = this._canvas.getContext('2d');
         if (!this._checkCanvTarget(e.target)) {
             ctx.beginPath();
             return false;
@@ -75,11 +75,12 @@ export class BrushMode implements IModeType {
         this._click(e);
 
         ctx.moveTo(e.offsetX, e.offsetY);
+        return true;
     }
 
     @bind
-    private _downing() {
-        let ctx: CanvasRenderingContext2D = this._canvas.getContext('2d');
+    private _downing(): void {
+        const ctx: CanvasRenderingContext2D = this._canvas.getContext('2d');
         document.removeEventListener('mousemove', this._moving);
         document.removeEventListener('mouseup', this._downing);
         ctx.beginPath();

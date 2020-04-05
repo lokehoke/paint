@@ -3,9 +3,7 @@
 import React from 'react';
 
 export default class ScrollBar extends React.Component {
-    render() {
-        return (
-            <div></div>
-        );
+    render(): React.ReactNode {
+        return <div></div>;
     }
 }

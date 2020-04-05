@@ -3,30 +3,23 @@
 import 'mocha';
 import { expect } from 'chai';
 
-import { Color, RGB, HSV }  from '../color';
+import { Color, RGB, HSV } from '../color';
 
-const colorStrings: Array<string> = [
-    '#000000',
-    '#ffffff',
-    '#f2a305',
-    '#f205a3',
-    '#13f247',
-    '#1442fa',
-];
+const colorStrings: Array<string> = ['#000000', '#ffffff', '#f2a305', '#f205a3', '#13f247', '#1442fa'];
 
 const colorRGB: Array<RGB> = [
-    new RGB(0,   0,   0  ),
+    new RGB(0, 0, 0),
     new RGB(255, 255, 255),
-    new RGB(242, 163, 5  ),
-    new RGB(242, 5,   163),
-    new RGB(19,  242, 71 ),
-    new RGB(20,  66,  250),
+    new RGB(242, 163, 5),
+    new RGB(242, 5, 163),
+    new RGB(19, 242, 71),
+    new RGB(20, 66, 250),
 ];
 
 const colorHSV: Array<HSV> = [
-    new HSV(0,   0,     0  ),
-    new HSV(0,   0,     1  ),
-    new HSV(40,  0.979, 0.949),
+    new HSV(0, 0, 0),
+    new HSV(0, 0, 1),
+    new HSV(40, 0.979, 0.949),
     new HSV(320, 0.979, 0.949),
     new HSV(134, 0.921, 0.949),
     new HSV(228, 0.92, 0.98),
@@ -46,8 +39,8 @@ describe('Color test', () => {
 
         for (let s in colorStrings) {
             let str: string = colorStrings[s];
-            let hsv: HSV   = colorHSV[s].getClone();
-            let rgb: RGB   = colorRGB[s].getClone();
+            let hsv: HSV = colorHSV[s].getClone();
+            let rgb: RGB = colorRGB[s].getClone();
 
             c.setRGBString(str);
             expect(c.getHSV()).to.deep.equal(hsv);
@@ -60,8 +53,8 @@ describe('Color test', () => {
         let c: Color = new Color();
 
         for (let s in colorStrings) {
-            let hsv: HSV   = colorHSV[s].getClone();
-            let rgb: RGB   = colorRGB[s].getClone();
+            let hsv: HSV = colorHSV[s].getClone();
+            let rgb: RGB = colorRGB[s].getClone();
 
             c.setHSV(hsv);
             expect(c.getRGB()).to.deep.equal(rgb);

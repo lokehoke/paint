@@ -1,12 +1,12 @@
 'use strict';
 
 import { BrushMode } from './own/brush';
-import { IModeContext } from '../../reducers/ownReducers/instruments'
+import { IModeContext } from '../../reducers/ownReducers/instruments';
 
 export class ModeError extends Error {
     constructor(message: string) {
         super(message);
-        this.name = "ModeError";
+        this.name = 'ModeError';
     }
 }
 
@@ -17,8 +17,8 @@ export enum EInstrumentMode {
 export interface IModeType {
     type: EInstrumentMode;
 
-    updateContext  : (context: IModeContext) => void;
-    setListeners   : (canv: HTMLCanvasElement) => void;
+    updateContext: (context: IModeContext) => void;
+    setListeners: (canv: HTMLCanvasElement) => void;
     deleteListeners: () => void;
 }
 

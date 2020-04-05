@@ -1,25 +1,28 @@
 'use strict';
 
-import { CHANGE_LINE_THICKNESS, CHANGE_COLOR, InstrumentsActionType, CHANGE_ACTIVE_INSTRUMENTS } from "../../actions/instrumentsActions";
-import { Color } from "../../structDate/color";
-import { EInstrumentMode } from '../../ctx/drawingModes/modes'
+import {
+    CHANGE_LINE_THICKNESS,
+    CHANGE_COLOR,
+    InstrumentsActionType,
+    CHANGE_ACTIVE_INSTRUMENTS,
+} from '../../actions/instrumentsActions';
+import { Color } from '../../structDate/color';
+import { EInstrumentMode } from '../../ctx/drawingModes/modes';
 
 export interface IState {
-    currentColor        : Color;
+    currentColor: Color;
     currentLineThickness: number;
-    activeInstrument    : EInstrumentMode.brush;
-    currentInstruments  : Array<EInstrumentMode>;
-};
+    activeInstrument: EInstrumentMode.brush;
+    currentInstruments: Array<EInstrumentMode>;
+}
 
 export type IModeContext = IState;
 
 export const def: IState = {
-    currentColor        : new Color(),
+    currentColor: new Color(),
     currentLineThickness: 16,
-    activeInstrument    : EInstrumentMode.brush,
-    currentInstruments  : [
-        EInstrumentMode.brush,
-    ],
+    activeInstrument: EInstrumentMode.brush,
+    currentInstruments: [EInstrumentMode.brush],
 };
 
 export const instruments = (state: IState = def, action: InstrumentsActionType): IState => {

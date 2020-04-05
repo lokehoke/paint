@@ -9,27 +9,27 @@ import { InfoTab } from '../../../../structDate/infoTab';
 
 interface IRootState {
     tabs: {
-        own: Array<InfoTab>,
-        activeTab: number,
+        own: Array<InfoTab>;
+        activeTab: number;
     };
-};
-
-interface IProps {
-    tabs: Array<InfoTab>,
-    activeTab: number,
 }
 
-let connector = connect(
+interface IProps {
+    tabs: Array<InfoTab>;
+    activeTab: number;
+}
+
+const connector = connect(
     (state: IRootState) => ({
         tabs: state.tabs.own,
         active: state.tabs.activeTab,
     }),
-    dispatch =>({
+    (dispatch) => ({
         changeActive: (id: number) => dispatch(changeTabAction(id)),
-    })
+    }),
 );
 
-type PropsReduxType = ConnectedProps<typeof connector>
+type PropsReduxType = ConnectedProps<typeof connector>;
 export type PropsType = PropsReduxType & IProps;
 
 class ListTabs extends React.Component {
@@ -39,8 +39,8 @@ class ListTabs extends React.Component {
 
     render() {
         return (
-            <div className="listTabs" ref={(lt: HTMLDivElement) => this._listTabs = lt}>
-                {this.props.tabs.map(tab => (
+            <div className='listTabs' ref={(lt: HTMLDivElement) => (this._listTabs = lt)}>
+                {this.props.tabs.map((tab) => (
                     <Tab key={tab.id} tabId={tab.id} />
                 ))}
             </div>
@@ -49,8 +49,8 @@ class ListTabs extends React.Component {
 
     componentDidMount() {
         this._listTabs.addEventListener('click', (e: MouseEvent) => {
-            let target = (e.target as HTMLDivElement);
-            if(target.classList.contains('tab')) {
+            const target = e.target as HTMLDivElement;
+            if (target.classList.contains('tab')) {
                 this.props.changeActive(+target.dataset.id);
             }
         });

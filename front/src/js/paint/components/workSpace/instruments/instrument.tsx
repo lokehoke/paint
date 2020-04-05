@@ -6,8 +6,8 @@ import { faPaintBrush } from '@fortawesome/free-solid-svg-icons';
 import { EInstrumentMode } from '../../../ctx/drawingModes/modes';
 
 export interface IProps {
-    active: boolean,
-    type: EInstrumentMode,
+    active: boolean;
+    type: EInstrumentMode;
 }
 
 export default class Instrument extends React.Component {
@@ -23,14 +23,10 @@ export default class Instrument extends React.Component {
 
         switch (this.props.type) {
             case EInstrumentMode.brush:
-                icon = (<FontAwesomeIcon icon={faPaintBrush} color="white" />);
+                icon = <FontAwesomeIcon icon={faPaintBrush} color='white' />;
                 break;
         }
 
-        return (
-            <div className={'instrument' + active}>
-                {icon}
-            </div>
-        );
+        return <div className={'instrument' + active}>{icon}</div>;
     }
 }

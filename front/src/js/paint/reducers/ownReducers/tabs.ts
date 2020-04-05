@@ -9,27 +9,24 @@ interface IState {
     own: Array<InfoTab>;
 }
 
-let def: IState = {
+const def: IState = {
     id: -1,
     activeTab: -1,
     own: [],
 };
 
-export const tabs = (state: IState = def, action: TabActionType) : IState => {
+export const tabs = (state: IState = def, action: TabActionType): IState => {
     switch (action.type) {
         case NEW_TAB:
             return {
                 ...state,
                 id: state.id + 1,
                 activeTab: state.id + 1,
-                own: [
-                    ...state.own,
-                    new InfoTab(state.id + 1, action.title, action.size),
-                ],
+                own: [...state.own, new InfoTab(state.id + 1, action.title, action.size)],
             };
 
         case CLOSE_TAB:
-            let own = [...(state.own.filter(el => el.id !== action.id))];
+            const own = [...state.own.filter((el) => el.id !== action.id)];
             let activeTab = state.activeTab;
 
             if (action.id === state.activeTab) {

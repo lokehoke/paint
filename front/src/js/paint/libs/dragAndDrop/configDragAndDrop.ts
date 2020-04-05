@@ -1,6 +1,7 @@
 'use strict';
 
 import { Vector2 } from '../../structDate/vector2';
+import { IExportDate } from './dragAndDrop';
 
 export interface IShowAfterMount {
     isset: boolean;
@@ -22,7 +23,7 @@ export interface IConfigDragAndDrop {
     ignoreNoDragAndDrop?: boolean;
     onlyX?: boolean;
     onlyY?: boolean;
-    transferDate?: Function;
+    transferDate?: (a: IExportDate) => void;
     showAfterMount?: IShowAfterMount;
     piece?: IPiece;
 }
@@ -30,11 +31,11 @@ export interface IConfigDragAndDrop {
 export type ConfigDragAndDropType = IConfigDragAndDrop | null | undefined;
 
 export class ConfigDragAndDrop implements IConfigDragAndDrop {
-    startAsync: boolean = true;
-    ignoreNoDragAndDrop: boolean = false;
-    onlyX: boolean = false;
-    onlyY: boolean = false;
-    transferDate: Function = () => {};
+    startAsync = true;
+    ignoreNoDragAndDrop = false;
+    onlyX = false;
+    onlyY = false;
+    transferDate = (): void => undefined;
     showAfterMount: IShowAfterMount = {
         isset: false,
         sizeItem: new Vector2(),
@@ -48,4 +49,4 @@ export class ConfigDragAndDrop implements IConfigDragAndDrop {
         exitFromContour: false,
         cur: new Vector2(),
     };
-};
+}

@@ -1,5 +1,5 @@
 'use strict';
 
-import Paint from './paint/paint.jsx';
+import Paint from './paint/paint';
 
-const paint: Paint = new Paint('#root');
+new Paint('#root');

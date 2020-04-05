@@ -4,7 +4,7 @@ export class Vector2 {
     public x: number;
     public y: number;
 
-    constructor(x: number = 0.0, y: number = 0.0) {
+    constructor(x = 0.0, y = 0.0) {
         this.x = x;
         this.y = y;
     }
@@ -17,16 +17,16 @@ export class Vector2 {
         return new Vector2(a.x + b.x, a.y + b.y);
     }
 
-    static divisionOnNumber(a: Vector2, b: number, type: string = 'double'): Vector2 {
-        let t: Vector2 = new Vector2();
+    static divisionOnNumber(a: Vector2, b: number, type = 'double'): Vector2 {
+        const t: Vector2 = new Vector2();
         t.setDimensions(a);
         return t.divisionOnNumber(b, type);
     }
 
-    static divisionOnVector(a: Vector2, b: Vector2, type: string = 'double'): Vector2 {
-        let t1: Vector2 = new Vector2();
+    static divisionOnVector(a: Vector2, b: Vector2, type = 'double'): Vector2 {
+        const t1: Vector2 = new Vector2();
         t1.setDimensions(a);
-        let t2: Vector2 = new Vector2();
+        const t2: Vector2 = new Vector2();
         t2.setDimensions(b);
         return t1.divisionOnVector(t2, type);
     }
@@ -53,7 +53,7 @@ export class Vector2 {
         return this;
     }
 
-    divisionOnVector(a: Vector2, type: string = 'double'): Vector2 {
+    divisionOnVector(a: Vector2, type = 'double'): Vector2 {
         this.x /= a.x;
         this.y /= a.y;
 
@@ -64,7 +64,7 @@ export class Vector2 {
         return this;
     }
 
-    divisionOnNumber(num: number, type: string = 'double'): Vector2 {
+    divisionOnNumber(num: number, type = 'double'): Vector2 {
         this.x /= num;
         this.y /= num;
         if (type === 'int') {
@@ -78,7 +78,7 @@ export class Vector2 {
         return this.x * a.x + this.y * a.y;
     }
 
-    setDimensions(a: Vector2) {
+    setDimensions(a: Vector2): Vector2 {
         this.x = a.x;
         this.y = a.y;
         return this;
@@ -91,7 +91,8 @@ export class Vector2 {
     }
 
     toString(): string {
-        return `->X ${this.x}
+        return `
+->X ${this.x}
 ->Y ${this.y}`;
     }
 }

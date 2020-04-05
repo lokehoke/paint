@@ -5,7 +5,7 @@ import { ERightAngle } from '../algorithms/rotate';
 import { def as defContext } from '../../reducers/ownReducers/instruments';
 
 const height = 302;
-const width  = 605;
+const width = 605;
 
 let root: HTMLElement = document.getElementById('root');
 let img: HTMLImageElement = <HTMLImageElement>document.getElementById('img');
@@ -50,12 +50,12 @@ class TestDiv {
     }
 }
 
-document.addEventListener('DOMContentLoaded', e => {
+document.addEventListener('DOMContentLoaded', (e) => {
     root.appendChild(img);
     img.addEventListener('load', () => {
         let test1 = new TestDiv('Test black and white', async (cnv: HTMLCanvasElement) => {
             let wrapper: CtxWrapper = new CtxWrapper(cnv, defContext);
-            await wrapper.as_toBlackAndWhite();
+            await wrapper.toBlackAndWhiteAsync();
         });
 
         let test2 = new TestDiv('Rotate 90 test', (cnv: HTMLCanvasElement) => {

@@ -14,35 +14,34 @@ let mainStyleBlock: css.Properties = {
     position: 'relative',
 };
 
-let wrapperStyle: css.Properties = {
+const wrapperStyle: css.Properties = {
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
     height: '100%',
 };
 
-let infoBlockStyle: css.Properties = {
+const infoBlockStyle: css.Properties = {
     display: 'flex',
     borderTop: '1px solid black',
     borderBottom: '1px solid black',
 };
 
-
 export interface IExportValue {
     color: Color;
-};
+}
 
 export type ChangeValueFunctionType = (val: IExportValue) => void;
 
 export interface IProps {
     changing: ChangeValueFunctionType;
     mainSide: number;
-    color   : Color;
+    color: Color;
 }
 
 export class Palette extends React.Component {
     static defaultProps: IProps = {
-        changing: () => {},
+        changing: () => undefined,
         mainSide: 200,
         color: new Color(),
     };
@@ -55,21 +54,18 @@ export class Palette extends React.Component {
     constructor(props: IProps) {
         super(props);
 
-        this._svSize  = new Vector2(props.mainSide, props.mainSide);
-        this._hueSize = new Vector2(props.mainSide, props.mainSide /10);
+        this._svSize = new Vector2(props.mainSide, props.mainSide);
+        this._hueSize = new Vector2(props.mainSide, props.mainSide / 10);
 
-        mainStyleBlock = Object.assign(
-            {},
-            mainStyleBlock,
-            {
-                height: props.mainSide,
-                width: this._svSize.y + this._hueSize.y + props.mainSide/10,
-            },
-        )
+        mainStyleBlock = Object.assign({}, mainStyleBlock, {
+            height: props.mainSide,
+            width: this._svSize.y + this._hueSize.y + props.mainSide / 10,
+        });
     }
 
-    render() { // TODO it is 2 component hue and other, maybe 3 component
-        let hsv: HSV = this.props.color.getHSV();
+    render(): React.ReactNode {
+        // TODO it is 2 component hue and other, maybe 3 component
+        const hsv: HSV = this.props.color.getHSV();
         return (
             <div style={wrapperStyle}>
                 <div style={mainStyleBlock}>
@@ -79,15 +75,11 @@ export class Palette extends React.Component {
                         size={this._svSize}
                         changeValue={this._changeSv}
                     />
-                    <Hue
-                        hue={hsv.hue}
-                        size={this._hueSize}
-                        changeValue={this._changeHue}
-                    />
+                    <Hue hue={hsv.hue} size={this._hueSize} changeValue={this._changeHue} />
                 </div>
                 <div style={infoBlockStyle}>
-                    <canvas height="33px" width="70px" />
-                    <div style={{display: 'flex', alignItems: 'center'}}>
+                    <canvas height='33px' width='70px' />
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
                         <span>HEX:</span>
                         <span></span>
                     </div>
@@ -97,24 +89,24 @@ export class Palette extends React.Component {
     }
 
     @bind
-    _changeHue(e: IExportValueHue) {
-        let hsv: HSV = this.props.color.getHSV();
+    private _changeHue(e: IExportValueHue): void {
+        const hsv: HSV = this.props.color.getHSV();
         hsv.hue = e.hue;
 
         this._sendValue(hsv);
     }
 
     @bind
-    _changeSv(e: IExportValueSv) {
-        let hsv: HSV = this.props.color.getHSV();
+    private _changeSv(e: IExportValueSv): void {
+        const hsv: HSV = this.props.color.getHSV();
         hsv.saturation = e.saturation;
         hsv.brightness = e.brightness;
 
         this._sendValue(hsv);
     }
 
-    _sendValue(hsv: HSV) {
-        let c = new Color();
+    private _sendValue(hsv: HSV): void {
+        const c = new Color();
         c.setHSV(hsv);
         this.props.changing({
             color: c,
