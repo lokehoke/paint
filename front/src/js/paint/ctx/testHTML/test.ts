@@ -7,29 +7,29 @@ import { def as defContext } from '../../reducers/ownReducers/instruments';
 const height = 302;
 const width = 605;
 
-let root: HTMLElement = document.getElementById('root');
-let img: HTMLImageElement = <HTMLImageElement>document.getElementById('img');
+const root: HTMLElement = document.getElementById('root');
+const img: HTMLImageElement = document.getElementById('img') as HTMLImageElement;
 
 class TestDiv {
-    static id: number = 0;
+    static id = 0;
 
     constructor(title: string, func: (h: HTMLCanvasElement) => void) {
-        let before: HTMLCanvasElement = this._getCanvas();
+        const before: HTMLCanvasElement = this._getCanvas();
         before.style.marginRight = '10px';
 
-        let after: HTMLCanvasElement = this._getCanvas();
+        const after: HTMLCanvasElement = this._getCanvas();
         after.id = `${++TestDiv.id}`;
 
-        let cnvBox: HTMLDivElement = document.createElement('div');
+        const cnvBox: HTMLDivElement = document.createElement('div');
         cnvBox.style.display = 'flex';
         cnvBox.style.alignItems = 'center';
         cnvBox.appendChild(before);
         cnvBox.appendChild(after);
 
-        let h1: HTMLHeadElement = document.createElement('h1');
+        const h1: HTMLHeadElement = document.createElement('h1');
         h1.textContent = title;
 
-        let box: HTMLDivElement = document.createElement('div');
+        const box: HTMLDivElement = document.createElement('div');
         box.appendChild(h1);
         box.appendChild(cnvBox);
 
@@ -39,27 +39,27 @@ class TestDiv {
     }
 
     private _getCanvas(): HTMLCanvasElement {
-        let cnv: HTMLCanvasElement = document.createElement('canvas');
+        const cnv: HTMLCanvasElement = document.createElement('canvas');
         cnv.height = height;
         cnv.width = width;
 
-        let ctx: CanvasRenderingContext2D = cnv.getContext('2d');
+        const ctx: CanvasRenderingContext2D = cnv.getContext('2d');
         ctx.drawImage(img, 0, 0, width, height);
 
         return cnv;
     }
 }
 
-document.addEventListener('DOMContentLoaded', (e) => {
+document.addEventListener('DOMContentLoaded', () => {
     root.appendChild(img);
     img.addEventListener('load', () => {
-        let test1 = new TestDiv('Test black and white', async (cnv: HTMLCanvasElement) => {
-            let wrapper: CtxWrapper = new CtxWrapper(cnv, defContext);
+        new TestDiv('Test black and white', async (cnv: HTMLCanvasElement) => {
+            const wrapper: CtxWrapper = new CtxWrapper(cnv, defContext);
             await wrapper.toBlackAndWhiteAsync();
         });
 
-        let test2 = new TestDiv('Rotate 90 test', (cnv: HTMLCanvasElement) => {
-            let wrapper: CtxWrapper = new CtxWrapper(cnv, defContext);
+        new TestDiv('Rotate 90 test', (cnv: HTMLCanvasElement) => {
+            const wrapper: CtxWrapper = new CtxWrapper(cnv, defContext);
             wrapper.rotateRightAngle(ERightAngle.an90);
         });
     });
