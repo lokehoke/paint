@@ -19,7 +19,7 @@ export type PropsType = PropsReduxType;
 class SizeLine extends React.Component {
     props: PropsType;
 
-    render() {
+    render(): React.ReactNode {
         return <div className='footerObject'>{this.props.size}px</div>;
     }
 }

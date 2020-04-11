@@ -13,7 +13,7 @@ export interface IProps {
 export default class Instrument extends React.Component {
     props: IProps;
 
-    render() {
+    render(): React.ReactNode {
         let icon = null;
         let active = '';
 

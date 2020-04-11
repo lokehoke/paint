@@ -47,7 +47,7 @@ export class Hue extends React.Component {
             width: `${props.size.y}px`,
         };
 
-        containerPointerArrowStyle = Object.assign({}, containerPointerArrowStyle, this._hueStyle);
+        containerPointerArrowStyle = { ...containerPointerArrowStyle, ...this._hueStyle };
     }
 
     render(): React.ReactNode {

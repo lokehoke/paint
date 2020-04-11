@@ -25,7 +25,9 @@ const connector = connect(
         active: state.tabs.activeTab,
     }),
     (dispatch) => ({
-        closeTab: (id: number) => dispatch(closeTabAction(id)),
+        closeTab: (id: number): void => {
+            dispatch(closeTabAction(id));
+        },
     }),
 );
 
@@ -38,7 +40,7 @@ class Tab extends React.Component {
     private _exitBtn: HTMLDivElement;
     private _tab: HTMLDivElement;
 
-    render() {
+    render(): React.ReactNode {
         let active = '';
 
         if (this.props.tabId === this.props.active) {
@@ -46,16 +48,27 @@ class Tab extends React.Component {
         }
 
         return (
-            <div className={`tab ${active}`} data-id={this.props.tabId} ref={(tab) => (this._tab = tab)}>
+            <div
+                className={`tab ${active}`}
+                data-id={this.props.tabId}
+                ref={(tab: HTMLDivElement): void => {
+                    this._tab = tab;
+                }}
+            >
                 {`${this.props.tab.title} ${this.props.tab.size.x} : ${this.props.tab.size.y}`}
-                <div className='__exitIcon' ref={(exit) => (this._exitBtn = exit)}>
+                <div
+                    className='__exitIcon'
+                    ref={(exit: HTMLDivElement): void => {
+                        this._exitBtn = exit;
+                    }}
+                >
                     <FontAwesomeIcon icon={faTimesCircle} />
                 </div>
             </div>
         );
     }
 
-    componentDidMount() {
+    componentDidMount(): void {
         this._exitBtn.addEventListener('click', (e) => {
             e.preventDefault();
             this.props.closeTab(this.props.tab.id);

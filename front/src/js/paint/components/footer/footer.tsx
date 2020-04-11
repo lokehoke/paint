@@ -6,7 +6,7 @@ import SizeLine from './own/lineSize';
 import Color from './own/color';
 
 export class Footer extends React.Component {
-    render() {
+    render(): React.ReactNode {
         return (
             <footer className='footer'>
                 <SizeLine />

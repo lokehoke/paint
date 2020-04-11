@@ -37,12 +37,12 @@ class Tabs extends React.Component {
 
     private _canvMap: Map<number, CtxWrapper> = new Map();
 
-    render() {
-        const tabs = this.props.tabs.map((el: InfoTab, i: number) => {
+    render(): React.ReactNode {
+        const tabs = this.props.tabs.map((el: InfoTab) => {
             return (
                 <canvas
                     key={el.id}
-                    ref={(canv: HTMLCanvasElement) => {
+                    ref={(canv: HTMLCanvasElement): void => {
                         if (canv && !this._canvMap.has(el.id)) {
                             this._canvMap.set(el.id, new CtxWrapper(canv, this.props.instrumentary));
                         }
@@ -56,7 +56,7 @@ class Tabs extends React.Component {
         return <FlexiblePlace size={new Vector2(this.props.size.height, this.props.size.width)}>{tabs}</FlexiblePlace>;
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(): void {
         for (const [key, value] of this._canvMap) {
             if (this.props.tabs.some((el: InfoTab) => el.id == key)) {
                 if (!value.isActive()) {

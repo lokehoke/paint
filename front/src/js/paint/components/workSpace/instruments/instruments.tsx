@@ -21,7 +21,7 @@ export type PropsType = PropsReduxType;
 class Instruments extends React.Component {
     props: PropsType;
 
-    render() {
+    render(): React.ReactNode {
         const instruments = [];
         let active = false;
 

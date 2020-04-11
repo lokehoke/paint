@@ -1,6 +1,6 @@
 'use strict';
 
-import React, { createRef } from 'react';
+import React from 'react';
 import css from 'csstype';
 
 const style: css.Properties = {
@@ -26,11 +26,18 @@ export class PimpDote extends React.Component<IProps, {}> {
 
     constructor(props: IProps) {
         super(props);
-        this._style = Object.assign({}, style, this.props.style);
+        this._style = { ...style, ...this.props.style };
     }
 
-    render() {
-        return <div style={this._style} ref={(d: HTMLDivElement) => (this._dote = d)} />;
+    render(): React.ReactNode {
+        return (
+            <div
+                style={this._style}
+                ref={(d: HTMLDivElement): void => {
+                    this._dote = d;
+                }}
+            />
+        );
     }
 
     getDom(): HTMLDivElement {

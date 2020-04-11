@@ -14,7 +14,7 @@ export default class FlexiblePlace extends React.Component {
 
     private _inner: HTMLElement;
 
-    render() {
+    render(): React.ReactNode {
         const style = {
             height: `${this.props.size.x}px`,
             width: `${this.props.size.y}px`,
@@ -22,13 +22,18 @@ export default class FlexiblePlace extends React.Component {
         };
 
         return (
-            <div style={style} ref={(inner: HTMLElement) => (this._inner = inner)}>
+            <div
+                style={style}
+                ref={(inner: HTMLElement): void => {
+                    this._inner = inner;
+                }}
+            >
                 {this.props.children}
             </div>
         );
     }
 
-    componentDidMount() {
+    componentDidMount(): void {
         // console.log(this.inner.scrollWidth);
         // console.log(this.inner.scrollHeight);
     }

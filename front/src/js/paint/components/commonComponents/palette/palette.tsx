@@ -57,10 +57,11 @@ export class Palette extends React.Component {
         this._svSize = new Vector2(props.mainSide, props.mainSide);
         this._hueSize = new Vector2(props.mainSide, props.mainSide / 10);
 
-        mainStyleBlock = Object.assign({}, mainStyleBlock, {
-            height: props.mainSide,
-            width: this._svSize.y + this._hueSize.y + props.mainSide / 10,
-        });
+        mainStyleBlock = {
+            ...mainStyleBlock,
+            height: `${props.mainSide}px`,
+            width: `${this._svSize.y + this._hueSize.y + props.mainSide / 10}px`,
+        };
     }
 
     render(): React.ReactNode {

@@ -25,7 +25,9 @@ const connector = connect(
         active: state.tabs.activeTab,
     }),
     (dispatch) => ({
-        changeActive: (id: number) => dispatch(changeTabAction(id)),
+        changeActive: (id: number): void => {
+            dispatch(changeTabAction(id));
+        },
     }),
 );
 
@@ -37,9 +39,14 @@ class ListTabs extends React.Component {
 
     private _listTabs: HTMLDivElement;
 
-    render() {
+    render(): React.ReactNode {
         return (
-            <div className='listTabs' ref={(lt: HTMLDivElement) => (this._listTabs = lt)}>
+            <div
+                className='listTabs'
+                ref={(lt: HTMLDivElement): void => {
+                    this._listTabs = lt;
+                }}
+            >
                 {this.props.tabs.map((tab) => (
                     <Tab key={tab.id} tabId={tab.id} />
                 ))}
@@ -47,7 +54,7 @@ class ListTabs extends React.Component {
         );
     }
 
-    componentDidMount() {
+    componentDidMount(): void {
         this._listTabs.addEventListener('click', (e: MouseEvent) => {
             const target = e.target as HTMLDivElement;
             if (target.classList.contains('tab')) {

@@ -30,7 +30,7 @@ export class PointerArrow extends React.Component<IProps, {}> {
     private _arrow: css.Properties;
     private _rightArrow: css.Properties;
     private _leftArrow: css.Properties;
-    private _style: css.Properties = Object.assign({}, style);
+    private _style: css.Properties = { ...style };
     private _rectangle: css.Properties;
 
     private _pointer: HTMLDivElement;
@@ -38,7 +38,7 @@ export class PointerArrow extends React.Component<IProps, {}> {
     constructor(props: IProps) {
         super(props);
 
-        this._conf = Object.assign({}, bundleStyle, this.props.style);
+        this._conf = { ...bundleStyle, ...this.props.style };
         this._arrow = {
             width: 0,
             height: 0,
@@ -47,19 +47,21 @@ export class PointerArrow extends React.Component<IProps, {}> {
             borderWidth: `${this._conf.height / 2}px`,
         };
 
-        this._rightArrow = Object.assign({}, this._arrow, {
+        this._rightArrow = {
+            ...this._arrow,
             borderRightColor: this._conf.colorArrow,
             position: 'absolute',
             right: 0,
             zIndex: 10,
-        });
+        };
 
-        this._leftArrow = Object.assign({}, this._arrow, {
+        this._leftArrow = {
+            ...this._arrow,
             borderLeftColor: this._conf.colorArrow,
             left: 0,
             position: 'absolute',
             zIndex: 10,
-        });
+        };
 
         this._style.width = this._conf.width;
         this._style.height = this._conf.height;
@@ -73,9 +75,14 @@ export class PointerArrow extends React.Component<IProps, {}> {
         };
     }
 
-    render() {
+    render(): React.ReactNode {
         return (
-            <div style={this._style} ref={(pointer: HTMLDivElement) => (this._pointer = pointer)}>
+            <div
+                style={this._style}
+                ref={(pointer: HTMLDivElement): void => {
+                    this._pointer = pointer;
+                }}
+            >
                 <div style={this._leftArrow} />
                 <div style={this._rectangle} />
                 <div style={this._rightArrow} />
